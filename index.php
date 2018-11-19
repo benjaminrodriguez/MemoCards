@@ -26,12 +26,10 @@
         <?php
             if(!empty($_GET['page']) && is_file('controleurs/'.$_GET['page'].'_controleurs.php') )
             {
-                //include('controleurs/'.$_GET['page'].'_controleurs.php' );
-                echo "1";
+                include('controleurs/'.$_GET['page'].'_controleurs.php' );
             } else
             {
-                //include('controleurs/accueil_controleurs.php');
-                echo "2";
+                include('controleurs/accueil_controleurs.php');
             }
         ?>
     </div>
