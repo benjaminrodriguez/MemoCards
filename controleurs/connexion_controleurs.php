@@ -1,4 +1,4 @@
 <?php
   echo ('Ecran connexion');
-  include('../vues/connexion_vues.html');
+  include(dirname(_FILE_).'/../vues/connexion_vues.html');
 ?>
