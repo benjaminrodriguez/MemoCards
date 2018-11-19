@@ -19,7 +19,7 @@
             require_once('controleurs/function.php');
 
             //Html de l'index--------------------------------
-            include("vues/index_vues.php");
+            //include("vues/index_vues.html");
         ?>
 
     <div class="container" style="margin-top:60px;">

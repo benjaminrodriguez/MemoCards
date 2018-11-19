@@ -33,6 +33,6 @@
 
 
 
-  //include(dirname(_FILE_).'/../vues/index_vues.php');
+  //include(dirname(__FILE__).'/../vues/index_vues.php');
 
 ?>
