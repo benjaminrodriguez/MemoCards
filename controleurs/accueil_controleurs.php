@@ -2,11 +2,11 @@
 
   if (!isset($_SESSION['username']))
   {
-    //header('Location: index.php?page=connexion');
-    //exit;
-    echo "string";
-  } else {
-    echo "gggggg";
+    header('Location: index.php?page=connexion');
+    exit;
+  } else
+  {
+
   }
 
 
