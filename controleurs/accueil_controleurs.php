@@ -11,26 +11,35 @@
   }*/
 
 
-  include(dirname(__FILE__).'/../vues/accueil_vues.php');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  if (!isset($_POST['menu']))
+  {
+    include(dirname(__FILE__).'/../vues/accueil_vues.php');
+  }
+  else if ($_POST['menu'] === 'profil')
+  {
+    header('Location: index.php?page=profil');
+    exit;
+  }
+  else if ($_POST['menu'] === 'stats')
+  {
+    header('Location: index.php?page=stats');
+    exit;
+  }
+  else if ($_POST['menu'] === 'inventaire')
+  {
+    header('Location: index.php?page=inventaire');
+    exit;
+  }
+  else if ($_POST['menu'] === 'store')
+  {
+    header('Location: index.php?page=store');
+    exit;
+  }
+  else if ($_POST['menu'] === 'forum')
+  {
+    header('Location: index.php?page=forum');
+    exit;
+  }
 
 
 

@@ -17,9 +17,8 @@
         <?php
             session_start();
             require_once('controleurs/php/function.php');
+            require_once('modeles/req_sql.php');
 
-            //Html de l'index--------------------------------
-            //include("vues/index_vues.html");
         ?>
 
     <div class="container" style="margin-top:60px;">
