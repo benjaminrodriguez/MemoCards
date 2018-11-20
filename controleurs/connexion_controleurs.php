@@ -1,7 +1,7 @@
 <?php
   if (!isset($_SESSION['username']))
   {
-    include(dirname(__FILE__).'/../vues/connexion_vues.html');
+    include(dirname(__FILE__).'/../vues/connexion_vues.php');
   }
   if (!empty($_POST['username']) && !empty($_POST['password']))
   {
