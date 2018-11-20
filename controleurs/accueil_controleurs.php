@@ -1,14 +1,14 @@
 <?php
 
   //SI L'UTILISATEUR N'EST PAS CONNECTE, IL EST REDIRIGER VERS LA PAGE DE CONNEXION
-  /*if (!isset($_SESSION['username']))
+  if (!isset($_SESSION['username']))
   {
     header('Location: index.php?page=connexion');
     exit;
   } else
   {
 
-  }*/
+  }
 
 
   if (!isset($_POST['menu']))
