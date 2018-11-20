@@ -11,7 +11,7 @@
 -- -----------------------------------------------------
 -- Schema MemoCards
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `MemoCards` DEFAULT CHARACTER SET utf8 ;
+CREATE DATABASE IF NOT EXISTS `MemoCards` DEFAULT CHARACTER SET utf8 ;
 USE `MemoCards` ;
 
 -- -----------------------------------------------------
