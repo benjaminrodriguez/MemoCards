@@ -18,30 +18,32 @@ if ($chain === 3) {
     }
 }
 
-if ($cpt < $nb_card) 
+if ($cpt < $nb_card)
 {
     $choice = rand(0, 100);
-    
-    if ($choice < 35) 
+
+    if ($choice < 35)
     {
-        include("./modeles/quest1.php");
+        //include("./modeles/quest1.php");
+        quest1($iddeck, $list);
     }
-    else    
+    else
     {
-        include("./modeles/quest2.php");
+        //include("./modeles/quest2.php");
+        quest2($iddeck, $list);
     }
 
     // AFFICHAGE DE LA QUESTION ICI
-    
+
     if ($cpt === 0) {
         $list += '\''.$IDDELAQUESTION.'\'';
 
     }
-    else 
+    else
     {
         $list += ', \''.$IDDELAQUESTION.'\'';
     }
-    
+
     $cpt++;
 }
 
