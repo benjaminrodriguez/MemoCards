@@ -10,9 +10,4 @@ function connexion ($username,$password,)
 
         return $resultat;
 }
-
-
-
-
-
 ?>
