@@ -16,9 +16,4 @@ function username_update($a, $b, $c)
 // ---------------------------------------------------------------------
 
 
-
-function benjamin_sql()
-{
-    echo 'Bonjour !';
-}
 ?>
