@@ -16,8 +16,16 @@
 
         <?php
             session_start();
+
+            //Ajoute les fonctions php
             require_once('controleurs/php/function.php');
-            require_once('modeles/req_sql.php');
+
+            //Ajoute toutes les fonctions sql
+            require_once('modeles/BDD.php');
+            require_once('modeles/SELECT.php');
+            require_once('modeles/INSERT.php');
+            require_once('modeles/UPDATE.php');
+
 
         ?>
 

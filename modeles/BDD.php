@@ -1,4 +1,5 @@
 <?php
+
   //CONNEXION A LA BDD
   try
   {
@@ -9,13 +10,5 @@
           die('Erreur : ' . $e->getMessage());
   }
 
-  function verifyPseudoPass()
-  {
-   
-  }
 
-  function inscription()
-  {
-    
-  }
 ?>

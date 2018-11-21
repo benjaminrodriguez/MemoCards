@@ -10,15 +10,22 @@
     { 
       $_SESSION['username'] = $_POST['username'];
       $_SESSION['password'] = $_POST['password'];
-      include(dirname(__FILE__).'/../modeles/verify_pseudo_pass_modeles.php');
+      //include(dirname(__FILE__).'/../modeles/verify_pseudo_pass_modeles.php');
+      connexion($_POST['username'], $_POST['password']);
+
+      $isPasswordCorrect = password_verify($_SESSION['password'], $resultat['password']);
+
+
       // ON DEFINIT LES SUPERGLOBALES DE SESSIONS
-      $_SESSION['id']=$resultat['id'];
-      $_SESSION['username']=$resultat['username'];
-      $_SESSION['password']=null;
+      $_SESSION['id'] = $resultat['id'];
+      $_SESSION['username'] = $resultat['username'];
       $_SESSION['profil_picture']=$resultat['profil_picture'];
-      $_SESSION['statut']=$resultat['statut'];
-      $_SESSION['age']=$resultat['age'];
-      include(dirname(__FILE__).'/../controleurs/accueil_controleurs.php');
+      $_SESSION['statut'] = $resultat['statut'];
+      $_SESSION['age'] = $resultat['age'];
+
+      //include(dirname(__FILE__).'/../controleurs/accueil_controleurs.php');
+      header('Location: index.php?page=accueil');
+      exit;
     }
   }
 ?>
