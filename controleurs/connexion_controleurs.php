@@ -8,6 +8,8 @@
     include(dirname(__FILE__).'/../vues/erreur404.html');
     exit;
   }
+
+
   // ON VERIFIE PSEUDO ET PASSWORD
   if (!empty($_POST['username']) && !empty($_POST['password']))
   {
@@ -16,7 +18,7 @@
       $_SESSION['username'] = $_POST['username'];
       $_SESSION['password'] = $_POST['password'];
       //include(dirname(__FILE__).'/../modeles/verify_pseudo_pass_modeles.php');
-      connexion($_POST['username'], $_POST['password']);
+      $resultat = connexion_select($_POST['username'], $_POST['password']);
       $isPasswordCorrect = password_verify($_SESSION['password'], $resultat['password']);
 
 
@@ -28,12 +30,12 @@
       $_SESSION['age'] = $resultat['age'];
       if ($isPasswordCorrect) 
       {
-      header('Location: index.php?page=accueil');
+      //header('Location: index.php?page=accueil');
       exit;
       }
       else 
       {
-        include(dirname(__FILE__).'/../js/erreur_auth.js');
+        include(dirname(__FILE__).'/../vues/js/erreur_auth.js');
         exit;
       }
     }

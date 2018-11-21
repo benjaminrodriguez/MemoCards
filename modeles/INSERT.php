@@ -1,6 +1,6 @@
 <?php
 
-function insert ($a,$b,$c)
+function insert_insert ($a,$b,$c)
 {
   /*
 // INSCRIPTION
@@ -14,5 +14,18 @@ function insert ($a,$b,$c)
           'date_de_naissance'=>?,
           'statut'=>?
         ));*/
+}
+
+// ----------------------------------------------------------------------------
+function inscription ($username, $password, $date_naissance,$statut)
+{
+
+global $bdd;
+// INSCRIPTION
+        $inscription = $bdd->prepare(
+        'INSERT INTO user (username,password,age,statut) 
+        VALUES (?, ?, ?, ?);
+        ');
+        $inscription->execute(array($username, $password, $date_naissance, $statut));
 }
 ?>
