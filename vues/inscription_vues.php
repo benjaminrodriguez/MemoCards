@@ -25,7 +25,7 @@
       <input type="email" name="mail" id="mail" class="form-control" placeholder="Adresse mail" required autofocus>-->
       <label for="pass" class="sr-only">Password</label>
       </div>
-      <button action="index.php?page=inscription"class="btn btn-lg btn-primary btn-block" type="submit">Inscription</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Inscription</button>
       </form>
     </body>
 </html>

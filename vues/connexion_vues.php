@@ -28,11 +28,12 @@
           </select>-->
       </div>
           <input type="submit" class="btn btn-lg btn-primary btn-block" value="Se connecter"></button>
+          </form>
           <form action="" method="GET">
-            <button type="submit" class="btn btn-lg btn-primary btn-block" id="inscription" name="inscription" value="inscription"><h3>Inscription</h3></button>
+            <button action="index.php?page=inscription" type="submit" class="btn btn-lg btn-primary btn-block" id="inscription" name="inscription" value="inscription"><h3>Inscription</h3></button>
           </form>
           <p class="mt-5 mb-3 text-muted">&copy; MemoCards</p>
-        </form>
+        
     </div>
   </body>
 </html>
