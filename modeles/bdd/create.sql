@@ -208,6 +208,7 @@ DROP TABLE IF EXISTS `succes_rate`;
 CREATE TABLE IF NOT EXISTS `succes_rate` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `level_cards` int(11) NOT NULL,
+  `chain` int(11) NOT NULL,
   `played_cards` int(11) DEFAULT NULL,
   `verso_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),

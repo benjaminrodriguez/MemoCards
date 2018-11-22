@@ -41,7 +41,7 @@
       exit;
     }
 
-    include(dirname(__FILE__).'/../vues/disconnect_vues.php');
+
     disconnect();
 
     //include(dirname(__FILE__).'/../vues/index_vues.php');

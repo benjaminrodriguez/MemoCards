@@ -1,4 +1,5 @@
 <?php
+    var_dump($_POST);
     include(dirname(__FILE__).'/../vues/inscription_vues.php');
     if (!empty($_POST['username'])) {
         if (isset($_POST['password']) 
