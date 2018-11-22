@@ -10,7 +10,7 @@
             && isset($_POST['email']))  
         {
             // HASH DE MDP
-            $passhache = password_hash($_POST['password'],  PASSWORD_DEFAULT);
+            $passhache = password_hash(htmlspecialchars($_POST['password']),  PASSWORD_DEFAULT);
             
             // ON CHANGER L\'APPELATION DU SEXE
             if ($_POST['sexe'] === 'homme')
@@ -24,8 +24,9 @@
 
             // APPEL DE LA FONCTION INSCRIPTION
             inscription_insert(
-                                $_POST['username'], $passhache, $_POST['date_de_naissance'],'membre', 
-                                $sexe, $_POST['hobbies'], $_POST['state'], $_POST['email']
+                                htmlspecialchars($_POST['username']), $passhache, htmlspecialchars($_POST['date_de_naissance']),
+                                'membre', $sexe, htmlspecialchars($_POST['hobbies']), htmlspecialchars($_POST['state']),
+                                htmlspecialchars($_POST['email'])
                               );
 
             // REDIRECTION PAGE DE CONNEXION

@@ -6,11 +6,11 @@ function connexion_select ($username,$password)
                              FROM user
                              WHERE username=? AND password=?
                             ');
-          $pseudo->execute(array($username, $password));
-
-          $resultat = $pseudo->fetch();
-          echo 'coucou laaaaa';
-          var_dump($resultat);
-        return $resultat;
+    $pseudo->execute(array($username, $password));
+    while ($resultat = $pseudo->fetch()) 
+    {
+      //var_dump($resultat);
+      return $resultat;
+    }
 }
 ?>

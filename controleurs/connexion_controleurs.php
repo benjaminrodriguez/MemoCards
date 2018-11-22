@@ -15,11 +15,11 @@
   {
     if (isset($_POST['username']) && isset($_POST['password']))
     { 
-      include(dirname(__FILE__).'/../vues/js/to_delete_later.js');
+      //include(dirname(__FILE__).'/../vues/js/to_delete_later.js');
       $_SESSION['username'] = $_POST['username'];
       $_SESSION['password'] = $_POST['password'];
-      //include(dirname(__FILE__).'/../modeles/verify_pseudo_pass_modeles.php');
       $resultat = connexion_select($_POST['username'], $_POST['password']);
+      //var_dump($resultat);
       $isPasswordCorrect = password_verify($_SESSION['password'], $resultat['password']);
 
 
@@ -29,10 +29,11 @@
       $_SESSION['profil_picture']=$resultat['profil_picture'];
       $_SESSION['statut'] = $resultat['statut'];
       $_SESSION['age'] = $resultat['age'];
+      // VERIFICATION PASSWORD
       if ($isPasswordCorrect) 
-      {
-      header('Location: index.php?page=accueil');
-      exit;
+        {
+        header('Location: index.php?page=accueil');
+        exit;
       }
       else 
       {
