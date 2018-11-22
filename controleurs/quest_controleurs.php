@@ -1,26 +1,35 @@
 <?php
-
+echo "WORK";
 // RECUPERER LA REPONSE DE LA CARTE DAVANT ICI
+if(!isset($_SESSION['cpt']))
+{
+    nb_card($iddeck, $list);
+    $_SESSION['cpt'] =
 
-if ($answer === true)
-{
-    played_card++;
-    $level_card++;
-    $chain++;
 }
-else if ($answer === false)
+
+if (isset($answer))
 {
-    played_card++;
-    $level_card--;
-    $chain = 0;
-}
-if ($chain === 3) {
-    if ($level_card < 3) {
-        $level_card = 3;
+    if ($answer === true)
+    {
+        $played_card++;
+        $level_card++;
+        $chain++;
+    }
+    else if ($answer === false)
+    {
+        $played_card++;
+        $level_card--;
+        $chain = 0;
+    }
+    if ($chain === 3) {
+        if ($level_card < 3) {
+            $level_card = 3;
+        }
     }
 }
 
-if ($cpt < $nb_card)
+if ($cpt < $_SESSION['nb_card'])
 {
     $choice = rand(0, 100);
 
@@ -50,5 +59,6 @@ if ($cpt < $nb_card)
     $cpt++;
 }
 
+$_SESSION['cpt'] = $cpt;
 
 ?>
