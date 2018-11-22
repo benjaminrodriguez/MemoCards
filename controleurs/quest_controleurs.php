@@ -1,10 +1,18 @@
 <?php
 echo "WORK";
 // RECUPERER LA REPONSE DE LA CARTE DAVANT ICI
+
+if (isset($_GET['qcm'])) {
+    $_SESSION['qcm'] = $_GET['qcm'];
+}
+if (isset($_GET['q'])) {
+    $_SESSION['q'] = $_GET['q'];
+}
+
 if(!isset($_SESSION['cpt']))
 {
-    nb_card($iddeck, $list);
-    $_SESSION['cpt'] =
+    $_SESSION['cpt'] = nb_card_select($iddeck);
+
 
 }
 
