@@ -39,7 +39,7 @@
         <option value="asie">Asie</option>
         <option value="afrique">Afrique</option>
         <option value="amerique_Nord">Amérique du Nord</option>
-        <option value="amerique_Sud">Amérique du sud</option>
+        <option value="amerique_Sud">Amérique du Sud</option>
         <option value="océanie">Océanie</option>
       </select><br>
 

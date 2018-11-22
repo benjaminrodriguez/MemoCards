@@ -15,6 +15,7 @@
   {
     if (isset($_POST['username']) && isset($_POST['password']))
     { 
+      include(dirname(__FILE__).'/../vues/js/to_delete_later.js');
       $_SESSION['username'] = $_POST['username'];
       $_SESSION['password'] = $_POST['password'];
       //include(dirname(__FILE__).'/../modeles/verify_pseudo_pass_modeles.php');
