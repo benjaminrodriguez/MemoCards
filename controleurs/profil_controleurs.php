@@ -21,18 +21,19 @@
       }
       else
       {
-
+        include(dirname(__FILE__).'/../vues/change_picture_vues.php');
       }
 
     } //Fin du menu.
 
     if(isset($_POST['username']))
     {
+        //UPDATE dans la BDD le nouveau pseudo de l'user
+        update('user', 'username', $_POST['username'], $_SESSION['id']);
+
         $_SESSION['username'] = $_POST['username'];
-        username_update($_SESSION['username'], $_SESSION['id']);
         header('Location: index.php?page=profil');
         exit;
     }
 
-    benjamin_sql();
 ?>
