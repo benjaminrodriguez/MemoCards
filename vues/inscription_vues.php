@@ -21,10 +21,37 @@
       <input type="text" name="username" id="username" class="form-control" placeholder="Username" required autofocus>
 
       <input type="password" name="password" id="password" class="form-control" placeholder="Mot de passe" required>
+      <label for="pass" class="sr-only">Password</label>
       <div class="checkbox mb-3">
 
+      <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
+      <div class="checkbox mb-3">
+      
+      <select name="sexe" class="form-control" required>
+        <option value="sexe" disabled selected>Sexe</option> 
+        <option value="homme">Homme</option> 
+        <option value="femme" >Femme</option>
+      </select><br>
+
+      <select name="state" class="form-control" required>
+        <option value="state" disabled selected>Région</option> 
+        <option value="europe">Europe</option> 
+        <option value="asie">Asie</option>
+        <option value="afrique">Afrique</option>
+        <option value="amerique_Nord">Amérique du Nord</option>
+        <option value="amerique_Sud">Amérique du sud</option>
+        <option value="océanie">Océanie</option>
+      </select><br>
+
+    Hobbies<br><input type="checkbox" name="hobbies" value="sport" required>
+    <label for="sport">Sport</label>
+    <input type="checkbox" name="hobbies" value="musique" selected>
+    <label for="musique">Musique</label>
+    <input type="checkbox" name="hobbies" value="voyages">
+    <label for="voyages">Voyages</label><br>
+  
+
       <input type="date" name="date_de_naissance" id="date_de_naissance" class="form-control" placeholder="Date de naissance" required>
-      <label for="pass" class="sr-only">Password</label>
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Inscription</button>
       </form>

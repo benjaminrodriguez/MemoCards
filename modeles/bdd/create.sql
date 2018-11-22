@@ -229,6 +229,9 @@ CREATE TABLE IF NOT EXISTS `user` (
   `statut` varchar(45) NOT NULL,
   `age` date NOT NULL,
   `sexe` varchar(1) NOT NULL,
+  `hobbies` varchar (255),
+  `state` varchar (45) NOT NULL,
+  `email` varchar (255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

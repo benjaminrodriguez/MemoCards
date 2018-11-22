@@ -17,15 +17,15 @@ function insert_insert ($a,$b,$c)
 }
 
 // ----------------------------------------------------------------------------
-function inscription ($username, $password, $date_naissance,$statut)
+function inscription_insert ($username, $password, $date_naissance, $statut, $sexe, $hobbies, $state, $email)
 {
 
 global $bdd;
 // INSCRIPTION
         $inscription = $bdd->prepare(
-        'INSERT INTO user (username,password,age,statut) 
-        VALUES (?, ?, ?, ?);
+        'INSERT INTO user (username,password,age,statut,sexe,hobbies,state,email) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?);
         ');
-        $inscription->execute(array($username, $password, $date_naissance, $statut));
+        $inscription->execute(array($username, $password, $date_naissance, $statut, $sexe, $hobbies, $state, $email));
 }
 ?>
