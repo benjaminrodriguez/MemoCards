@@ -43,7 +43,7 @@
         <option value="océanie">Océanie</option>
       </select><br>
 
-    Hobbies<br><input type="checkbox" name="hobbies" value="sport" required>
+    Hobbies<br><input type="checkbox" name="hobbies" value="sport">
     <label for="sport">Sport</label>
     <input type="checkbox" name="hobbies" value="musique" selected>
     <label for="musique">Musique</label>
