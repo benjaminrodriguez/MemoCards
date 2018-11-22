@@ -4,11 +4,13 @@
 
 if ($answer === true)
 {
+    played_card++;
     $level_card++;
     $chain++;
 }
 else if ($answer === false)
 {
+    played_card++;
     $level_card--;
     $chain = 0;
 }
@@ -34,6 +36,7 @@ if ($cpt < $nb_card)
     }
 
     // AFFICHAGE DE LA QUESTION ICI
+    include(dirname(__FILE__).'/../vues/affichage_question.php');
 
     if ($cpt === 0) {
         $list += '\''.$IDDELAQUESTION.'\'';

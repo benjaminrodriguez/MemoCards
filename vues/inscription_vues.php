@@ -30,7 +30,7 @@
       <select name="sexe" class="form-control" required>
         <option value="sexe" disabled selected>Sexe</option> 
         <option value="homme">Homme</option> 
-        <option value="femme" >Femme</option>
+        <option value="femme">Femme</option>
       </select><br>
 
       <select name="state" class="form-control" required>
