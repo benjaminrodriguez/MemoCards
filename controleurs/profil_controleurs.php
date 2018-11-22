@@ -21,7 +21,9 @@
       }
       else
       {
+        //Formulaire pour upload l'image du nouvelle avatar
         include(dirname(__FILE__).'/../vues/change_picture_vues.php');
+        
       }
 
     } //Fin du menu.
