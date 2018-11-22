@@ -31,18 +31,18 @@
       $_SESSION['age'] = $resultat['age'];
       if ($isPasswordCorrect) 
       {
-      //header('Location: index.php?page=accueil');
+      header('Location: index.php?page=accueil');
       exit;
       }
       else 
       {
-        include(dirname(__FILE__).'/../vues/js/erreur_auth.js');
+        //include(dirname(__FILE__).'/../vues/js/erreur_auth.js');
         exit;
       }
     }
     else 
     {
-      include(dirname(__FILE__).'/../vues/erreur404.html');
+      include(dirname(__FILE__).'/../vues/js/erreur404.html');
       exit;
     }
   }
