@@ -54,6 +54,7 @@
       <input type="date" name="date_de_naissance" id="date_de_naissance" class="form-control" placeholder="Date de naissance" required>
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Inscription</button>
+      <button href='./index.php?page=connexion' class="btn btn-lg btn-primary btn-block" type="button">Retour à l'écran de connexion</button>
       </form>
     </body>
 </html>
