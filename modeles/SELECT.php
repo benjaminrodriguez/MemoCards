@@ -3,7 +3,7 @@
 function nb_card_select ($iddeck)
 {
     global $bdd;
-    $query = $bdd->prepare('SELECT COUNT(recto.id) AS count FROM recto WHERE recto.deck_id = :id;');
+    $query = 'SELECT COUNT(recto.id) AS count FROM recto WHERE recto.deck_id = :id;';
     $query_params = array(':id' => $iddeck);
 
     try {
@@ -37,19 +37,19 @@ function quest1_select ($iddeck,$list)
     }catch(Exception $e){
         die('Erreur : ' . $e->getMessage());
     }
-    $questions = $stmt->fetchAll();
+    $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $questions;
 }
 
 function quest2_select ($iddeck,$list)
 {
     global $bdd;
-    $query = "SELECT *
+    $query = "SELECT question_cards
     FROM recto
     WHERE recto.deck_id = :iddeck
     AND recto.id NOT IN (:tabidquest)
     ORDER BY RAND();";
-
+    //unset($query_params);
     $query_params = array(
         ':iddeck' => $iddeck,   // id from the deck currently used
         ':tabidquest' => $list  // all the ids of the questions already asked
@@ -61,7 +61,7 @@ function quest2_select ($iddeck,$list)
     }catch(Exception $e){
         die('Erreur : ' . $e->getMessage());
     }
-    $questions = $stmt->fetchAll();
+    $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $questions;
 }
     function connexion_select ($table, $attribut, $username)
