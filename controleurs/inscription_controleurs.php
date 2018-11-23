@@ -1,6 +1,6 @@
 <?php
-    var_dump($_POST);
-    include(dirname(__FILE__).'/../vues/inscription_vues.php');
+    $connect = false;
+
     if (!empty($_POST['username'])) {
         if (isset($_POST['password']) 
             && isset($_POST['username']) 
@@ -23,16 +23,13 @@
                 $sexe = 'F';
             }
 
-            // APPEL DE LA FONCTION INSCRIPTION
+            // APPEL DE LA FONCTION SQL INSCRIPTION
             inscription_insert(
                                 htmlspecialchars($_POST['username']), $passhache, htmlspecialchars($_POST['date_de_naissance']),
                                 'membre', $sexe, htmlspecialchars($_POST['hobbies']), htmlspecialchars($_POST['state']),
                                 htmlspecialchars($_POST['email'])
                               );
-
-            // REDIRECTION PAGE DE CONNEXION
-            header('Location: index.php?page=connexion');
-            exit;
+            $connect = true;
         }
         // SI TOUS LES CHAMPS NE SONT PAS REMPLIS 
         else
@@ -41,4 +38,17 @@
             exit;
         }
     }
+
+
+    var_dump($_POST);
+    if($connect === true)
+    {       
+         // REDIRECTION PAGE DE CONNEXION
+        header('Location: index.php?page=connexion');
+        exit;
+    }
+
+    
+    include(dirname(__FILE__).'/../vues/inscription_vues.php');
+
 ?>

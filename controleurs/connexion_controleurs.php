@@ -1,14 +1,4 @@
 <?php
-  // VERIFICATION SI UTILISATEUR A SESSSION ACTIVE
-  if (!isset($_SESSION['username']))
-    {
-      include(dirname(__FILE__).'/../vues/connexion_vues.php');
-    }
-    else 
-    {
-      header('Location: index.php?page=accueil');
-      exit;
-    }
 
 
     // VERIFICATION USERNAME ET PASSWORD
@@ -37,9 +27,9 @@
             $_SESSION['sexe'] = $resultat['sexe'];
             $_SESSION['email'] = $resultat['email'];
 
-            // REDIRECTION PAGE ACCUEIL
+           /* // REDIRECTION PAGE ACCUEIL
             include(dirname(__FILE__).'/../vues/accueil_vues.php');
-            exit;
+            exit;*/
           }
           else 
           {
@@ -48,4 +38,16 @@
         }
       }
     }
+
+
+      // VERIFICATION SI UTILISATEUR A SESSSION ACTIVE
+  if (!isset($_SESSION['username']))
+  {
+    include(dirname(__FILE__).'/../vues/connexion_vues.php');
+  }
+  else 
+  {
+    header('Location: index.php?page=accueil');
+    exit;
+  }
 ?>
