@@ -64,14 +64,15 @@ function quest2_select ($iddeck,$list)
     $questions = $stmt->fetchAll();
     return $questions;
 }
-    function connexion_select ($table, $attribut, $username)
+    function connexion_select($username)
     {
         global $bdd;
         $pseudo = $bdd->prepare('SELECT *
-                                FROM ?
-                                WHERE ?=?
+                                FROM user
+                                WHERE username = ?
                                 ');
-        $pseudo->execute(array($table, $attribut, $username));
+        $pseudo->execute(array($username));
         $resultat = $pseudo->fetch();
+        return $resultat;
     }
 ?>

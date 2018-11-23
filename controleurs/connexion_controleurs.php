@@ -12,23 +12,20 @@
 
 
     // VERIFICATION USERNAME ET PASSWORD
-    //if (!empty($_POST['username']) && !empty($_POST['password']))
-    //{
+    if (!empty($_POST['username']) && !empty($_POST['password']))
+    {
       if (isset($_POST['username']) && isset($_POST['password']))
-      {
-        //$_SESSION['username'] = $_POST['username'];
-       // $_SESSION['password'] = $_POST['password'];
-        
+      {       
         // REQUETE SQL
-        $resultat = connexion_select('user', 'username', $_POST['username']);
+        $resultat = connexion_select($_POST['username']);
+        var_dump($resultat);
         $isPasswordCorrect = password_verify($_POST['password'], $resultat['password']);
 
         // SI LE PSEUDO EXISTE
-        if ($resultat)
+        if ($resultat === true)
         {
-          if ($isPasswordCorrect)
-          {
-            
+          if ($isPasswordCorrect === true)
+          { 
             // STOCKAGE VARIABLE SESSION
             $_SESSION['id'] = $resultat['id'];
             $_SESSION['username'] = $resultat['username'];
@@ -51,13 +48,6 @@
         {
           echo 'BAD USERNAME';
         }
-
-      //}
-
+      }
     }
-    
-  
-
- 
-  
 ?>
