@@ -1,10 +1,10 @@
 <?php
 
-function nb_card_select ($iddeck);
+function nb_card_select ($iddeck)
 {
     global $bdd;
     $query = $bdd->prepare('SELECT COUNT(recto.id) AS count FROM recto WHERE recto.deck_id = :id;');
-    query_params = array(':id' => $iddeck);
+    $query_params = array(':id' => $iddeck);
 
     try {
         $stmt = $bdd->prepare($query);
@@ -13,10 +13,10 @@ function nb_card_select ($iddeck);
         die('Erreur : ' . $e->getMessage());
     }
     $cptinit = $stmt->fetchAll();
-    return $cptinit
+    return $cptinit;
 }
 
-function quest1_select ($iddeck,$list);
+function quest1_select ($iddeck,$list)
 {
     global $bdd;
     $query = "SELECT *
@@ -41,7 +41,7 @@ function quest1_select ($iddeck,$list);
     return $questions;
 }
 
-function quest2_select ($iddeck,$list);
+function quest2_select ($iddeck,$list)
 {
     global $bdd;
     $query = "SELECT *
@@ -65,13 +65,13 @@ function quest2_select ($iddeck,$list);
     return $questions;
 }
     function connexion_select ($table, $attribut, $username)
-    { 
+    {
         global $bdd;
         $pseudo = $bdd->prepare('SELECT *
                                 FROM ?
                                 WHERE ?=?
                                 ');
-        $pseudo->execute(array($table, $attribut, $username);
-        $resultat = $pseudo->fetch(); 
-    } 
+        $pseudo->execute(array($table, $attribut, $username));
+        $resultat = $pseudo->fetch();
+    }
 ?>
