@@ -1,16 +1,12 @@
 <?php
-function connexion_select ($username,$password)
+function connexion_select ($table, $attribut, $username)
 {   
     global $bdd;
     $pseudo = $bdd->prepare('SELECT *
-                             FROM user
-                             WHERE username=? AND password=?
+                             FROM ?
+                             WHERE ?=?
                             ');
-    $pseudo->execute(array($username, $password));
-    while ($resultat = $pseudo->fetch()) 
-    {
-      //var_dump($resultat);
-      return $resultat;
-    }
+    $pseudo->execute(array($table, $attribut, $username);
+    $resultat = $pseudo->fetch(); 
 }
 ?>
