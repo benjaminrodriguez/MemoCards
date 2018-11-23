@@ -1,6 +1,6 @@
 <?php
 
-  //CONNEXION A LA BDD
+  // CONNEXION A LA BDD
   try
   {
           $bdd = new PDO('mysql:host=localhost;dbname=MemoCards;charset=utf8', 'root', 'toor');

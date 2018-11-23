@@ -58,20 +58,21 @@ function quest2_select ($iddeck,$list)
     try {
         $stmt = $bdd->prepare($query);
         $stmt->execute($query_params);
-    }catch(Exception $e){
+    } catch(Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
     $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $questions;
 }
-    function connexion_select ($table, $attribut, $username)
+    function connexion_select($username)
     {
         global $bdd;
         $pseudo = $bdd->prepare('SELECT *
-                                FROM ?
-                                WHERE ?=?
+                                FROM user
+                                WHERE username = ?
                                 ');
-        $pseudo->execute(array($table, $attribut, $username));
+        $pseudo->execute(array($username));
         $resultat = $pseudo->fetch();
+        return $resultat;
     }
 ?>
