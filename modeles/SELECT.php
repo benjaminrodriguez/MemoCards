@@ -58,7 +58,7 @@ function quest2_select ($iddeck,$list)
     try {
         $stmt = $bdd->prepare($query);
         $stmt->execute($query_params);
-    }catch(Exception $e){
+    } catch(Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
     $questions = $stmt->fetchAll();

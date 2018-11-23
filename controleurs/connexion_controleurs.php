@@ -18,13 +18,15 @@
       {       
         // REQUETE SQL
         $resultat = connexion_select($_POST['username']);
-        var_dump($resultat);
-        $isPasswordCorrect = password_verify($_POST['password'], $resultat['password']);
 
         // SI LE PSEUDO EXISTE
-        if ($resultat === true)
+        if ($resultat['username'] === false)
         {
-          if ($isPasswordCorrect === true)
+          echo 'USERNAME INCONNU';
+        }
+        else 
+        {
+          if (password_verify($_POST['password'], $resultat['password']))
           { 
             // STOCKAGE VARIABLE SESSION
             $_SESSION['id'] = $resultat['id'];
@@ -41,12 +43,8 @@
           }
           else 
           {
-            echo 'BAD PASS'; 
+            echo 'BAD PASSWORD';
           }
-        }
-        else 
-        {
-          echo 'BAD USERNAME';
         }
       }
     }
