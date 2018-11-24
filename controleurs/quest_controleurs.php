@@ -2,7 +2,13 @@
 echo "WORK";
 
 $iddeck = 1;
-$list = '0';
+
+if (isset($_SESSION['list'])) {
+    $list = $_SESSION['list'];
+} else {
+    $list = '';
+
+}
 // RECUPERER LA REPONSE DE LA CARTE DAVANT ICI
 
 if (isset($_GET['qcm'])) {
@@ -47,7 +53,7 @@ if (isset($answer))
 if ($_SESSION['cpt'] <= $_SESSION['cptall'])
 {
     $choice = rand(0, 100);
-    $choice = 20;
+    $choice = 40;
     if ($choice < 35)
     {
         //include("./modeles/quest1.php");
@@ -58,21 +64,27 @@ if ($_SESSION['cpt'] <= $_SESSION['cptall'])
         //include("./modeles/quest2.php");
         $questions = quest2_select($iddeck, $list);
     }
-    var_dump($questions);
+    //var_dump($questions);
+    $IDDELAQUESTION = $questions[0]['id'];
+    var_dump(intval($IDDELAQUESTION));
+
+    $ans = verso_recup($IDDELAQUESTION);
+    var_dump($ans);
 
     // AFFICHAGE DE LA QUESTION ICI
-    include(dirname(__FILE__).'/../vues/affichage_question.php');
+    include(dirname(__FILE__).'/../vues/affichage_quest.php');
 
     if ($_SESSION['cpt'] === 1) {
-        $list += '\''.$IDDELAQUESTION.'\'';
+        $list += '\''.intval($IDDELAQUESTION).'\'';
 
     }
     else
     {
-        $list += ', \''.$IDDELAQUESTION.'\'';
+        $list += ', \''.intval($IDDELAQUESTION).'\'';
     }
 
     $_SESSION['cpt']++;
+    $_SESSION['list'] = $list;
 }
 
 //$_SESSION['cpt'] = $cpt;

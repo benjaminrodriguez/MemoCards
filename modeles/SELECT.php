@@ -44,7 +44,7 @@ function quest1_select ($iddeck,$list)
 function quest2_select ($iddeck,$list)
 {
     global $bdd;
-    $query = "SELECT question_cards
+    $query = "SELECT *
     FROM recto
     WHERE recto.deck_id = :iddeck
     AND recto.id NOT IN (:tabidquest)
@@ -64,8 +64,8 @@ function quest2_select ($iddeck,$list)
     $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $questions;
 }
-    function connexion_select($username)
-    {
+function connexion_select($username)
+{
         global $bdd;
         $pseudo = $bdd->prepare('SELECT *
                                 FROM user
@@ -74,5 +74,26 @@ function quest2_select ($iddeck,$list)
         $pseudo->execute(array($username));
         $resultat = $pseudo->fetch();
         return $resultat;
+}
+function verso_recup($IDDELAQUESTION)
+{
+    global $bdd;
+    $query = "SELECT *
+    FROM `verso`
+    WHERE recto_id = :idquest
+    ORDER BY RAND();";
+    //unset($query_params);
+    $query_params = array(
+        ':idquest' => $IDDELAQUESTION
+        );
+
+    try {
+        $stmt = $bdd->prepare($query);
+        $stmt->execute($query_params);
+    } catch(Exception $e) {
+        die('Erreur : ' . $e->getMessage());
     }
+    $ans = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $ans;
+}
 ?>
