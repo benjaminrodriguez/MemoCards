@@ -16,5 +16,10 @@
             <button type="submit" id="inventaire" name="menu" value="picture">Changer votre avatar</button>
         </li> <br/> 
 
+
+        <li>
+            <button type="submit" id="" name="menu" value="delete_user">Supprimer mon compte</button>
+        </li> <br/>
+
     </ul>
 </form>

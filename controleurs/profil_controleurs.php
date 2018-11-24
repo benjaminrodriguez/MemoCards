@@ -4,7 +4,7 @@
 
     echo 'Mon Profil...<br/><br/>';
 
-    //Affiche le menu du profil (change username, password, picture, etc..)
+    //Affiche le menu du profil (change username, password, picture, supprimer son compte etc..)
     include(dirname(__FILE__).'/../vues/profil_menu_vues.php');
     include(dirname(__FILE__).'/../vues/disconnect_vues.php');
 
@@ -18,6 +18,14 @@
       else if($_POST['menu'] === "password")
       {
 
+      }
+      // SUPPRIMER SON COMPTE
+      else if($_POST['menu'] === "delete_user")
+      {
+        // APPELLE DE LA FONCTION POUR DELETE SON COMPTE
+        delete_user_delete($_SESSION['id']);
+        // A SUPPRIMET JUSTE POUR TEST
+        echo 'YOU ACOUNT WILL BE DELETE'
       }
       else
       {
