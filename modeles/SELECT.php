@@ -16,6 +16,8 @@ function nb_card_select ($iddeck)
     return $cptinit;
 }
 
+// ----------------------------------------------------------------------------
+
 function quest1_select ($iddeck,$list)
 {
     global $bdd;
@@ -41,6 +43,8 @@ function quest1_select ($iddeck,$list)
     return $questions;
 }
 
+// ----------------------------------------------------------------------------
+
 function quest2_select ($iddeck,$list)
 {
     global $bdd;
@@ -64,12 +68,15 @@ function quest2_select ($iddeck,$list)
     $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $questions;
 }
-function connexion_select($username)
-{
+
+// ----------------------------------------------------------------------------
+
+    function connexion_select($username)
+    {
         global $bdd;
         $pseudo = $bdd->prepare('SELECT *
                                 FROM user
-                                WHERE username = ?
+                                WHERE username = ?;
                                 ');
         $pseudo->execute(array($username));
         $resultat = $pseudo->fetch();
@@ -96,4 +103,18 @@ function verso_recup($IDDELAQUESTION)
     $ans = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $ans;
 }
+
+// ----------------------------------------------------------------------------
+
+    function print_subjects($subject)
+    {
+        global $bdd;
+        $forum = $bdd->prepare('SELECT name
+                                FROM subject
+                                ORDER BY date_posted DESC;
+                                ');
+        $forum->execute(array($subject));
+        $subject = $forum->fetch();
+        return $subject;
+    }
 ?>
