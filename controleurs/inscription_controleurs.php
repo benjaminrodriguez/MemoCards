@@ -10,19 +10,19 @@
             && isset($_POST['state']) 
             && isset($_POST['email']))  
         {
+
             // HASH DE MDP
             $passhache = password_hash(htmlspecialchars($_POST['password']),  PASSWORD_DEFAULT);
             
             // ON CHANGER L\'APPELATION DU SEXE
-            if ($_POST['sexe'] === 'homme')
+            if ($sexe === 'homme')
             {
                 $sexe = 'M';
             }
-            else if ($_POST['sexe'] === 'femme')
+            else if ($sexe === 'femme')
             {
                 $sexe = 'F';
             }
-
             // APPEL DE LA FONCTION SQL INSCRIPTION
             inscription_insert(
                                 htmlspecialchars($_POST['username']), $passhache, htmlspecialchars($_POST['date_de_naissance']),
@@ -30,6 +30,11 @@
                                 htmlspecialchars($_POST['email'])
                               );
             $connect = true;
+            
+            // APPEL DE LA FONCTION SQL INSCRIPTION HOBBIES
+            inscription_insert(
+                htmlspecialchars(htmlspecialchars($_POST['hobbies']))
+              );
         }
         // SI TOUS LES CHAMPS NE SONT PAS REMPLIS 
         else
@@ -40,7 +45,7 @@
     }
 
 
-    var_dump($_POST);
+    //var_dump($_POST);
     if($connect === true)
     {       
          // REDIRECTION PAGE DE CONNEXION
@@ -48,7 +53,5 @@
         exit;
     }
 
-    
     include(dirname(__FILE__).'/../vues/inscription_vues.php');
-
 ?>

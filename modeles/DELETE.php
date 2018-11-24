@@ -4,11 +4,11 @@
     {
         global $bdd;
         // DESINSCRIPTION
-            $desinscription = $bdd->prepare(
-            'DELETE FROM user
-                WHERE user.id = ?
-                VALUES (?);
-            ');
-            $desinscription->execute(array($id));
+        $desinscription = $bdd->prepare(
+        'DELETE FROM user
+            WHERE user.id = ?
+            VALUES (?);
+        ');
+        $desinscription->execute(array($id));
     }   
 ?>
