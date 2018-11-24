@@ -25,8 +25,6 @@
             require_once('modeles/SELECT.php');
             require_once('modeles/INSERT.php');
             require_once('modeles/UPDATE.php');
-
-
         ?>
 
     <div class="container" style="margin-top:60px;">

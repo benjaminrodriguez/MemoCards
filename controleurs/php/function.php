@@ -15,9 +15,19 @@
         }
     }
 
+// ----------------------------------------------------------------------------
 
-
-
-
+    function changement_sexe ($sexe)
+    {
+        if ($sexe === 'homme')
+        {
+            $sexe = 'M';
+        }
+        else if ($sexe === 'femme')
+        {
+            $sexe = 'F';
+        }
+    }
+    return $sexe
 
 ?>
