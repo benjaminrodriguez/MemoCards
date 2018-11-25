@@ -155,6 +155,7 @@ CREATE TABLE IF NOT EXISTS `memocards`.`message` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `date` DATETIME NOT NULL,
   `content_message` LONGTEXT NOT NULL,
+  `autor_id` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
