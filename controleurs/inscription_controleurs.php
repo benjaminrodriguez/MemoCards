@@ -5,7 +5,6 @@
         if (isset($_POST['password']) 
             && isset($_POST['username']) 
             && isset($_POST['date_de_naissance']) 
-            && isset($_POST['hobbies']) 
             && isset($_POST['sexe']) 
             && isset($_POST['state']) 
             && isset($_POST['email']))  
@@ -15,26 +14,29 @@
             $passhache = password_hash(htmlspecialchars($_POST['password']),  PASSWORD_DEFAULT);
             
             // ON CHANGER L\'APPELATION DU SEXE
-            if ($sexe === 'homme')
+            if ($_POST['sexe'] === 'homme')
             {
                 $sexe = 'M';
             }
-            else if ($sexe === 'femme')
+            else if ($_POST['sexe'] === 'femme')
             {
                 $sexe = 'F';
             }
             // APPEL DE LA FONCTION SQL INSCRIPTION
             inscription_insert(
                                 htmlspecialchars($_POST['username']), $passhache, htmlspecialchars($_POST['date_de_naissance']),
-                                'membre', $sexe, htmlspecialchars($_POST['hobbies']), htmlspecialchars($_POST['state']),
+                                'membre', $sexe, htmlspecialchars($_POST['state']),
                                 htmlspecialchars($_POST['email'])
                               );
             $connect = true;
             
             // APPEL DE LA FONCTION SQL INSCRIPTION HOBBIES
-            inscription_insert(
-                htmlspecialchars(htmlspecialchars($_POST['hobbies']))
-              );
+            if (isset($_POST['hobbies'])) 
+            {
+                inscription_insert_hobbies(
+                    htmlspecialchars(htmlspecialchars($_POST['hobbies']))
+                );
+            }
         }
         // SI TOUS LES CHAMPS NE SONT PAS REMPLIS 
         else
@@ -43,7 +45,6 @@
             exit;
         }
     }
-
 
     //var_dump($_POST);
     if($connect === true)
