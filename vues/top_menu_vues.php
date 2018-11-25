@@ -36,6 +36,14 @@
       <a class="nav-link" href="index.php?page=forum"><b><h3>Forum</h3></b></a>
     </li>
 
+    <li class="nav-item active">
+      <img src=" <?php echo $_SESSION['profil_picture']; ?>" alt="" height="120" width="170" >  
+    </li>
+
+    <li class="nav-item active">
+      <?php echo $_SESSION['username'].'<br>'.$_SESSION['statut']; ?>
+    </li>
+
   </ul>
 
   <!-- <form class="form-inline my-2 my-lg-0">
