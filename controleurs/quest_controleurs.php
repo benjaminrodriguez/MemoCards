@@ -6,7 +6,7 @@ $iddeck = 1;
 if (isset($_SESSION['list'])) {
     $list = $_SESSION['list'];
 } else {
-    $list = '';
+    $list = [];
 
 }
 // RECUPERER LA REPONSE DE LA CARTE DAVANT ICI
@@ -26,8 +26,11 @@ if(!isset($_SESSION['cpt']))
 if(!isset($_SESSION['cptall']))
 {
     $_SESSION['cptall'] = nb_card_select($iddeck);
+    $_SESSION['cptall'] = $_SESSION['cptall'][0]['count'];
+    //total of cards in the deck
 }
 
+//var_dump($_SESSION['cptall']);
 
 if (isset($answer))
 {
@@ -53,20 +56,26 @@ if (isset($answer))
 if ($_SESSION['cpt'] <= $_SESSION['cptall'])
 {
     $choice = rand(0, 100);
-    $choice = 40;
+    //$choice = 40;
+var_dump($list);
+    $liststr = implode(",",$list);
+    var_dump($liststr);
+
     if ($choice < 35)
     {
         //include("./modeles/quest1.php");
-        $questions = quest1_select($iddeck, $list);
+        $questions = quest1_select($iddeck, $liststr);
     }
     else
     {
         //include("./modeles/quest2.php");
-        $questions = quest2_select($iddeck, $list);
+        $questions = quest2_select($iddeck, $liststr);
     }
     //var_dump($questions);
     $IDDELAQUESTION = $questions[0]['id'];
-    var_dump(intval($IDDELAQUESTION));
+    $list[]= $IDDELAQUESTION;
+
+    //var_dump(intval($IDDELAQUESTION));
 
     $ans = verso_recup($IDDELAQUESTION);
     var_dump($ans);
@@ -74,14 +83,6 @@ if ($_SESSION['cpt'] <= $_SESSION['cptall'])
     // AFFICHAGE DE LA QUESTION ICI
     include(dirname(__FILE__).'/../vues/affichage_quest.php');
 
-    if ($_SESSION['cpt'] === 1) {
-        $list += '\''.intval($IDDELAQUESTION).'\'';
-
-    }
-    else
-    {
-        $list += ', \''.intval($IDDELAQUESTION).'\'';
-    }
 
     $_SESSION['cpt']++;
     $_SESSION['list'] = $list;
