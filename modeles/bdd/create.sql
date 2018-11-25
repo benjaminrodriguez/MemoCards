@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `memocards`.`user` (
   `statut` VARCHAR(45) NOT NULL,
   `age` DATE NOT NULL,
   `sexe` VARCHAR(1) NOT NULL,
-  `state` VARCHAR(45) NOT NULL,
+  `region` VARCHAR(45) NOT NULL,
   `email` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC) )

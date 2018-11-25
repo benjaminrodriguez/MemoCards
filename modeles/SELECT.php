@@ -106,14 +106,14 @@ function verso_recup($IDDELAQUESTION)
 
 // ----------------------------------------------------------------------------
 
-    function print_subjects($subject)
+    function print_subjects()
     {
         global $bdd;
         $forum = $bdd->prepare('SELECT name
                                 FROM subject
                                 ORDER BY date_posted DESC;
                                 ');
-        $forum->execute(array($subject));
+        $forum->execute(array());
         $subject = $forum->fetch();
         return $subject;
     }

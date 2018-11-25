@@ -18,7 +18,7 @@
         <form class="form-signin"action="" name="connexion" method="POST"> <br>
             <img class="mb-4" src="./vues/img/logo.png" alt="" width="100" height="100">
             <h1 class="h3 mb-3 font-weight-normal">Bienvenue sur MemoCards</h1><br>
-            <input type="text" value="" name="username" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
+            <input type="text" name="username" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
             <label for="inputPassword" class="sr-only"></label><br>
             <input type="password" value="" name="password"required id="inputPassword" class="form-control" placeholder="Password" required>
             <!--<div class="checkbox mb-3">Statut
