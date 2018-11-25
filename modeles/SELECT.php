@@ -117,4 +117,21 @@ function verso_recup($IDDELAQUESTION)
         $subject = $forum->fetch();
         return $subject;
     }
+
+//-------------------------------------------------------------------------------
+
+function password_SELECT($id)
+{
+    global $bdd;
+    $req = $bdd->prepare(' SELECT password
+                           FROM user
+                           WHERE id = ? 
+                           LIMIT 1
+                        ');
+    $req->execute(array($id));
+    $donnees = $req->fetch();
+    return $donnees;
+}
+   
+//--------------------------------------------------------------------------------
 ?>
