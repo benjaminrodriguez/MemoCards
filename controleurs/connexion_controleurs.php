@@ -26,6 +26,7 @@
             $_SESSION['age'] = $resultat['age'];
             $_SESSION['state'] = $resultat['state'];
             $_SESSION['sexe'] = $resultat['sexe'];
+            $_SESSION['profil_picture'] = $resultat['profil_picture'];
             $_SESSION['email'] = $resultat['email'];
 
            /* // REDIRECTION PAGE ACCUEIL
