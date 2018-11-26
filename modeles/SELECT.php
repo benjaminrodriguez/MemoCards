@@ -82,7 +82,7 @@ function quest2_select ($iddeck,$list)
         $resultat = $pseudo->fetch();
         return $resultat;
 }
-function verso_recup($IDDELAQUESTION)
+function verso_recup_select($IDDELAQUESTION)
 {
     global $bdd;
     $query = "SELECT *
@@ -102,6 +102,24 @@ function verso_recup($IDDELAQUESTION)
     }
     $ans = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $ans;
+}
+function carte_recup_select($IDDELAQUESTION)
+{
+    global $bdd;
+    $query = "SELECT * FROM succes_rate JOIN verso ON verso.id = succes_rate.verso_id AND verso.statut_cards LIKE 'T' JOIN recto ON recto.id = verso.recto_id AND recto.id = :idquest;";
+    //unset($query_params);
+    $query_params = array(
+        ':idquest' => $IDDELAQUESTION
+        );
+
+    try {
+        $stmt = $bdd->prepare($query);
+        $stmt->execute($query_params);
+    } catch(Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+    $carte = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $carte;
 }
 
 // ----------------------------------------------------------------------------
@@ -125,13 +143,13 @@ function password_SELECT($id)
     global $bdd;
     $req = $bdd->prepare(' SELECT password
                            FROM user
-                           WHERE id = ? 
+                           WHERE id = ?
                            LIMIT 1
                         ');
     $req->execute(array($id));
     $donnees = $req->fetch();
     return $donnees;
 }
-   
+
 //--------------------------------------------------------------------------------
 ?>
