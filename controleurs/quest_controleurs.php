@@ -3,12 +3,16 @@ echo "WORK";
 
 $iddeck = 1;
 
-if (isset($_SESSION['list'])) {
+if (isset($_SESSION['list']))
+{
     $list = $_SESSION['list'];
-} else {
+}
+else
+{
     $list = [];
 
 }
+var_dump($list);
 // RECUPERER LA REPONSE DE LA CARTE DAVANT ICI
 
 if (isset($_GET['qcm'])) {
@@ -18,7 +22,7 @@ if (isset($_GET['q'])) {
     $_SESSION['q'] = $_GET['q'];
 }
 
-if(!isset($_SESSION['cpt']))
+if(!isset($_SESSION['cpt'])) // + !
 {
     $_SESSION['cpt'] = 1;
 }
@@ -32,15 +36,24 @@ if(!isset($_SESSION['cptall']))
 
 //var_dump($_SESSION['cptall']);
 
-if (isset($answer))
+if (isset($_POST['answer']))
 {
-    if ($answer === true)
+    // RECUPERER INFO DE LA QUESTION
+    //echo $_SESSION['iddelaquestiondavant'];
+
+    $getquest = carte_recup_select($_SESSION['iddelaquestiondavant']);
+    $played_card = $getquest[0]['played_cards'];
+    $level_card = $getquest[0]['level_cards'];
+    $chain = $getquest[0]['chain'];
+
+    var_dump($getquest);
+    if ($_POST['answer'] === 'T')
     {
         $played_card++;
         $level_card++;
         $chain++;
     }
-    else if ($answer === false)
+    else if ($_POST['answer'] === 'F')
     {
         $played_card++;
         $level_card--;
@@ -50,14 +63,17 @@ if (isset($answer))
         if ($level_card < 3) {
             $level_card = 3;
         }
-    }
+    } //echo $played_card;
 }
 
-if ($_SESSION['cpt'] <= $_SESSION['cptall'])
+//var_dump($_SESSION['cptall']);
+//var_dump($_SESSION['cpt']);
+
+if ($_SESSION['cpt'] <= intval($_SESSION['cptall']))
 {
     $choice = rand(0, 100);
     //$choice = 40;
-var_dump($list);
+    var_dump($list);
     $liststr = implode(",",$list);
     var_dump($liststr);
 
@@ -77,7 +93,7 @@ var_dump($list);
 
     //var_dump(intval($IDDELAQUESTION));
 
-    $ans = verso_recup($IDDELAQUESTION);
+    $ans = verso_recup_select($IDDELAQUESTION);
     var_dump($ans);
 
     // AFFICHAGE DE LA QUESTION ICI
@@ -86,8 +102,12 @@ var_dump($list);
 
     $_SESSION['cpt']++;
     $_SESSION['list'] = $list;
+    $_SESSION['iddelaquestiondavant'] = $IDDELAQUESTION;
 }
 
+else {
+    //// affichage score
+}
 //$_SESSION['cpt'] = $cpt;
 
 ?>
