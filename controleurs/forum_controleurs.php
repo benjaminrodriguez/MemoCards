@@ -5,6 +5,11 @@
     
     // AFFICHAGE DE TOUS LES DERNIERS SUJETS
     print_subjects();
+
+    // CREER UN SUJET
+    include(dirname(__FILE__).'/../vues/forum_accueil_vues.php');
+
+    // DIFFERENTS CHOIX POSSIBLES
     if (isset($_POST['choix_forum']))
     {
         if ($_POST['choix_forum'] === 'creer_sujet')

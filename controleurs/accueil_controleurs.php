@@ -10,7 +10,6 @@
 
     }
 
-
     if (!isset($_POST['menu']))
     {
       include(dirname(__FILE__).'/../vues/accueil_vues.php');
