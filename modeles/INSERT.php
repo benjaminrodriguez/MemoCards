@@ -17,6 +17,7 @@ function insert_insert ($a,$b,$c)
 }
 
 // ----------------------------------------------------------------------------
+
 function inscription_insert ($username, $password, $date_naissance, $statut, $sexe, $region, $email, $picture)
 {
     global $bdd;
@@ -43,4 +44,18 @@ function inscription_insert_hobbies ()
                 ');
                 $inscription->execute(array($hobbies));
 }
+
+// ----------------------------------------------------------------------------
+
+function creer_sujet_insert ($name, $statut, $intitule, $user_id)
+{
+    global $bdd;
+    // INSCRIPTION
+            $creer_sujet = $bdd->prepare(
+            'INSERT INTO subject (name, date_posted, statut, intitule, user_id)
+            VALUES (?, now(), ?, ?, ?);
+            ');
+            $creer_sujet->execute(array($name, $statut, $intitule, $user_id));
+}
+
 ?>

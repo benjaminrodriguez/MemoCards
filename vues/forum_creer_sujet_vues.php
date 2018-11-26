@@ -1,5 +1,6 @@
-<form action='' name='creer_sujet' method='POST'>
-    <input type='text' name='name' placeholder="Titre"required>
-    <textarea name='intitule' rows="4" cols="50" placeholder="Contenu"required>
-    </textarea>
+<form action='' method='POST'>
+    <input type='text' name='title' placeholder="Titre" required><br>
+    <textarea name='content' rows="4" cols="50" placeholder="Describe yourself here" required>
+    </textarea><br>
+    <button class="btn btn-lg btn-primary" type="submit">Créer sujet</button>
 </form>

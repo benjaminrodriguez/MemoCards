@@ -62,10 +62,10 @@
 
             <input type="date" name="date_de_naissance" id="date_de_naissance" class="form-control" placeholder="Date de naissance" required>
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Inscription</button>
+            <button class="btn btn-lg btn-primary" type="submit">Inscription</button>
         </form><br>
         <form action='./index.php?page=connexion' method='POST'>
-            <button type="submit" class="btn btn-lg btn-primary btn-block" value="Retour à l'écran de connexion">Retour à l'écran de connexion</button>
+            <button type="submit" class="btn btn-lg btn-primary" value="Retour à l'écran de connexion">Retour à l'écran de connexion</button>
         </form>
     </body>
 </html>
