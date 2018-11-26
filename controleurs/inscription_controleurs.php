@@ -14,8 +14,8 @@
             $passhache = password_hash(htmlspecialchars($_POST['password']),  PASSWORD_DEFAULT);
             
             // PROFIL PICTURE PAR DEFAUT
-            $profil_picture = 'https://a9a7i7p4.stackpathcdn.com//wp-content/uploads/2014/03/BabyTuxSit.png';
-
+            //$profil_picture = 'https://a9a7i7p4.stackpathcdn.com//wp-content/uploads/2014/03/BabyTuxSit.png';
+            $profil_picture = 'https://raw.githubusercontent.com/projetInformatiqueIntech/MemoCards/master/vues/img/linux.png';
             // APPEL DE LA FONCTION SQL INSCRIPTION
             inscription_insert(
                                 htmlspecialchars($_POST['username']), $passhache, htmlspecialchars($_POST['date_de_naissance']),
