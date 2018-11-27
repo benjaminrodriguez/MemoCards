@@ -27,8 +27,8 @@
                 var_dump($date_posted);*/
 
                 // APPEL DE LA REQ SQL
-                creer_sujet_insert($_POST['title'],
-                                    $statut, $_POST['content'], $_SESSION['id']
+                creer_sujet_insert(htmlspecialchars($_POST['title']),
+                                    $statut, htmlspecialchars($_POST['content']), htmlspecialchars($_SESSION['id'])
                                 );
             }
         }

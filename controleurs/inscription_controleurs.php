@@ -28,7 +28,7 @@
             if (isset($_POST['hobbies'])) 
             {
                 inscription_insert_hobbies(
-                    htmlspecialchars(htmlspecialchars($_POST['hobbies']))
+                    htmlspecialchars($_POST['hobbies'])
                 );
             }
         }
