@@ -1,21 +1,39 @@
 <?php
     include(dirname(__FILE__).'/../vues/top_menu_vues.php');
-
-    echo 'Le Forum...';
     
     // AFFICHAGE DE TOUS LES DERNIERS SUJETS
     print_subjects();
 
     // CREER UN SUJET
     include(dirname(__FILE__).'/../vues/forum_accueil_vues.php');
-
+  
     // DIFFERENTS CHOIX POSSIBLES
     if (isset($_POST['choix_forum']))
     {
+        
+        // CREER UN SUJET
         if ($_POST['choix_forum'] === 'creer_sujet')
         {
-            include(dirname(__FILE__).'/../vues/forum_creer_sujet_vues.php');
+            
+            // SI LE FORM EST REMPLI
+            if (isset($_POST['title']) && isset($_POST['content']))
+            {
+
+                // LORSQU'UN SUJET EST CREE IL EST OUVERT PAR DEFAUT
+                $statut = 'ouvert';
+
+                // ON RECUPERE L'HEURE
+                /*$date_posted = date('Y-m-d H:i:s');
+                var_dump($date_posted);*/
+
+                // APPEL DE LA REQ SQL
+                creer_sujet_insert($_POST['title'],
+                                    $statut, $_POST['content'], $_SESSION['id']
+                                );
+            }
         }
+
+        // SUPPRIMER UN SUJET
         else if ($_POST['choix_forum'] === 'supprimer_sujet')
         {
             if ($_SESSION['statut'] === 'admin')

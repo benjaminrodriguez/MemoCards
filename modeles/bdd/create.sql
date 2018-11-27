@@ -167,6 +167,7 @@ CREATE TABLE IF NOT EXISTS `memocards`.`subject` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   `date_posted` DATETIME NOT NULL,
+  `intitule` MEDIUMTEXT NOT NULL,
   `statut` VARCHAR(15) NOT NULL,
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),

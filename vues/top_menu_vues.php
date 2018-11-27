@@ -1,4 +1,7 @@
-</div>
+<?php $title="Mon Menu" ?>
+<? ob_start(); ?>
+
+
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
@@ -55,3 +58,7 @@
 
 
 <div class="container" style="margin-top:60px;">
+
+
+<?php $content = ob_get_clean(); ?>
+<?php require(dirname(__FILE__).'/template.php'); ?>
