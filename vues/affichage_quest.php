@@ -15,3 +15,10 @@ for ($x=0; $x < count($ans) ; $x++) {
 <br><br>
 <input type="submit" name="bouton" value="Valider">
 </form>
+
+
+
+
+<form method="post" action="">
+<input type="submit" name="fin" value="Finir">
+</form>
