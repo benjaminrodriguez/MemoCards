@@ -1,7 +1,5 @@
 <?php
     include(dirname(__FILE__).'/../vues/top_menu_vues.php');
-
-    echo 'Le Forum...';
     
     // AFFICHAGE DE TOUS LES DERNIERS SUJETS
     print_subjects();
