@@ -8,17 +8,15 @@
 
     // CREER UN SUJET
     include(dirname(__FILE__).'/../vues/forum_accueil_vues.php');
-
+  
     // DIFFERENTS CHOIX POSSIBLES
     if (isset($_POST['choix_forum']))
     {
-
+        
         // CREER UN SUJET
         if ($_POST['choix_forum'] === 'creer_sujet')
         {
-            // FORM DE CREATION SUJET
-            include(dirname(__FILE__).'/../vues/forum_creer_sujet_vues.php');
-
+            
             // SI LE FORM EST REMPLI
             if (isset($_POST['title']) && isset($_POST['content']))
             {
@@ -27,10 +25,11 @@
                 $statut = 'ouvert';
 
                 // ON RECUPERE L'HEURE
-                $date_posted = date('Y-m-d H:i:s');
+                /*$date_posted = date('Y-m-d H:i:s');
+                var_dump($date_posted);*/
 
                 // APPEL DE LA REQ SQL
-                creer_sujet_insert($_POST['title'], 
+                creer_sujet_insert($_POST['title'],
                                     $statut, $_POST['content'], $_SESSION['id']
                                 );
             }

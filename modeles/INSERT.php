@@ -47,13 +47,14 @@ function inscription_insert_hobbies ()
 
 // ----------------------------------------------------------------------------
 
-function creer_sujet_insert ($name, $statut, $intitule, $user_id)
+function creer_sujet_insert($name, $statut, $intitule, $user_id)
 {
     global $bdd;
+
     // INSCRIPTION
             $creer_sujet = $bdd->prepare(
             'INSERT INTO subject (name, date_posted, statut, intitule, user_id)
-            VALUES (?, now(), ?, ?, ?);
+            VALUES (?, NOW(), ?, ?, ?);
             ');
             $creer_sujet->execute(array($name, $statut, $intitule, $user_id));
 }
