@@ -21,9 +21,8 @@
 
 
 <p class="mt-5 mb-3 text-muted">&copy; MemoCards</p>
-    
+
+
 <?php $content = ob_get_clean(); ?>
-
-<?php //var_dump($content); die(); ?>
-
 <?php require(dirname(__FILE__).'/template.php'); ?>
+

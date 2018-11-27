@@ -1,3 +1,6 @@
+<?php $title = 'Accueil'; ?>
+<?php ob_start(); ?>
+
 <form method="POST" action="">
     <ul>
         <li>
@@ -26,3 +29,6 @@
         </li>  <br/>
     </ul>
 </form>
+
+<?php $content = ob_get_clean(); ?>
+<?php require(dirname(__FILE__).'/template.php'); ?>

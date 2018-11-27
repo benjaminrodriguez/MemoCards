@@ -15,3 +15,7 @@ for ($x=0; $x < count($ans) ; $x++) {
 <br><br>
 <input type="submit" name="bouton" value="Valider">
 </form>
+
+
+<?php $content = ob_get_clean(); ?>
+<?php require(dirname(__FILE__).'/template.php'); ?>

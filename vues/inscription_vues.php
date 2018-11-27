@@ -1,19 +1,7 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../img/logo.png">
-    
-    <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="./css/formConnexion.css" rel="stylesheet">
-  </head>
+<?php $title = 'Incription'; ?>
+<?php ob_start(); ?>
 
-    <body class="text-center">
+
         <form action="" method="POST" class="form-signin">
             <h1 class="h3 mb-3 font-weight-normal">Inscrivez-vous</h1>
 
@@ -67,5 +55,7 @@
         <form action='./index.php?page=connexion' method='POST'>
             <button type="submit" class="btn btn-lg btn-primary" value="Retour à l'écran de connexion">Retour à l'écran de connexion</button>
         </form>
-    </body>
-</html>
+
+
+<?php $content = ob_get_clean(); ?>
+<?php require(dirname(__FILE__).'/template.php'); ?>

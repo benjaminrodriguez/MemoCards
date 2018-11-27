@@ -1,3 +1,7 @@
+<?php $title='Mon Profil';  ?>
+<?php ob_start(); ?>
+
+
 <p>Profil <?php echo $_SESSION['statut']; ?> : 
     <b> <?php echo strtoupper($_SESSION['username']); ?> </b>  </p>
 
@@ -23,3 +27,7 @@
 
     </ul>
 </form>
+
+
+<?php $content = ob_get_clean(); ?>
+<?php require(dirname(__FILE__).'/template.php'); ?>
