@@ -241,11 +241,7 @@
                 // LORSQU'UN SUJET EST CREE IL EST OUVERT PAR DEFAUT
                 $statut = 'ouvert';
 
-                // ON RECUPERE L'HEURE
-                $date_posted = date('Y-m-d H:i:s');
-
                 var_dump($_POST['title'], $statut, $_POST['content'], $_SESSION['id']);
-                die('okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk');
 
                 // APPEL DE LA REQ SQL
                 topic_INSERT($_POST['title'], $statut, $_POST['content'], $_SESSION['id'] );

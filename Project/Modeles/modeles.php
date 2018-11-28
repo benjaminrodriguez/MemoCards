@@ -49,9 +49,9 @@
         $bdd = bdd();
         // INSCRIPTION
         $creer_sujet = $bdd->prepare(
-        'INSERT INTO subject (name, date_posted, statut, intitule, user_id)
-         VALUES (?, now(), ?, ?, ?);
-        ');
+            'INSERT INTO subject (name, date_posted, statut, intitule, user_id)
+            VALUES (?, NOW(), ?, ?, ?);
+            ');
         $creer_sujet->execute(array($name, $statut, $intitule, $user_id));
     }
 
