@@ -47,7 +47,7 @@
         {
             require(dirname(__FILE__).'/../Views/home_Views.php');
         }
-        else if ($_POST['menu'] === 'profil')
+        else if ($_POST['menu'] === 'profile')
         {
             header('Location: index.php?page=profile');
             exit;
@@ -57,9 +57,9 @@
             header('Location: index.php?page=stats');
             exit;
         }
-            else if ($_POST['menu'] === 'inventaire')
+            else if ($_POST['menu'] === 'inventory')
         {
-            header('Location: index.php?page=inventaire');
+            header('Location: index.php?page=inventory');
             exit;
         }
             else if ($_POST['menu'] === 'store')
@@ -303,6 +303,17 @@
             }
         }
     }
+
+    //-----------------------------------------------------------------------------------------
+
+    function my_inventory()
+    {
+
+        require(dirname(__FILE__).'/../Views/top_menu_Views.php');
+        require(dirname(__FILE__).'/../Views/inventory_Views.php');
+    }
+
+    //-----------------------------------------------------------------------------------------
 
 
 ?>
