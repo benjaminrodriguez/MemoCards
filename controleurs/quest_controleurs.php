@@ -1,7 +1,12 @@
 <?php
-echo "WORK";
+
+var_dump($_SESSION);
 if (!isset($_SESSION['deck']))
 {
+    foreach($_SESSION as $key => $value){
+        if($key !== "id")
+        unset($_SESSION[$key]);
+    }
     $_POST['deck'] = 1;
     $_SESSION['deck'] = $_POST['deck'];
     include(dirname(__FILE__).'/../vues/affichage_debquest.php');
@@ -31,10 +36,8 @@ else
     }
     else
     {
-        $list = [];
-
+        $list = array();
     }
-    //var_dump($list);
     // RECUPERER LA REPONSE DE LA CARTE DAVANT ICI
 
     if (isset($_GET['qcm'])) {
@@ -108,19 +111,28 @@ else
         $_SESSION['cpt'] = $_SESSION['cptall'] + 1;
     }
 
-    var_dump($_SESSION['cpt']);
-    var_dump($_SESSION['cptall']);
+    //var_dump($_SESSION['cpt']);
+    //var_dump($_SESSION['cptall']);
 
     if ($_SESSION['cpt'] <= intval($_SESSION['cptall']))
     {
+        echo "cc1";
         $choice = rand(0, 100);
         $choice = 30;
         //var_dump($list);
-        $liststr = implode(",",$list);
-        //var_dump($liststr);
+        if(count($list) === 0)
+        {
+            $liststr = "''";
+        } else {
+            $liststr = implode(",",$list);
+        }
+
+        var_dump($liststr);
 
         if ($choice < 35)
         {
+            echo $choice;
+            echo $liststr;
             //include("./modeles/quest1.php");
             $questions = quest1_select($_SESSION['deck'], $liststr);
         }
@@ -129,9 +141,10 @@ else
             //include("./modeles/quest2.php");
             $questions = quest2_select($_SESSION['deck'], $liststr);
         }
-        //var_dump($questions);
+        var_dump($questions);
         $IDDELAQUESTION = $questions[0]['id'];
         $list[]= $IDDELAQUESTION;
+        //echo "cc2";
         //var_dump($list);
 
         //var_dump(intval($IDDELAQUESTION));
@@ -157,14 +170,20 @@ else
             //var_dump($listend);
             foreach ($_SESSION['listend'][0] as $key => $value)
             {
-                echo "n° ". (intval($key)+1)."<br><br>";
+                echo "Question n° ". (intval($key)+1)."<br><br>";
                 if ($value === "T")
                 {
-                    echo "Question :" . $_SESSION['listend'][1][$key]." >>>>> Bonne!";
+                    echo "Carte :" . $_SESSION['listend'][1][$key]."<br>";
+                    $q = carte_quest_SELECT($_SESSION['listend'][1][$key]);
+                    echo $q[0]['q'];
+                    echo "<br> >>>>> Bonne!";
                 }
                 else
                 {
-                    echo "Question :" .$_SESSION['listend'][1][$key]." >>>>> Fausse!";
+                    echo "Carte :" .$_SESSION['listend'][1][$key]."<br>";
+                    $q = carte_quest_SELECT($_SESSION['listend'][1][$key]);
+                    echo $q[0]['q'];
+                    echo "<br> >>>>> Bonne!";
                 }
                 echo "<br><br>";
             }

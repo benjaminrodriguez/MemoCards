@@ -1,6 +1,8 @@
 <form method="post" action="">
-<br>Carte n° <?php echo $_SESSION['cpt'];?><br>
-
+<br>Carte n° <?php echo $_SESSION['cpt'];?>
+<br><br>
+<?php echo $q[0]['q']; ?>
+<br>
 
 <?php
 for ($x=0; $x < count($ans) ; $x++) {

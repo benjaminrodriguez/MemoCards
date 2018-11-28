@@ -21,16 +21,15 @@ function nb_card_select ($iddeck)
 function quest1_select ($iddeck,$list)
 {
     global $bdd;
-    $query = "SELECT *
+    $query = "SELECT recto.id, succes_rate.level_cards
               FROM recto
-              JOIN verso ON verso.recto_id = recto.id AND recto.deck_id = :iddeck AND recto.id NOT IN (:tabidquest)
+              JOIN verso ON verso.recto_id = recto.id AND recto.deck_id = :iddeck AND recto.id NOT IN ($list)
               JOIN succes_rate ON succes_rate.verso_id = verso.id
               ORDER BY succes_rate.level_cards ASC;
             ";
 
     $query_params = array(
-        ':iddeck' => $iddeck,   // id from the deck currently used
-        ':tabidquest' => $list  // all the ids of the questions already asked
+        ':iddeck' => $iddeck // all the ids of the questions already asked
         );
 
     try {
@@ -40,6 +39,7 @@ function quest1_select ($iddeck,$list)
         die('Erreur : ' . $e->getMessage());
     }
     $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    var_dump($questions);
     return $questions;
 }
 
@@ -127,6 +127,29 @@ function carte_recup_select($IDDELAQUESTION)
     $carte = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $carte;
 }
+
+
+function carte_quest_SELECT($IDDELAQUESTION)
+{
+    global $bdd;
+    $query = "SELECT question_cards as q
+    FROM recto
+    WHERE recto.id = :id;";
+    //unset($query_params);
+    $query_params = array(
+        ':id' => $IDDELAQUESTION
+        );
+
+    try {
+        $stmt = $bdd->prepare($query);
+        $stmt->execute($query_params);
+    } catch(Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+    $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $qu;
+}
+
 
 // ----------------------------------------------------------------------------
 
