@@ -101,7 +101,7 @@
         if(isset($_POST['password']))
         {
             $passhache = password_hash(htmlspecialchars($_POST['password']),  PASSWORD_DEFAULT);
-            $profile_picture = 'https://raw.githubusercontent.com/projetInformatiqueIntech/MemoCards/master/Project/Public/img/linux.png';
+            $profile_picture = htmlspecialchars('https://raw.githubusercontent.com/projetInformatiqueIntech/MemoCards/master/Project/Public/img/linux.png');
 
             // APPEL DE LA FONCTION SQL INSCRIPTION
             inscription_INSERT( htmlspecialchars($_POST['username']), $passhache, htmlspecialchars($_POST['date_de_naissance']),
@@ -141,9 +141,9 @@
             if(isset($_POST['username']))
             {
             //UPDATE dans la BDD le nouveau pseudo de l'user
-            UPDATE('user', 'username', $_POST['username'], $_SESSION['id']);
+            UPDATE('user', 'username', htmlspecialchars($_POST['username']), htmlspecialchars($_SESSION['id']));
         
-            $_SESSION['username'] = $_POST['username'];
+            $_SESSION['username'] = htmlspecialchars($_POST['username']);
             header('Location: index.php?page=profile');
             exit;
             }
@@ -164,7 +164,7 @@
                 $password = $password['password'];
                 $test_old_password = false;
                 $error = '';
-                password_verify($_POST['old_password'], $password)? $test_old_password = true : $_SESSION['error'] = 'Le mot de passe actuel entré n\'est pas le bon.';
+                password_verify(htmlspecialchars($_POST['old_password']), $password)? $test_old_password = true : $_SESSION['error'] = 'Le mot de passe actuel entré n\'est pas le bon.';
 
                 //Vérifie si les 2 new_password entrés sont semblabes
                 $test_new_password = false;
@@ -174,7 +174,7 @@
                 if($test_old_password===true && $test_new_password===true)
                 {
                     
-                    $new_password = password_hash($_POST['new_password1'], PASSWORD_BCRYPT);
+                    $new_password = password_hash(htmlspecialchars($_POST['new_password1']), PASSWORD_BCRYPT);
                     password_UPDATE($new_password, $_SESSION['id']);
                     $_SESSION['error'] = "Votre mot de passe à été modifier avec succès.";
                 }
@@ -189,8 +189,8 @@
             //Changer son avatar :
             if(isset($_POST['profile_picture']))
             {
-                picture_UPDATE($_POST['profile_picture'], intval($_SESSION['id']));
-                $_SESSION['profile_picture'] = $_POST['profile_picture'];
+                picture_UPDATE(htmlspecialchars($_POST['profile_picture']), intval($_SESSION['id']));
+                $_SESSION['profile_picture'] = htmlspecialchars($_POST['profile_picture']);
                 header('Location: index.php?page=profile');
                 exit;
             }
@@ -245,7 +245,7 @@
                 var_dump($_POST['title'], $statut, $_POST['content'], $_SESSION['id']);
 
                 // APPEL DE LA REQ SQL
-                topic_INSERT($_POST['title'], $statut, $_POST['content'], $_SESSION['id'] );
+                topic_INSERT(htmlspecialchars($_POST['title']), $statut, htmlspecialchars($_POST['content']), $_SESSION['id'] );
             }
         }
     }

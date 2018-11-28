@@ -12,7 +12,7 @@
         <label for="inputPassword" class="sr-only"></label><br>
         <input type="password" name="password" value="" id="inputPassword" class="form-control" placeholder="Password" required>
 
-        <button class="btn btn-lg btn-primary">Se connecter</button>
+        <br><br><button class="btn btn-lg btn-primary">Se connecter</button>
     </form><br><br>
 
 
