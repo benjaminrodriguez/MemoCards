@@ -16,15 +16,15 @@
 
     // ----------------------------------------------------------------------------
 
-    function inscription_INSERT ($username, $password, $date_naissance, $statut, $sexe, $region, $email, $picture)
+    function inscription_INSERT ($username, $password, $date_naissance, $statut, $sex, $region, $email, $picture)
     {
         $bdd = bdd();
         // INSCRIPTION
         $inscription = $bdd->prepare(
-        'INSERT INTO user (username, password, age, statut, sexe, region, email, profil_picture) 
+        'INSERT INTO user (username, password, birth_date, statut, sex, region, email, profile_picture) 
          VALUES (?, ?, ?, ?, ?, ?, ?, ?);
         ');
-        $inscription->execute(array($username, $password, $date_naissance, $statut, $sexe, $region, $email, $picture));
+        $inscription->execute(array($username, $password, $date_naissance, $statut, $sex, $region, $email, $picture));
     }
 
     // ----------------------------------------------------------------------------
@@ -44,15 +44,15 @@
 
     // ----------------------------------------------------------------------------
 
-    function topic_INSERT($name, $statut, $intitule, $user_id)
+    function topic_INSERT($name, $statut, $content, $user_id)
     {
         $bdd = bdd();
         // INSCRIPTION
         $creer_sujet = $bdd->prepare(
-            'INSERT INTO subject (name, date_posted, statut, intitule, user_id)
+            'INSERT INTO subject (title, date_posted, content, statut, user_id)
             VALUES (?, NOW(), ?, ?, ?);
             ');
-        $creer_sujet->execute(array($name, $statut, $intitule, $user_id));
+        $creer_sujet->execute(array($title, $content, $statut, $user_id));
     }
 
 
@@ -248,7 +248,7 @@
     {
         $bdd = bdd();
         $req = $bdd->prepare(' UPDATE user
-                            SET profil_picture = ? 
+                            SET profile_picture = ? 
                             WHERE id = ? 
                             LIMIT 1
                             ');
