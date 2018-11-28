@@ -14,13 +14,14 @@
                 $_SESSION['id'] = $data['id'];
                 $_SESSION['username'] = $data['username'];
                 $_SESSION['statut'] = $data['statut'];
-                $_SESSION['age'] = $data['age'];
+                $_SESSION['birth_date'] = $data['birth_date'];
                 $_SESSION['region'] = $data['region'];
-                $_SESSION['sexe'] = $data['sexe'];
-                $_SESSION['profile_picture'] = $data['profil_picture'];
+                $_SESSION['sex'] = $data['sex'];
+                $_SESSION['profile_picture'] = $data['profile_picture'];
                 $_SESSION['email'] = $data['email'];
 
                 header('Location: index.php?page=home');
+                exit;
             } 
             else
             {
@@ -100,11 +101,11 @@
         if(isset($_POST['password']))
         {
             $passhache = password_hash(htmlspecialchars($_POST['password']),  PASSWORD_DEFAULT);
-            $profile_picture = 'https://raw.githubusercontent.com/projetInformatiqueIntech/MemoCards/master/vues/img/linux.png';
+            $profile_picture = 'https://raw.githubusercontent.com/projetInformatiqueIntech/MemoCards/master/Project/Public/img/linux.png';
 
             // APPEL DE LA FONCTION SQL INSCRIPTION
             inscription_INSERT( htmlspecialchars($_POST['username']), $passhache, htmlspecialchars($_POST['date_de_naissance']),
-                                'membre', htmlspecialchars($_POST['sexe']), htmlspecialchars($_POST['region']),
+                                'membre', htmlspecialchars($_POST['sex']), htmlspecialchars($_POST['region']),
                                 htmlspecialchars($_POST['email']), $profile_picture
                             );
 
