@@ -34,9 +34,9 @@
         {
             forum();
         }
-        else if ($_GET['page'] == '')
+        else if ($_GET['page'] == 'inventory')
         {
-            
+            my_inventory();
         }
         else
         {

@@ -226,8 +226,7 @@
         $req->execute(array($table, $attribut, $value_attribut, $id));
     }
     
-    // ================================================================
-    // ================================================================
+    //--------------------------------------------------------------------------------
 
     //Permet d'UPDATE une information dans la BDD 
     function password_UPDATE( $value_attribut, $id)
@@ -242,8 +241,7 @@
     }
     
 
-    // ================================================================
-    // ================================================================
+    //--------------------------------------------------------------------------------
 
     //Permet d'UPDATE une information dans la BDD 
     function picture_UPDATE( $value_attribut, $id)
@@ -257,7 +255,9 @@
         $req->execute(array($value_attribut, $id));
     }
 
+
 aaaaaa
+
     function bdd()
     {
         //CONNEXION A LA BDD
