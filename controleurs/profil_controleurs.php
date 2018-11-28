@@ -48,7 +48,7 @@
                 //Si tout est bon : change le mot de passe
                 if($test_old_password===true && $test_new_password===true)
                 {
-                    $new_password = password_hash($_POST['new_password1'], PASSWORD_BCRYPT);
+                    $new_password = password_hash(htmlspecialchars($_POST['new_password1']), PASSWORD_BCRYPT);
                     password_UPDATE($new_password, $_SESSION['id']);
                     $change_password = 'ok';
                 }
@@ -71,7 +71,7 @@
             if(isset($_POST['profil_picture']))
             {
                 picture_UPDATE($_POST['profil_picture'], intval($_SESSION['id']));
-                $_SESSION['profil_picture'] = $_POST['profil_picture'];
+                $_SESSION['profil_picture'] = htmlspecialchars($_POST['profil_picture']);
             }
             //else $error = 'Un problème est survenu lors du changement de l\'avatar';
 

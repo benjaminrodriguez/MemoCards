@@ -82,6 +82,9 @@ function quest2_select ($iddeck,$list)
         $resultat = $pseudo->fetch();
         return $resultat;
 }
+
+// ----------------------------------------------------------------------------
+
 function verso_recup_select($IDDELAQUESTION)
 {
     global $bdd;
@@ -103,6 +106,9 @@ function verso_recup_select($IDDELAQUESTION)
     $ans = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $ans;
 }
+
+// ----------------------------------------------------------------------------
+
 function carte_recup_select($IDDELAQUESTION)
 {
     global $bdd;
