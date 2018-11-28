@@ -1,6 +1,6 @@
 
-<?php 
-    
+<?php
+
     function user_DELETE ($id)
     {
         // DESINSCRIPTION USER
@@ -11,7 +11,7 @@
          VALUES (?);
         ');
         $desinscription->execute(array($id));
-    }  
+    }
 
 
     // ----------------------------------------------------------------------------
@@ -21,7 +21,7 @@
         $bdd = bdd();
         // INSCRIPTION
         $inscription = $bdd->prepare(
-        'INSERT INTO user (username, password, birth_date, statut, sex, region, email, profile_picture) 
+        'INSERT INTO user (username, password, birth_date, statut, sex, region, email, profile_picture)
          VALUES (?, ?, ?, ?, ?, ?, ?, ?);
         ');
         $inscription->execute(array($username, $password, $date_naissance, $statut, $sex, $region, $email, $picture));
@@ -56,9 +56,10 @@
     }
 
 
-    function nb_card_select ($iddeck)
+    function nb_card_SELECT($iddeck)
     {
         $bdd = bdd();
+        //echo 'ici';
         $query = 'SELECT COUNT(recto.id) AS count FROM recto WHERE recto.deck_id = :id;';
         $query_params = array(':id' => $iddeck);
 
@@ -68,7 +69,8 @@
         }catch(Exception $e){
             die('Erreur : ' . $e->getMessage());
         }
-        $cptinit = $stmt->fetchAll();
+        $cptinit = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        //var_dump($cptinit);
         return $cptinit;
     }
 
@@ -77,16 +79,15 @@
     function quest1_select ($iddeck,$list)
     {
         $bdd = bdd();
-        $query = "SELECT *
-                FROM recto
-                JOIN verso ON verso.recto_id = recto.id AND recto.deck_id = :iddeck AND recto.id NOT IN (:tabidquest)
-                JOIN succes_rate ON succes_rate.verso_id = verso.id
-                ORDER BY succes_rate.level_cards ASC;
+        $query = "SELECT recto.id, succes_rate.level_cards
+                  FROM recto
+                  JOIN verso ON verso.recto_id = recto.id AND recto.deck_id = :iddeck AND recto.id NOT IN ($list)
+                  JOIN succes_rate ON succes_rate.verso_id = verso.id
+                  ORDER BY succes_rate.level_cards ASC;
                 ";
 
         $query_params = array(
-            ':iddeck' => $iddeck,   // id from the deck currently used
-            ':tabidquest' => $list  // all the ids of the questions already asked
+            ':iddeck' => $iddeck // all the ids of the questions already asked
             );
 
         try {
@@ -107,12 +108,11 @@
         $query = "SELECT *
         FROM recto
         WHERE recto.deck_id = :iddeck
-        AND recto.id NOT IN (:tabidquest)
+        AND recto.id NOT IN ($list)
         ORDER BY RAND();";
         //unset($query_params);
         $query_params = array(
-            ':iddeck' => $iddeck,   // id from the deck currently used
-            ':tabidquest' => $list  // all the ids of the questions already asked
+            ':iddeck' => $iddeck   // id from the deck currently used
             );
 
         try {
@@ -123,6 +123,53 @@
         }
         $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $questions;
+    }
+    function carte_UPDATE($id,$ply,$chain,$lv)
+    {
+        $bdd = bdd();
+        $query = "UPDATE `succes_rate`
+                SET
+                `level_cards`=:lvcard,
+                `chain`=:chain,
+                `played_cards`=:plycards
+                WHERE succes_rate.verso_id = (
+                    SELECT verso.id
+                    FROM verso
+                    JOIN recto ON recto.id = verso.recto_id AND recto.id = :id AND verso.statut_cards LIKE 'T');";
+
+        $query_params = array(
+            ':id' => $id,
+            ':plycards' => $ply,
+            ':chain' => $chain,
+            ':lvcard' => $lv
+    );
+
+    try {
+        $stmt = $bdd->prepare($query);
+        $stmt->execute($query_params);
+    } catch(Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+    }
+    function carte_quest_SELECT($IDDELAQUESTION)
+    {
+        $bdd = bdd();
+        $query = "SELECT question_cards as q
+        FROM recto
+        WHERE recto.id = :id;";
+        //unset($query_params);
+        $query_params = array(
+            ':id' => $IDDELAQUESTION
+            );
+
+        try {
+            $stmt = $bdd->prepare($query);
+            $stmt->execute($query_params);
+        } catch(Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+        $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $qu;
     }
 
     // ----------------------------------------------------------------------------
@@ -214,42 +261,42 @@
     //--------------------------------------------------------------------------------
 
 
-    //Permet d'UPDATE une information dans la BDD 
+    //Permet d'UPDATE une information dans la BDD
     function UPDATE($table, $attribut, $value_attribut, $id)
     {
         $bdd = bdd();
         $req = $bdd->prepare(' UPDATE ?
-                            SET ? = ? 
-                            WHERE id = ? 
+                            SET ? = ?
+                            WHERE id = ?
                             LIMIT 1
                             ');
         $req->execute(array($table, $attribut, $value_attribut, $id));
     }
-    
+
     //--------------------------------------------------------------------------------
 
-    //Permet d'UPDATE une information dans la BDD 
+    //Permet d'UPDATE une information dans la BDD
     function password_UPDATE( $value_attribut, $id)
     {
         $bdd = bdd();
         $req = $bdd->prepare(' UPDATE user
-                            SET password = ? 
-                            WHERE id = ? 
+                            SET password = ?
+                            WHERE id = ?
                             LIMIT 1
                             ');
         $req->execute(array($value_attribut, $id));
     }
-    
+
 
     //--------------------------------------------------------------------------------
 
-    //Permet d'UPDATE une information dans la BDD 
+    //Permet d'UPDATE une information dans la BDD
     function picture_UPDATE( $value_attribut, $id)
     {
         $bdd = bdd();
         $req = $bdd->prepare(' UPDATE user
-                            SET profile_picture = ? 
-                            WHERE id = ? 
+                            SET profile_picture = ?
+                            WHERE id = ?
                             LIMIT 1
                             ');
         $req->execute(array($value_attribut, $id));
@@ -278,6 +325,7 @@
         }
         return $bdd;
     }
+    
 
 
 ?>
