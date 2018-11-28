@@ -10,7 +10,7 @@ if (!isset($_SESSION['deck']))
     
     $_POST['deck'] = 1;
     $_SESSION['deck'] = $_POST['deck'];
-    include(dirname(__FILE__).'/../Views/affichage_debquest.php');
+    require(dirname(__FILE__).'/../Views/affichage_debquest.php');
     if (isset($_SESSION['list']))
     {
         unset($_SESSION['list']);
@@ -136,12 +136,12 @@ else
         if ($choice < 35)
         {
            
-            //include("./modeles/quest1.php");
+            //require("./modeles/quest1.php");
             $questions = quest1_select($_SESSION['deck'], $liststr);
         }
         else
         {
-            //include("./modeles/quest2.php");
+            //require("./modeles/quest2.php");
             $questions = quest2_select($_SESSION['deck'], $liststr);
         }
         //var_dump($questions);
@@ -158,7 +158,7 @@ else
 
         // AFFICHAGE DE LA QUESTION ICI
         $q = carte_quest_SELECT($IDDELAQUESTION);
-        include(dirname(__FILE__).'/../Views/affichage_quest.php');
+        require(dirname(__FILE__).'/../Views/affichage_quest.php');
 
 
         $_SESSION['cpt']++;
