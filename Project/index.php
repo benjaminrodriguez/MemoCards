@@ -1,40 +1,40 @@
-
 <?php
     session_start();
     require('Controllers/controllers.php');
 
     
-    if (isset($_GET['page']) && !empty($_GET['page'])) {
+    if (isset($_GET['page']) && !empty($_GET['page'])) 
+    {
         if ($_GET['page'] == 'connection')
         {
             if(isset($_SESSION['username']))  header('Location: index.php?page=home');
             else connection();
         }
-        elseif ($_GET['page'] == 'home') 
+        else if ($_GET['page'] == 'home') 
         {
             home();
         }
-        elseif ($_GET['page'] == 'inscription')
+        else if ($_GET['page'] == 'inscription')
         {
             inscription();
         }
-        elseif ($_GET['page'] == 'profile')
+        else if ($_GET['page'] == 'profile')
         {
             my_profile();
         }        
-        elseif ($_GET['page'] == 'stats')
+        else if ($_GET['page'] == 'stats')
         {
             my_stats();
         }
-        elseif ($_GET['page'] == 'store')
+        else if ($_GET['page'] == 'store')
         {
             cards_store();
         }
-        elseif ($_GET['page'] == 'forum')
+        else if ($_GET['page'] == 'forum')
         {
             forum();
         }
-        elseif ($_GET['page'] == '')
+        else if ($_GET['page'] == '')
         {
             
         }
