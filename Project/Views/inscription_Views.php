@@ -15,8 +15,8 @@
             <input type="email" name="email" value="" id="email" class="form-control" placeholder="Email" required>
             <div class="checkbox mb-3">
             Sexe : 
-            <input type="radio" name="sexe" value="M">Homme
-            <input type="radio" name="sexe" value="F" checked>Femme<br>
+            <input type="radio" name="sex" value="M">Homme
+            <input type="radio" name="sex" value="F" checked>Femme<br>
 
             <select name="region" class="form-control" required>
                 <option value="region" disabled selected>Région</option> 

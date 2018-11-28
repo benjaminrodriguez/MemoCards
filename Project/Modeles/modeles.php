@@ -16,7 +16,7 @@
 
     // ----------------------------------------------------------------------------
 
-    function inscription_INSERT ($username, $password, $date_naissance, $statut, $sex, $region, $email, $picture)
+    function inscription_INSERT ($username, $password, $birth_date, $statut, $sex, $region, $email, $picture)
     {
         $bdd = bdd();
         // INSCRIPTION
@@ -24,7 +24,7 @@
         'INSERT INTO user (username, password, birth_date, statut, sex, region, email, profile_picture) 
          VALUES (?, ?, ?, ?, ?, ?, ?, ?);
         ');
-        $inscription->execute(array($username, $password, $date_naissance, $statut, $sex, $region, $email, $picture));
+        $inscription->execute(array($username, $password, $birth_date, $statut, $sex, $region, $email, $picture));
     }
 
     // ----------------------------------------------------------------------------
