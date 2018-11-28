@@ -38,6 +38,10 @@
         {
             my_inventory();
         }
+        else if ($_GET['page'] == 'qcm')
+        {
+            include('./Controllers/quest_controleurs.php');
+        }
         else
         {
             header('Location: index.php?page=connection');
