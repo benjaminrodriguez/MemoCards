@@ -1,0 +1,13 @@
+--------------------------- OBLIGATOIRE ---------------------------
+
+1) Changer les noms d'attributs de la base de données qui sont en FR --> Eng
+
+2) Corriger les noms de $_SESSION : certains sont en FR --> Eng
+
+3) Sécuriser TOUT les formulaires du sites.
+
+4) Réalisation d'un pannel de test sur l'url.
+
+5) Introduire des conditions et restrictions sur TOUT les formulaires --> Ex : "Changer avatar" limiter la taille de l'url à 255 caractères, sans char' spéciaux.
+
+------------------------------------------------------------------
