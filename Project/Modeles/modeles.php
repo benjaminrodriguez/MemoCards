@@ -257,7 +257,7 @@
         $req->execute(array($value_attribut, $id));
     }
 
-
+aaaaaa
     function bdd()
     {
         //CONNEXION A LA BDD
