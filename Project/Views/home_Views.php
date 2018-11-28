@@ -5,7 +5,7 @@
     <ul>
         <li>
             <label for="profil"> -->logo>-- </label>
-            <button type="submit" id="profil" name="menu" value="profil"><h4>Mon Profil</h4></button>
+            <button type="submit" id="profil" name="menu" value="profile"><h4>Mon Profil</h4></button>
         </li><br/>
 
         <li>
@@ -15,7 +15,7 @@
 
         <li>
             <label for="inventaire">  -->logo>-- </label>
-            <button type="submit" id="inventaire" name="menu" value="inventaire"><h4>Mon Inventaire</h4></button>
+            <button type="submit" id="inventaire" name="menu" value="inventory"><h4>Mon Inventaire</h4></button>
         </li> <br/> 
 
         <li>
