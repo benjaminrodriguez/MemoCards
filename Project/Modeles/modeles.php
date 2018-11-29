@@ -74,19 +74,18 @@
 
     // ----------------------------------------------------------------------------
 
-    function quest1_select ($iddeck,$list)
+    function quest1_SELECT($iddeck,$list)
     {
         $bdd = bdd();
-        $query = "SELECT *
-                FROM recto
-                JOIN verso ON verso.recto_id = recto.id AND recto.deck_id = :iddeck AND recto.id NOT IN (:tabidquest)
-                JOIN succes_rate ON succes_rate.verso_id = verso.id
-                ORDER BY succes_rate.level_cards ASC;
+        $query = "SELECT recto.id, succes_rate.level_cards
+                  FROM recto
+                  JOIN verso ON verso.recto_id = recto.id AND recto.deck_id = :iddeck AND recto.id NOT IN ($list)
+                  JOIN succes_rate ON succes_rate.verso_id = verso.id
+                  ORDER BY succes_rate.level_cards ASC;
                 ";
 
         $query_params = array(
-            ':iddeck' => $iddeck,   // id from the deck currently used
-            ':tabidquest' => $list  // all the ids of the questions already asked
+            ':iddeck' => $iddeck 
             );
 
         try {
@@ -101,18 +100,17 @@
 
     // ----------------------------------------------------------------------------
 
-    function quest2_select ($iddeck,$list)
+    function quest2_SELECT($iddeck,$list)
     {
         $bdd = bdd();
         $query = "SELECT *
         FROM recto
         WHERE recto.deck_id = :iddeck
-        AND recto.id NOT IN (:tabidquest)
+        AND recto.id NOT IN ($list)
         ORDER BY RAND();";
         //unset($query_params);
         $query_params = array(
-            ':iddeck' => $iddeck,   // id from the deck currently used
-            ':tabidquest' => $list  // all the ids of the questions already asked
+            ':iddeck' => $iddeck   // id from the deck currently used
             );
 
         try {
@@ -140,7 +138,7 @@
     }
 
     //--------------------------------------------------------------------------------
-    function verso_recup_select($IDDELAQUESTION)
+    function verso_recup_SELECT($IDDELAQUESTION)
     {
         $bdd = bdd();
         $query = "SELECT *
@@ -163,7 +161,7 @@
     }
 
     //-------------------------------------------------------------------------------
-    function carte_recup_select($IDDELAQUESTION)
+    function carte_recup_SELECT($IDDELAQUESTION)
     {
         $bdd = bdd();
         $query = "SELECT * FROM succes_rate JOIN verso ON verso.id = succes_rate.verso_id AND verso.statut_cards LIKE 'T' JOIN recto ON recto.id = verso.recto_id AND recto.id = :idquest;";
@@ -180,6 +178,57 @@
         }
         $carte = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $carte;
+    }
+//-------------------------------------------------------------
+
+    function carte_quest_SELECT($IDDELAQUESTION)
+    {
+        $bdd = bdd();
+        $query = "SELECT question_cards as q
+        FROM recto
+        WHERE recto.id = :id;";
+        //unset($query_params);
+        $query_params = array(
+            ':id' => $IDDELAQUESTION
+            );
+
+        try {
+            $stmt = $bdd->prepare($query);
+            $stmt->execute($query_params);
+        } catch(Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+        $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $qu;
+    }
+
+    //-----------------------------------------------
+
+    function carte_UPDATE($id,$ply,$chain,$lv)
+    {
+        $bdd = bdd();
+        $query = "UPDATE `succes_rate`
+                SET
+                `level_cards`=:lvcard,
+                `chain`=:chain,
+                `played_cards`=:plycards
+                WHERE succes_rate.verso_id = (
+                    SELECT verso.id
+                    FROM verso
+                    JOIN recto ON recto.id = verso.recto_id AND recto.id = :id AND verso.statut_cards LIKE 'T');";
+
+        $query_params = array(
+            ':id' => $id,
+            ':plycards' => $ply,
+            ':chain' => $chain,
+            ':lvcard' => $lv);
+
+        try {
+            $stmt = $bdd->prepare($query);
+            $stmt->execute($query_params);
+        } catch(Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
     }
 
     // ----------------------------------------------------------------------------

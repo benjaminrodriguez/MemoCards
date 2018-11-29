@@ -1,6 +1,8 @@
 <?php
 
 //var_dump($_SESSION);
+
+// UNSET THE VAR FROM THE PREVIOUS GAME
 if (!isset($_SESSION['deck']))
 {
     foreach($_SESSION as $key => $value){
@@ -31,8 +33,8 @@ if (!isset($_SESSION['deck']))
 }
 else
 {
-   
-    if (isset($_SESSION['list']))////////////////////////
+    // SET THE VAR USED LATER
+    if (isset($_SESSION['list']))
     {
         $list = $_SESSION['list'];
     }
@@ -40,7 +42,6 @@ else
     {
         $list = array();
     }
-    // RECUPERER LA REPONSE DE LA CARTE DAVANT ICI
 
     if (isset($_GET['qcm'])) {
         $_SESSION['qcm'] = $_GET['qcm'];
@@ -54,35 +55,39 @@ else
         $listend = array();
     }
 
-    if(!isset($_SESSION['cpt'])) ////////////////////////
+    if(!isset($_SESSION['cpt'])) 
     {
         $_SESSION['cpt'] = 1;
     }
 
+    // CPTALL = TOTAL OF CARDS IN THE DECK
     if(!isset($_SESSION['cptall']))
     {   
-        // Oui
         $_SESSION['cptall'] = nb_card_SELECT($_SESSION['deck']);
         $_SESSION['cptall'] = intval($_SESSION['cptall'][0]['count']);
-        //total of cards in the deck
     }
 
     //var_dump($_SESSION['cptall']);
 
+    //ACTION WITH THE ANSWER
     if (isset($_POST['answer']))
     {
-        // RECUPERER INFO DE LA QUESTION
         //echo $_SESSION['iddelaquestiondavant'];
+
+        //SAVE THE ANSWERS FOR THE DISPLAY AT THE END
         $listend[0][] = $_POST['answer'];
         $listend[1][] = $_SESSION['iddelaquestiondavant'];
         //$listend[$_SESSION['iddelaquestiondavant']] = $_POST['answer'];
-
-        $getquest = carte_recup_select($_SESSION['iddelaquestiondavant']);
+        
+        //GET THE INFO ABOUT THE CARD
+        $getquest = carte_recup_SELECT($_SESSION['iddelaquestiondavant']);
         $played_card = $getquest[0]['played_cards'];
         $level_card = $getquest[0]['level_cards'];
         $chain = $getquest[0]['chain'];
 
         //var_dump($getquest);
+
+        //CHANGE THEM
         if ($_POST['answer'] === 'T')
         {
             $played_card++;
@@ -101,16 +106,12 @@ else
                 $level_card = 3;
             }
         }
+        //UPDATE THEM
         carte_UPDATE($getquest[0]['id'], $played_card, $chain, $level_card);
-        // /echo "cc";
-    }
-
-
-    if (isset($listend))
-    {
         $_SESSION['listend'] = $listend;
     }
 
+    //CHECK IF USER WANT TO QUIT
     if (isset($_POST['fin']))
     {
         $_SESSION['cpt'] = $_SESSION['cptall'] + 1;
@@ -119,44 +120,48 @@ else
     //var_dump($_SESSION['cpt']);
     //var_dump($_SESSION['cptall']);
 
+    //CHECK IF USER STILLS HAVE CARD TO PLAY
     if ($_SESSION['cpt'] <= intval($_SESSION['cptall']))
     {
+        //CHANGE THE WAY TO SELECT A CARD
         $choice = rand(0, 100);
-        $choice = 30;
-        //var_dump($list);
+
         if(count($list) === 0)
         {
             $liststr = "''";
-        } else {
+        } 
+        else 
+        {
             $liststr = implode(",",$list);
         }
 
         //var_dump($liststr);
 
+        //CARD OFTEN WRONG
         if ($choice < 35)
         {
            
             //require("./modeles/quest1.php");
-            $questions = quest1_select($_SESSION['deck'], $liststr);
+            $questions = quest1_SELECT($_SESSION['deck'], $liststr);
         }
+        //RANDOM CARD
         else
         {
             //require("./modeles/quest2.php");
-            $questions = quest2_select($_SESSION['deck'], $liststr);
+            $questions = quest2_SELECT($_SESSION['deck'], $liststr);
         }
         //var_dump($questions);
+
+        //SAVE THE ID OF THE CHOSEN QUESTION;
         $IDDELAQUESTION = $questions[0]['id'];
         $list[]= $IDDELAQUESTION;
-        //echo "cc2";
-        //var_dump($list);
-
-        //var_dump(intval($IDDELAQUESTION));
-
-        $ans = verso_recup_select($IDDELAQUESTION);
+        
+        //ANSWERS OF THE CARD
+        $ans = verso_recup_SELECT($IDDELAQUESTION);
         //var_dump($ans);
         //echo $IDDELAQUESTION;
 
-        // AFFICHAGE DE LA QUESTION ICI
+        // QUESTION OF THE CARD
         $q = carte_quest_SELECT($IDDELAQUESTION);
         require(dirname(__FILE__).'/../Views/affichage_quest.php');
 
@@ -166,7 +171,7 @@ else
         $_SESSION['iddelaquestiondavant'] = $IDDELAQUESTION;
     }
 
-
+    //DISPLAY OF THE RESULTS
     else
     {
         if (isset($_SESSION['listend']))
