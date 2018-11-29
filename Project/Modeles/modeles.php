@@ -44,7 +44,7 @@
 
     // ----------------------------------------------------------------------------
 
-    function topic_INSERT($name, $statut, $content, $user_id)
+    function topic_INSERT($title, $statut, $content, $user_id)
     {
         $bdd = bdd();
         // INSCRIPTION
@@ -186,16 +186,26 @@
 
     function subjects_SELECT()
     {
+        // AFFICHAGE DE TOUS LES SUJETS LORS DE L'ARRIVEE SUT LE FORUM
+        // METTRE AU FORMAT FR
+        //DATE_FORMAT(date_posted, '%m/%d/%Y %H:%i')
         $bdd = bdd();
-        $forum = $bdd->prepare('SELECT name
+        $forum = $bdd->query('SELECT title, date_posted
                                 FROM subject
                                 ORDER BY date_posted DESC;
-                                ');
-        $forum->execute(array());
-        $subject = $forum->fetch();
-        return $subject;
-    }
+                            ');
+        //$forum->execute(array());
+        $count = 0;
+        while ($subject = $forum->fetch()) 
+        {
+            //return $subject;
+            $count++;
+            echo '# ' .$count. ' ' .$subject['title']. 'date : ' .$subject['date_posted']. ' # <br><br>';
+        }
+        $forum->closeCursor();
 
+    }
+    
     //-------------------------------------------------------------------------------
 
     function password_SELECT($id)

@@ -221,15 +221,17 @@
 
     function forum()
     {
-        $subjects = subjects_SELECT();
         create_topic();
         delete_topic();
         read_topic();
         write_topic();
         delete_message();
         require(dirname(__FILE__).'/../Views/top_menu_Views.php');
-        echo 'Le Forum ...';
+        //echo 'Le Forum ...';
         require(dirname(__FILE__).'/../Views/forum_Views.php');
+        // AFFICHE TOUS LES SUJETS DU FORUM
+        subjects_SELECT();
+
     }
 
     //-----------------------------------------------------------------------------------------
@@ -245,7 +247,10 @@
                 // LORSQU'UN SUJET EST CREE IL EST OUVERT PAR DEFAUT
                 $statut = 'ouvert';
 
-                var_dump($_POST['title'], $statut, $_POST['content'], $_SESSION['id']);
+                // ON RECUPERE DATE ET HEURE
+                //$date_time=date("Y-m-d H:i:s");
+
+                //var_dump($_POST['title'], $date_time, $statut, $_POST['content'], $_SESSION['id']);
 
                 // APPEL DE LA REQ SQL
                 topic_INSERT(htmlspecialchars($_POST['title']), $statut, htmlspecialchars($_POST['content']), $_SESSION['id'] );

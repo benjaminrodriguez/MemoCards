@@ -11,3 +11,7 @@
 5) Introduire des conditions et restrictions sur TOUT les formulaires --> Ex : "Changer avatar" limiter la taille de l'url à 255 caractères, sans char' spéciaux.
 
 ------------------------------------------------------------------
+
+--------------------------- A TRAITER EN PRIORITE -------------------
+
+1) Sur l'affichage des sujets du forum passer le format de date de en à fr
