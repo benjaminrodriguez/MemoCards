@@ -104,15 +104,18 @@
             $profile_picture = htmlspecialchars('https://raw.githubusercontent.com/projetInformatiqueIntech/MemoCards/master/Project/Public/img/linux.png');
 
             // APPEL DE LA FONCTION SQL INSCRIPTION
-            inscription_INSERT( htmlspecialchars($_POST['username']), $passhache, htmlspecialchars($_POST['date_de_naissance']),
+            inscription_INSERT(htmlspecialchars($_POST['username']), $passhache, htmlspecialchars($_POST['date_de_naissance']),
                                 'membre', htmlspecialchars($_POST['sex']), htmlspecialchars($_POST['region']),
                                 htmlspecialchars($_POST['email']), $profile_picture
-                            );
+                              );
 
-            if (isset($_POST['hobbies']))   inscription_INSERT_hobbies( htmlspecialchars(htmlspecialchars($_POST['hobbies'])) );
-            require(dirname(__FILE__).'/../Public/js/create_account.js');
-            header('Location: index.php?page=connection');
-            exit;
+            if (isset($_POST['hobbies'])) 
+            {
+                inscription_INSERT_hobbies(htmlspecialchars($_POST['hobbies']));
+                //require(dirname(__FILE__).'/../Public/js/create_account.js');
+                header('Location: index.php?page=connection');
+                exit;
+            }
         }
 
         require(dirname(__FILE__).'/../Views/inscription_Views.php');
