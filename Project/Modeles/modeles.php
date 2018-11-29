@@ -225,6 +225,21 @@
                             ');
         $req->execute(array($table, $attribut, $value_attribut, $id));
     }
+
+    //--------------------------------------------------------------------------------
+
+
+    //Permet d'UPDATE une information dans la BDD 
+    function username_UPDATE($username, $id)
+    {
+        $bdd = bdd();
+        $req = $bdd->prepare(' UPDATE user
+                            SET username = ? 
+                            WHERE id = ? 
+                            LIMIT 1
+                            ');
+        $req->execute(array($username, $id));
+    }
     
     //--------------------------------------------------------------------------------
 

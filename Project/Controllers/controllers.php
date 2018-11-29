@@ -141,9 +141,9 @@
             if(isset($_POST['username']))
             {
             //UPDATE dans la BDD le nouveau pseudo de l'user
-            UPDATE('user', 'username', htmlspecialchars($_POST['username']), htmlspecialchars($_SESSION['id']));
-        
             $_SESSION['username'] = htmlspecialchars($_POST['username']);
+            username_UPDATE($_SESSION['username'], $_SESSION['id']);
+            
             header('Location: index.php?page=profile');
             exit;
             }
