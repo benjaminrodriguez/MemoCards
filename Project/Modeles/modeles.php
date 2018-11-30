@@ -16,15 +16,15 @@
 
     // ----------------------------------------------------------------------------
 
-    function inscription_INSERT ($username, $password, $birth_date, $statut, $sex, $region, $email, $picture)
+    function inscription_INSERT ($username, $password, $birth_date, $status, $sex, $region, $email, $picture)
     {
         $bdd = bdd();
         // INSCRIPTION
         $inscription = $bdd->prepare(
-        'INSERT INTO user (username, password, birth_date, statut, sex, region, email, profile_picture) 
+        'INSERT INTO user (username, password, birth_date, status, sex, region, email, profile_picture) 
          VALUES (?, ?, ?, ?, ?, ?, ?, ?);
         ');
-        $inscription->execute(array($username, $password, $birth_date, $statut, $sex, $region, $email, $picture));
+        $inscription->execute(array($username, $password, $birth_date, $status, $sex, $region, $email, $picture));
     }
 
     // ----------------------------------------------------------------------------
@@ -44,15 +44,15 @@
 
     // ----------------------------------------------------------------------------
 
-    function topic_INSERT($title, $statut, $content, $user_id)
+    function topic_INSERT($title, $status, $content, $user_id)
     {
         $bdd = bdd();
         // INSCRIPTION
         $creer_sujet = $bdd->prepare(
-            'INSERT INTO subject (title, date_posted, content, statut, user_id)
+            'INSERT INTO subject (title, date_posted, content, status, user_id)
             VALUES (?, NOW(), ?, ?, ?);
             ');
-        $creer_sujet->execute(array($title, $content, $statut, $user_id));
+        $creer_sujet->execute(array($title, $content, $status, $user_id));
     }
 
 
@@ -354,7 +354,7 @@
     {
         //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
         $bdd = bdd();
-        $req = $bdd->prepare('  SELECT deck.name, deck.description, deck.mark, deck.statut
+        $req = $bdd->prepare('  SELECT deck.name, deck.description, deck.mark, deck.status
                                 FROM deck
                                 LEFT JOIN passed ON deck.id = passed.deck_id
                                 LEFT JOIN user ON passed.user_id = user.id
@@ -370,7 +370,7 @@
     {
         //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR TRIER PAR DATE DE LA DERNIERE PARTIE JOUEE
         $bdd = bdd();
-        $req = $bdd->prepare('  SELECT deck.id, deck.autor_id, deck.name, deck.description, deck.mark, deck.statut, passed.date_passed
+        $req = $bdd->prepare('  SELECT deck.id, deck.autor_id, deck.name, deck.description, deck.mark, deck.status, passed.date_passed
                                 FROM deck
                                 LEFT JOIN passed ON deck.id = passed.deck_id
                                 LEFT JOIN user ON passed.user_id = user.id

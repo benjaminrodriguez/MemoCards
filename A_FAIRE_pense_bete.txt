@@ -33,18 +33,5 @@ SAMI :
 
 Modification à voir pour la BDD :
 
-1) Ajouter un attribut dans la table "deck" pour donner une image aux decks. OK
-
-2) Traduire l'attribut "statut" en "status" dans "deck". OK
-
-3) Modifier le type de l'attribut "mark" dans "deck" : Decimal(1,1  --> int . OK
-
-3.1) Supprimer mark de deck et la mettre dans comments_deck OK
-
-4) Différence entre "description" ? --> Si aucune delete comment_user. OK
-
-5) Ajouter l'attribut "date_creation" type DATE dans "deck". OK
-
-6) Ajouter un attributs "list_like" ou l'utilisateur pourrait aimer des decks ou post de forum. NON
 
 7) Ajouter une option de suivis sur le forum : petit drapeau qui permetrais de suivre les sujets voulus.(A voir pkus tard)

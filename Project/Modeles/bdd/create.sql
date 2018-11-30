@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 30 nov. 2018 à 00:44
+-- Généré le :  ven. 30 nov. 2018 à 18:29
 -- Version du serveur :  5.7.21
 -- Version de PHP :  7.2.4
 
@@ -21,17 +21,17 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `memocards`
 --
-CREATE DATABASE IF NOT EXISTS `memocards` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE IF NOT EXISTS `memocards` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `memocards`;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `category`
+-- Structure de la table `categorie`
 --
 
-DROP TABLE IF EXISTS `category`;
-CREATE TABLE IF NOT EXISTS `category` (
+DROP TABLE IF EXISTS `categorie`;
+CREATE TABLE IF NOT EXISTS `categorie` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `description` mediumtext NOT NULL,
@@ -41,17 +41,17 @@ CREATE TABLE IF NOT EXISTS `category` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `category_has_deck`
+-- Structure de la table `categorie_has_deck`
 --
 
-DROP TABLE IF EXISTS `category_has_deck`;
-CREATE TABLE IF NOT EXISTS `category_has_deck` (
+DROP TABLE IF EXISTS `categorie_has_deck`;
+CREATE TABLE IF NOT EXISTS `categorie_has_deck` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `deck_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
+  `categorie_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_categorie_has_deck_deck1_idx` (`deck_id`),
-  KEY `fk_categorie_has_deck_categorie1_idx` (`category_id`)
+  KEY `fk_categorie_has_deck_categorie1_idx` (`categorie_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -66,6 +66,7 @@ CREATE TABLE IF NOT EXISTS `comments_deck` (
   `content` longtext NOT NULL,
   `autor_id` int(11) NOT NULL,
   `deck_id` int(11) NOT NULL,
+  `mark` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_comments_deck_deck1_idx` (`deck_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -81,12 +82,12 @@ CREATE TABLE IF NOT EXISTS `deck` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `description` mediumtext,
-  `mark` decimal(1,1) DEFAULT NULL,
   `autor_id` int(11) NOT NULL,
-  `statut` varchar(10) NOT NULL,
-  `comment_user` mediumtext,
+  `status` varchar(10) NOT NULL,
+  `picture` varchar(255) NOT NULL,
+  `date_creation` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -125,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `hashtag_has_deck` (
 
 DROP TABLE IF EXISTS `hobbies`;
 CREATE TABLE IF NOT EXISTS `hobbies` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `hobby` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -139,8 +140,8 @@ CREATE TABLE IF NOT EXISTS `hobbies` (
 DROP TABLE IF EXISTS `hobbies_has_user`;
 CREATE TABLE IF NOT EXISTS `hobbies_has_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `hobbies_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `hobbies_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_hobbies_has_user_user1_idx` (`user_id`),
   KEY `fk_hobbies_has_user_hobbies1_idx` (`hobbies_id`)
@@ -194,7 +195,7 @@ CREATE TABLE IF NOT EXISTS `passed` (
   PRIMARY KEY (`id`),
   KEY `fk_passed_user1_idx` (`user_id`),
   KEY `fk_passed_deck1_idx` (`deck_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -222,8 +223,8 @@ CREATE TABLE IF NOT EXISTS `subject` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `date_posted` datetime NOT NULL,
-  `content` mediumtext NOT NULL,
-  `statut` varchar(15) NOT NULL,
+  `content` longtext NOT NULL,
+  `status` varchar(15) NOT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_subject_user1_idx` (`user_id`)
@@ -257,15 +258,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(25) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `profile_picture` varchar(255) DEFAULT NULL,
-  `statut` varchar(45) NOT NULL,
+  `profile_picture` varchar(255) NOT NULL,
+  `status` varchar(45) NOT NULL,
   `birth_date` date NOT NULL,
   `sex` varchar(1) NOT NULL,
   `region` varchar(45) NOT NULL,
   `email` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -288,10 +289,10 @@ CREATE TABLE IF NOT EXISTS `verso` (
 --
 
 --
--- Contraintes pour la table `category_has_deck`
+-- Contraintes pour la table `categorie_has_deck`
 --
-ALTER TABLE `category_has_deck`
-  ADD CONSTRAINT `fk_categorie_has_deck_categorie1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+ALTER TABLE `categorie_has_deck`
+  ADD CONSTRAINT `fk_categorie_has_deck_categorie1` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_categorie_has_deck_deck1` FOREIGN KEY (`deck_id`) REFERENCES `deck` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
