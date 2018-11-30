@@ -1,6 +1,5 @@
 <?php
 
-//var_dump($_SESSION);
 
 // UNSET THE VAR FROM THE PREVIOUS GAME
 if (!isset($_SESSION['deck']))
@@ -176,26 +175,7 @@ else
     {
         if (isset($_SESSION['listend']))
         {
-            //var_dump($listend);
-            foreach ($_SESSION['listend'][0] as $key => $value)
-            {
-                echo "Question n° ". (intval($key)+1)."<br><br>";
-                if ($value === "T")
-                {
-                    echo "Carte :" . $_SESSION['listend'][1][$key]."<br>";
-                    $q = carte_quest_SELECT($_SESSION['listend'][1][$key]);
-                    echo $q[0]['q'];
-                    echo "<br> >>>>> Bonne!";
-                }
-                else
-                {
-                    echo "Carte :" .$_SESSION['listend'][1][$key]."<br>";
-                    $q = carte_quest_SELECT($_SESSION['listend'][1][$key]);
-                    echo $q[0]['q'];
-                    echo "<br> >>>>> Fausse!";
-                }
-                echo "<br><br>";
-            }
+            require("./Views/affichage_resultquest.php");
         }
         unset($_SESSION['deck']);
         unset($_SESSION['listend']);
