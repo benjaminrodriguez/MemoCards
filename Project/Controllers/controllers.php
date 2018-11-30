@@ -223,7 +223,11 @@
     {
         create_topic();
         delete_topic();
-        read_topic();
+        // SI USER CLIQUE SUR UN SUJET, ILS S'AFFICHENT
+        if (isset($_GET['id']))
+        {
+            read_topic();
+        }
         write_topic();
         delete_message();
         require(dirname(__FILE__).'/../Views/top_menu_Views.php');
@@ -280,9 +284,10 @@
 
     function read_topic()
     {
-        if (isset($_POST['choix_forum']) && $_POST['choix_forum'] === 'lire_messages_sujet')
+        if (isset($_GET['id']) && !empty($_GET['id']))
         {
-            echo 'afficher tous les messages du sujet XXXX';
+            messages_subject_SELECT(htmlspecialchars($_GET['id']));
+            //echo 'afficher tous les messages du sujet XXXX';
         }
     }
 
