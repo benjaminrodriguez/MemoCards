@@ -11,7 +11,7 @@
             if (password_verify($_POST['password'], $data['password']))
             { 
                 // STOCKAGE VARIABLE SESSION
-                $_SESSION['id'] = $data['id'];
+                $_SESSION['id'] = intval($data['id']);
                 $_SESSION['username'] = $data['username'];
                 $_SESSION['statut'] = $data['statut'];
                 $_SESSION['birth_date'] = $data['birth_date'];
@@ -145,7 +145,7 @@
             {
             //UPDATE dans la BDD le nouveau pseudo de l'user
             $_SESSION['username'] = htmlspecialchars($_POST['username']);
-            username_UPDATE($_SESSION['username'], $_SESSION['id']);
+            username_UPDATE($_SESSION['username'], intval($_SESSION['id']));
             
             header('Location: index.php?page=profile');
             exit;
@@ -178,7 +178,7 @@
                 {
                     
                     $new_password = password_hash(htmlspecialchars($_POST['new_password1']), PASSWORD_BCRYPT);
-                    password_UPDATE($new_password, $_SESSION['id']);
+                    password_UPDATE($new_password, intval($_SESSION['id']));
                     $_SESSION['error'] = "Votre mot de passe à été modifier avec succès.";
                 }
             }
@@ -223,7 +223,11 @@
     {
         create_topic();
         delete_topic();
-        read_topic();
+        // SI USER CLIQUE SUR UN SUJET, ILS S'AFFICHENT
+        if (isset($_GET['id']))
+        {
+            read_topic();
+        }
         write_topic();
         delete_message();
         require(dirname(__FILE__).'/../Views/top_menu_Views.php');
@@ -280,9 +284,10 @@
 
     function read_topic()
     {
-        if (isset($_POST['choix_forum']) && $_POST['choix_forum'] === 'lire_messages_sujet')
+        if (isset($_GET['id']) && !empty($_GET['id']))
         {
-            echo 'afficher tous les messages du sujet XXXX';
+            messages_subject_SELECT(htmlspecialchars($_GET['id']));
+            //echo 'afficher tous les messages du sujet XXXX';
         }
     }
 

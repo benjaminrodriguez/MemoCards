@@ -34,7 +34,7 @@
 ?>      <form method="POST" action="">
 
             <input type="text" name="username" value="" placeholder="Nouveau pseudo" 
-                    title="Entrez un pseudo sans caractère spéciaux."><br/>
+                    title="Entrez un pseudo sans caractère spéciaux." required><br/>
 
             <input type="hidden" name="menu" value="username">
 

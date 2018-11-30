@@ -36,7 +36,7 @@ INSERT INTO `deck` (`id`, `name`, `description`, `mark`, `autor_id`, `statut`, `
 
 INSERT INTO `passed` (`id`, `date_passed`, `number_game`, `score_user`, `user_id`, `deck_id`) VALUES
 (1, '2018-11-02 00:00:00', 5, 2, 1, 1),
-(2, '2018-11-15 00:00:00', 3, 7, 1, 2);
+(2, '2018-11-15 00:00:00', 3, 7, 2, 2);
 
 --
 -- Déchargement des données de la table `user`
