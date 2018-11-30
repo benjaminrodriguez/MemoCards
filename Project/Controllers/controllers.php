@@ -11,7 +11,7 @@
             if (password_verify($_POST['password'], $data['password']))
             { 
                 // STOCKAGE VARIABLE SESSION
-                $_SESSION['id'] = $data['id'];
+                $_SESSION['id'] = intval($data['id']);
                 $_SESSION['username'] = $data['username'];
                 $_SESSION['statut'] = $data['statut'];
                 $_SESSION['birth_date'] = $data['birth_date'];
@@ -145,7 +145,7 @@
             {
             //UPDATE dans la BDD le nouveau pseudo de l'user
             $_SESSION['username'] = htmlspecialchars($_POST['username']);
-            username_UPDATE($_SESSION['username'], $_SESSION['id']);
+            username_UPDATE($_SESSION['username'], intval($_SESSION['id']));
             
             header('Location: index.php?page=profile');
             exit;
@@ -178,7 +178,7 @@
                 {
                     
                     $new_password = password_hash(htmlspecialchars($_POST['new_password1']), PASSWORD_BCRYPT);
-                    password_UPDATE($new_password, $_SESSION['id']);
+                    password_UPDATE($new_password, intval($_SESSION['id']));
                     $_SESSION['error'] = "Votre mot de passe à été modifier avec succès.";
                 }
             }
