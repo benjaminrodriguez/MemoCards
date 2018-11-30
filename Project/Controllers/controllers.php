@@ -125,82 +125,15 @@
 
     function my_profile()
     {
-        change_username();
-        change_password();
-        change_profile_picture();
+        require_once(dirname(__FILE__).'/php/change_username.php');
+        require_once(dirname(__FILE__).'/php/change_password.php');
+        require_once(dirname(__FILE__).'/php/change_profile_picture.php');
         disconnect();
         require(dirname(__FILE__).'/../Views/top_menu_Views.php');
         require(dirname(__FILE__).'/../Views/profile_menu_Views.php');
         
     }
         
-    //-----------------------------------------------------------------------------------------
-
-    function change_username()
-    {
-        //Changer son pseudo :
-        if(isset($_POST['menu']) && $_POST['menu'] === "username")
-        {
-            if(isset($_POST['username']))
-            {
-            //UPDATE dans la BDD le nouveau pseudo de l'user
-            $_SESSION['username'] = htmlspecialchars($_POST['username']);
-            username_UPDATE($_SESSION['username'], intval($_SESSION['id']));
-            
-            header('Location: index.php?page=profile');
-            exit;
-            }
-        }
-    }
-
-    //-----------------------------------------------------------------------------------------
-
-    function change_password()
-    {
-        //Changer son password :
-        if(isset($_POST['menu']) && $_POST['menu'] === "password")
-        {
-            if(isset($_POST['old_password'])) 
-            { 
-                //Vérifie si le password actuel entré est correcte
-                $password = password_SELECT($_SESSION['id']);
-                $password = $password['password'];
-                $test_old_password = false;
-                $error = '';
-                password_verify(htmlspecialchars($_POST['old_password']), $password)? $test_old_password = true : $_SESSION['error'] = 'Le mot de passe actuel entré n\'est pas le bon.';
-
-                //Vérifie si les 2 new_password entrés sont semblabes
-                $test_new_password = false;
-                ($_POST['new_password1']===$_POST['new_password2'])? $test_new_password = true : $_SESSION['error'] = 'Les nouveaux mots de passe ne sont pas identique.' ;
-
-                //Si tout est bon : change le mot de passe
-                if($test_old_password===true && $test_new_password===true)
-                {
-                    
-                    $new_password = password_hash(htmlspecialchars($_POST['new_password1']), PASSWORD_BCRYPT);
-                    password_UPDATE($new_password, intval($_SESSION['id']));
-                    $_SESSION['error'] = "Votre mot de passe à été modifier avec succès.";
-                }
-            }
-        }
-    }
-
-    //-----------------------------------------------------------------------------------------
-
-     function change_profile_picture()
-     {
-            //Changer son avatar :
-            if(isset($_POST['profile_picture']))
-            {
-                picture_UPDATE(htmlspecialchars($_POST['profile_picture']), intval($_SESSION['id']));
-                $_SESSION['profile_picture'] = htmlspecialchars($_POST['profile_picture']);
-                header('Location: index.php?page=profile');
-                exit;
-            }
-            //else $error = 'Un problème est survenu lors du changement de l\'avatar';
-        
-     }
-
     //-----------------------------------------------------------------------------------------
 
     function my_stats()
@@ -221,102 +154,25 @@
 
     function forum()
     {
-        create_topic();
-        delete_topic();
+        require_once(dirname(__FILE__).'/php/create_topic.php');
+        require_once(dirname(__FILE__).'/php/delete_topic.php');
+       
         // SI USER CLIQUE SUR UN SUJET, ILS S'AFFICHENT
-        if (isset($_GET['id']))
-        {
-            read_topic();
-        }
-        write_topic();
-        delete_message();
+        if (isset($_GET['id']))  require_once(dirname(__FILE__).'/php/read_topic.php');
+        
+        require_once(dirname(__FILE__).'/php/write_topic.php');
+        require_once(dirname(__FILE__).'/php/delete_message.php');
+
+
         require(dirname(__FILE__).'/../Views/top_menu_Views.php');
         //echo 'Le Forum ...';
         require(dirname(__FILE__).'/../Views/forum_Views.php');
+        
         // AFFICHE TOUS LES SUJETS DU FORUM
         subjects_SELECT();
 
     }
 
-    //-----------------------------------------------------------------------------------------
-
-    function create_topic()
-    {
-        // CREER UN SUJET
-        if (isset($_POST['choix_forum']) && $_POST['choix_forum'] === 'creer_sujet')
-        {
-            // SI LE FORM EST REMPLI
-            if (isset($_POST['title']) && isset($_POST['content']))
-            {
-                // LORSQU'UN SUJET EST CREE IL EST OUVERT PAR DEFAUT
-                $statut = 'ouvert';
-
-                // ON RECUPERE DATE ET HEURE
-                //$date_time=date("Y-m-d H:i:s");
-
-                //var_dump($_POST['title'], $date_time, $statut, $_POST['content'], $_SESSION['id']);
-
-                // APPEL DE LA REQ SQL
-                topic_INSERT(htmlspecialchars($_POST['title']), $statut, htmlspecialchars($_POST['content']), $_SESSION['id'] );
-            }
-        }
-    }
-
-    //-----------------------------------------------------------------------------------------
-
-    function delete_topic()
-    {
-        // SUPPRIMER UN SUJET
-         if (isset($_POST['choix_forum']) && $_POST['choix_forum'] === 'supprimer_sujet')
-        {
-            if ($_SESSION['statut'] === 'admin')
-            {
-                echo 'supprimer sujet';
-            }
-            else 
-            {
-                echo 'vous n\'avez pas les droits pour cette action';
-            }
-        }
-    }
-
-    //-----------------------------------------------------------------------------------------
-
-    function read_topic()
-    {
-        if (isset($_GET['id']) && !empty($_GET['id']))
-        {
-            messages_subject_SELECT(htmlspecialchars($_GET['id']));
-            //echo 'afficher tous les messages du sujet XXXX';
-        }
-    }
-
-    //-----------------------------------------------------------------------------------------
-
-    function write_topic()
-    {
-        if (isset($_POST['choix_forum']) && $_POST['choix_forum'] === 'ecrire_message_sujet')
-        {
-            echo 'ecrire un message sur ce sujet';
-        }
-    }
-
-    //-----------------------------------------------------------------------------------------
-
-    function delete_message()
-    {
-        if (isset($_POST['choix_forum']) && $_POST['choix_forum'] === 'supprimer_message_sujet')
-        {
-            if ($id_auteur_message === $_SESSION['id'])
-            {
-                echo 'message supprime';
-            }
-            else 
-            {
-                echo 'desole seul l\'auteur peut delete son message';
-            }
-        }
-    }
 
     //-----------------------------------------------------------------------------------------
 
@@ -339,7 +195,6 @@
     }
 
     //-----------------------------------------------------------------------------------------
-
 
 
 
