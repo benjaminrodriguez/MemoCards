@@ -312,12 +312,26 @@
 
     function my_inventory()
     {
-
+        $datas = affiche_deck();
         require(dirname(__FILE__).'/../Views/top_menu_Views.php');
         require(dirname(__FILE__).'/../Views/inventory_Views.php');
     }
 
     //-----------------------------------------------------------------------------------------
+
+    function affiche_deck()
+    {
+        $req = last_deck_play_SELECT($_SESSION['id']);
+        $datas = $req->fetchAll();
+        var_dump($datas);
+
+        return $datas;
+    }
+
+    //-----------------------------------------------------------------------------------------
+
+
+
 
 
 ?>
