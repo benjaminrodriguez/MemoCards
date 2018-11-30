@@ -154,22 +154,43 @@
 
     function forum()
     {
-        require_once(dirname(__FILE__).'/php/create_topic.php');
-        require_once(dirname(__FILE__).'/php/delete_topic.php');
+        // HEADER
+        require(dirname(__FILE__).'/../Views/top_menu_Views.php');
+
+        // CREER SUJET
+        if (!isset($_GET['id'])) {
+            require_once(dirname(__FILE__).'/php/create_topic.php');
+        }
+
+        // AFFICHE TOUS LES SUJETS DU FORUM
+        if (!isset($_GET['id'])) {
+            subjects_SELECT();
+        }
+        if ($_SESSION['statut'] == 'admin' && $_POST['choix_forum'] == 'delete_topic') {
+            require_once(dirname(__FILE__).'/php/delete_topic.php');
+        }
        
         // SI USER CLIQUE SUR UN SUJET, ILS S'AFFICHENT
-        if (isset($_GET['id']))  require_once(dirname(__FILE__).'/php/read_topic.php');
+        if (isset($_GET['id'])) {
+            require_once(dirname(__FILE__).'/php/read_topic.php');
+            require(dirname(__FILE__).'/../Views/forum_Views.php');
+        }
+
+        // ON ECRIT MESSAGE DANS SUJET
+        if (isset($_POST['choix_forum']) && $_POST['choix_forum'] == 'write_topic' && isset($_GET['id'])) {
+            require_once(dirname(__FILE__).'/php/write_topic.php');
+        }
         
-        require_once(dirname(__FILE__).'/php/write_topic.php');
-        require_once(dirname(__FILE__).'/php/delete_message.php');
+        // SUPPRIMER UN MESSAGE DONT ON EST L'AUTEUR
+        if (isset($_POST['choix_forum']) && $_POST['choix_forum'] == 'delete_message' && $_SESSION['id'] == $autor_id) {
+            require_once(dirname(__FILE__).'/php/delete_message.php');
+        }
 
-
-        require(dirname(__FILE__).'/../Views/top_menu_Views.php');
+        
         //echo 'Le Forum ...';
         require(dirname(__FILE__).'/../Views/forum_Views.php');
         
-        // AFFICHE TOUS LES SUJETS DU FORUM
-        subjects_SELECT();
+        
 
     }
 

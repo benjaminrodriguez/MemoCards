@@ -15,6 +15,8 @@
 
 1) Sur l'affichage des sujets du forum passer le format de date de en à fr
 
+2) Inscription avec hobbies !!!!
+
 ------------------------------------------------------------------
 
 
@@ -26,6 +28,15 @@ SAMI :
 2) Mettre des limites et contraites sur les formulaires pseudo / mpd / avatar etc...
 
 
+
+------------------------------------------------------------------
+------------------------------------------------------------------
+
+
+
+BENJI : 
+
+1) Limiter le nb de sujets qui s'affichent sur l'accueil forum
 
 ------------------------------------------------------------------
 ------------------------------------------------------------------

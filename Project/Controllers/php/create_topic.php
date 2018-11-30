@@ -16,7 +16,7 @@
             //var_dump($_POST['title'], $date_time, $statut, $_POST['content'], $_SESSION['id']);
 
             // APPEL DE LA REQ SQL
-            topic_INSERT(htmlspecialchars($_POST['title']), $statut, htmlspecialchars($_POST['content']), $_SESSION['id'] );
+            create_topic_INSERT(htmlspecialchars($_POST['title']), $statut, htmlspecialchars($_POST['content']), $_SESSION['id'] );
         }
     }
     

@@ -44,7 +44,7 @@
 
     // ----------------------------------------------------------------------------
 
-    function topic_INSERT($title, $status, $content, $user_id)
+    function create_topic_INSERT($title, $status, $content, $user_id)
     {
         $bdd = bdd();
         // INSCRIPTION
@@ -55,6 +55,22 @@
         $creer_sujet->execute(array($title, $content, $status, $user_id));
     }
 
+    // ----------------------------------------------------------------------------
+
+    function write_topic_INSERT($content, $autor_id)
+    {
+        $bdd = bdd();
+        // INSCRIPTION
+        $creer_sujet = $bdd->prepare(
+            'INSERT INTO subject (date, content,autor_id)
+            INNER JOIN message_has_subject ON message.id=message_has_subject.message_id
+            INNER JOIN subject ON subject.id=message_has_subject.subject_id
+            VALUES (NOW(), ?, ?);
+            ');
+        $creer_sujet->execute(array($content, $autor_id));
+    }
+
+    // ----------------------------------------------------------------------------
 
     function nb_card_select ($iddeck)
     {
@@ -265,9 +281,10 @@
         $req = $bdd->prepare(' SELECT *
                             FROM message
                             INNER JOIN message_has_subject ON message.id=message_has_subject.message.id
-                            INNER JOIN subject ON subject.id=message_has_subject.subject.id
+                            INNER JOIN subject ON subject.id=message_has_subject.subject_id
                             WHERE subject.id = ?
-                            LIMIT 1
+                            ORDER BY date DEESC
+                            LIMIT 1;
                             ');
         $req->execute(array($id));
         $donnees = $req->fetch();

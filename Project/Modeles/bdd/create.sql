@@ -158,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `message` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date` datetime NOT NULL,
   `content_message` longtext NOT NULL,
-  `autor_id` varchar(45) NOT NULL,
+  `autor_id` int(11)) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
