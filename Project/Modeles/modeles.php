@@ -239,8 +239,9 @@
         // METTRE AU FORMAT FR
         //DATE_FORMAT(date_posted, '%m/%d/%Y %H:%i')
         $bdd = bdd();
-        $forum = $bdd->query('SELECT id,title, date_posted
+        $forum = $bdd->query('SELECT subject.id,title, date_posted, user.username AS username
                                 FROM subject
+                                INNER JOIN user ON subject.user_id=user.id
                                 ORDER BY date_posted DESC;
                             ');
         //$forum->execute(array());
@@ -249,7 +250,8 @@
         {
             //return $subject;
             $count++;
-            echo '<a href=index.php?page=forum&id=' .$subject['id'].'>'.$subject['title']. 'date : ' .$subject['date_posted']. '</a><br><br>';
+            echo '<a href=index.php?page=forum&id=' .$subject['id'].'> Sujet : '.$subject['title']. 
+            ' date du : ' .$subject['date_posted']. ' par ' .$subject['username'].'</a><br><br>';
         }
         $forum->closeCursor();
 
