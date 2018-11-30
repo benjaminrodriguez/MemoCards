@@ -1,6 +1,7 @@
 <?php
     session_start();
     require('Controllers/controllers.php');
+    require('Controllers/quest_controleurs.php');
 
     
     if (isset($_GET['page']) && !empty($_GET['page'])) 
@@ -40,7 +41,7 @@
         }
         else if ($_GET['page'] == 'test')
         {
-            require("./Controllers/quest_controleurs.php");
+            game1();
         }
         else
         {
