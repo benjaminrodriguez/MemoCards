@@ -43,3 +43,6 @@ Modification à voir pour la BDD :
 
 5) Ajouter l'attribut "date_creation" type DATE dans "deck".
 
+6) Ajouter un attributs "list_like" ou l'utilisateur pourrait aimer des decks ou post de forum.
+
+7) Ajouter une option de suivis sur le forum : petit drapeau qui permetrais de suivre les sujets voulus.
