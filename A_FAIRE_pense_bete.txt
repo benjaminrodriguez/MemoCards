@@ -1,7 +1,5 @@
 --------------------------- OBLIGATOIRE ---------------------------
 
-1) Changer les noms d'attributs de la base de données qui sont en FR --> Eng
-
 2) Corriger les noms de $_SESSION : certains sont en FR --> Eng
 
 3) Sécuriser TOUT les formulaires du sites.
@@ -12,6 +10,36 @@
 
 ------------------------------------------------------------------
 
+
 --------------------------- A TRAITER EN PRIORITE -------------------
 
 1) Sur l'affichage des sujets du forum passer le format de date de en à fr
+
+------------------------------------------------------------------
+
+
+
+SAMI :
+
+1) Chercher un moyen de conserver les sauts de lignes dans les commentaires.
+
+2) Mettre des limites et contraites sur les formulaires pseudo / mpd / avatar etc...
+
+
+
+------------------------------------------------------------------
+------------------------------------------------------------------
+
+
+Modification à voir pour la BDD :
+
+1) Ajouter un attribut dans la table "deck" pour donner une image aux decks.
+
+2) Traduire l'attribut "statut" en "status" dans "deck".
+
+3) Modifier le type de l'attribut "mark" dans "deck" : Decimal(1,1  --> int ou Decimal(2,2)).
+
+4) Différence entre "description" et "comment_user" ? --> Si aucune delete comment_user.
+
+5) Ajouter l'attribut "date_creation" type DATE dans "deck".
+

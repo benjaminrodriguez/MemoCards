@@ -331,14 +331,41 @@
 
     //--------------------------------------------------------------------------------
 
-    function my_deck_SELECT()
+    function my_deck_SELECT($user_id)
     {
+        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
         $bdd = bdd();
-        $req = $bdd->prepare('  SELECT
+        $req = $bdd->prepare('  SELECT deck.name, deck.description, deck.mark, deck.statut
+                                FROM deck
+                                LEFT JOIN passed ON deck.id = passed.deck_id
+                                LEFT JOIN user ON passed.user_id = user.id
+                                WHERE user.id = ?
                             ');
+        $req->execute(array($user_id));
+        return $req;
     }
+
     //--------------------------------------------------------------------------------
 
+    function last_deck_play_SELECT($user_id)
+    {
+        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR TRIER PAR DATE DE LA DERNIERE PARTIE JOUEE
+        $bdd = bdd();
+        $req = $bdd->prepare('  SELECT deck.id, deck.autor_id, deck.name, deck.description, deck.mark, deck.statut, passed.date_passed
+                                FROM deck
+                                LEFT JOIN passed ON deck.id = passed.deck_id
+                                LEFT JOIN user ON passed.user_id = user.id
+                                WHERE user.id = ?
+                                ORDER BY passed.date_passed ;
+                            ');
+        $req->execute(array($user_id));
+        return $req;
+    }
+    
+    //--------------------------------------------------------------------------------
+
+
+    
     function bdd()
     {
         //CONNEXION A LA BDD
