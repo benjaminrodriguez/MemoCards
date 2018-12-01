@@ -1,7 +1,7 @@
 <?php
     session_start();
     require('Controllers/controllers.php');
-    require('Controllers/quest_controleurs.php');
+    //require('Controllers/quest_controleurs.php');
 
     
     if (isset($_GET['page']) && !empty($_GET['page'])) 

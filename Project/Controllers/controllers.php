@@ -1,5 +1,6 @@
 <?php
     require(dirname(__FILE__).'/../Modeles/modeles.php');
+    require(dirname(__FILE__).'/../Controllers/php/function_game.php');
 
     function connection()
     {
@@ -217,7 +218,34 @@
 
     //-----------------------------------------------------------------------------------------
 
+    function game1()
+    {
+        if (!isset($_SESSION['deck']))
+        {
+            game_unset();
+        }
+        else 
+        {
+            game_getprevar();
 
+            if (isset($_POST['answer'])) 
+            {
+                game_answer();
+            }
 
+            if (isset($_POST['fin']))
+            {
+                $_SESSION['cpt'] = $_SESSION['cptall'] + 1;
+            }
 
+            if ($_SESSION['cpt'] <= intval($_SESSION['cptall']))
+            {
+                game_q();
+            }
+            else
+            {
+            game_end();
+            }
+        }
+    }
 ?>
