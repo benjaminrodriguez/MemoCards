@@ -62,10 +62,12 @@
         $bdd = bdd();
         // INSCRIPTION
         $creer_sujet = $bdd->prepare(
-            'INSERT INTO subject (date, content,autor_id)
+            'INSERT INTO message (date, content,autor_id)
+            INSERT INTO message_has_subject (subject_id, message_id)
             INNER JOIN message_has_subject ON message.id=message_has_subject.message_id
             INNER JOIN subject ON subject.id=message_has_subject.subject_id
-            VALUES (NOW(), ?, ?);
+            VALUES (NOW(), ?, ?, ?, ?)
+                WHERE (SELECT (MAX(id)+1) FROM message);
             ');
         $creer_sujet->execute(array($content, $autor_id));
     }
