@@ -27,25 +27,19 @@
                 }
             } ?> <br><br>
 
+</form>
 
+
+
+<form method ="GET" action="">
+
+        <input type="hidden" name="page" value="inventory">
         <!-- ------------------------------- Bouton Voir tout les deck ----------------------- -->
-        <button name="see_more" value="ok">Voir tout vos decks</button>
-
-
+        <button name="action" value="show_deck">Voir tout vos decks</button>
 
         <!-- ------------------------------- Bouton Creer Deck ------------------------------- -->
-        <!--    <label for="creer"> ->logo<- </label>   -->
-        <button type="submit" id="creer" name="inventaire" value="creer">Créer un nouveau deck</button>
-        
-        
-        
-        
-        
-        
-        
-        
-    
-    </form>
+        <button   name="action" value="create_deck">Créer un nouveau deck</button>                   
+</form>
 
 
 

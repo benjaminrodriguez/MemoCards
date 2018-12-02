@@ -200,21 +200,24 @@
 
     function my_inventory()
     {
-        $datas = affiche_deck();
+        // AFFICHE LA PAGE DE BASE
+        //require(dirname(__FILE__).'/php/inventory.php');
         require(dirname(__FILE__).'/../Views/top_menu_Views.php');
-        require(dirname(__FILE__).'/../Views/inventory_Views.php');
+
+        // AFFICHE LES 3 DECKS LES PLUS UTILISER PAR L'USER
+        if (!isset($_GET['action'])) {
+            $req = last_deck_play_SELECT($_SESSION['id']);
+            $datas = $req->fetchAll();
+            require(dirname(__FILE__).'/../Views/inventory_Views.php');
+        } 
+        // L'USER CREER UN DECK
+        else if ($_GET['action'] == 'create_deck') {
+
+            require(dirname(__FILE__).'/../Views/create_deck_Views.php');
+        } 
+        
     }
 
-    //-----------------------------------------------------------------------------------------
-
-    function affiche_deck()
-    {
-        $req = last_deck_play_SELECT($_SESSION['id']);
-        $datas = $req->fetchAll();
-        var_dump($datas);
-
-        return $datas;
-    }
 
     //-----------------------------------------------------------------------------------------
 

@@ -50,7 +50,7 @@
     }
     else 
     {
-        header('Location: index.php?page=connection');
+        //header('Location: index.php?page=connection');
     }
 
 
