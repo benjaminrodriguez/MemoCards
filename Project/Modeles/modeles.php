@@ -57,19 +57,15 @@
 
     // ----------------------------------------------------------------------------
 
-    function write_topic_INSERT($content, $autor_id)
+    function write_topic_INSERT($content, $autor_id, $subject_id)
     {
         $bdd = bdd();
         // INSCRIPTION
         $creer_sujet = $bdd->prepare(
-            'INSERT INTO message (date, content,autor_id)
-            INSERT INTO message_has_subject (subject_id, message_id)
-            INNER JOIN message_has_subject ON message.id=message_has_subject.message_id
-            INNER JOIN subject ON subject.id=message_has_subject.subject_id
-            VALUES (NOW(), ?, ?, ?, ?)
-                WHERE (SELECT (MAX(id)+1) FROM message);
+            'INSERT INTO message (date, content_message, autor_id, subject_id)
+            VALUES (NOW(), ?, ?, ?);
             ');
-        $creer_sujet->execute(array($content, $autor_id));
+        $creer_sujet->execute(array($content, $autor_id, $subject_id));
     }
 
     // ----------------------------------------------------------------------------
@@ -280,17 +276,26 @@
     function messages_subject_SELECT($id)
     {
         $bdd = bdd();
-        $req = $bdd->prepare(' SELECT *
-                            FROM message
-                            INNER JOIN message_has_subject ON message.id=message_has_subject.message.id
-                            INNER JOIN subject ON subject.id=message_has_subject.subject_id
-                            WHERE subject.id = ?
-                            ORDER BY date DEESC
-                            LIMIT 1;
-                            ');
-        $req->execute(array($id));
-        $donnees = $req->fetch();
-        return $donnees;
+        $forum = $bdd->prepare('SELECT *
+                                FROM message
+                                INNER JOIN subject ON message.subject_id=subject.id
+                                INNER JOIN user ON subject.user_id=user.id
+                                WHERE subject_id = ?
+                                ORDER BY date DESC
+                                LIMIT 1;
+                                ');
+        $count = 0;
+        $forum->execute(array($id));
+        while ($message = $forum->fetch()) 
+        {
+        //return $subject;
+        $count++;
+        echo '#'.$count.' '.$message['content_message'].' date du : ' .$message['date']. 
+        ' par ' .$message['username'].'<br><br>';
+        }
+        $forum->closeCursor();
+        //$donnees = $req->fetch();
+        //return $donnees;
     }
     
     //-------------------------------------------------------------------------------

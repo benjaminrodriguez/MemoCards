@@ -159,36 +159,56 @@
         require(dirname(__FILE__).'/../Views/top_menu_Views.php');
 
         // CREER SUJET
-        if (!isset($_GET['id'])) {
+        if (!isset($_GET['id'])) 
+        {
+
+            // AFFICHE TOUS LES SUJETS DU FORUM
+            subjects_SELECT();
+
+            // ECRIRE UN SUJET
             require_once(dirname(__FILE__).'/php/create_topic.php');
         }
 
-        // AFFICHE TOUS LES SUJETS DU FORUM
-        if (!isset($_GET['id'])) {
-            subjects_SELECT();
-        }
-        if ($_SESSION['statut'] == 'admin' && $_POST['choix_forum'] == 'delete_topic') {
-            require_once(dirname(__FILE__).'/php/delete_topic.php');
+        
+        // SUPPRESSION SUJET
+        if (isset($_POST['choix_forum']) && $_POST['choix_forum'] == 'delete_topic')
+        {
+            if ($_SESSION['statut'] == 'admin')
+            {
+                require_once(dirname(__FILE__).'/php/delete_topic.php');
+            }
+            else 
+            {
+                echo 'vous n\'avez pas les droits';
+            }
         }
        
         // SI USER CLIQUE SUR UN SUJET, ILS S'AFFICHENT
-        if (isset($_GET['id'])) {
-            require_once(dirname(__FILE__).'/php/read_topic.php');
-            require(dirname(__FILE__).'/../Views/forum_Views.php');
-        }
+        /*if (isset($_GET['id'])) 
+        {
 
-        // ON ECRIT MESSAGE DANS SUJET
-        if (isset($_POST['choix_forum']) && $_POST['choix_forum'] == 'write_topic' && isset($_GET['id'])) {
+
+            //require_once(dirname(__FILE__).'/php/read_topic.php');
+            //require(dirname(__FILE__).'/../Views/forum_Views.php');
+        }*/
+
+        if (isset($_POST['choix_forum']) && $_POST['choix_forum'] == 'write_topic' && isset($_GET['id'])) 
+        {
+
+            // AFFICHE MESSAGES D'UN SUJET
+            messages_subject_SELECT($_GET['id']);
+
+            // ON ECRIT MESSAGE DANS SUJET
             require_once(dirname(__FILE__).'/php/write_topic.php');
         }
         
         // SUPPRIMER UN MESSAGE DONT ON EST L'AUTEUR
-        if (isset($_POST['choix_forum']) && $_POST['choix_forum'] == 'delete_message' && $_SESSION['id'] == $autor_id) {
+        if (isset($_POST['choix_forum']) && $_POST['choix_forum'] == 'delete_message' && $_SESSION['id'] == $autor_id) 
+        {
             require_once(dirname(__FILE__).'/php/delete_message.php');
         }
 
         
-        //echo 'Le Forum ...';
         require(dirname(__FILE__).'/../Views/forum_Views.php');
         
         
