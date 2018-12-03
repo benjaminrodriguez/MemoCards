@@ -43,6 +43,10 @@
         {
             game1();
         }
+        else if ($_GET['page'] == 'message')
+        {
+            message();
+        }
         else
         {
             header('Location: index.php?page=connection');
@@ -52,40 +56,4 @@
     {
         header('Location: index.php?page=connection');
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*if (isset($_GET['page'])) {
-        switch ($_GET['page']) {
-
-            case 'accueil':
-                
-                break;
-
-            case 'connetion':
-                connection();
-                break;
-
-            case 'inscription':
-                home($_SESSION['id']);
-                break;
-        }
-    }else 
-    {
-        if (!isset($_SESSION['name'])) {
-            require('./Views/connection_Views.php');
-        } else {
-            header('Location:index.php?page=accueil');
-        }
-    }*/
 ?>

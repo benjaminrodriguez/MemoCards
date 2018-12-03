@@ -7,9 +7,9 @@
         if(isset($_POST['username']) && isset($_POST['password'])) 
         {
             //RECUPERE LES DONNEES DE L'USER
-            $data = connection_SELECT($_POST['username']);
+            $data = connection_SELECT(htmlspecialchars($_POST['username']);
 
-            if (password_verify($_POST['password'], $data['password']))
+            if (password_verify(htmlspecialchars($_POST['password']), $data['password']))
             { 
                 // STOCKAGE VARIABLE SESSION
                 $_SESSION['id'] = intval($data['id']);
@@ -113,7 +113,8 @@
         //require(dirname(__FILE__).'/../Controllers/php/mail_auto.php');
         //mail_auto_inscription();
         //send_mail();
-        header('Location: index.php?page=connection');
+        require(dirname(__FILE__).'/../Public/js/create_account.js');
+        //header('Location: index.php?page=connection');
         }
 
         require(dirname(__FILE__).'/../Views/inscription_Views.php');
@@ -183,12 +184,15 @@
        
         if (isset($_GET['id'])) 
         {
-
+            $_SESSION['subject_id'] = intval($_GET['id']);
             // ON ECRIT MESSAGE DANS SUJET
             require_once(dirname(__FILE__).'/php/write_topic.php');
 
+            // AFFICHE LE CONTENU DU SUJET
+            first_messages_subject_SELECT($_GET['id']);
+
             // AFFICHE MESSAGES D'UN SUJET
-            $print_message = messages_subject_SELECT($_GET['id']);
+            $print_message = messages_subject_SELECT(intval($_GET['id']));
             foreach ($print_message as $key => $value) 
             {
                 require(dirname(__FILE__).'/../Views/forum_affichage_message.php');
@@ -197,8 +201,9 @@
         }
         
         // SUPPRIMER UN MESSAGE DONT ON EST L'AUTEUR
-        if (isset($_POST['choix_forum']) && $_POST['choix_forum'] == 'delete_message' && $_SESSION['id'] == $autor_id) 
+        if (isset($_POST['choix_forum']) && $_POST['choix_forum'] == 'delete_message') 
         {
+            echo 'coucou';
             require_once(dirname(__FILE__).'/php/delete_message.php');
         }
 
@@ -226,15 +231,18 @@
             die('ok');
         } 
         else if ($_GET['action'] == 'create_deck') {
+
             // CREATION DU DECK
             $req = categories_SELECT();
             $categories = $req->fetchAll();
             require(dirname(__FILE__).'/../Views/create_deck_Views.php');
         } 
         else if ($_GET['action'] == 'create_questions') {
+
             // INSERTION DU DECK DANS LA BDD
-            if (empty($_POST['picture'])) $_POST['picture'] = './Public/img/appareil_photo.jpg';
-            new_deck_INSERT($_POST['title'], $_POST['description'], $_SESSION['id'], $_POST['picture'], $_POST['categorie']);
+            if (empty($_POST['picture'])) htmlspecialchars($_POST['picture']) = './Public/img/appareil_photo.jpg';
+            new_deck_INSERT(htmlspecialchars($_POST['title']), htmlspecialchars($_POST['description']), intval($_SESSION['id']), 
+            htmlspecialchars($_POST['picture']), htmlspecialchars($_POST['categorie']));
 
             // CREATIONS DE 10 QUESTIONS MINIMUMS POUR LE DECK
             require(dirname(__FILE__).'/../Views/create_questions_Views.php');
@@ -274,5 +282,10 @@
             game_end();
             }
         }
+    }
+
+    function message ()
+    {
+        // CA ARRIVE BIENTOT NRV
     }
 ?>

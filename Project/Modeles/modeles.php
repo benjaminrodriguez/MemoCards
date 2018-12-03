@@ -28,6 +28,19 @@
         $desinscription->execute(array($id));
     }  
 
+    // ----------------------------------------------------------------------------
+
+    function message_DELETE ($id)
+    {
+        // DESINSCRIPTION USER
+        $bdd = bdd();
+        $desinscription = $bdd->prepare(
+        'DELETE FROM message
+         WHERE message.id = ?
+         VALUES (?);
+        ');
+        $desinscription->execute(array($id));
+    }
 
     // ----------------------------------------------------------------------------
 
@@ -67,7 +80,6 @@
                                     ');
         $inscription->execute(array($user_id, $id_hobby));
         
-
     }
 
     // ----------------------------------------------------------------------------
@@ -304,7 +316,7 @@
     function messages_subject_SELECT($id)
     {
         $bdd = bdd();
-        $forum = $bdd->prepare('SELECT message.content_message, message.date, user.username
+        $forum = $bdd->prepare('SELECT message.content_message, message.date, user.username, message.id
                                 FROM message
                                 INNER JOIN subject ON message.subject_id=subject.id
                                 INNER JOIN user ON subject.user_id=user.id
@@ -314,15 +326,39 @@
         $count = 0;
         $forum->execute(array($id));
         $message = $forum->fetchAll(PDO::FETCH_ASSOC);
-        
         return $message;
-        /*$count++;
-        echo '#'.$count.' '.$message['content_message'].' date du : ' .$message['date']. 
-        ' par ' .$message['username'].'<br><br>';
+    }
+
+    //-------------------------------------------------------------------------------
+
+    function messages_autor_SELECT($subject_num, $message_num)
+    {
+        $bdd = bdd();
+        $forum = $bdd->prepare('SELECT message.autor_id, message.subject_id
+                                FROM message
+                                WHERE subject_id AND id = ? 
+                                ;
+                                ');
+        $forum->execute(array($subject_num, $message_num));
+        $message = $forum->fetchAll(PDO::FETCH_ASSOC);
+        return $message;
+    }
+
+    //-------------------------------------------------------------------------------
+
+    function first_messages_subject_SELECT($id)
+    {
+        $bdd = bdd();
+        $forum = $bdd->prepare('SELECT *
+                                FROM subject
+                                WHERE id = ?
+                                ');
+        while ($subject = $forum->fetch($id)) 
+        {
+            echo $subject['content_message'].' le '.$subject['date'].' par '.$subject['username'].'<br>';
         }
         $forum->closeCursor();
-        //$donnees = $req->fetch();
-        //return $donnees;*/
+        
     }
     
     //-------------------------------------------------------------------------------
@@ -333,6 +369,7 @@
         $req = $bdd->prepare(' SELECT password
                             FROM user
                             WHERE id = ?
+                            VALUES(?)
                             LIMIT 1
                             ');
         $req->execute(array($id));
