@@ -1,4 +1,5 @@
 <?php
+ob_start();
 foreach ($_SESSION['listend'][0] as $key => $value)
 {
     echo "Question n° ". (intval($key)+1)."<br><br>";
