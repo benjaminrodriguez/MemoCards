@@ -44,17 +44,30 @@
 
     // ----------------------------------------------------------------------------
 
-    function inscription_insert_hobbies ()
+    function inscription_insert_hobbies_one ($hobby)
     {
         $bdd = bdd();
-        // INSCRIPTION HOBBIES
+        // INSCRIPTION HOBBY
         $inscription = $bdd->prepare(
-        'INSERT INTO hobbies (hobby,user.id)
-         INNER JOIN hobbies_has_user ON hobbies_has_user = user.id
-         INNER JOIN user ON hobbies_has_user = user.id
-         VALUES (?,?);
-        ');
-        $inscription->execute(array($hobbies));
+                                    'INSERT INTO hobbies (hobby)
+                                    VALUES (?);
+                                    ');
+        $inscription->execute(array($hobby));
+    }
+
+    // ----------------------------------------------------------------------------
+
+    function inscription_insert_hobbies_two ($user_id, $id_hobby)
+    {
+        $bdd = bdd();
+        // INSCRIPTION HOBBY TABLE INTERMEDIAIRE
+        $inscription = $bdd->prepare(
+                                    'INSERT INTO hobbies_has_user (user_id, hobbies_id)
+                                    VALUES (?, LAST_INSERT_ID());
+                                    ');
+        $inscription->execute(array($user_id, $id_hobby));
+        
+
     }
 
     // ----------------------------------------------------------------------------

@@ -102,23 +102,17 @@
         if(isset($_POST['password']))
         {
             $passhache = password_hash(htmlspecialchars($_POST['password']),  PASSWORD_DEFAULT);
-            $profile_picture = htmlspecialchars('https://github.com/projetInformatiqueIntech/MemoCards/blob/master/Project/Public/img/k.gif');
+
+            require(dirname(__FILE__).'/../Controllers/php/pp_random.php');
 
             // APPEL DE LA FONCTION SQL INSCRIPTION
             inscription_INSERT(htmlspecialchars($_POST['username']), $passhache, htmlspecialchars($_POST['date_de_naissance']),
                                 'membre', htmlspecialchars($_POST['sex']), htmlspecialchars($_POST['region']),
-                                htmlspecialchars($_POST['email']), $profile_picture
+                                htmlspecialchars($_POST['email']), htmlspecialchars($profile_picture)
                               );
-
-            if (isset($_POST['hobbies'])) 
-            {
-                inscription_INSERT_hobbies(htmlspecialchars($_POST['hobbies']));
-                //require(dirname(__FILE__).'/../Public/js/create_account.js');
-                exit;
-            }
-        require(dirname(__FILE__).'/../Controllers/php/mail_auto.php');
+        //require(dirname(__FILE__).'/../Controllers/php/mail_auto.php');
         //mail_auto_inscription();
-        send_mail();
+        //send_mail();
         header('Location: index.php?page=connection');
         }
 
@@ -132,6 +126,8 @@
         require_once(dirname(__FILE__).'/php/change_username.php');
         require_once(dirname(__FILE__).'/php/change_password.php');
         require_once(dirname(__FILE__).'/php/change_profile_picture.php');
+        require_once(dirname(__FILE__).'/php/change_hobbies.php');
+
         disconnect();
         require(dirname(__FILE__).'/../Views/top_menu_Views.php');
         require(dirname(__FILE__).'/../Views/profile_menu_Views.php');
@@ -172,7 +168,6 @@
             require_once(dirname(__FILE__).'/php/create_topic.php');
         }
 
-        
         // SUPPRESSION SUJET
         if (isset($_POST['choix_forum']) && $_POST['choix_forum'] == 'delete_topic')
         {
@@ -186,15 +181,6 @@
             }
         }
        
-        // SI USER CLIQUE SUR UN SUJET, ILS S'AFFICHENT
-        /*if (isset($_GET['id'])) 
-        {
-
-
-            //require_once(dirname(__FILE__).'/php/read_topic.php');
-            //require(dirname(__FILE__).'/../Views/forum_Views.php');
-        }*/
-        //var_dump($_GET,$_POST);
         if (isset($_GET['id'])) 
         {
 
@@ -207,8 +193,7 @@
             {
                 require(dirname(__FILE__).'/../Views/forum_affichage_message.php');
             }
-
-            
+     
         }
         
         // SUPPRIMER UN MESSAGE DONT ON EST L'AUTEUR
@@ -217,7 +202,6 @@
             require_once(dirname(__FILE__).'/php/delete_message.php');
         }
 
-        
         require(dirname(__FILE__).'/../Views/forum_Views.php');
         
         
