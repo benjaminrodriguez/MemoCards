@@ -48,7 +48,7 @@
     </li>
 
     <li class="nav-item active">
-      <?php echo $_SESSION['username'].'<br>'.$_SESSION['statut']; ?>
+      <?php echo $_SESSION['username'].'<br>'.$_SESSION['status']; ?>
     </li>
 
   </ul>

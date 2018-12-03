@@ -14,7 +14,7 @@
                 // STOCKAGE VARIABLE SESSION
                 $_SESSION['id'] = intval($data['id']);
                 $_SESSION['username'] = $data['username'];
-                $_SESSION['statut'] = $data['statut'];
+                $_SESSION['status'] = $data['status'];
                 $_SESSION['birth_date'] = $data['birth_date'];
                 $_SESSION['region'] = $data['region'];
                 $_SESSION['sex'] = $data['sex'];
@@ -102,21 +102,18 @@
         if(isset($_POST['password']))
         {
             $passhache = password_hash(htmlspecialchars($_POST['password']),  PASSWORD_DEFAULT);
-            $profile_picture = htmlspecialchars('https://raw.githubusercontent.com/projetInformatiqueIntech/MemoCards/master/Project/Public/img/linux.png');
+
+            require(dirname(__FILE__).'/../Controllers/php/pp_random.php');
 
             // APPEL DE LA FONCTION SQL INSCRIPTION
             inscription_INSERT(htmlspecialchars($_POST['username']), $passhache, htmlspecialchars($_POST['date_de_naissance']),
                                 'membre', htmlspecialchars($_POST['sex']), htmlspecialchars($_POST['region']),
-                                htmlspecialchars($_POST['email']), $profile_picture
+                                htmlspecialchars($_POST['email']), htmlspecialchars($profile_picture)
                               );
-
-            if (isset($_POST['hobbies'])) 
-            {
-                inscription_INSERT_hobbies(htmlspecialchars($_POST['hobbies']));
-                //require(dirname(__FILE__).'/../Public/js/create_account.js');
-                header('Location: index.php?page=connection');
-                exit;
-            }
+        //require(dirname(__FILE__).'/../Controllers/php/mail_auto.php');
+        //mail_auto_inscription();
+        //send_mail();
+        header('Location: index.php?page=connection');
         }
 
         require(dirname(__FILE__).'/../Views/inscription_Views.php');
@@ -129,6 +126,8 @@
         require_once(dirname(__FILE__).'/php/change_username.php');
         require_once(dirname(__FILE__).'/php/change_password.php');
         require_once(dirname(__FILE__).'/php/change_profile_picture.php');
+        require_once(dirname(__FILE__).'/php/change_hobbies.php');
+
         disconnect();
         require(dirname(__FILE__).'/../Views/top_menu_Views.php');
         require(dirname(__FILE__).'/../Views/profile_menu_Views.php');
@@ -169,7 +168,6 @@
             require_once(dirname(__FILE__).'/php/create_topic.php');
         }
 
-        
         // SUPPRESSION SUJET
         if (isset($_POST['choix_forum']) && $_POST['choix_forum'] == 'delete_topic')
         {
@@ -183,23 +181,19 @@
             }
         }
        
-        // SI USER CLIQUE SUR UN SUJET, ILS S'AFFICHENT
-        /*if (isset($_GET['id'])) 
+        if (isset($_GET['id'])) 
         {
-
-
-            //require_once(dirname(__FILE__).'/php/read_topic.php');
-            //require(dirname(__FILE__).'/../Views/forum_Views.php');
-        }*/
-
-        if (isset($_POST['choix_forum']) && $_POST['choix_forum'] == 'write_topic' && isset($_GET['id'])) 
-        {
-
-            // AFFICHE MESSAGES D'UN SUJET
-            messages_subject_SELECT($_GET['id']);
 
             // ON ECRIT MESSAGE DANS SUJET
             require_once(dirname(__FILE__).'/php/write_topic.php');
+
+            // AFFICHE MESSAGES D'UN SUJET
+            $print_message = messages_subject_SELECT($_GET['id']);
+            foreach ($print_message as $key => $value) 
+            {
+                require(dirname(__FILE__).'/../Views/forum_affichage_message.php');
+            }
+     
         }
         
         // SUPPRIMER UN MESSAGE DONT ON EST L'AUTEUR
@@ -208,7 +202,6 @@
             require_once(dirname(__FILE__).'/php/delete_message.php');
         }
 
-        
         require(dirname(__FILE__).'/../Views/forum_Views.php');
         
         
@@ -220,21 +213,35 @@
 
     function my_inventory()
     {
-        $datas = affiche_deck();
+        // AFFICHE LA PAGE DE BASE
+        //require(dirname(__FILE__).'/php/inventory.php');
         require(dirname(__FILE__).'/../Views/top_menu_Views.php');
-        require(dirname(__FILE__).'/../Views/inventory_Views.php');
+
+        // AFFICHE LES 3 DECKS LES PLUS UTILISER PAR L'USER
+        if (!isset($_GET['action'])) {
+            $req = last_deck_play_SELECT($_SESSION['id']);
+            $datas = $req->fetchAll();
+            require(dirname(__FILE__).'/../Views/inventory_Views.php');
+            var_dump($_SESSION, $datas);
+            die('ok');
+        } 
+        else if ($_GET['action'] == 'create_deck') {
+            // CREATION DU DECK
+            $req = categories_SELECT();
+            $categories = $req->fetchAll();
+            require(dirname(__FILE__).'/../Views/create_deck_Views.php');
+        } 
+        else if ($_GET['action'] == 'create_questions') {
+            // INSERTION DU DECK DANS LA BDD
+            if (empty($_POST['picture'])) $_POST['picture'] = './Public/img/appareil_photo.jpg';
+            new_deck_INSERT($_POST['title'], $_POST['description'], $_SESSION['id'], $_POST['picture'], $_POST['categorie']);
+
+            // CREATIONS DE 10 QUESTIONS MINIMUMS POUR LE DECK
+            require(dirname(__FILE__).'/../Views/create_questions_Views.php');
+        }
+        
     }
 
-    //-----------------------------------------------------------------------------------------
-
-    function affiche_deck()
-    {
-        $req = last_deck_play_SELECT($_SESSION['id']);
-        $datas = $req->fetchAll();
-        var_dump($datas);
-
-        return $datas;
-    }
 
     //-----------------------------------------------------------------------------------------
 

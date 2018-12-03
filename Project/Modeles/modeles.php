@@ -1,6 +1,21 @@
-
 <?php 
-    
+
+    function bdd()
+    {
+        //CONNEXION A LA BDD
+        try
+        {
+            $bdd = new PDO('mysql:host=localhost; dbname=MemoCards; charset=utf8', 'root', 'toor');
+        }
+        catch (Exception $e)
+        {
+            die('Erreur : ' . $e->getMessage());
+        }
+        return $bdd;
+    }
+
+    // ----------------------------------------------------------------------------
+
     function user_DELETE ($id)
     {
         // DESINSCRIPTION USER
@@ -29,17 +44,30 @@
 
     // ----------------------------------------------------------------------------
 
-    function inscription_insert_hobbies ()
+    function inscription_insert_hobbies_one ($hobby)
     {
         $bdd = bdd();
-        // INSCRIPTION HOBBIES
+        // INSCRIPTION HOBBY
         $inscription = $bdd->prepare(
-        'INSERT INTO hobbies (hobby,user.id)
-         INNER JOIN hobbies_has_user ON hobbies_has_user = user.id
-         INNER JOIN user ON hobbies_has_user = user.id
-         VALUES (?,?);
-        ');
-        $inscription->execute(array($hobbies));
+                                    'INSERT INTO hobbies (hobby)
+                                    VALUES (?);
+                                    ');
+        $inscription->execute(array($hobby));
+    }
+
+    // ----------------------------------------------------------------------------
+
+    function inscription_insert_hobbies_two ($user_id, $id_hobby)
+    {
+        $bdd = bdd();
+        // INSCRIPTION HOBBY TABLE INTERMEDIAIRE
+        $inscription = $bdd->prepare(
+                                    'INSERT INTO hobbies_has_user (user_id, hobbies_id)
+                                    VALUES (?, LAST_INSERT_ID());
+                                    ');
+        $inscription->execute(array($user_id, $id_hobby));
+        
+
     }
 
     // ----------------------------------------------------------------------------
@@ -276,26 +304,25 @@
     function messages_subject_SELECT($id)
     {
         $bdd = bdd();
-        $forum = $bdd->prepare('SELECT *
+        $forum = $bdd->prepare('SELECT message.content_message, message.date, user.username
                                 FROM message
                                 INNER JOIN subject ON message.subject_id=subject.id
                                 INNER JOIN user ON subject.user_id=user.id
                                 WHERE subject_id = ?
-                                ORDER BY date DESC
-                                LIMIT 1;
+                                ORDER BY date DESC;
                                 ');
         $count = 0;
         $forum->execute(array($id));
-        while ($message = $forum->fetch()) 
-        {
-        //return $subject;
-        $count++;
+        $message = $forum->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $message;
+        /*$count++;
         echo '#'.$count.' '.$message['content_message'].' date du : ' .$message['date']. 
         ' par ' .$message['username'].'<br><br>';
         }
         $forum->closeCursor();
         //$donnees = $req->fetch();
-        //return $donnees;
+        //return $donnees;*/
     }
     
     //-------------------------------------------------------------------------------
@@ -399,7 +426,7 @@
                                 LEFT JOIN passed ON deck.id = passed.deck_id
                                 LEFT JOIN user ON passed.user_id = user.id
                                 WHERE user.id = ?
-                                ORDER BY passed.date_passed ;
+                                ORDER BY passed.date_passed 
                             ');
         $req->execute(array($user_id));
         return $req;
@@ -407,21 +434,30 @@
     
     //--------------------------------------------------------------------------------
 
-
-    
-    function bdd()
+    function categories_SELECT()
     {
-        //CONNEXION A LA BDD
-        try
-        {
-            $bdd = new PDO('mysql:host=localhost; dbname=MemoCards; charset=utf8', 'root', 'toor');
-        }
-        catch (Exception $e)
-        {
-            die('Erreur : ' . $e->getMessage());
-        }
-        return $bdd;
+        // SELECTIONNE LES DIFFERENTES CATEGORIES EXISTANTES
+        $bdd = bdd();
+        $req = $bdd->prepare('  SELECT *
+                                FROM categorie
+                                ORDER BY name ASC;
+                            ');
+        $req-> execute(array());
+        return $req;
     }
+    
+    //--------------------------------------------------------------------------------
+
+    function new_deck_INSERT($name, $description, $autor_id, $picture, $categorie_id)
+    {
+        // INSERT LE NOUVEAU DECK CREE
+        $bdd = bdd();
+        $req = $bdd->prepare('  INSERT INTO deck (name, description, autor_id, status, picture, date_creation, categorie_id)
+                                VALUES (?, ?, ?, "privated", ?, NOW(), ?);
+                            ');
+        $req-> execute(array($name, $description, intval($autor_id), $picture, intval($categorie_id)));
+    }
+      
 
 
 ?>
