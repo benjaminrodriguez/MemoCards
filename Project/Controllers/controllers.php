@@ -102,7 +102,7 @@
         if(isset($_POST['password']))
         {
             $passhache = password_hash(htmlspecialchars($_POST['password']),  PASSWORD_DEFAULT);
-            $profile_picture = htmlspecialchars('https://raw.githubusercontent.com/projetInformatiqueIntech/MemoCards/master/Project/Public/img/linux.png');
+            $profile_picture = htmlspecialchars('https://github.com/projetInformatiqueIntech/MemoCards/blob/master/Project/Public/img/k.gif');
 
             // APPEL DE LA FONCTION SQL INSCRIPTION
             inscription_INSERT(htmlspecialchars($_POST['username']), $passhache, htmlspecialchars($_POST['date_de_naissance']),
