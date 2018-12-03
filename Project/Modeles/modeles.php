@@ -276,26 +276,25 @@
     function messages_subject_SELECT($id)
     {
         $bdd = bdd();
-        $forum = $bdd->prepare('SELECT *
+        $forum = $bdd->prepare('SELECT message.content_message, message.date, user.username
                                 FROM message
                                 INNER JOIN subject ON message.subject_id=subject.id
                                 INNER JOIN user ON subject.user_id=user.id
                                 WHERE subject_id = ?
-                                ORDER BY date DESC
-                                LIMIT 1;
+                                ORDER BY date DESC;
                                 ');
         $count = 0;
         $forum->execute(array($id));
-        while ($message = $forum->fetch()) 
-        {
-        //return $subject;
-        $count++;
+        $message = $forum->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $message;
+        /*$count++;
         echo '#'.$count.' '.$message['content_message'].' date du : ' .$message['date']. 
         ' par ' .$message['username'].'<br><br>';
         }
         $forum->closeCursor();
         //$donnees = $req->fetch();
-        //return $donnees;
+        //return $donnees;*/
     }
     
     //-------------------------------------------------------------------------------

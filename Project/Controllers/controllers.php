@@ -191,15 +191,21 @@
             //require_once(dirname(__FILE__).'/php/read_topic.php');
             //require(dirname(__FILE__).'/../Views/forum_Views.php');
         }*/
-
-        if (isset($_POST['choix_forum']) && $_POST['choix_forum'] == 'write_topic' && isset($_GET['id'])) 
+        //var_dump($_GET,$_POST);
+        if (isset($_GET['id'])) 
         {
-
-            // AFFICHE MESSAGES D'UN SUJET
-            messages_subject_SELECT($_GET['id']);
-
+            
             // ON ECRIT MESSAGE DANS SUJET
             require_once(dirname(__FILE__).'/php/write_topic.php');
+
+            // AFFICHE MESSAGES D'UN SUJET
+            $print_message = messages_subject_SELECT($_GET['id']);
+            foreach ($print_message as $key => $value) 
+            {
+                require(dirname(__FILE__).'/../Views/forum_affichage_message.php');
+            }
+
+            
         }
         
         // SUPPRIMER UN MESSAGE DONT ON EST L'AUTEUR
