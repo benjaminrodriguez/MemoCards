@@ -14,7 +14,7 @@
                 // STOCKAGE VARIABLE SESSION
                 $_SESSION['id'] = intval($data['id']);
                 $_SESSION['username'] = $data['username'];
-                $_SESSION['statut'] = $data['statut'];
+                $_SESSION['status'] = $data['status'];
                 $_SESSION['birth_date'] = $data['birth_date'];
                 $_SESSION['region'] = $data['region'];
                 $_SESSION['sex'] = $data['sex'];
@@ -116,8 +116,9 @@
                 //require(dirname(__FILE__).'/../Public/js/create_account.js');
                 exit;
             }
-        //require(dirname(__FILE__).'/../Controllers/php/mail_auto.php');
+        require(dirname(__FILE__).'/../Controllers/php/mail_auto.php');
         //mail_auto_inscription();
+        send_mail();
         header('Location: index.php?page=connection');
         }
 
