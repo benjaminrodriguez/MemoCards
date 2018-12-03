@@ -255,6 +255,11 @@
 
     function game1()
     {
+        $_POST['deck'] = 1;
+
+        if (isset($_POST['start'])) {
+            $_SESSION['deck'] = $_POST['deck'];
+        }
         if (!isset($_SESSION['deck']))
         {
             game_unset();

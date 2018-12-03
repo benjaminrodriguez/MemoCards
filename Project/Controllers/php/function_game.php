@@ -7,8 +7,7 @@ function game_unset()
         unset($_SESSION[$key]);
     }*/
     
-    $_POST['deck'] = 1;
-    $_SESSION['deck'] = $_POST['deck'];
+    
     require("./Views/affichage_debquest.php");
     //require(dirname(__FILE__).'../Views/affichage_debquest.php');
     if (isset($_SESSION['list']))
@@ -161,13 +160,15 @@ function game_end()
 {
     if (isset($_SESSION['listend']))
     {
-        var_dump($_SESSION['list']);
         //var_dump($_SESSION['listend']);
         require("./Views/affichage_resultquest.php");
     }
     unset($_SESSION['deck']);
     unset($_SESSION['listend']);
-    unset($_SESSION['liste']);
+    unset($_SESSION['list']);
+    unset($_SESSION['cpt']);
+    unset($_SESSION['cptall']);
+    unset($_SESSION['iddelaquestiondavant']);
 }
 
 //------------------------------
