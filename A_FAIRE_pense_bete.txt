@@ -15,7 +15,9 @@
 
 1) Sur l'affichage des sujets du forum passer le format de date de en à fr
 
-2) Inscription avec hobbies !!!!
+2) Hobbies dans le profil !!!!
+
+3) Le premier message d'un sujet ne s'affiche pas (first_messages_subject_SELECT)
 
 ------------------------------------------------------------------
 
