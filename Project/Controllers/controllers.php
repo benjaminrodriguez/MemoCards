@@ -114,9 +114,11 @@
             {
                 inscription_INSERT_hobbies(htmlspecialchars($_POST['hobbies']));
                 //require(dirname(__FILE__).'/../Public/js/create_account.js');
-                header('Location: index.php?page=connection');
                 exit;
             }
+        //require(dirname(__FILE__).'/../Controllers/php/mail_auto.php');
+        //mail_auto_inscription();
+        header('Location: index.php?page=connection');
         }
 
         require(dirname(__FILE__).'/../Views/inscription_Views.php');
@@ -194,7 +196,7 @@
         //var_dump($_GET,$_POST);
         if (isset($_GET['id'])) 
         {
-            
+
             // ON ECRIT MESSAGE DANS SUJET
             require_once(dirname(__FILE__).'/php/write_topic.php');
 
