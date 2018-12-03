@@ -165,7 +165,10 @@ function game_end()
     }
     unset($_SESSION['deck']);
     unset($_SESSION['listend']);
-    unset($_SESSION['liste']);
+    unset($_SESSION['list']);
+    unset($_SESSION['cpt']);
+    unset($_SESSION['cptall']);
+    unset($_SESSION['iddelaquestiondavant']);
 }
 
 //------------------------------
