@@ -27,6 +27,11 @@
           <label for="forum">  -->logo>-- </label>
             <button type="submit" id="forum" name="menu" value="forum"><h4>Forum</h4></button>
         </li>  <br/>
+
+        <li>
+          <label for="test">  -->logo>-- </label>
+            <button type="submit" id="test" name="menu" value="test"><h4>Jouer</h4></button>
+        </li>  <br/>
     </ul>
 </form>
 
