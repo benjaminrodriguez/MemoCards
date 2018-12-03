@@ -1,6 +1,22 @@
 
 <?php 
-    
+
+    function bdd()
+    {
+        //CONNEXION A LA BDD
+        try
+        {
+            $bdd = new PDO('mysql:host=localhost; dbname=MemoCards; charset=utf8', 'root', 'toor');
+        }
+        catch (Exception $e)
+        {
+            die('Erreur : ' . $e->getMessage());
+        }
+        return $bdd;
+    }
+
+    // ----------------------------------------------------------------------------
+
     function user_DELETE ($id)
     {
         // DESINSCRIPTION USER
@@ -392,7 +408,7 @@
                                 LEFT JOIN passed ON deck.id = passed.deck_id
                                 LEFT JOIN user ON passed.user_id = user.id
                                 WHERE user.id = ?
-                                ORDER BY passed.date_passed ;
+                                ORDER BY passed.date_passed 
                             ');
         $req->execute(array($user_id));
         return $req;
@@ -400,21 +416,30 @@
     
     //--------------------------------------------------------------------------------
 
-
-    
-    function bdd()
+    function categories_SELECT()
     {
-        //CONNEXION A LA BDD
-        try
-        {
-            $bdd = new PDO('mysql:host=localhost; dbname=MemoCards; charset=utf8', 'root', 'toor');
-        }
-        catch (Exception $e)
-        {
-            die('Erreur : ' . $e->getMessage());
-        }
-        return $bdd;
+        // SELECTIONNE LES DIFFERENTES CATEGORIES EXISTANTES
+        $bdd = bdd();
+        $req = $bdd->prepare('  SELECT *
+                                FROM categorie
+                                ORDER BY name ASC;
+                            ');
+        $req-> execute(array());
+        return $req;
     }
+    
+    //--------------------------------------------------------------------------------
+
+    function new_deck_INSERT($name, $description, $autor_id, $picture, $categorie_id)
+    {
+        // INSERT LE NOUVEAU DECK CREE
+        $bdd = bdd();
+        $req = $bdd->prepare('  INSERT INTO deck (name, description, autor_id, status, picture, date_creation, categorie_id)
+                                VALUES (?, ?, ?, "privated", ?, NOW(), ?);
+                            ');
+        $req-> execute(array($name, $description, intval($autor_id), $picture, intval($categorie_id)));
+    }
+      
 
 
 ?>

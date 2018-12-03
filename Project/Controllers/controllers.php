@@ -209,12 +209,23 @@
             $req = last_deck_play_SELECT($_SESSION['id']);
             $datas = $req->fetchAll();
             require(dirname(__FILE__).'/../Views/inventory_Views.php');
+            var_dump($_SESSION, $datas);
+            die('ok');
         } 
-        // L'USER CREER UN DECK
         else if ($_GET['action'] == 'create_deck') {
-
+            // CREATION DU DECK
+            $req = categories_SELECT();
+            $categories = $req->fetchAll();
             require(dirname(__FILE__).'/../Views/create_deck_Views.php');
         } 
+        else if ($_GET['action'] == 'create_questions') {
+            // INSERTION DU DECK DANS LA BDD
+            if (empty($_POST['picture'])) $_POST['picture'] = './Public/img/appareil_photo.jpg';
+            new_deck_INSERT($_POST['title'], $_POST['description'], $_SESSION['id'], $_POST['picture'], $_POST['categorie']);
+
+            // CREATIONS DE 10 QUESTIONS MINIMUMS POUR LE DECK
+            require(dirname(__FILE__).'/../Views/create_questions_Views.php');
+        }
         
     }
 
