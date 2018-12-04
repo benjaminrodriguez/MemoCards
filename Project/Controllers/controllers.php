@@ -149,7 +149,17 @@
     function my_stats()
     {
         require(dirname(__FILE__).'/../Views/top_menu_Views.php');
-        echo 'Mes Stats ...';
+        if (!isset($_POST['deckstat'])) 
+        {
+            $req = last_deck_play_SELECT($_SESSION['id']);
+            $datas = $req->fetchAll();
+            require(dirname(__FILE__).'/../Views/stat_Views.php');
+            
+        }
+        else 
+        {
+            echo $_POST["deckstat"];
+        }
     }
 
     //-----------------------------------------------------------------------------------------
