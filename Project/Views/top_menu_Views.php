@@ -44,6 +44,10 @@
     </li>
 
     <li class="nav-item active">
+      <a class="nav-link" href="index.php?page=message"><b><h3>Messages privés</h3></b></a>
+    </li>
+
+    <li class="nav-item active">
       <img src=" <?php echo $_SESSION['profile_picture']; ?>" alt="" height="120" width="170" >  
     </li>
 
