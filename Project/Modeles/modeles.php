@@ -367,10 +367,9 @@
     {
         $bdd = bdd();
         $req = $bdd->prepare(' SELECT password
-                            FROM user
-                            WHERE id = ?
-                            VALUES(?)
-                            LIMIT 1
+                                FROM user
+                                WHERE id = ?
+                                LIMIT 1
                             ');
         $req->execute(array($id));
         $donnees = $req->fetch();

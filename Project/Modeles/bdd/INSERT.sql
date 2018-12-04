@@ -2,10 +2,10 @@
 -- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Dec 04, 2018 at 08:18 AM
--- Server version: 5.7.21
--- PHP Version: 7.2.4
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  mar. 04 déc. 2018 à 08:34
+-- Version du serveur :  5.7.21
+-- Version de PHP :  7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `memocards`
+-- Base de données :  `memocards`
 --
 CREATE DATABASE IF NOT EXISTS `memocards` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `memocards`;
 
 --
--- Dumping data for table `categorie`
+-- Déchargement des données de la table `categorie`
 --
 
 INSERT INTO `categorie` (`id`, `name`, `description`) VALUES
@@ -47,7 +47,7 @@ INSERT INTO `categorie` (`id`, `name`, `description`) VALUES
 (16, 'Proverbes', '');
 
 --
--- Dumping data for table `deck`
+-- Déchargement des données de la table `deck`
 --
 
 INSERT INTO `deck` (`id`, `name`, `description`, `autor_id`, `status`, `picture`, `date_creation`, `categorie_id`) VALUES
@@ -55,7 +55,7 @@ INSERT INTO `deck` (`id`, `name`, `description`, `autor_id`, `status`, `picture`
 (3, 'Les verbes irréguliers en Anglais', 'Ce decks vous permet de réviser vos vers irréguliers en anglais !', 2, 'privated', 'http://1.bp.blogspot.com/-sKKeuKwdtbk/USrgyWXTuII/AAAAAAAABtg/qHU-X0S_ixk/s1600/title+example.gif', '2018-12-04', 3);
 
 --
--- Dumping data for table `passed`
+-- Déchargement des données de la table `passed`
 --
 
 INSERT INTO `passed` (`id`, `date_passed`, `number_game`, `score_user`, `user_id`, `deck_id`) VALUES
@@ -63,7 +63,7 @@ INSERT INTO `passed` (`id`, `date_passed`, `number_game`, `score_user`, `user_id
 (9, NULL, NULL, NULL, 2, 3);
 
 --
--- Dumping data for table `user`
+-- Déchargement des données de la table `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `profile_picture`, `status`, `birth_date`, `sex`, `region`, `email`) VALUES
