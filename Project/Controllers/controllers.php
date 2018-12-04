@@ -7,7 +7,7 @@
         if(isset($_POST['username']) && isset($_POST['password'])) 
         {
             //RECUPERE LES DONNEES DE L'USER
-            $data = connection_SELECT(htmlspecialchars($_POST['username']);
+            $data = connection_SELECT(htmlspecialchars($_POST['username']));
 
             if (password_verify(htmlspecialchars($_POST['password']), $data['password']))
             { 

@@ -21,8 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `memocards`
 --
-CREATE DATABASE IF NOT EXISTS `memocards2` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `memocards2`;
+CREATE DATABASE IF NOT EXISTS `memocards` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `memocards`;
 
 -- --------------------------------------------------------
 
