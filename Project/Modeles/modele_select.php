@@ -1,113 +1,4 @@
-<?php 
-
-    function bdd()
-    {
-        //CONNEXION A LA BDD
-        try
-        {
-            $bdd = new PDO('mysql:host=localhost; dbname=MemoCards; charset=utf8', 'root', 'toor');
-        }
-        catch (Exception $e)
-        {
-            die('Erreur : ' . $e->getMessage());
-        }
-        return $bdd;
-    }
-
-    // ----------------------------------------------------------------------------
-
-    function user_DELETE ($id)
-    {
-        // DESINSCRIPTION USER
-        $bdd = bdd();
-        $desinscription = $bdd->prepare(
-        'DELETE FROM user
-         WHERE user.id = ?
-         VALUES (?);
-        ');
-        $desinscription->execute(array($id));
-    }  
-
-    // ----------------------------------------------------------------------------
-
-    function message_DELETE ($id)
-    {
-        // DESINSCRIPTION USER
-        $bdd = bdd();
-        $desinscription = $bdd->prepare(
-        'DELETE FROM message
-         WHERE message.id = ?
-         VALUES (?);
-        ');
-        $desinscription->execute(array($id));
-    }
-
-    // ----------------------------------------------------------------------------
-
-    function inscription_INSERT ($username, $password, $birth_date, $status, $sex, $region, $email, $picture)
-    {
-        $bdd = bdd();
-        // INSCRIPTION
-        $inscription = $bdd->prepare(
-        'INSERT INTO user (username, password, birth_date, status, sex, region, email, profile_picture) 
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?);
-        ');
-        $inscription->execute(array($username, $password, $birth_date, $status, $sex, $region, $email, $picture));
-    }
-
-    // ----------------------------------------------------------------------------
-
-    function inscription_insert_hobbies_one ($hobby)
-    {
-        $bdd = bdd();
-        // INSCRIPTION HOBBY
-        $inscription = $bdd->prepare(
-                                    'INSERT INTO hobbies (hobby)
-                                    VALUES (?);
-                                    ');
-        $inscription->execute(array($hobby));
-    }
-
-    // ----------------------------------------------------------------------------
-
-    function inscription_insert_hobbies_two ($user_id, $id_hobby)
-    {
-        $bdd = bdd();
-        // INSCRIPTION HOBBY TABLE INTERMEDIAIRE
-        $inscription = $bdd->prepare(
-                                    'INSERT INTO hobbies_has_user (user_id, hobbies_id)
-                                    VALUES (?, LAST_INSERT_ID());
-                                    ');
-        $inscription->execute(array($user_id, $id_hobby));
-        
-    }
-
-    // ----------------------------------------------------------------------------
-
-    function create_topic_INSERT($title, $status, $content, $user_id)
-    {
-        $bdd = bdd();
-        // INSCRIPTION
-        $creer_sujet = $bdd->prepare(
-            'INSERT INTO subject (title, date_posted, content, status, user_id)
-            VALUES (?, NOW(), ?, ?, ?);
-            ');
-        $creer_sujet->execute(array($title, $content, $status, $user_id));
-    }
-
-    // ----------------------------------------------------------------------------
-
-    function write_topic_INSERT($content, $autor_id, $subject_id)
-    {
-        $bdd = bdd();
-        // INSCRIPTION
-        $creer_sujet = $bdd->prepare(
-            'INSERT INTO message (date, content_message, autor_id, subject_id)
-            VALUES (NOW(), ?, ?, ?);
-            ');
-        $creer_sujet->execute(array($content, $autor_id, $subject_id));
-    }
-
+<?php
     // ----------------------------------------------------------------------------
 
     function nb_card_select ($iddeck)
@@ -132,10 +23,10 @@
     {
         $bdd = bdd();
         $query = "SELECT recto.id, succes_rate.level_cards
-                  FROM recto
-                  JOIN verso ON verso.recto_id = recto.id AND recto.deck_id = :iddeck AND recto.id NOT IN ($list)
-                  JOIN succes_rate ON succes_rate.verso_id = verso.id
-                  ORDER BY succes_rate.level_cards ASC;
+                FROM recto
+                JOIN verso ON verso.recto_id = recto.id AND recto.deck_id = :iddeck AND recto.id NOT IN ($list)
+                JOIN succes_rate ON succes_rate.verso_id = verso.id
+                ORDER BY succes_rate.level_cards ASC;
                 ";
 
         $query_params = array(
@@ -192,6 +83,7 @@
     }
 
     //--------------------------------------------------------------------------------
+
     function verso_recup_SELECT($IDDELAQUESTION)
     {
         $bdd = bdd();
@@ -215,6 +107,7 @@
     }
 
     //-------------------------------------------------------------------------------
+
     function carte_recup_SELECT($IDDELAQUESTION)
     {
         $bdd = bdd();
@@ -233,7 +126,8 @@
         $carte = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $carte;
     }
-//-------------------------------------------------------------
+
+    //-------------------------------------------------------------
 
     function carte_quest_SELECT($IDDELAQUESTION)
     {
@@ -254,35 +148,6 @@
         }
         $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $qu;
-    }
-
-    //-----------------------------------------------
-
-    function carte_UPDATE($id,$ply,$chain,$lv)
-    {
-        $bdd = bdd();
-        $query = "UPDATE `succes_rate`
-                SET
-                `level_cards`=:lvcard,
-                `chain`=:chain,
-                `played_cards`=:plycards
-                WHERE succes_rate.verso_id = (
-                    SELECT verso.id
-                    FROM verso
-                    JOIN recto ON recto.id = verso.recto_id AND recto.id = :id AND verso.statut_cards LIKE 'T');";
-
-        $query_params = array(
-            ':id' => $id,
-            ':plycards' => $ply,
-            ':chain' => $chain,
-            ':lvcard' => $lv);
-
-        try {
-            $stmt = $bdd->prepare($query);
-            $stmt->execute($query_params);
-        } catch(Exception $e) {
-            die('Erreur : ' . $e->getMessage());
-        }
     }
 
     // ----------------------------------------------------------------------------
@@ -378,61 +243,48 @@
 
     //--------------------------------------------------------------------------------
 
-
-    //Permet d'UPDATE une information dans la BDD 
-    function UPDATE($table, $attribut, $value_attribut, $id)
+    function last_deck_play_SELECT($user_id)
     {
+        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR TRIER PAR DATE DE LA DERNIERE PARTIE JOUEE
         $bdd = bdd();
-        $req = $bdd->prepare(' UPDATE ?
-                            SET ? = ? 
-                            WHERE id = ? 
-                            LIMIT 1
+        $req = $bdd->prepare('  SELECT deck.id, deck.name, deck.description, deck.autor_id, deck.status, deck.picture, deck.categorie_id, deck.date_creation, passed.date_passed
+                                FROM deck
+                                LEFT JOIN passed ON deck.id = passed.deck_id
+                                LEFT JOIN user ON passed.user_id = user.id
+                                WHERE user.id = ?
+                                ORDER BY passed.date_passed  ;
                             ');
-        $req->execute(array($table, $attribut, $value_attribut, $id));
+        $req->execute(array($user_id));
+        return $req;
     }
 
     //--------------------------------------------------------------------------------
 
-
-    //Permet d'UPDATE une information dans la BDD 
-    function username_UPDATE($username, $id)
+    function categories_SELECT()
     {
+        // SELECTIONNE LES DIFFERENTES CATEGORIES EXISTANTES
         $bdd = bdd();
-        $req = $bdd->prepare(' UPDATE user
-                            SET username = ? 
-                            WHERE id = ? 
-                            LIMIT 1
+        $req = $bdd->prepare('  SELECT *
+                                FROM categorie
+                                ORDER BY name ASC;
                             ');
-        $req->execute(array($username, $id));
+        $req-> execute(array());
+        return $req;
     }
-    
-    //--------------------------------------------------------------------------------
-
-    //Permet d'UPDATE une information dans la BDD 
-    function password_UPDATE( $value_attribut, $id)
-    {
-        $bdd = bdd();
-        $req = $bdd->prepare(' UPDATE user
-                            SET password = ? 
-                            WHERE id = ? 
-                            LIMIT 1
-                            ');
-        $req->execute(array($value_attribut, $id));
-    }
-    
 
     //--------------------------------------------------------------------------------
 
-    //Permet d'UPDATE une information dans la BDD 
-    function picture_UPDATE( $value_attribut, $id)
+    function deck_id_SELECT($nom_deck)
     {
+        // SELECTIONNE LES DIFFERENTES CATEGORIES EXISTANTES
         $bdd = bdd();
-        $req = $bdd->prepare(' UPDATE user
-                            SET profile_picture = ? 
-                            WHERE id = ? 
-                            LIMIT 1
+        $req = $bdd->prepare('  SELECT deck.id
+                                FROM deck
+                                WHERE deck.name = ?
+                                LIMIT 1;
                             ');
-        $req->execute(array($value_attribut, $id));
+        $req-> execute(array($nom_deck));
+        return $req;
     }
 
     //--------------------------------------------------------------------------------
@@ -452,74 +304,6 @@
     }
 
     //--------------------------------------------------------------------------------
-
-    function last_deck_play_SELECT($user_id)
-    {
-        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR TRIER PAR DATE DE LA DERNIERE PARTIE JOUEE
-        $bdd = bdd();
-        $req = $bdd->prepare('  SELECT deck.id, deck.name, deck.description, deck.autor_id, deck.status, deck.picture, deck.categorie_id, deck.date_creation, passed.date_passed
-                                FROM deck
-                                LEFT JOIN passed ON deck.id = passed.deck_id
-                                LEFT JOIN user ON passed.user_id = user.id
-                                WHERE user.id = ?
-                                ORDER BY passed.date_passed  ;
-                            ');
-        $req->execute(array($user_id));
-        return $req;
-    }
-    
-    //--------------------------------------------------------------------------------
-
-    function categories_SELECT()
-    {
-        // SELECTIONNE LES DIFFERENTES CATEGORIES EXISTANTES
-        $bdd = bdd();
-        $req = $bdd->prepare('  SELECT *
-                                FROM categorie
-                                ORDER BY name ASC;
-                            ');
-        $req-> execute(array());
-        return $req;
-    }
-    
-    //--------------------------------------------------------------------------------
-
-    function new_deck_INSERT($name, $description, $autor_id, $picture, $categorie_id)
-    {
-        // INSERT LE NOUVEAU DECK CREE
-        $bdd = bdd();
-        $req = $bdd->prepare('  INSERT INTO deck (name, description, autor_id, status, picture, date_creation, categorie_id)
-                                VALUES (?, ?, ?, "privated", ?, NOW(), ?);
-                            ');
-        $req-> execute(array($name, $description, intval($autor_id), $picture, intval($categorie_id)));
-    }
-      
-    //--------------------------------------------------------------------------------
-
-    function deck_id_SELECT($nom_deck)
-    {
-        // SELECTIONNE LES DIFFERENTES CATEGORIES EXISTANTES
-        $bdd = bdd();
-        $req = $bdd->prepare('  SELECT deck.id
-                                FROM deck
-                                WHERE deck.name = ?
-                                LIMIT 1;
-                            ');
-        $req-> execute(array($nom_deck));
-        return $req;
-    }
-
-    //--------------------------------------------------------------------------------
-
-    function new_passed_INSERT($user_id, $deck_id)
-    {
-        // INSERT LE NOUVEAU DECK CREE
-        $bdd = bdd();
-        $req = $bdd->prepare('  INSERT INTO passed (date_passed, number_game, score_user, user_id, deck_id)
-                                VALUES (NULL, NULL, NULL, ?, ?);
-                            ');
-        $req-> execute(array(intval($user_id), intval($deck_id) ));
-    }
 
 
 ?>
