@@ -21,20 +21,20 @@
     } 
     else if ($_GET['action'] == 'create_questions') {
 
-        // INSERTION DU DECK DANS LA BDD
-
+        // ATTRIBUT UNE IMAGE DE PROFIL AU DECK SI CELUI-CI N'EN POSSEDE PAS 
         if (empty($_POST['picture'])) $_POST['picture'] = './Public/img/appareil_photo.jpg';
+
+        // INSERTION DU DECK DANS LA BDD
         new_deck_INSERT($_POST['title'], $_POST['description'], $_SESSION['id'], $_POST['picture'], $_POST['categorie']);
         $req = deck_id_SELECT($_POST['title']);
         $deck_id = $req->fetch();
         new_passed_INSERT($_SESSION['id'], $deck_id['id']);
 
 
-
-
         // CREATIONS DE 10 QUESTIONS MINIMUMS POUR LE DECK
         require(dirname(__FILE__).'/../Views/create_questions_Views.php');
+
+
     }
         
-
 ?>
