@@ -12,9 +12,9 @@
             { 
                 if(isset($datas[$i]['name'])) 
                 { ?>
-                    <button name="top_3_deck" value="<?php echo $datas[$i]['id']; ?>">
+                    <button name="top_3_deck" value="<?php echo $datas[$i]['id']; ?>" style="width:250px">
                         <h3> <?php echo $datas[$i]['name']; ?> </h3>
-                        <p><i><b>Image du deck</b></i></p>
+                        <img src="<?php echo $datas[$i]['picture']; ?>" alt="" height="100"> <br>
 
                         <label for="description"><i><b>Description :</b></i> </label>
                         <p id="description"> <?php echo $datas[$i]['description']; ?> </p>

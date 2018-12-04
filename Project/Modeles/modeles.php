@@ -409,12 +409,12 @@
     {
         //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR TRIER PAR DATE DE LA DERNIERE PARTIE JOUEE
         $bdd = bdd();
-        $req = $bdd->prepare('  SELECT deck.id, deck.autor_id, deck.name, deck.description, deck.mark, deck.status, passed.date_passed
+        $req = $bdd->prepare('  SELECT deck.id, deck.name, deck.description, deck.autor_id, deck.status, deck.picture, deck.categorie_id, deck.date_creation, passed.date_passed
                                 FROM deck
                                 LEFT JOIN passed ON deck.id = passed.deck_id
                                 LEFT JOIN user ON passed.user_id = user.id
                                 WHERE user.id = ?
-                                ORDER BY passed.date_passed 
+                                ORDER BY passed.date_passed  ;
                             ');
         $req->execute(array($user_id));
         return $req;
@@ -446,6 +446,32 @@
         $req-> execute(array($name, $description, intval($autor_id), $picture, intval($categorie_id)));
     }
       
+    //--------------------------------------------------------------------------------
+
+    function deck_id_SELECT($nom_deck)
+    {
+        // SELECTIONNE LES DIFFERENTES CATEGORIES EXISTANTES
+        $bdd = bdd();
+        $req = $bdd->prepare('  SELECT deck.id
+                                FROM deck
+                                WHERE deck.name = ?
+                                LIMIT 1;
+                            ');
+        $req-> execute(array($nom_deck));
+        return $req;
+    }
+
+    //--------------------------------------------------------------------------------
+
+    function new_passed_INSERT($user_id, $deck_id)
+    {
+        // INSERT LE NOUVEAU DECK CREE
+        $bdd = bdd();
+        $req = $bdd->prepare('  INSERT INTO passed (date_passed, number_game, score_user, user_id, deck_id)
+                                VALUES (NULL, NULL, NULL, ?, ?);
+                            ');
+        $req-> execute(array(intval($user_id), intval($deck_id) ));
+    }
 
 
 ?>
