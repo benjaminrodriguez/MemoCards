@@ -1,15 +1,17 @@
 <?php
 
-    if (isset($_POST['choix_forum']) && $_POST['choix_forum'] === 'supprimer_message_sujet')
-    {
-        if ($id_auteur_message === $_SESSION['id'])
+        // AFFICHER AUTEUR D'UN MESSAGE
+        $subject_info = messages_autor_SELECT($_SESSION['subject_id'], $_GET['message_num']);
+        foreach ($subject_info as $key => $value) 
         {
-            echo 'message supprime';
+            if ($subject_info[$key]['autor_id'] == $_SESSION['id'])
+            {
+                message_DELETE($_GET['message_num']);
+            }
+            else 
+            {
+                echo 'desole seul l\'auteur peut delete son message';
+
+            }
         }
-        else 
-        {
-            echo 'desole seul l\'auteur peut delete son message';
-        }
-    }
-    
 ?>

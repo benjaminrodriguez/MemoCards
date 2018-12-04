@@ -40,15 +40,6 @@
                 <option value="la_reunion">La Réunion</option>
             </select><br>
 
-            Hobbies<br>
-            <input type="checkbox" name="hobbies" value="sport">
-            <label for="sport">Sport</label>
-            <input type="checkbox" name="hobbies" value="musique" selected>
-            <label for="musique">Musique</label>
-            <input type="checkbox" name="hobbies" value="voyages">
-            <label for="voyages">Voyages</label><br>
-  
-
             <input type="date" name="date_de_naissance" id="date_de_naissance" class="form-control" placeholder="Date de naissance" required>
             </div>
             <button class="btn btn-lg btn-primary" type="submit">Inscription</button>

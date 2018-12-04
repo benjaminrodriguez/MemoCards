@@ -2,7 +2,7 @@
 <?php ob_start(); ?>
 
 
-    <p>Profil <?php echo $_SESSION['statut']; ?> : 
+    <p>Profil <?php echo $_SESSION['status']; ?> : 
         <b> <?php echo strtoupper($_SESSION['username']); ?> </b>  </p>
 
     <form method="POST" action="">
@@ -21,6 +21,10 @@
 
             <li>
                 <button type="submit"  name="menu" value="delete_user">Supprimer mon compte</button>
+            </li> <br/>
+            
+            <li>
+                <button type="submit"  name="menu" value="hobbies">Modifier des hobbies</button>
             </li> <br/>
 
         </ul>
@@ -93,7 +97,27 @@
     }
 ?>
 
+<!-- --------------------------- Change Hobbies --------------------------- -->
+<?php if(isset($_POST['menu']) && $_POST['menu'] == 'hobbies')
+        { 
+?>
+            <form method="POST" action="">
+                <!-- Demande le mot de passe actuel. -->
+                Hobbies<br>
+                    <input type="checkbox" name="hobbies" value="sport">
+                    <label for="sport">Sport</label>
+                    <input type="checkbox" name="hobbies" value="musique" selected>
+                    <label for="musique">Musique</label>
+                    <input type="checkbox" name="hobbies" value="voyages">
+                    <label for="voyages">Voyages</label><br>
+                        
+                <input type="hidden" name="menu" value="hobbies">
+                <button type="submit"> Hobbies </button>
 
+            </form>
+<?php 
+        }
+?>      
 
 <?php $content = ob_get_clean(); ?>
 <?php require(dirname(__FILE__).'/template.php'); ?>
