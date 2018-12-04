@@ -47,6 +47,16 @@ INSERT INTO `categorie` (`id`, `name`, `description`) VALUES
 (16, 'Proverbes', '');
 
 --
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`, `profile_picture`, `status`, `birth_date`, `sex`, `region`, `email`) VALUES
+(2, 'sami', '$2y$10$vXpp.lZoawYiRTp6sx4koeUQjVxRNitYU0q43a0JyTsPzpgYx597y', 'https://raw.githubusercontent.com/projetInformatiqueIntech/MemoCards/master/Project/Public/img/pp/blue.png', 'membre', '2018-12-04', 'F', 'ile_de_france', 'samikara13@gmail.com'),
+(3, 'ben', '$2y$10$imu56uGWqoo2I5sU/U68mOYJJ0Hf/Ck32/opERIihjCmItMxU37yW', 'https://raw.githubusercontent.com/projetInformatiqueIntech/MemoCards/master/Project/Public/img/pp/purple.png', 'membre', '2018-11-29', 'F', 'ile_de_france', 'benjamin-rodriguez@outlook.fr'),
+(4, 'yann', '$2y$10$4C9Z3pl4qkPgSTUHBxm7V.dVw6UQBRMYhEXgApoDtlOUzOprQrfDK', 'https://raw.githubusercontent.com/projetInformatiqueIntech/MemoCards/master/Project/Public/img/pp/pink.png', 'membre', '2018-11-26', 'M', 'pays_de_la_loire', 'yoyo@gmail.com'),
+(5, 'toto', '$2y$10$p9MRQYdntG4Dz.ENWVKhe.iZ472FxCJupYpM667Ei4T8b8KdEAr0W', 'https://raw.githubusercontent.com/projetInformatiqueIntech/MemoCards/master/Project/Public/img/pp/pink.png', 'membre', '2018-11-29', 'F', 'paca', 'toto@gmail.com');
+
+--
 -- Déchargement des données de la table `deck`
 --
 
@@ -62,15 +72,7 @@ INSERT INTO `passed` (`id`, `date_passed`, `number_game`, `score_user`, `user_id
 (8, NULL, NULL, NULL, 2, 2),
 (9, NULL, NULL, NULL, 2, 3);
 
---
--- Déchargement des données de la table `user`
---
 
-INSERT INTO `user` (`id`, `username`, `password`, `profile_picture`, `status`, `birth_date`, `sex`, `region`, `email`) VALUES
-(2, 'sami', '$2y$10$vXpp.lZoawYiRTp6sx4koeUQjVxRNitYU0q43a0JyTsPzpgYx597y', 'https://raw.githubusercontent.com/projetInformatiqueIntech/MemoCards/master/Project/Public/img/pp/blue.png', 'membre', '2018-12-04', 'F', 'ile_de_france', 'samikara13@gmail.com'),
-(3, 'ben', '$2y$10$imu56uGWqoo2I5sU/U68mOYJJ0Hf/Ck32/opERIihjCmItMxU37yW', 'https://raw.githubusercontent.com/projetInformatiqueIntech/MemoCards/master/Project/Public/img/pp/purple.png', 'membre', '2018-11-29', 'F', 'ile_de_france', 'benjamin-rodriguez@outlook.fr'),
-(4, 'yann', '$2y$10$4C9Z3pl4qkPgSTUHBxm7V.dVw6UQBRMYhEXgApoDtlOUzOprQrfDK', 'https://raw.githubusercontent.com/projetInformatiqueIntech/MemoCards/master/Project/Public/img/pp/pink.png', 'membre', '2018-11-26', 'M', 'pays_de_la_loire', 'yoyo@gmail.com'),
-(5, 'toto', '$2y$10$p9MRQYdntG4Dz.ENWVKhe.iZ472FxCJupYpM667Ei4T8b8KdEAr0W', 'https://raw.githubusercontent.com/projetInformatiqueIntech/MemoCards/master/Project/Public/img/pp/pink.png', 'membre', '2018-11-29', 'F', 'paca', 'toto@gmail.com');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
