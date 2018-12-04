@@ -44,7 +44,8 @@
           exit;
         } 
     
-    
+        disconnect();
+        
         if (!isset($_POST['menu']))
         {
             $req = last_deck_play_SELECT($_SESSION['id']);
@@ -76,8 +77,6 @@
             header('Location: index.php?page=forum');
             exit;
         }
-
-        disconnect();
     }
 
     //-----------------------------------------------------------------------------------------
