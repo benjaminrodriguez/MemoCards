@@ -9,11 +9,6 @@
         </li><br/>
 
         <li>
-            <label for="stats">  -->logo>-- </label>
-            <button type="submit" id="stats" name="menu" value="stats"><h4>Mes Stats</h4></button>
-        </li><br/>
-
-        <li>
             <label for="inventaire">  -->logo>-- </label>
             <button type="submit" id="inventaire" name="menu" value="inventory"><h4>Mon Inventaire</h4></button>
         </li> <br/> 
@@ -31,11 +26,6 @@
         <li>
           <label for="test">  -->logo>-- </label>
             <button type="submit" id="test" name="menu" value="test"><h4>Jouer</h4></button>
-        </li>  <br/>
-
-        <li>
-          <label for="forum">  -->logo>-- </label>
-            <button type="submit" id="message" name="menu" value="message"><h4>Messages privés</h4></button>
         </li>  <br/>
 
     </ul>

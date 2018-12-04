@@ -20,12 +20,6 @@
 
     <li class="nav-item active">
       <a class="nav-link" href="index.php?page=profile"><b><h3>Mon Profil</h3></b></a>
-    </li>
-
-    <li class="nav-item active">
-      <a class="nav-link" href="index.php?page=stats"><b><h3>Mes Stats</h3></b></a>
-    </li>
-  
 
     <li class="nav-item active">
       <a class="nav-link" href="index.php?page=inventory"><b><h3>Mon Inventaire</h3></b></a>
@@ -41,10 +35,6 @@
 
     <li class="nav-item active">
       <a class="nav-link" href="index.php?page=test"><b><h3>Jouer</h3></b></a>
-    </li>
-
-    <li class="nav-item active">
-      <a class="nav-link" href="index.php?page=message"><b><h3>Messages privés</h3></b></a>
     </li>
 
     <li class="nav-item active">
