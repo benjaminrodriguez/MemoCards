@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>MemoCards Home</title>
+<title>Piccolo Theme</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- CSS
@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/bootstrap-responsive.css">
 <link rel="stylesheet" href="css/prettyPhoto.css" />
-<link rel="stylesheet" href="css/flexslider.css" />
 <link rel="stylesheet" href="css/custom-styles.css">
 
 <!--[if lt IE 9]>
@@ -29,58 +28,27 @@
 <!-- JS
 ================================================== -->
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/jquery.prettyPhoto.js"></script>
-<script src="js/jquery.flexslider.js"></script>
+<script src="js/jquery.quicksand.js"></script>
 <script src="js/jquery.custom.js"></script>
-<script type="text/javascript">
-$(document).ready(function () {
-
-    $("#btn-blog-next").click(function () {
-      $('#blogCarousel').carousel('next')
-    });
-     $("#btn-blog-prev").click(function () {
-      $('#blogCarousel').carousel('prev')
-    });
-
-     $("#btn-client-next").click(function () {
-      $('#clientCarousel').carousel('next')
-    });
-     $("#btn-client-prev").click(function () {
-      $('#clientCarousel').carousel('prev')
-    });
-    
-});
-
- $(window).load(function(){
-
-    $('.flexslider').flexslider({
-        animation: "slide",
-        slideshow: true,
-        start: function(slider){
-          $('body').removeClass('loading');
-        }
-    });  
-});
-
-</script>
 
 </head>
 
-<body class="home">
-    <!-- Color Bars (above header)-->
+<body>
 	<div class="color-bar-1"></div>
     <div class="color-bar-2 color-bg"></div>
     
-    <div class="container">
+    <div class="container main-container">
     
       <div class="row header"><!-- Begin Header -->
       
         <!-- Logo
         ================================================== -->
         <div class="span5 logo">
-        	<a href="index.php"><img src="img/piccolo-logo.png" alt="" /></a>
-            <h5>Apprendre... Pour mieux réussir</h5>
+        	<a href="index.htm"><img src="img/piccolo-logo.png" alt="" /></a>
+            <h5>Big Things... Small Packages</h5>
         </div>
         
         <!-- Main Navigation
@@ -89,20 +57,17 @@ $(document).ready(function () {
             <div class="navbar hidden-phone">
             
             <ul class="nav">
-
-           <li><a href="index.php">Accueil</a></li>
-
-            <li class="dropdown active">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="index.php">Home <b class="caret"></b></a>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="index.htm">Home <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="index.htm">Full Page</a></li>
                     <li><a href="index-gallery.htm">Gallery Only</a></li>
                     <li><a href="index-slider.htm">Slider Only</a></li>
                 </ul>
             </li>
-
+           <li><a href="features.htm">Features</a></li>
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="page-full-width.htm">Mon Profil<b class="caret"></b></a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="page-full-width.htm">Pages <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="page-full-width.htm">Full Width</a></li>
                     <li><a href="page-right-sidebar.htm">Right Sidebar</a></li>
@@ -110,8 +75,8 @@ $(document).ready(function () {
                     <li><a href="page-double-sidebar.htm">Double Sidebar</a></li>
                 </ul>
             </li>
-             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="gallery-4col.htm">Mon Inventaire <b class="caret"></b></a>
+             <li class="dropdown active">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="gallery-4col.htm">Gallery <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="gallery-3col.htm">Gallery 3 Column</a></li>
                     <li><a href="gallery-4col.htm">Gallery 4 Column</a></li>
@@ -121,7 +86,7 @@ $(document).ready(function () {
                 </ul>
              </li>
              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="blog-style1.htm">Forum<b class="caret"></b></a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="blog-style1.htm">Blog <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="blog-style1.htm">Blog Style 1</a></li>
                     <li><a href="blog-style2.htm">Blog Style 2</a></li>
@@ -130,7 +95,7 @@ $(document).ready(function () {
                     <li><a href="blog-single.htm">Blog Single</a></li>
                 </ul>
              </li>
-             <li><a href="page-contact.htm">Cards Store</a></li>
+             <li><a href="page-contact.htm">Contact</a></li>
             </ul>
            
             </div>
@@ -167,73 +132,42 @@ $(document).ready(function () {
                 </select>
                 </div>
                 </form>
-
+            
         </div>
-        
+
       </div><!-- End Header -->
      
-    <div class="row headline"><!-- Begin Headline -->
-    
-     	<!-- Slider Carousel
-        ================================================== -->
-        <div class="span8">
-            <div class="flexslider">
-              <ul class="slides">
-                <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-                <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-                <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-                <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-                <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-              </ul>
-            </div>
-        </div>
-        
-        <!-- Headline Text
-        ================================================== -->
-        <div class="span4">
-        	<h3>Welcome to Piccolo.  <br />
-            A Big Theme in a Small .</h3>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pretium vulputate magna sit amet blandit.</p>
-            <p>Cras rutrum, massa non blandit convallis, est lacus gravida enim, eu fermentum ligula orci et tortor. In sit amet nisl ac leo pulvinar molestie. Morbi blandit ultricies ultrices.</p>
-            <a href="#"><i class="icon-plus-sign"></i>Read More</a> 
-        </div>
-    </div><!-- End Headline -->
-    
-    <div class="row gallery-row"><!-- Begin Gallery Row --> 
-      
-    	<div class="span12">
-            <h5 class="title-bg">récemment utilisé
-                <small> Reprendre vos parties en cours</small>
-                <button class="btn btn-mini btn-inverse hidden-phone" type="button">Voir plus</button>
-            </h5>
-    	
-        <!-- Gallery Thumbnails
-        ================================================== -->
+    <!-- Page Content
+    ================================================== --> 
+    <div class="row">
 
-            <div class="row clearfix no-margin">
-            <ul class="gallery-post-grid holder">
+        <!-- Gallery Items
+        ================================================== --> 
+        <div class="span12 gallery">
 
+            <ul id="filterOptions" class="gallery-cats clearfix">
+                <li class="active"><a href="#" class="all">All</a></li> 
+                <li><a href="#" class="illustration">Illustration</a></li>
+                <li><a href="#" class="design">Design</a></li>
+                <li><a href="#" class="video">Video</a></li>
+                <li><a href="#" class="web">Web</a></li>
+            </ul>
 
-<?php   for($i=0; $i<3; $i++)
-        { 
-            if(isset($datas[$i]['name'])) 
-            { ?>  
+            <div class="row clearfix">
+                <ul class="gallery-post-grid holder">
+
                     <!-- Gallery Item 1 -->
                     <li  class="span3 gallery-item" data-id="id-1" data-type="illustration">
-                        <span class="gallery-hover-4col hidden-phone hidden-tablet"> 
+                        <span class="gallery-hover-4col hidden-phone hidden-tablet">
                             <span class="gallery-icons">
                                 <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
                                 <a href="gallery-single.htm" class="item-details-link"></a>
                             </span>
-                        </span> 
-                        <a href="gallery-single.htm"> <img src="<?php echo $datas[$i]['picture']; ?>" alt="Gallery"> </a>
-                        <span class="project-details"><a href="gallery-single.htm"><?php echo $datas[$i]['name']; ?></a><?php echo $datas[$i]['description']; ?></span>
+                        </span>
+                        <a href="gallery-single.htm"><img src="img/gallery/gallery-img-1-4col.jpg" alt="Gallery"></a>
+                        <span class="project-details"><a href="gallery-single.htm">Custom Illustration</a>For an international ad campaign.</span>
                     </li>
 
-<?php       }
-        } ?>
-
-        <?php /*
                     <!-- Gallery Item 2 -->
                     <li class="span3 gallery-item" data-id="id-2" data-type="illustration">
                         <span class="gallery-hover-4col hidden-phone hidden-tablet">
@@ -251,7 +185,7 @@ $(document).ready(function () {
                         <span class="gallery-hover-4col hidden-phone hidden-tablet">
                             <span class="gallery-icons">
                                 <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
-                                <a href="#" class="item-details-link"></a>
+                                <a href="gallery-single.htm" class="item-details-link"></a>
                             </span>
                         </span>
                         <a href="gallery-single.htm"><img src="img/gallery/gallery-img-1-4col.jpg" alt="Gallery"></a>
@@ -365,127 +299,30 @@ $(document).ready(function () {
                         <a href="gallery-single.htm"><img src="img/gallery/gallery-img-1-4col.jpg" alt="Gallery"></a>
                         <span class="project-details"><a href="gallery-single.htm">Branding Design</a>For an international add campaign.</span>
                     </li>
-        */ ?>
+
                 </ul>
-                </div>
-            </div>
- 
-    </div><!-- End Gallery Row -->
-    
-    <div class="row"><!-- Begin Bottom Section -->
-    
-    	<!-- Blog Preview
-        ================================================== -->
-    	<div class="span6">
-
-            <h5 class="title-bg">From the Blog 
-                <small>All the latest news</small>
-                <button id="btn-blog-next" class="btn btn-inverse btn-mini" type="button">&raquo;</button>
-                <button id="btn-blog-prev" class="btn btn-inverse btn-mini" type="button">&laquo;</button>
-            </h5>
-
-        <div id="blogCarousel" class="carousel slide ">
-
-            <!-- Carousel items -->
-            <div class="carousel-inner">
-
-                 <!-- Blog Item 1 -->
-                <div class="active item">
-                    <a href="blog-single.htm"><img src="img/gallery/blog-med-img-1.jpg" alt="" class="align-left blog-thumb-preview" /></a>
-                    <div class="post-info clearfix">
-                        <h4><a href="blog-single.htm">A subject that is beautiful in itself</a></h4>
-                        <ul class="blog-details-preview">
-                            <li><i class="icon-calendar"></i><strong>Posted on:</strong> Sept 4, 2015<li>
-                            <li><i class="icon-user"></i><strong>Posted by:</strong> <a href="#" title="Link">Admin</a><li>
-                            <li><i class="icon-comment"></i><strong>Comments:</strong> <a href="#" title="Link">12</a><li>
-                            <li><i class="icon-tags"></i> <a href="#">photoshop</a>, <a href="#">tutorials</a>, <a href="#">illustration</a>
-                        </ul>
-                    </div>
-                    <p class="blog-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In interdum felis fermentum ipsum molestie sed porttitor ligula rutrum. Vestibulum lectus tellus, aliquet et iaculis sed, volutpat vel erat. <a href="#">Read more</a><p>
-                </div>
-
-                <!-- Blog Item 2 -->
-                 <div class="item">
-                    <a href="blog-single.htm"><img src="img/gallery/blog-med-img-1.jpg" alt="" class="align-left blog-thumb-preview" /></a>
-                    <div class="post-info clearfix">
-                        <h4><a href="blog-single.htm">A great artist is always before his time</a></h4>
-                        <ul class="blog-details-preview">
-                            <li><i class="icon-calendar"></i><strong>Posted on:</strong> Sept 4, 2015<li>
-                            <li><i class="icon-user"></i><strong>Posted by:</strong> <a href="#" title="Link">Admin</a><li>
-                            <li><i class="icon-comment"></i><strong>Comments:</strong> <a href="#" title="Link">12</a><li>
-                            <li><i class="icon-tags"></i> <a href="#">photoshop</a>, <a href="#">tutorials</a>, <a href="#">illustration</a>
-                        </ul>
-                    </div>
-                    <p class="blog-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In interdum felis fermentum ipsum molestie sed porttitor ligula rutrum. Vestibulum lectus tellus, aliquet et iaculis sed, volutpat vel erat. <a href="#">Read more</a><p>
-                </div>
-
-                 <!-- Blog Item 3 -->
-                 <div class="item">
-                    <a href="blog-single.htm"><img src="img/gallery/blog-med-img-1.jpg" alt="" class="align-left blog-thumb-preview" /></a>
-                    <div class="post-info clearfix">
-                        <h4><a href="blog-single.htm">Is art everything to anybody?</a></h4>
-                        <ul class="blog-details-preview">
-                            <li><i class="icon-calendar"></i><strong>Posted on:</strong> Sept 4, 2015<li>
-                            <li><i class="icon-user"></i><strong>Posted by:</strong> <a href="#" title="Link">Admin</a><li>
-                            <li><i class="icon-comment"></i><strong>Comments:</strong> <a href="#" title="Link">12</a><li>
-                            <li><i class="icon-tags"></i> <a href="#">photoshop</a>, <a href="#">tutorials</a>, <a href="#">illustration</a>
-                        </ul>
-                    </div>
-                    <p class="blog-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In interdum felis fermentum ipsum molestie sed porttitor ligula rutrum. Vestibulum lectus tellus, aliquet et iaculis sed, volutpat vel erat. <a href="#">Read more</a><p>
-                </div>
-                
-            </div>
-            </div> 	
-        </div>
-        
-        <!-- Client Area
-        ================================================== -->
-        <div class="span6">
-
-            <h5 class="title-bg">Recent Clients
-                <small>That love us</small>
-                <button id="btn-client-next" class="btn btn-inverse btn-mini" type="button">&raquo;</button>
-                <button id="btn-client-prev" class="btn btn-inverse btn-mini" type="button">&laquo;</button>
-            </h5>
-
-            <!-- Client Testimonial Slider-->
-            <div id="clientCarousel" class="carousel slide no-margin">
-            <!-- Carousel items -->
-            <div class="carousel-inner">
-
-                <div class="active item">
-                    <p class="quote-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In interdum felis fermentum ipsum molestie sed porttitor ligula rutrum. Morbi blandit ultricies ultrices. Vivamus nec lectus sed orci molestie molestie."<cite>- Client Name, Big Company</cite></p>
-                </div>
-
-                <div class="item">
-                    <p class="quote-text">"Adipiscing elit. In interdum felis fermentum ipsum molestie sed porttitor ligula rutrum. Morbi blandit ultricies ultrices. Vivamus nec lectus sed orci molestie molestie."<cite>- Another Client Name, Company Name</cite></p>
-                </div>
-
-                <div class="item">
-                    <p class="quote-text">"Mauris eget tellus sem. Cras sollicitudin sem eu elit aliquam quis condimentum nulla suscipit. Nam sed magna ante. Ut eget suscipit mauris."<cite>- On More Client, The Company</cite></p>
-                </div>
-                
-            </div>
             </div>
 
-            <!-- Client Logo Thumbs-->
-            <ul class="client-logos">
-                <li><a href="#" class="client-link"><img src="img/gallery/client-img-1.png" alt="Client"></a></li>
-                <li><a href="#" class="client-link"><img src="img/gallery/client-img-2.png" alt="Client"></a></li>
-                <li><a href="#" class="client-link"><img src="img/gallery/client-img-3.png" alt="Client"></a></li>
-                <li><a href="#" class="client-link"><img src="img/gallery/client-img-4.png" alt="Client"></a></li>
-                <li><a href="#" class="client-link"><img src="img/gallery/client-img-5.png" alt="Client"></a></li>
-            </ul>
+            <!-- Pagination -->
+            <div class="pagination">
+                <ul>
+                <li class="active"><a href="#">Prev</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">Next</a></li>
+                </ul>
+            </div>
 
-        </div>
-        
-    </div><!-- End Bottom Section -->
+        </div><!-- End gallery list-->
+
+    </div><!-- End container row -->
     
     </div> <!-- End Container -->
 
     <!-- Footer Area
         ================================================== -->
-
 	<div class="footer-container"><!-- Begin Footer -->
     	<div class="container">
         	<div class="row footer-row">
@@ -556,8 +393,8 @@ $(document).ready(function () {
             </div><!-- End Sub Footer -->
 
         </div>
-    </div><!-- End Footer --> 
-    
+    </div><!-- End Footer -->
+
     <!-- Scroll to Top -->  
     <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
     

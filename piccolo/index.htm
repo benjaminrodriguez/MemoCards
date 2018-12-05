@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>MemoCards Home</title>
+<title>Piccolo Theme</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- CSS
@@ -79,8 +79,8 @@ $(document).ready(function () {
         <!-- Logo
         ================================================== -->
         <div class="span5 logo">
-        	<a href="index.php"><img src="img/piccolo-logo.png" alt="" /></a>
-            <h5>Apprendre... Pour mieux réussir</h5>
+        	<a href="index.htm"><img src="img/piccolo-logo.png" alt="" /></a>
+            <h5>Big Things... Small Packages</h5>
         </div>
         
         <!-- Main Navigation
@@ -89,20 +89,17 @@ $(document).ready(function () {
             <div class="navbar hidden-phone">
             
             <ul class="nav">
-
-           <li><a href="index.php">Accueil</a></li>
-
             <li class="dropdown active">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="index.php">Home <b class="caret"></b></a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="index.htm">Home <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="index.htm">Full Page</a></li>
                     <li><a href="index-gallery.htm">Gallery Only</a></li>
                     <li><a href="index-slider.htm">Slider Only</a></li>
                 </ul>
             </li>
-
+           <li><a href="features.htm">Features</a></li>
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="page-full-width.htm">Mon Profil<b class="caret"></b></a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="page-full-width.htm">Pages <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="page-full-width.htm">Full Width</a></li>
                     <li><a href="page-right-sidebar.htm">Right Sidebar</a></li>
@@ -111,7 +108,7 @@ $(document).ready(function () {
                 </ul>
             </li>
              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="gallery-4col.htm">Mon Inventaire <b class="caret"></b></a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="gallery-4col.htm">Gallery <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="gallery-3col.htm">Gallery 3 Column</a></li>
                     <li><a href="gallery-4col.htm">Gallery 4 Column</a></li>
@@ -121,7 +118,7 @@ $(document).ready(function () {
                 </ul>
              </li>
              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="blog-style1.htm">Forum<b class="caret"></b></a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="blog-style1.htm">Blog <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="blog-style1.htm">Blog Style 1</a></li>
                     <li><a href="blog-style2.htm">Blog Style 2</a></li>
@@ -130,7 +127,7 @@ $(document).ready(function () {
                     <li><a href="blog-single.htm">Blog Single</a></li>
                 </ul>
              </li>
-             <li><a href="page-contact.htm">Cards Store</a></li>
+             <li><a href="page-contact.htm">Contact</a></li>
             </ul>
            
             </div>
@@ -191,8 +188,8 @@ $(document).ready(function () {
         <!-- Headline Text
         ================================================== -->
         <div class="span4">
-        	<h3>Welcome to Piccolo.  <br />
-            A Big Theme in a Small .</h3>
+        	<h3>Welcome to Piccolo. <br />
+            A Big Theme in a Small Package.</h3>
             <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pretium vulputate magna sit amet blandit.</p>
             <p>Cras rutrum, massa non blandit convallis, est lacus gravida enim, eu fermentum ligula orci et tortor. In sit amet nisl ac leo pulvinar molestie. Morbi blandit ultricies ultrices.</p>
             <a href="#"><i class="icon-plus-sign"></i>Read More</a> 
@@ -202,9 +199,9 @@ $(document).ready(function () {
     <div class="row gallery-row"><!-- Begin Gallery Row --> 
       
     	<div class="span12">
-            <h5 class="title-bg">récemment utilisé
-                <small> Reprendre vos parties en cours</small>
-                <button class="btn btn-mini btn-inverse hidden-phone" type="button">Voir plus</button>
+            <h5 class="title-bg">Recent Work 
+                <small>That we are most proud of</small>
+                <button class="btn btn-mini btn-inverse hidden-phone" type="button">View Portfolio</button>
             </h5>
     	
         <!-- Gallery Thumbnails
@@ -213,27 +210,18 @@ $(document).ready(function () {
             <div class="row clearfix no-margin">
             <ul class="gallery-post-grid holder">
 
-
-<?php   for($i=0; $i<3; $i++)
-        { 
-            if(isset($datas[$i]['name'])) 
-            { ?>  
                     <!-- Gallery Item 1 -->
                     <li  class="span3 gallery-item" data-id="id-1" data-type="illustration">
-                        <span class="gallery-hover-4col hidden-phone hidden-tablet"> 
+                        <span class="gallery-hover-4col hidden-phone hidden-tablet">
                             <span class="gallery-icons">
                                 <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
                                 <a href="gallery-single.htm" class="item-details-link"></a>
                             </span>
-                        </span> 
-                        <a href="gallery-single.htm"> <img src="<?php echo $datas[$i]['picture']; ?>" alt="Gallery"> </a>
-                        <span class="project-details"><a href="gallery-single.htm"><?php echo $datas[$i]['name']; ?></a><?php echo $datas[$i]['description']; ?></span>
+                        </span>
+                        <a href="gallery-single.htm"><img src="img/gallery/gallery-img-1-4col.jpg" alt="Gallery"></a>
+                        <span class="project-details"><a href="gallery-single.htm">Custom Illustration</a>For an international ad campaign.</span>
                     </li>
 
-<?php       }
-        } ?>
-
-        <?php /*
                     <!-- Gallery Item 2 -->
                     <li class="span3 gallery-item" data-id="id-2" data-type="illustration">
                         <span class="gallery-hover-4col hidden-phone hidden-tablet">
@@ -365,7 +353,6 @@ $(document).ready(function () {
                         <a href="gallery-single.htm"><img src="img/gallery/gallery-img-1-4col.jpg" alt="Gallery"></a>
                         <span class="project-details"><a href="gallery-single.htm">Branding Design</a>For an international add campaign.</span>
                     </li>
-        */ ?>
                 </ul>
                 </div>
             </div>

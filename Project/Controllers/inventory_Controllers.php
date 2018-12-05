@@ -22,7 +22,7 @@
     else if ($_GET['action'] == 'create_questions') {
 
         // ATTRIBUT UNE IMAGE DE PROFIL AU DECK SI CELUI-CI N'EN POSSEDE PAS 
-        if (empty($_POST['picture'])) $_POST['picture'] = './Public/img/appareil_photo.jpg';
+        if (empty($_POST['picture'])) $_POST['picture'] = './img/appareil_photo.jpg';
 
         // INSERTION DU DECK DANS LA BDD
         new_deck_INSERT($_POST['title'], $_POST['description'], $_SESSION['id'], $_POST['picture'], $_POST['categorie']);
