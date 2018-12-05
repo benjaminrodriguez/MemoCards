@@ -3,7 +3,7 @@
     if(isset($_POST['username']) && isset($_POST['password'])) 
     {
         
-            // Ma clé privée
+        // Ma clé privée
         $secret = "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe";
         // Paramètre renvoyé par le recaptcha
         $response = $_POST['g-recaptcha-response'];
@@ -23,7 +23,7 @@
             
             //RECUPERE LES DONNEES DE L'USER
             $data = connection_SELECT(htmlspecialchars($_POST['username']));
-            sleep(2);
+            sleep(1);
 
             if (password_verify(htmlspecialchars($_POST['password']), $data['password']))
             { 

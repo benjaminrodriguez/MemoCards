@@ -6,13 +6,9 @@
   <head>
         <meta charset="utf-8"/>
       <!-- Le script du head -->
-      <script src='https://www.google.com/recaptcha/api.js'></script>
- 
-      <form method="post" action="">
-         
-          <input type="submit" id="valider" value="valider" />
-      </form>
-  
+      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    </head>
+<body>  
 <div class="background">
 
     <form class="form-signin" action="index.php?page=connection" method="POST"> <br>
@@ -45,4 +41,4 @@
 
 <?php $content = ob_get_clean(); ?>
 <?php require(dirname(__FILE__).'/template.php'); ?>
-
+</body>
