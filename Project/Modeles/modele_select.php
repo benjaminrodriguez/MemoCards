@@ -305,5 +305,31 @@
 
     //--------------------------------------------------------------------------------
 
+    function questforstat_SELECT($iddeck)
+    {
+        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+        $bdd = bdd();
+        $query = "SELECT recto.question_cards, succes_rate.level_cards, succes_rate.chain, succes_rate.played_cards
+                FROM deck
+                JOIN recto 
+                ON recto.deck_id = deck.id AND deck.id = :id
+                JOIN verso ON verso.recto_id = recto.id
+                JOIN succes_rate ON succes_rate.verso_id = verso.id
+                ORDER BY succes_rate.level_cards ASC;";
+        
+        $query_params = array(
+            ':id' => $iddeck
+            );
+        
+        try {
+            $stmt = $bdd->prepare($query);
+            $stmt->execute($query_params);
+        } catch(Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+        $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $qu;
+    }
 
+    //--------------------------------------------------------------------------------
 ?>
