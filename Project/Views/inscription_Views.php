@@ -7,14 +7,16 @@
 
             <label for="username"  class="sr-only">Username</label>
             <input type="text" name="username" value="" id="username" class="form-control" placeholder="Username" required autofocus>
-
-            <input type="password" name="password" value="" id="pass" class="form-control" placeholder="Mot de passe" required>
+            <P> Le mot de passe doit contenir : 6 caractères minimum, au moins une majuscule, une minuscule et un chiffre</p>
+            <input type="password" name="password" value="" id="pass" class="form-control" placeholder="Mot de passe" 
+            pattern=".{6,}"   
+            required title="6 caracteres minimum, au moins une majuscule, une minuscule et un caractère spécial" required>
             <label for="pass" class="sr-only">Password</label>
             <div class="checkbox mb-3">
 
             <input type="email" name="email" value="" id="email" class="form-control" placeholder="Email" required>
             <div class="checkbox mb-3">
-            Sexe : 
+            <p>Sexe : </p>
             <input type="radio" name="sex" value="M">Homme
             <input type="radio" name="sex" value="F" checked>Femme<br>
 
