@@ -15,6 +15,9 @@
     // BOUTON DECONNECTER
     require_once('Controllers/php/disconnect.php');
 
+    // BOUTON STATS
+    require_once('Controllers/php/stat.php');
+
     // PAGE HTML
     require(dirname(__FILE__).'/../Views/top_menu_Views.php');
     require(dirname(__FILE__).'/../Views/profile_menu_Views.php');

@@ -25,6 +25,9 @@
             
             <li>
                 <button type="submit"  name="menu" value="hobbies">Modifier des hobbies</button>
+
+            <li>
+                <button type="submit"  name="menu" value="stat">Voir mes stats</button>
             </li> <br/>
 
         </ul>
