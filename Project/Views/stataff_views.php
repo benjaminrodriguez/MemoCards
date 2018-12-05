@@ -1,6 +1,6 @@
 <?php
 foreach ($q as $key => $value) {
-    echo "<b> Carte $key : ".$value['question_cards']."&nbsp &nbsp </b>";
+    echo "<b> Carte ".($key+1)." : ".$value['question_cards']."&nbsp &nbsp </b>";
     
     if (intval($value['played_cards']) === 0) {
        ?>
