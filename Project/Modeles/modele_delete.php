@@ -15,16 +15,16 @@
 
     // ----------------------------------------------------------------------------
 
-    function message_DELETE ($id)
+    function message_DELETE ($message_id, $subjec_id)
     {
         // DESINSCRIPTION USER
         $bdd = bdd();
         $desinscription = $bdd->prepare(
         'DELETE FROM message
-        WHERE message.id = ?
-        VALUES (?);
+        WHERE message.id = ? AND subject_id= ?
+        VALUES (?, ?);
         ');
-        $desinscription->execute(array($id));
+        $desinscription->execute(array($message_id, $subjec_id));
     }
     
     // ----------------------------------------------------------------------------

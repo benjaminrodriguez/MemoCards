@@ -153,12 +153,14 @@
         {
             $req = last_deck_play_SELECT($_SESSION['id']);
             $datas = $req->fetchAll();
-            require(dirname(__FILE__).'/../Views/stat_Views.php');
+            require(dirname(__FILE__).'/../Views/statchoice_Views.php');
             
         }
         else 
         {
-            echo $_POST["deckstat"];
+            //echo $_POST["deckstat"];
+            $q = questforstat_SELECT($_POST["deckstat"]);
+            require(dirname(__FILE__).'/../Views/stataff_Views.php');
         }
     }
 
@@ -280,7 +282,7 @@
 
     function game1()
     {
-        $_POST['deck'] = 1;
+        $_POST['deck'] = 2;
 
         if (isset($_POST['start'])) {
             $_SESSION['deck'] = $_POST['deck'];
@@ -309,7 +311,7 @@
             }
             else
             {
-            game_end();
+                ame_end();
             }
         }
     }

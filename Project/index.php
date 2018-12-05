@@ -50,6 +50,7 @@
         else if ($_GET['page'] == 'test')
         {
             //game1();
+            require_once('Controllers/game_Controllers.php');
         }
         else if ($_GET['page'] == 'message')
         {
