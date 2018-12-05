@@ -169,7 +169,7 @@
         {
             //return $subject;
             $count++;
-            echo '<a href=index.php?page=forum&id=' .$subject['id'].'> Sujet : '.$subject['title']. 
+            echo '<a href=index.php?page=forum&subject_id=' .$subject['id'].'> Sujet : '.$subject['title']. 
             ' date du : ' .$subject['date_posted']. ' par ' .$subject['username'].'</a><br><br>';
         }
         $forum->closeCursor();
@@ -201,7 +201,7 @@
         $bdd = bdd();
         $forum = $bdd->prepare('SELECT message.autor_id, message.subject_id
                                 FROM message
-                                WHERE subject_id AND id = ? 
+                                WHERE subject_id = ? AND id = ? 
                                 ;
                                 ');
         $forum->execute(array($subject_num, $message_num));
