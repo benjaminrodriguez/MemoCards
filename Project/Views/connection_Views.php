@@ -11,7 +11,7 @@
 <body>  
 <div class="background">
 
-    <form class="form-signin" action="index.php?page=connection" method="POST"> <br>
+    <form id="form" class="form-signin" action="index.php?page=connection" method="POST"> <br>
      
 
         <img class="mb-4" src="./Public/img/logo.png" alt="" width="100" height="100">
@@ -22,11 +22,34 @@
         <label for="inputPassword" class="sr-only"></label><br>
         <input type="password" name="password" value="" id="inputPassword" class="form-control" placeholder="Password" required>
 
-        <br><br><button class="btn btn-lg btn-primary">Se connecter</button><br><br>
         <!-- Notre boite de vérification -->
-        <div class="g-recaptcha" data-theme="dark" 
+        <div id="toggle-text" class="g-recaptcha" data-theme="dark" 
             data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI">
         </div>
+        <!--<script>
+			let isActive = false;
+			const formElement = document.querySelector('#form');
+			const toggleTextElement = document.querySelector('#toggle-text');
+			formElement.addEventListener('submit', onFormSubmit);
+
+			document.querySelector('#toggle').addEventListener('click', function toggle(event) {
+				if (isActive) {
+					console.log('remove (enabled)');
+					formElement.addEventListener('submit', onFormSubmit);
+					toggleTextElement.textContent = 'Activer';
+				} else {
+					console.log('add (disabled)');
+					formElement.removeEventListener('submit', onFormSubmit);
+					toggleTextElement.textContent = 'Désactiver';
+				}
+				isActive = !isActive;
+			});
+
+			function onFormSubmit(event) {
+				event.preventDefault();
+			}
+		</script>-->
+        <br><br><button class="btn btn-lg btn-primary">Se connecter</button><br><br>
     </form>
 
 

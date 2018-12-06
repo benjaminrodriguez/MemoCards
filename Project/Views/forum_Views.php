@@ -1,5 +1,5 @@
 <?php 
-if (!isset($_GET['id']))
+if (!isset($_GET['subject_id']))
 { 
 ?>
     <form action='' method='POST'>
@@ -7,7 +7,9 @@ if (!isset($_GET['id']))
     </form>
 <?php 
 }
-if (!isset($_GET['id']) && isset($_POST['choix_forum']) && $_POST['choix_forum'] === 'creer_sujet')
+if (!isset($_GET['subject_id']) && isset($_POST['choix_forum']) 
+&& $_POST['choix_forum'] === 'creer_sujet' 
+&& $_GET['choix_forum'] !== 'delete_message')
 {
 ?>
             <form action='' method='POST'>

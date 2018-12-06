@@ -35,7 +35,6 @@
     if (isset($_GET['subject_id'])) 
 
     {
-        echo 'coucou';
         //$_SESSION['subject_id'] = intval($_GET['subject_id']);
 
         // ON ECRIT MESSAGE DANS SUJET
@@ -57,42 +56,34 @@
         {
             $_SESSION['subject_id'] = intval($_GET['subject_id']);
         }
-    
     }
     
     // SUPPRIMER UN MESSAGE DONT ON EST L'AUTEUR
-    if (isset($_POST['subject_id']))
+    if (isset($_SESSION['subject_id']) && isset($_GET['choix_forum']) && $_GET['choix_forum'] == 'delete_message')
     {
 
         //$_SESSION['message_num'] = intval($_GET['message_num']);
-        if (isset($_SESSION['subject_id']))
+    
+        if (isset($_GET['subject_id']) && isset($_GET['message_num']))
         {
-            var_dump($_GET);
+            $_SESSION['subject_id'] = $_GET['subject_id'];
+            $_SESSION['message_id_delete'] = $_GET['message_num'];
 
             // AFFICHER AUTEUR D'UN MESSAGE
-            $subject_info = messages_autor_SELECT($_SESSION['subject_id']);
+            $subject_info = messages_autor_SELECT($_GET['subject_id'], $_SESSION['message_id_delete']);
             foreach ($subject_info as $key => $value) 
             {
                 if ($subject_info[$key]['autor_id'] == $_SESSION['id'])
                 {
-                    message_DELETE(intval($_GET['message_num']));
+                    message_DELETE(intval($_SESSION['message_id_delete']));
                 }
                 else 
                 {
-                    echo 'desole seul l\'auteur peut delete son message';
-
+                    require(dirname(__FILE__).'/../Public/js/not_autor_message.js');
                 }
             }
         }
     }
-
     require(dirname(__FILE__).'/../Views/forum_Views.php');
-
-
-    echo 'session';
-    var_dump($_SESSION); echo'<br>';
-
-    echo 'get ';
-    var_dump($_GET);
 ?>
         

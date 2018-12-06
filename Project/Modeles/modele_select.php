@@ -190,7 +190,7 @@
     function messages_subject_SELECT($id)
     {
         $bdd = bdd();
-        $forum = $bdd->prepare('SELECT message.content_message, message.date, user.username, message.id
+        $forum = $bdd->prepare('SELECT message.content_message, message.date, user.username, message.id, message.autor_id
                                 FROM message
                                 INNER JOIN subject ON message.subject_id=subject.id
                                 INNER JOIN user ON subject.user_id=user.id
@@ -208,7 +208,7 @@
     function messages_autor_SELECT($subject_num, $message_num)
     {
         $bdd = bdd();
-        $forum = $bdd->prepare('SELECT message.autor_id, message.subject_id
+        $forum = $bdd->prepare('SELECT message.autor_id
                                 FROM message
                                 WHERE subject_id = ? AND id = ? 
                                 ;
