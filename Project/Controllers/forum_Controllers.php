@@ -70,14 +70,14 @@
             $_SESSION['message_id_delete'] = $_GET['message_num'];
 
             // AFFICHER AUTEUR D'UN MESSAGE
-            $subject_info = messages_autor_SELECT($_GET['subject_id'], $_SESSION['message_id_delete']);
+            $subject_info = messages_autor_SELECT(intval($_GET['subject_id']), intval($_SESSION['message_id_delete']));
             foreach ($subject_info as $key => $value) 
             {
                 if ($subject_info[$key]['autor_id'] == $_SESSION['id'])
                 {
                     message_DELETE(intval($_SESSION['message_id_delete']));
                 }
-                else if ($subject_info[$key]['autor_id'] == $_SESSION['id'])
+                else if ($subject_info[$key]['autor_id'] !== $_SESSION['id'])
                 {
                     require(dirname(__FILE__).'/../Public/js/not_autor_message.js');
                 }
