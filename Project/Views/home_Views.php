@@ -79,7 +79,7 @@ $(document).ready(function () {
         <!-- Logo
         ================================================== -->
         <div class="span5 logo">
-        	<a href="index.php"><img src="Public/img/memocards.png" width=300 alt="" /></a>
+        	<a href="index.php"><img src="Public/img/memocards_black.png" width=380 alt="" /></a>
             <h5>Apprendre... Pour mieux réussir</h5>
         </div>
         
