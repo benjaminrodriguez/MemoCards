@@ -1,6 +1,6 @@
 <?php
 
-    var_dump($_SESSION);
+    //var_dump($_SESSION);
     //SI L'UTILISATEUR N'EST PAS CONNECTE, IL EST REDIRIGER VERS LA PAGE DE CONNEXION
     if (!isset($_SESSION['username']))
     {

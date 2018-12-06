@@ -43,8 +43,8 @@
         {
             require(dirname(__FILE__).'/../Views/forum_affichage_message.php');
         }
-        var_dump($_GET);
-        var_dump($_SESSION);
+        //var_dump($_GET);
+        //var_dump($_SESSION);
 
         if (isset($_GET['subject_id']))
         {

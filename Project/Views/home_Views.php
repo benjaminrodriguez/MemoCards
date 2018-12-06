@@ -109,6 +109,9 @@ $(document).ready(function () {
                     <li><a href="index.php?page=profile">Voir mes statistiques</a></li>
                     <li><a href="index.php?page=profile">Déconnexion</a></li>
                 </ul>
+                
+        
+</form>
             </li>
              <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="gallery-4col.htm">Mon Inventaire <b class="caret"></b></a>
@@ -130,7 +133,7 @@ $(document).ready(function () {
                     <li><a href="blog-single.htm">Blog Single</a></li>
                 </ul>
              </li>
-             <li><a href="page-contact.htm">Cards Store</a></li>
+             <li><a href="index.php?page=store">Cards Store</a></li>
 
              <li><a href="index.php">Déconnexion</a></li>
 
