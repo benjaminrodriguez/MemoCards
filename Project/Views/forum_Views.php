@@ -21,10 +21,10 @@ if (!isset($_GET['id']) && isset($_POST['choix_forum']) && $_POST['choix_forum']
                 <button class="btn btn-lg btn-primary" type="submit">Créer sujet</button>
             </form>
 <?php
-        }
+}
 ?>
 <?php
-        if (isset($_GET['id']))
+        if (isset($_GET['subject_id']))
         {
 ?>
             <form action='' method='POST'>

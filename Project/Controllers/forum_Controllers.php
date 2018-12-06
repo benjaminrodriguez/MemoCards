@@ -61,7 +61,7 @@
     }
     
     // SUPPRIMER UN MESSAGE DONT ON EST L'AUTEUR
-    if (isset($_POST['subject']))
+    if (isset($_POST['subject_id']))
     {
 
         //$_SESSION['message_num'] = intval($_GET['message_num']);
