@@ -5,8 +5,10 @@
         
         // Ma clé privée
         $secret = "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe";
+
         // Paramètre renvoyé par le recaptcha
         $response = $_POST['g-recaptcha-response'];
+        
         // On récupère l'IP de l'utilisateur
         $remoteip = $_SERVER['REMOTE_ADDR'];
         
@@ -27,6 +29,9 @@
 
             if (password_verify(htmlspecialchars($_POST['password']), $data['password']))
             { 
+                // ON DETRUIT LE POST PASSWORD
+                unset($_POST['password']);
+
                 // STOCKAGE VARIABLE SESSION
                 $_SESSION['id'] = intval($data['id']);
                 $_SESSION['username'] = $data['username'];
@@ -50,11 +55,7 @@
         {
             // C'est un robot ou le code de vérification est incorrecte
             header('Location: index.php?page=connection');
-
         }
     }  
-        
-        
-
     require(dirname(__FILE__).'/../Views/connection_Views.php');
 ?>
