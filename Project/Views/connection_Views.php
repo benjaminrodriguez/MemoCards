@@ -27,7 +27,7 @@
         <div class="g-recaptcha" data-theme="dark" 
             data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI">
         </div>
-    </form><br><br>
+    </form>
 
 
     <form action="index.php?page=inscription" method="POST">
