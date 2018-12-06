@@ -77,7 +77,7 @@
                 {
                     message_DELETE(intval($_SESSION['message_id_delete']));
                 }
-                else 
+                else if ($subject_info[$key]['autor_id'] == $_SESSION['id'])
                 {
                     require(dirname(__FILE__).'/../Public/js/not_autor_message.js');
                 }
