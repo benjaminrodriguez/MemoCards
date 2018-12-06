@@ -79,7 +79,7 @@ $(document).ready(function () {
         <!-- Logo
         ================================================== -->
         <div class="span5 logo">
-        	<a href="index.php"><img src="Public/img/piccolo-logo.png" alt="" /></a>
+        	<a href="index.php"><img src="Public/img/memocards.png" width=300 alt="" /></a>
             <h5>Apprendre... Pour mieux réussir</h5>
         </div>
         
@@ -194,11 +194,9 @@ $(document).ready(function () {
         <!-- Headline Text
         ================================================== -->
         <div class="span4">
-        	<h3>Welcome to Piccolo.  <br />
-            A Big Theme in a Small .</h3>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pretium vulputate magna sit amet blandit.</p>
-            <p>Cras rutrum, massa non blandit convallis, est lacus gravida enim, eu fermentum ligula orci et tortor. In sit amet nisl ac leo pulvinar molestie. Morbi blandit ultricies ultrices.</p>
-            <a href="#"><i class="icon-plus-sign"></i>Read More</a> 
+        	<h3>Bienvenue sur Memocards.  <br />
+            Un beau projet .</h3>
+            MemoCards reprend la méthode d’apprentissage de flash-cards. Le principe des flash cards est à la fois simple et efficace, elle consiste à inscrire une information sur le recto d’une carte et l’information associée au verso. Il ne vous reste plus qu’à apprendre en vous amusant.
         </div>
     </div><!-- End Headline -->
     
@@ -445,40 +443,6 @@ $(document).ready(function () {
         ================================================== -->
         <div class="span6">
 
-            <h5 class="title-bg">Recent Clients
-                <small>That love us</small>
-                <button id="btn-client-next" class="btn btn-inverse btn-mini" type="button">&raquo;</button>
-                <button id="btn-client-prev" class="btn btn-inverse btn-mini" type="button">&laquo;</button>
-            </h5>
-
-            <!-- Client Testimonial Slider-->
-            <div id="clientCarousel" class="carousel slide no-margin">
-            <!-- Carousel items -->
-            <div class="carousel-inner">
-
-                <div class="active item">
-                    <p class="quote-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In interdum felis fermentum ipsum molestie sed porttitor ligula rutrum. Morbi blandit ultricies ultrices. Vivamus nec lectus sed orci molestie molestie."<cite>- Client Name, Big Company</cite></p>
-                </div>
-
-                <div class="item">
-                    <p class="quote-text">"Adipiscing elit. In interdum felis fermentum ipsum molestie sed porttitor ligula rutrum. Morbi blandit ultricies ultrices. Vivamus nec lectus sed orci molestie molestie."<cite>- Another Client Name, Company Name</cite></p>
-                </div>
-
-                <div class="item">
-                    <p class="quote-text">"Mauris eget tellus sem. Cras sollicitudin sem eu elit aliquam quis condimentum nulla suscipit. Nam sed magna ante. Ut eget suscipit mauris."<cite>- On More Client, The Company</cite></p>
-                </div>
-                
-            </div>
-            </div>
-
-            <!-- Client Logo Thumbs-->
-            <ul class="client-logos">
-                <li><a href="#" class="client-link"><img src="Public/img/gallery/client-img-1.png" alt="Client"></a></li>
-                <li><a href="#" class="client-link"><img src="Public/img/gallery/client-img-2.png" alt="Client"></a></li>
-                <li><a href="#" class="client-link"><img src="Public/img/gallery/client-img-3.png" alt="Client"></a></li>
-                <li><a href="#" class="client-link"><img src="Public/img/gallery/client-img-4.png" alt="Client"></a></li>
-                <li><a href="#" class="client-link"><img src="Public/img/gallery/client-img-5.png" alt="Client"></a></li>
-            </ul>
 
         </div>
         
@@ -493,28 +457,17 @@ $(document).ready(function () {
     	<div class="container">
         	<div class="row footer-row">
                 <div class="span3 footer-col">
-                    <h5>About Us</h5>
-                   <img src="Public/img/piccolo-footer-logo.png" alt="Piccolo" /><br /><br />
+                    <h5>A notre propos</h5>
+                   <img src="Public/img/memocards.png" alt="Piccolo" /><br /><br />
                     <address>
-                        <strong>Design Team</strong><br />
-                        123 Main St, Suite 500<br />
-                        New York, NY 12345<br />
+                        <strong>Developper Team</strong><br />
+                        8 bis avenue Maurice Thorez<br />
+                        Ivry, 94200<br />
                     </address>
-                    <ul class="social-icons">
-                        <li><a href="#" class="social-icon facebook"></a></li>
-                        <li><a href="#" class="social-icon twitter"></a></li>
-                        <li><a href="#" class="social-icon dribble"></a></li>
-                        <li><a href="#" class="social-icon rss"></a></li>
-                        <li><a href="#" class="social-icon forrst"></a></li>
-                    </ul>
+                    
                 </div>
                 <div class="span3 footer-col">
-                    <h5>Latest Tweets</h5>
-                    <ul>
-                        <li><a href="#">@room122</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                        <li><a href="#">@room122</a> In interdum felis fermentum ipsum molestie sed porttitor ligula rutrum. Morbi blandit ultricies ultrices.</li>
-                        <li><a href="#">@room122</a> Vivamus nec lectus sed orci molestie molestie. Etiam mattis neque eu orci rutrum aliquam.</li>
-                    </ul>
+                   
                 </div>
                 <div class="span3 footer-col">
                     <h5>Latest Posts</h5>
@@ -527,31 +480,17 @@ $(document).ready(function () {
                     </ul>
                 </div>
                 <div class="span3 footer-col">
-                    <h5>Flickr Photos</h5>
-                    <ul class="img-feed">
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                    </ul>
+                   
                 </div>
             </div>
 
             <div class="row"><!-- Begin Sub Footer -->
                 <div class="span12 footer-col footer-sub">
                     <div class="row no-margin">
-                        <div class="span6"><span class="left">Copyright 2012 Piccolo Theme. All rights reserved.</span></div>
+                        <div class="span6"><span class="left">Copyright 2018 Memocards Theme. All rights reserved.</span></div>
                         <div class="span6">
                             <span class="right">
-                            <a href="#">Home</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Gallery</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Blog</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Contact</a>
+                            <a href="#">Home</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Profil</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">CardStore</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Forum</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Déconnexion</a>
                             </span>
                         </div>
                     </div>
