@@ -1,5 +1,18 @@
 <?php
 
+
+
+
+
+
+
+
+
+
+
+    require_once('./Views/profile_Views.php');
+
+    /*
     // CHANGE LE PSEUDO
     require_once(dirname(__FILE__).'/php/change_username.php');
 
@@ -21,5 +34,5 @@
     // PAGE HTML
     require(dirname(__FILE__).'/../Views/top_menu_Views.php');
     require(dirname(__FILE__).'/../Views/profile_menu_Views.php');
-
+    */
 ?>

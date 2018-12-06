@@ -1,6 +1,24 @@
 <?php
 
-    // AFFICHE LA PAGE DE BASE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    echo 'Mettre le template';
+
+   /* // AFFICHE LA PAGE DE BASE
     //require(dirname(__FILE__).'/php/inventory.php');
     require(dirname(__FILE__).'/../Views/top_menu_Views.php');
 
@@ -36,5 +54,5 @@
 
 
     }
-        
+    */    
 ?>

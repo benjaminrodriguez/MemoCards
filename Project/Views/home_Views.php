@@ -92,22 +92,22 @@ $(document).ready(function () {
 
            <li><a href="index.php">Accueil</a></li>
 
-            <li class="dropdown active">
+            <!--<li class="dropdown active">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="index.php">Home <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="index.htm">Full Page</a></li>
                     <li><a href="index-gallery.htm">Gallery Only</a></li>
                     <li><a href="index-slider.htm">Slider Only</a></li>
                 </ul>
-            </li>
+            </li>-->
 
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="page-full-width.htm">Mon Profil<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="page-full-width.htm">Full Width</a></li>
-                    <li><a href="page-right-sidebar.htm">Right Sidebar</a></li>
-                    <li><a href="page-left-sidebar.htm">Left Sidebar</a></li>
-                    <li><a href="page-double-sidebar.htm">Double Sidebar</a></li>
+                    <li><a href="index.php?page=profile">Mes informations personnelles</a></li>
+                    <li><a href="index.php?page=profile">Mes hobbies</a></li>
+                    <li><a href="index.php?page=profile">Voir mes statistiques</a></li>
+                    <li><a href="index.php?page=profile">Déconnexion</a></li>
                 </ul>
             </li>
              <li class="dropdown">
@@ -131,6 +131,9 @@ $(document).ready(function () {
                 </ul>
              </li>
              <li><a href="page-contact.htm">Cards Store</a></li>
+
+             <li><a href="index.php">Déconnexion</a></li>
+
             </ul>
            
             </div>
