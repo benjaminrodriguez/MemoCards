@@ -13,7 +13,8 @@
         && $conforme_password == true 
         && $valide_username == true
         && $lengt_email == true
-        && $common_password == false) 
+        && $common_password == false
+        && $date_naissance == true) 
         {
             // APPEL DE LA FONCTION SQL INSCRIPTION
             inscription_INSERT(htmlspecialchars($_POST['username']), $passhache, htmlspecialchars($_POST['date_de_naissance']),
@@ -24,8 +25,9 @@
             //mail_auto_inscription();
             //send_mail();
             require(dirname(__FILE__).'/../Public/js/create_account.js');
-            //header('Location: index.php?page=connection');
         }
+        
+        // VERIFICATION INSCRIPTION
         else if (isset($valide_email) && $valide_email == false)
         {
             require(dirname(__FILE__).'/../Public/js/invalide_email.js');
@@ -50,12 +52,13 @@
         {
             require(dirname(__FILE__).'/../Public/js/common_password.js');
         }
+        else if (isset($date_naissance) && $date_naissance == false)
+        {
+            require(dirname(__FILE__).'/../Public/js/bad_birthdate.js');
+        }
 
-        
-        
-        
+
     }
 
     require(dirname(__FILE__).'/../Views/inscription_Views.php');
-
 ?>

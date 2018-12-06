@@ -80,6 +80,5 @@
         }
     }
     require(dirname(__FILE__).'/../Views/forum_Views.php');
-    var_dump($_GET,$_POST,$_SESSION);
 ?>
         

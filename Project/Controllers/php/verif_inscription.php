@@ -82,4 +82,15 @@
         // On ferme le fichier
         fclose($handle);
     }
+    
+    // ON VERIFIE LA DATE DE NAISSANCE
+    $now = date("d-m-Y");
+    if ($_POST['date_de_naissance'] > $now)
+    {
+        $date_naissance = false;
+    }
+    else if ($_POST['date_de_naissance'] < $now)
+    {
+        $date_naissance = true;
+    }
 ?>

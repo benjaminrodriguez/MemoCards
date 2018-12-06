@@ -25,7 +25,7 @@
 <?php
     }
    
-    if (isset($_GET['subject_id'])) 
+    if (isset($print_message[$key]) && isset($_GET['subject_id'])) 
     {
         echo $print_message[$key]['content_message'].' le '.
         $print_message[$key]['date'].' par '.

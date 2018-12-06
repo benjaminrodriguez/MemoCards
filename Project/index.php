@@ -7,6 +7,7 @@
     require('Modeles/modele_insert.php');
     require('Modeles/modele_select.php');
     require('Modeles/modele_update.php');
+    //require(dirname(__FILE__).'/./Controllers/php/token.php');
 
     
     if (isset($_GET['page']) && !empty($_GET['page'])) 
