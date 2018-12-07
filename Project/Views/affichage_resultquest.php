@@ -6,8 +6,8 @@ if (isset($_SESSION['listend'][0])) {
         echo "Question n° ". (intval($key)+1)."<br><br>";
         if ($value === "T")
         {
-            echo "Carte :" . $_SESSION['listend'][1][$key]."<br>";
-            $q = carte_quest_SELECT($_SESSION['listend'][1][$key]);
+            echo "Carte :" . htmlspecialchars($_SESSION['listend'][1][$key])."<br>";
+            $q = carte_quest_SELECT(htmlspecialchars($_SESSION['listend'][1][$key]));
             echo $q[0]['q'];?>
             <br>
             <font size='+1' color='green'>>>>>> Bonne!</font>
@@ -15,7 +15,7 @@ if (isset($_SESSION['listend'][0])) {
         }
         else
         {
-            echo "Carte :" . $_SESSION['listend'][1][$key]."<br>";
+            echo "Carte :" . htmlspecialchars($_SESSION['listend'][1][$key])."<br>";
             $q = carte_quest_SELECT($_SESSION['listend'][1][$key]);
             echo $q[0]['q'];?>
             <br>

@@ -2,7 +2,7 @@
 
     if(isset($_POST['password']))
     {
-        $passhache = password_hash(htmlspecialchars($_POST['password']),  PASSWORD_DEFAULT);
+        $passhache = password_hash($_POST['password'],  PASSWORD_DEFAULT);
 
         require(dirname(__FILE__).'/../Controllers/php/pp_random.php');
         require(dirname(__FILE__).'/../Controllers/php/verif_inscription.php');
@@ -17,9 +17,9 @@
         && $date_naissance == true) 
         {
             // APPEL DE LA FONCTION SQL INSCRIPTION
-            inscription_INSERT(htmlspecialchars($_POST['username']), $passhache, htmlspecialchars($_POST['date_de_naissance']),
-                                'membre', htmlspecialchars($_POST['sex']), htmlspecialchars($_POST['region']),
-                                htmlspecialchars($_POST['email']), htmlspecialchars($profile_picture)
+            inscription_INSERT($_POST['username'], $passhache, $_POST['date_de_naissance'],
+                                'membre', $_POST['sex'], $_POST['region'],
+                                $_POST['email'], $profile_picture
                                 );
             //require(dirname(__FILE__).'/../Controllers/php/mail_auto.php');
             //mail_auto_inscription();

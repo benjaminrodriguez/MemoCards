@@ -24,10 +24,10 @@
             // C'est un humain
             
             //RECUPERE LES DONNEES DE L'USER
-            $data = connection_SELECT(htmlspecialchars($_POST['username']));
+            $data = connection_SELECT($_POST['username']);
             sleep(1);
 
-            if (password_verify(htmlspecialchars($_POST['password']), $data['password']))
+            if (password_verify($_POST['password'], $data['password']))
             { 
                 // ON DETRUIT LE POST PASSWORD
                 unset($_POST['password']);

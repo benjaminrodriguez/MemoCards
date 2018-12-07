@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 <form method="post" action="" id="monFormulaire">
-<br>Q n° <?php echo $_SESSION['cpt'];?>
+<br>Q n° <?php echo intval($_SESSION['cpt']);?>
 <br><br>
 <?php echo $q[0]['q']; ?>
 <br>

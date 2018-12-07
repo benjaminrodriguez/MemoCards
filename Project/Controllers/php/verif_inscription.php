@@ -65,9 +65,7 @@
         // Tant que l'on est pas à la fin du fichier
         while (!feof($handle) AND ($buffer != $password))
         {
-            
             $buffer = fgets($handle);
-
         }
         
         if ($buffer == $password) 
@@ -84,7 +82,7 @@
     }
     
     // ON VERIFIE LA DATE DE NAISSANCE
-    $now = date("d-m-Y");
+    $now = date("Y-m-d");
     if ($_POST['date_de_naissance'] > $now)
     {
         $date_naissance = false;

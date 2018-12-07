@@ -198,7 +198,7 @@ $(document).ready(function () {
         ================================================== -->
         <div class="span4">
         	<h3>Bienvenue sur Memocards.  <br />
-            Un beau projet .</h3>
+            Un beau projet !</h3>
             MemoCards reprend la méthode d’apprentissage de flash-cards. Le principe des flash cards est à la fois simple et efficace, elle consiste à inscrire une information sur le recto d’une carte et l’information associée au verso. Il ne vous reste plus qu’à apprendre en vous amusant.
         </div>
     </div><!-- End Headline -->
