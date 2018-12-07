@@ -13,16 +13,16 @@
                 if(isset($datas[$i]['name'])) 
                 { ?>
                     <button name="top_3_deck" value="<?php echo $datas[$i]['id']; ?>" style="width:250px">
-                        <h3> <?php echo $datas[$i]['name']; ?> </h3>
+                        <h3> <?php echo htmlspecialchars($datas[$i]['name']); ?> </h3>
                         <img src="<?php echo $datas[$i]['picture']; ?>" alt="" height="100"> <br>
 
                         <label for="description"><i><b>Description :</b></i> </label>
-                        <p id="description"> <?php echo $datas[$i]['description']; ?> </p>
+                        <p id="description"> <?php echo htmlspecialchars($datas[$i]['description']); ?> </p>
                     </button>
 
                     <!-- Bouton modifier deck -->
                     <?php if($_SESSION['id'] == $datas[$i]['autor_id']) {?>
-                        <button name="modify_deck" value="<?php echo $datas[$i]['id'] ?>">Modifier ce deck</button> 
+                        <button name="modify_deck" value="<?php echo htmlspecialchars($datas[$i]['id']) ?>">Modifier ce deck</button> 
                     <?php } 
                 }
             } ?> <br><br>
