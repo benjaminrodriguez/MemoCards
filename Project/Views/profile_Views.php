@@ -46,7 +46,7 @@
         ================================================== -->
         <div class="span5 logo">
         	<a href="index.htm"><img src="img/piccolo-logo.png" alt="" /></a>
-            <h5>Big Things... Small Packages</h5>
+            <h1>MerdmoCards</h1>
         </div>
         
         <!-- Main Navigation
@@ -70,7 +70,7 @@
                     <li><a href="page-full-width.htm">Full Width</a></li>
                     <li><a href="page-right-sidebar.htm">Right Sidebar</a></li>
                     <li><a href="page-left-sidebar.htm">Left Sidebar</a></li>
-                    <li><a href="page-double-sidebar.htm">Double Sidebar</a></li>
+                    <li><a href="page-double-sidebar.htm">Mes statistiques</a></li>
                 </ul>
             </li>
              <li class="dropdown">

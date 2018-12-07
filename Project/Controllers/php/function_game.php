@@ -73,6 +73,8 @@ function game_answer()
     $played_card = $getquest[0]['played_cards'];
     $level_card = $getquest[0]['level_cards'];
     $chain = $getquest[0]['chain'];
+    $win = $getquest[0]['nb_succes'];
+    
 
     //var_dump($getquest);
 
@@ -82,6 +84,7 @@ function game_answer()
         $played_card++;
         $level_card++;
         $chain++;
+        $win++;
     }
     else if ($_POST['answer'] === 'F')
     {
@@ -95,8 +98,9 @@ function game_answer()
             $level_card = 3;
         }
     }
+    
     //UPDATE THEM
-    carte_UPDATE($getquest[0]['id'], $played_card, $chain, $level_card);
+    carte_UPDATE($getquest[0]['id'], $played_card, $chain, $level_card,$win);
     //$_SESSION['listend'] = $listend;
 }
 

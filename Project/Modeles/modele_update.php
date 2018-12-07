@@ -1,14 +1,15 @@
 <?php
     // ----------------------------------------------------------------------------
 
-    function carte_UPDATE($id,$ply,$chain,$lv)
+    function carte_UPDATE($id,$ply,$chain,$lv,$win)
     {
         $bdd = bdd();
         $query = "UPDATE `succes_rate`
                 SET
                 `level_cards`=:lvcard,
                 `chain`=:chain,
-                `played_cards`=:plycards
+                `played_cards`=:plycards,
+                `nb_succes`=:win
                 WHERE succes_rate.verso_id = (
                     SELECT verso.id
                     FROM verso
@@ -18,6 +19,7 @@
             ':id' => $id,
             ':plycards' => $ply,
             ':chain' => $chain,
+            ':win' => $win,
             ':lvcard' => $lv);
 
         try {

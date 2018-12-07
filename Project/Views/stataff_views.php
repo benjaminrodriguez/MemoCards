@@ -9,17 +9,24 @@ foreach ($q as $key => $value) {
    }
    elseif (intval($value['level_cards']) > 4) {
     ?>
-    <i>  <i>  La carte a été jouée <?php echo $value['played_cards']; ?> fois.</i> &nbsp &nbsp &nbsp &nbsp 
+    <i>  La carte a été jouée <?php echo $value['played_cards']; ?> fois avec 
+    <?php echo intval(intval($value['nb_succes'])/intval($value['played_cards'])*100); ?> % de réussite.</i> 
+    &nbsp &nbsp &nbsp &nbsp 
     <img src="./Public/img/level/max.PNG" width="50" height="50" ><b> Lv. 3 Niveau MAX Bien joué !</b><br><br><?php
+   
    }
    elseif (intval($value['level_cards']) > 3) {
     ?>
-    <i> <i>  La carte a été jouée <?php echo $value['played_cards']; ?> fois.</i> &nbsp &nbsp &nbsp &nbsp 
-    <img src="./Public/img/level/new.PNG" width="50" height="50" ><b> Lv. 2 Continues comme ca !</b><br><br><?php
+    <i>  La carte a été jouée <?php echo $value['played_cards']; ?> fois avec 
+    <?php echo intval(intval($value['nb_succes'])/intval($value['played_cards'])*100); ?> % de réussite.</i> 
+    &nbsp &nbsp &nbsp &nbsp 
+    <img src="./Public/img/level/new.PNG" width="50" height="50" ><b> Lv. 2 Continues comme ca !</b><br><br></div><?php
    }
    else {
     ?>
-    <i>  La carte a été jouée <?php echo $value['played_cards']; ?> fois.</i> &nbsp &nbsp &nbsp &nbsp 
+    <i>  La carte a été jouée <?php echo $value['played_cards']; ?> fois avec 
+    <?php echo intval(intval($value['nb_succes'])/intval($value['played_cards'])*100); ?> % de réussite.</i> 
+    &nbsp &nbsp &nbsp &nbsp 
     <img src="./Public/img/level/first.PNG" width="50" height="50" ><b> Lv. 1 Accroches toi, tu vas y arriver !</b><br><br><?php
    }
    

@@ -318,7 +318,7 @@
     {
         //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
         $bdd = bdd();
-        $query = "SELECT recto.question_cards, succes_rate.level_cards, succes_rate.chain, succes_rate.played_cards
+        $query = "SELECT recto.question_cards, succes_rate.level_cards, succes_rate.chain, succes_rate.played_cards, succes_rate.nb_succes
                 FROM deck
                 JOIN recto 
                 ON recto.deck_id = deck.id AND deck.id = :id
