@@ -223,13 +223,15 @@
     function first_messages_subject_SELECT($id)
     {
         $bdd = bdd();
-        $forum = $bdd->prepare('SELECT *
+        $forum = $bdd->prepare('SELECT subject.content, subject.date_posted, user.username
                                 FROM subject
-                                WHERE id = ?
+                                INNER JOIN user ON subject.user_id=user.id
+                                WHERE subject.id = ?
+                                LIMIT 1;
                                 ');
         while ($subject = $forum->fetch($id)) 
         {
-            echo $subject['content_message'].' le '.$subject['date'].' par '.$subject['username'].'<br>';
+            echo $subject['content'].' le '.$subject['date_posted'].' par '.$subject['username'].'<br>';
         }
         $forum->closeCursor();
         
@@ -243,7 +245,7 @@
         $req = $bdd->prepare(' SELECT password
                                 FROM user
                                 WHERE id = ?
-                                LIMIT 1
+                                LIMIT 1;
                             ');
         $req->execute(array($id));
         $donnees = $req->fetch();
