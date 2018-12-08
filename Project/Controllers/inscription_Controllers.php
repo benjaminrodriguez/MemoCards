@@ -7,8 +7,7 @@
         require(dirname(__FILE__).'/../Controllers/php/pp_random.php');
         require(dirname(__FILE__).'/../Controllers/php/verif_inscription.php');
 
-        if (isset($valide_email) 
-        && $valide_email == true 
+        if ($valide_email == true 
         && $valide_password == true 
         && $conforme_password == true 
         && $valide_username == true
