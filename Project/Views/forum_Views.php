@@ -9,7 +9,7 @@
     }
     if (!isset($_GET['subject_id']) && isset($_POST['choix_forum']) 
         && $_POST['choix_forum'] === 'creer_sujet' 
-        && $_GET['choix_forum'] !== 'delete_message')
+        )
     {
 ?>
     <form action='' method='POST'>
