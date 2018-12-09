@@ -123,16 +123,8 @@ $(document).ready(function () {
                     <li><a href="gallery-single.htm">Gallery Single</a></li>
                 </ul>
              </li>
-             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="blog-style1.htm">Forum<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="blog-style1.htm">Blog Style 1</a></li>
-                    <li><a href="blog-style2.htm">Blog Style 2</a></li>
-                    <li><a href="blog-style3.htm">Blog Style 3</a></li>
-                    <li><a href="blog-style4.htm">Blog Style 4</a></li>
-                    <li><a href="blog-single.htm">Blog Single</a></li>
-                </ul>
-             </li>
+             <li><a href="index.php?page=forum">Forum</a></li>
+
              <li><a href="index.php?page=store">Cards Store</a></li>
 
              <li><a href="index.php">Déconnexion</a></li>

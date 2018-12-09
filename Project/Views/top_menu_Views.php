@@ -1,6 +1,7 @@
 <?php $title="Mon Menu" ?>
 <? ob_start(); ?>
 
+<link rel="shortcut icon" href="/Publc/img/favicon.png">
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">

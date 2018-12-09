@@ -34,7 +34,6 @@
             .htmlspecialchars($print_message[$key]['id']).'&subject_id='.htmlspecialchars($_SESSION['subject_id']).'"> Supprimer mon message</a><br><br>' ;
         }
     }
-
     if (isset($_GET['subject_id']) && isset($_SESSION['print_messages']) && $_SESSION['print_messages'] == false)
     {
     $_SESSION['print_messages'] = true;
