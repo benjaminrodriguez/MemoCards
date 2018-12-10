@@ -7,15 +7,20 @@
         <meta charset="utf-8"/>
       <!-- Le script du head -->
       <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="./Public/css/connection.css" rel="stylesheet" type="text/css" />
+
     </head>
 <body>  
 <div class="background">
+<div class="page-container">
 
-    <form id="form" class="form-signin" action="index.php?page=connection" method="POST"> <br>
+    <form id="form" class="form-signin" action="index.php?page=connection" method="POST"> 
      
 
-        <img class="mb-4" src="./Public/img/logo.png" alt="" width="100" height="100">
-        <h1 class="h3 mb-3 font-weight-normal">Bienvenue sur MemoCards</h1><br>
+        <center><img class="mb-4" src="./Public/img/memocards_black.png" alt=""></center>
 
         <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
 
@@ -49,17 +54,18 @@
 				event.preventDefault();
 			}
 		</script>-->
-        <br><br><button class="btn btn-lg btn-primary">Se connecter</button><br><br>
+        <br><br><button >Se connecter</button><br><br>
     </form>
 
 
     <form action="index.php?page=inscription" method="POST">
-        <button type="submit" class="btn btn-lg btn-primary" id="inscription" name="inscription" value="inscription"><h3>Inscription</h3></button>
+        <button type="submit"  id="inscription" name="inscription" value="inscription"><h3>Inscription</h3></button>
     </form>
+    <center><p class="mt-5 mb-3 text-muted">&copy; MemoCards</p></center>
 
+</div>
  </div>
 
-<p class="mt-5 mb-3 text-muted">&copy; MemoCards</p>
 
 
 <?php $content = ob_get_clean(); ?>

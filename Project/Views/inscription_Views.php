@@ -76,6 +76,7 @@
             }
         });
     </script>
+    
 
 <!-- Bouton de retour à l'écran d'accueil -->
         <form action='index.php?page=home' method='POST'>
