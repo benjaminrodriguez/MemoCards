@@ -18,7 +18,7 @@
     <form id="form" class="form-signin" action="index.php?page=connection" method="POST"> 
      
 
-        <center><img class="mb-4"  src="./Public/img/memocards_black.png" alt=""></center>
+        <center><img class="mb-4"  src="./Public/img/memocards_white.png" alt=""></center>
         <form action="" method="POST" class="form-signin">
             <!--<h1 class="h3 mb-3 font-weight-normal">Inscrivez-vous</h1>-->
 
@@ -30,7 +30,24 @@
              title="6 caracteres minimum, au moins une majuscule, une minuscule" >
             <label for="pass" class="sr-only">Password</label>
             <div class="checkbox mb-3">
-
+            <script>
+                // Vérification de la longueur du mot de passe saisi
+                document.getElementById("password").addEventListener("input", function (e) {
+                    var mdp = e.target.value; // Valeur saisie dans le champ mdp
+                    var longueurMdp = "faible";
+                    var couleurMsg = "red"; // Longueur faible => couleur rouge
+                    if (mdp.length >= 8) {
+                        longueurMdp = "suffisante";
+                        couleurMsg = "green"; // Longueur suffisante => couleur verte
+                    } else if (mdp.length >= 4) {
+                        longueurMdp = "moyenne";
+                        couleurMsg = "orange"; // Longueur moyenne => couleur orange
+                    }
+                    var aideMdpElt = document.getElementById("aideMdp");
+                    aideMdpElt.textContent = "Longueur : " + longueurMdp; // Texte de l'aide
+                    aideMdpElt.style.color = couleurMsg; // Couleur du texte de l'aide
+                });
+            </script>
             <input type="email" name="email" value="" id="email" class="form-control" placeholder="Email" >
             <div class="checkbox mb-3">
             <p>Sexe : 
@@ -63,18 +80,8 @@
             
             <button type="submit">Inscription</button>
         </form>
-        <!-- Bouton de retour à l'écran d'accueil -->
-<form action='index.php?page=home' method='POST'>
-    <button type="submit" value="Retour à l'écran de connexion">Retour à l'écran de connexion</button>
-</form>
-</div>
-    <center><p >&copy; MemoCards</p></center>
-
-</div>
- </div>    
- 
- <!-- JS POUR EVITER LES CHAMPS VIDES-->
-        <script>
+         <!-- JS POUR EVITER LES CHAMPS VIDES-->
+         <script>
         document.forms[0].addEventListener("submit", function(evenement) 
         { 
             if (document.getElementById("email").value == "") {
@@ -97,13 +104,24 @@
                 alert("Pensez à taper une région !");
                 document.getElementById("region").focus();
             }
-            else if (document.getElementById("date").value == "") {
+            else if (document.getElementById("date_de_naissance").value == "") {
                 evenement.preventDefault();
                 alert("Pensez à taper une date !");
                 document.getElementById("date").focus();
             }
         });
     </script>
+        <!-- Bouton de retour à l'écran d'accueil -->
+<form action='index.php?page=home' method='POST'>
+    <button type="submit" value="Retour à l'écran de connexion">Retour à l'écran de connexion</button>
+</form>
+</div>
+    <center><p >&copy; MemoCards</p></center>
+
+</div>
+ </div>    
+ 
+
     
 
 

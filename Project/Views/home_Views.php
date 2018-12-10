@@ -174,6 +174,36 @@ $(document).ready(function () {
       </div><!-- End Header -->
      
     <div class="row headline"><!-- Begin Headline -->
+    <!-- HEURE DYNAMIQUE -->
+
+    <script language="JavaScript">
+<!--
+function heure () {
+var Maintenant = new Date();
+var heures = Maintenant.getHours();
+var minutes = Maintenant.getMinutes();
+var secondes = Maintenant.getSeconds();
+heures = ((heures < 10) ? " 0" : " ") + heures;
+minutes = ((minutes < 10) ? ":0" : ":") + minutes;
+secondes = ((secondes < 10) ? ":0" : ":") + secondes;
+document.formhorloge.horloge.value = heures + minutes + secondes;
+setTimeout("heure()",1000);
+}
+window.onload = heure;
+// -->
+</script>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<br /><p class="tt" >Affichage de l'heure dans un bouton</p><br /><br />
+
+
+<form name="formhorloge">
+<input type="button" name="horloge" value="">
+</form>
+    <!-- FIN HEURE DYNAMIQUE -->
+
       <!-- AUDIO PLAYER--><br>
       <audio id="audioPlayer">
         <source src="./Public/song.ogg">
