@@ -448,12 +448,12 @@ $(document).ready(function () {
     </div><!-- End Bottom Section -->
     
     </div> <!-- End Container -->
-        <center>    
+   
         <iframe seamless width="888" height="336" frameborder="0" 
         src="https://www.infoclimat.fr/public-api/mixed/iframeSLIDE?_ll=48.85341,2.3488&_inc=WyJQYXJpcyIsIjQyIiwiMjk4ODUwNyIsIkZSIl0=&_auth=CRNfSAZ4ByVSf1tsD3lReAJqAjcNewIlC3cHZFo%2FUSwHbANiB2dVMwJsA35XeAo8VXgDYFphV2cLYAB4DH5VNAljXzMGbQdgUj1bPg8gUXoCLAJjDS0CJQtgB2ZaKVE0B2ADeQdjVT8CcwNlV2cKIVV5A2JaYFdrC2wAYwxlVTAJYl8yBmUHelIiWzwPbFFlAmQCZA0xAmsLOQdkWj5RYQcxAzEHYlUpAm8DaFduCjlVYQNrWmJXaQt3AHgMGFVFCXdfewYnBzBSe1skD2pROwJl&_c=af8bf9a4d019d2172ab6c098d588c0fa">
         </iframe>
     </center>
-    <script src="http://js.api.here.com/v3/3.0/mapsjs-core.js"
+    <!--<script src="http://js.api.here.com/v3/3.0/mapsjs-core.js"
   type="text/javascript" charset="utf-8"></script>
   <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js"
   type="text/javascript" charset="utf-8"></script>
@@ -478,7 +478,7 @@ $(document).ready(function () {
       zoom: 10,
       center: { lng: 13.4, lat: 52.51 }
     });
-  </script>
+  </script>-->
 
 
     <!-- Footer Area
