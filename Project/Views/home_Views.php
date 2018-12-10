@@ -130,7 +130,7 @@ $(document).ready(function () {
 
              <li><a href="index.php?page=store">Cards Store</a></li>
 
-             <li><a href="index.php">Déconnexion</a></li>
+             <li><a href="index.php?page=dc">Déconnexion</a></li>
 
             </ul>
            
