@@ -1,10 +1,10 @@
 <?php
 
-    require_once('./Views/profile_Views.php');
+    //require_once('./Views/profile_Views.php');
     
     if (isset($_GET['action'])) {
         if ($_GET['action'] === "stat") {
-            
+            require_once('Controllers/php/stat.php');
         }
     }
     /*

@@ -1,9 +1,9 @@
 <?php
- 
+
  if (!isset($_POST['deckstat'])) 
  {
-     $req = last_deck_play_SELECT($_SESSION['id']);
-     $datas = $req->fetchAll();
+     $datas = last_deck_play_SELECT($_SESSION['id']);
+     var_dump($datas);
      require(dirname(__FILE__). '/../../Views/statchoice_views.php');
      
  }

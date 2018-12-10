@@ -266,6 +266,7 @@
                                 ORDER BY passed.date_passed  ;
                             ');
         $req->execute(array($user_id));
+        $req= $req->fetchAll(PDO::FETCH_ASSOC);
         return $req;
     }
 
@@ -343,4 +344,5 @@
     }
 
     //--------------------------------------------------------------------------------
+
 ?>

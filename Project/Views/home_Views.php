@@ -106,7 +106,7 @@ $(document).ready(function () {
                 <ul class="dropdown-menu">
                     <li><a href="index.php?page=profile">Mes informations personnelles</a></li>
                     <li><a href="index.php?page=profile">Mes hobbies</a></li>
-                    <li><a href="index.php?page=profile">Voir mes statistiques</a></li>
+                    <li><a href="index.php?page=profile&action=stat">Voir mes statistiques</a></li>
                     <li><a href="index.php?page=profile">Déconnexion</a></li>
                 </ul>
                 

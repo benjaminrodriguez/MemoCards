@@ -7,7 +7,8 @@ if (isset($_POST['menu']) && $_POST['menu'] == 'stat')
     <?php   for($i=0; $i<2; $i++)
             { 
                 if(isset($datas[$i]['name'])) 
-                { ?>
+                { 
+                    ?>
                     <button name="deckstat" value="<?php echo htmlspecialchars($datas[$i]['id']); ?>" style="width:250px">
                         <h3> <?php echo htmlspecialchars($datas[$i]['name']); ?> </h3>
                         <img src="<?php echo htmlspecialchars($datas[$i]['picture']); ?>" alt="" height="100"> <br>
