@@ -317,20 +317,25 @@
 
     //--------------------------------------------------------------------------------
 
-    function questforstat_SELECT($iddeck)
+    function questforstat_SELECT($iddeck, $iduser)
     {
         //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
         $bdd = bdd();
         $query = "SELECT recto.question_cards, succes_rate.level_cards, succes_rate.chain, succes_rate.played_cards, succes_rate.nb_succes
-                FROM deck
-                JOIN recto 
-                ON recto.deck_id = deck.id AND deck.id = :id
-                JOIN verso ON verso.recto_id = recto.id
-                JOIN succes_rate ON succes_rate.verso_id = verso.id
-                ORDER BY succes_rate.level_cards ASC;";
+                    FROM user
+                    JOIN passed 
+                    ON passed.user_id = user.id AND user.id = :user
+                    JOIN deck
+                    ON passed.deck_id = deck.id
+                    JOIN recto
+                    ON recto.deck_id = deck.id AND deck.id = :id
+                    JOIN verso ON verso.recto_id = recto.id
+                    JOIN succes_rate ON succes_rate.verso_id = verso.id
+                    ORDER BY succes_rate.level_cards ASC;";
         
         $query_params = array(
-            ':id' => $iddeck
+            ':id' => $iddeck,
+            ':user' => $iduser
             );
         
         try {
