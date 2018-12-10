@@ -1,9 +1,8 @@
 <?php
 require("./Controllers/php/function_game.php");
-$_POST['deck'] = 2;
 
         if (isset($_POST['start'])) {
-            $_SESSION['deck'] = $_POST['deck'];
+            $_SESSION['deck'] = $_GET['deck'];
         }
         if (!isset($_SESSION['deck']))
         {

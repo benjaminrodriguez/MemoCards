@@ -52,7 +52,7 @@
             //my_inventory();
             require_once('Controllers/inventory_Controllers.php');
         }
-        else if ($_GET['page'] == 'test')
+        else if ($_GET['page'] == 'game')
         {
             //game1();
             require_once('Controllers/game_Controllers.php');

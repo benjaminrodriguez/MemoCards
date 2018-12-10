@@ -9,14 +9,16 @@
 
             { 
                 if(isset($datas[$i]['name'])) 
-                { ?>
+                { 
+                    var_dump($_POST);
+                    ?>
                     <!-- Blog Post 1 -->
                     <article class="clearfix">
                         <a href="blog-single.htm"><img src="<?php echo $datas[$i]['picture']; ?>" alt="Post Thumb" class="align-left" style="width: 200px;" ></a>
                         <h4 class="title-bg"><a href="blog-single.htm"><?php echo htmlspecialchars($datas[$i]['name']); ?></a></h4>
                         <p> <?php echo htmlspecialchars($datas[$i]['description']); ?> </p>
-                        <button class="btn btn-mini btn-inverse" type="button" name="top_3_deck" value="<?php echo $datas[$i]['id']; ?>">Lancer une partie</button>
-                        
+                        <!-- <button class="btn btn-mini btn-inverse" type="button" name="top_3_deck" value="<?php //echo $datas[$i]['id']; ?>">Lancer une partie</button> -->
+                        <a class="btn btn-mini btn-inverse" href="index.php?page=game&deck=<?php echo $datas[$i]['deck_id'];?>"><font size="3">Jouer avec ce deck</font></a>
                         <div class="post-summary-footer">
                             <ul class="post-data-3">
                                 <li><i class="icon-calendar"></i><?php echo htmlspecialchars($datas[$i]['date_creation']); ?></li>
