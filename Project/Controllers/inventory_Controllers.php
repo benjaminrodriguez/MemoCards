@@ -1,44 +1,23 @@
 <?php
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    echo 'Mettre le template';
-
-   /* // AFFICHE LA PAGE DE BASE
-    //require(dirname(__FILE__).'/php/inventory.php');
-    require(dirname(__FILE__).'/../Views/top_menu_Views.php');
-
-    // AFFICHE LES 3 DECKS LES PLUS UTILISER PAR L'USER
-    if (!isset($_GET['action'])) {
-        
-        $req = last_deck_play_SELECT($_SESSION['id']);
+    // SELECTIONNE LES DECK DE L'UTILISATEUR
+    if (!isset($_GET['action'])) 
+    {
+        $req = my_deck_SELECT($_SESSION['id']);
         $datas = $req->fetchAll();
         require(dirname(__FILE__).'/../Views/inventory_Views.php');
-
     } 
-    else if ($_GET['action'] == 'create_deck') {
 
+    else if ($_GET['action'] == 'create_deck') 
+    {
         // CREATION DU DECK
         $req = categories_SELECT();
         $categories = $req->fetchAll();
         require(dirname(__FILE__).'/../Views/create_deck_Views.php');
     } 
-    else if ($_GET['action'] == 'create_questions') {
 
+    else if ($_GET['action'] == 'create_questions') 
+    {
         // ATTRIBUT UNE IMAGE DE PROFIL AU DECK SI CELUI-CI N'EN POSSEDE PAS 
         if (empty($_POST['picture'])) $_POST['picture'] = './img/appareil_photo.jpg';
 
@@ -52,7 +31,8 @@
         // CREATIONS DE 10 QUESTIONS MINIMUMS POUR LE DECK
         require(dirname(__FILE__).'/../Views/create_questions_Views.php');
 
-
     }
-    */    
+
+    // TEMPLATE DE LA PAGE
+    require_once(dirname(__FILE__).'/../Views/template_inventory.php');
 ?>

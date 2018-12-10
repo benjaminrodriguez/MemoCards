@@ -112,7 +112,7 @@ $(document).ready(function () {
                 
         
 </form>
-            </li>
+            <!--</li>
              <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="gallery-4col.htm">Mon Inventaire <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -122,7 +122,10 @@ $(document).ready(function () {
                     <li><a href="gallery-4col-circle.htm">Gallery 4 Round</a></li>
                     <li><a href="gallery-single.htm">Gallery Single</a></li>
                 </ul>
-             </li>
+             </li>-->
+
+            <li><a href="index.php?page=inventory">Mon inventaire</a></li>
+
              <li><a href="index.php?page=forum">Forum</a></li>
 
              <li><a href="index.php?page=store">Cards Store</a></li>

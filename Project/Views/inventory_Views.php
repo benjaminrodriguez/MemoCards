@@ -1,47 +1,47 @@
-<?php $title='Inventaire de Deck'; ?>
 <?php ob_start(); ?>
 
-<form method="POST" action="">
-
-
-
+    <form method="POST" action="">
     <!-- Affiche les 3 derniers decks utilisés -->
-        <p><h1> <i>Vos decks joués récemment :</i>  </h1></p>
+        <p><h1> <i>Vos decks :</i>  </h1></p>
 
-    <?php   for($i=0; $i<2; $i++)
+    <?php for($i=0; $i<2; $i++)
             { 
                 if(isset($datas[$i]['name'])) 
                 { ?>
-                    <button name="top_3_deck" value="<?php echo $datas[$i]['id']; ?>" style="width:250px">
-                        <h3> <?php echo htmlspecialchars($datas[$i]['name']); ?> </h3>
-                        <img src="<?php echo $datas[$i]['picture']; ?>" alt="" height="100"> <br>
+                    <!-- Blog Post 1 -->
+                    <article class="clearfix">
+                        <a href="blog-single.htm"><img src="<?php echo $datas[$i]['picture']; ?>" alt="Post Thumb" class="align-left" style="width: 200px;" ></a>
+                        <h4 class="title-bg"><a href="blog-single.htm"><?php echo htmlspecialchars($datas[$i]['name']); ?></a></h4>
+                            <p> <?php echo htmlspecialchars($datas[$i]['description']); ?> </p>
+                            <button class="btn btn-mini btn-inverse" type="button" name="top_3_deck" value="<?php echo $datas[$i]['id']; ?>">Lancer une partie</button>
+                            <div class="post-summary-footer">
+                                <ul class="post-data-3">
+                                    <li><i class="icon-calendar"></i><?php echo htmlspecialchars($datas[$i]['date_creation']); ?></li>
 
-                        <label for="description"><i><b>Description :</b></i> </label>
-                        <p id="description"> <?php echo htmlspecialchars($datas[$i]['description']); ?> </p>
-                    </button>
-
-                    <!-- Bouton modifier deck -->
-                    <?php if($_SESSION['id'] == $datas[$i]['autor_id']) {?>
-                        <button name="modify_deck" value="<?php echo htmlspecialchars($datas[$i]['id']) ?>">Modifier ce deck</button> 
-                    <?php } 
-                }
-            } ?> <br><br>
-
-</form>
-
-
-
-<form method ="GET" action="">
-
-        <input type="hidden" name="page" value="inventory">
-        <!-- ------------------------------- Bouton Voir tout les deck ----------------------- -->
-        <button name="action" value="show_deck">Voir tout vos decks</button>
-
-        <!-- ------------------------------- Bouton Creer Deck ------------------------------- -->
-        <button   name="action" value="create_deck">Créer un nouveau deck</button>                   
-</form>
+                                    <!-- Bouton modifier deck -->
+                                    <?php if($_SESSION['id'] == $datas[$i]['autor_id']) { ?> <li><i class="icon-cog"></i> <a href="#">Modifier</a></li> <?php }?>
+                                    
+                                    <li><i class="icon-align-left"></i> <a href="#">Vos Statistique</a></li>
+                                    <li><i class="icon-trash"></i> <a href="#">Supprimer</a></li>
+                                    <li><i class="icon-tags"></i> <a href="#">photoshop</a>, <a href="#">tutorials</a></li>
+                                </ul>
+                            </div>
+                    </article>
+    <?php       }
+            } ?>
 
 
-
+    <!-- Pagination -->
+    <div class="pagination">
+        <ul>
+        <li class="active"><a href="#">Prev</a></li>
+        <li class="active"><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">Next</a></li>
+        </ul>
+    </div>
+        
 <?php $content = ob_get_clean(); ?>
-<?php require(dirname(__FILE__).'/template.php'); ?>
+

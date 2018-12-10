@@ -304,7 +304,7 @@
     {
         //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
         $bdd = bdd();
-        $req = $bdd->prepare('  SELECT deck.name, deck.description, deck.mark, deck.status
+        $req = $bdd->prepare('  SELECT *
                                 FROM deck
                                 LEFT JOIN passed ON deck.id = passed.deck_id
                                 LEFT JOIN user ON passed.user_id = user.id
