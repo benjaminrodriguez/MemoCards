@@ -6,21 +6,21 @@
             <h1 class="h3 mb-3 font-weight-normal">Inscrivez-vous</h1>
 
             <label for="username"  class="sr-only">Username</label>
-            <input type="text" name="username" value="" id="username" class="form-control" placeholder="Username" required autofocus>
+            <input type="text" name="username" value="" id="username" class="form-control" placeholder="Username"  autofocus>
             <P> Le mot de passe doit contenir : 6 caractères minimum, au moins une majuscule, une minuscule et un chiffre</p>
             <input type="password" name="password" value="" id="pass" class="form-control" placeholder="Mot de passe" 
             pattern=".{6,}"   
-            required title="6 caracteres minimum, au moins une majuscule, une minuscule et un caractère spécial" required>
+             title="6 caracteres minimum, au moins une majuscule, une minuscule" >
             <label for="pass" class="sr-only">Password</label>
             <div class="checkbox mb-3">
 
-            <input type="email" name="email" value="" id="email" class="form-control" placeholder="Email" required>
+            <input type="email" name="email" value="" id="email" class="form-control" placeholder="Email" >
             <div class="checkbox mb-3">
             <p>Sexe : </p>
             <input type="radio" name="sex" value="M">Homme
             <input type="radio" name="sex" value="F" checked>Femme<br>
 
-            <select name="region" class="form-control" required>
+            <select name="region" class="form-control">
                 <option value="region" disabled selected>Région</option> 
                 <option value="hauts_de_france">Hauts-de-France</option> 
                 <option value="normandie">Normandie</option>
@@ -42,11 +42,40 @@
                 <option value="la_reunion">La Réunion</option>
             </select><br>
 
-            <input type="date" name="date_de_naissance" id="date_de_naissance" class="form-control" placeholder="Date de naissance" required>
+            <input type="date" name="date_de_naissance" id="date_de_naissance" class="form-control" placeholder="Date de naissance" >
             </div>
             <button class="btn btn-lg btn-primary" type="submit">Inscription</button>
         </form><br>
-
+        <script>
+        document.forms[0].addEventListener("submit", function(evenement) 
+        { 
+            if (document.getElementById("email").value == "") {
+                evenement.preventDefault();
+                alert("Tapez un email valable ");
+                document.getElementById("email").focus();
+            }
+            else if (document.getElementById("username").value == "") {
+                evenement.preventDefault();
+                alert("Pensez à taper un username !");
+                document.getElementById("username").focus();
+            }
+            else if (document.getElementById("password").value == "") {
+                evenement.preventDefault();
+                alert("Pensez à taper un password !");
+                document.getElementById("password").focus();
+            }
+            else if (document.getElementById("region").value == "") {
+                evenement.preventDefault();
+                alert("Pensez à taper une région !");
+                document.getElementById("region").focus();
+            }
+            else if (document.getElementById("date").value == "") {
+                evenement.preventDefault();
+                alert("Pensez à taper une date !");
+                document.getElementById("date").focus();
+            }
+        });
+    </script>
 
 <!-- Bouton de retour à l'écran d'accueil -->
         <form action='index.php?page=home' method='POST'>
