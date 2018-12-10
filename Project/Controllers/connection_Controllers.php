@@ -2,7 +2,7 @@
 
     if(isset($_POST['username']) && isset($_POST['password'])) 
     {
-        
+        /*
         // Ma clé privée
         $secret = "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe";
 
@@ -17,10 +17,10 @@
             . "&response=" . $response
             . "&remoteip=" . $remoteip ;
         
-        $decode = json_decode(file_get_contents($api_url), true);
+        $decode = json_decode(file_get_contents($api_url), true);*/
         
-        if ($decode['success'] == true) 
-        {
+        //if ($decode['success'] == true) 
+        //{
             // C'est un humain
             
             //RECUPERE LES DONNEES DE L'USER
@@ -50,12 +50,12 @@
             {
                 require(dirname(__FILE__).'/../Public/js/erreur_auth.js');
             }
-        }
-        else 
-        {
+        //}
+        //else 
+        //{
             // C'est un robot ou le code de vérification est incorrecte
-            header('Location: index.php?page=connection');
-        }
+            //header('Location: index.php?page=connection');
+       // }
     }  
     require(dirname(__FILE__).'/../Views/connection_Views.php');
 ?>
