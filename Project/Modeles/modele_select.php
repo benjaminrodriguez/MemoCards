@@ -317,6 +317,36 @@
 
     //--------------------------------------------------------------------------------
 
+    function questions_deck_SELECT($deck_id)
+    {
+        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+        $bdd = bdd();
+        $req = $bdd->prepare('  SELECT *
+                                FROM recto
+                                WHERE recto.deck_id = ?
+                            ');
+        $req->execute(array($deck_id));
+        return $req;
+    }
+
+    //--------------------------------------------------------------------------------
+    
+    function answers_deck_SELECT($deck_id)
+    {
+        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+        $bdd = bdd();
+        $req = $bdd->prepare('  SELECT verso.answer_cards, verso.statut_cards
+                                FROM verso
+                                LEFT JOIN recto on verso.recto_id = recto.id
+                                LEFT JOIN deck on recto.deck_id = deck.id
+                                WHERE deck.id = ?
+                            ');
+        $req->execute(array($deck_id));
+        return $req;
+    }
+
+    //--------------------------------------------------------------------------------
+
     function questforstat_SELECT($iddeck, $iduser)
     {
         //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR

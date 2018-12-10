@@ -24,12 +24,39 @@
         require(dirname(__FILE__).'/../Views/create_questions_Views.php');
     }
 
-    else if(isset($_POST['next_question']) || (isset($_GET['action']) && $_GET['action'] == 'modify'))
+    else if(isset($_POST['next_question']))
     {
+        // AJOUTE LA NOUVELLE QUESTION DANS LA BDD
+        $req = new_question_SELECT($_POST['question'], $_SESSION['deck_id']);
+        $new_question = $req->fetch();
+        
+        var_dump($new_question);
+        // AJOUTE LA NOUVELLE REPONSE DANS LA BDD
+        //$req = new_answer_INSERT($_POST['question'], )
+    }
+
+    else if((isset($_GET['action']) && $_GET['action'] == 'modify'))
+    {
+        $_SESSION['deck_id'] = $_GET['deck'];
+
+        // RECUPERER LES QUESTIONS DU DECK
+        $req = questions_deck_SELECT(intval($_SESSION['deck_id']));
+        $questions_deck = $req->fetchAll();
+
+        // RECUPERER LES REPONSES DU DECK
+        $req =  answers_deck_SELECT(intval($_SESSION['deck_id']));
+        $answers_deck = $req->fetchAll();
 
 
         // CREATIONS DE QUESTIONS SUR LE DECK
         require(dirname(__FILE__).'/../Views/create_questions_Views.php');
+
+        echo 'questions :';
+        var_dump($questions_deck);
+
+        echo 'réponses:';
+        var_dump($answers_deck);
+        
     }
 
     else if (!isset($_GET['action'])) 
@@ -38,6 +65,7 @@
         $req = my_deck_SELECT($_SESSION['id']);
         $datas = $req->fetchAll(PDO::FETCH_ASSOC);
         require(dirname(__FILE__).'/../Views/inventory_Views.php');
+        
     } 
 
     // TEMPLATE DE LA PAGE

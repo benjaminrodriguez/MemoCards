@@ -15,7 +15,7 @@
                         <a href="blog-single.htm"><img src="<?php echo $datas[$i]['picture']; ?>" alt="Post Thumb" class="align-left" style="width: 200px;" ></a>
                         <h4 class="title-bg"><a href="blog-single.htm"><?php echo htmlspecialchars($datas[$i]['name']); ?></a></h4>
                         <p> <?php echo htmlspecialchars($datas[$i]['description']); ?> </p>
-                        <button class="btn btn-mini btn-inverse" type="button" name="top_3_deck" value="<?php echo $datas[$i]['id']; ?>">Lancer une partie</button>
+                        <button class="btn btn-mini btn-inverse" type="submit" name="start_game" value="<?php echo $datas[$i]['deck_id']; ?>">Lancer une partie</button>
                         
                         <div class="post-summary-footer">
                             <ul class="post-data-3">
@@ -23,14 +23,13 @@
 
 
                                 <!-- Bouton modifier deck -->
-                                <?php if($_SESSION['id'] == $datas[$i]['autor_id']) { ?> <li><i class="icon-cog"></i> <a href="index.php?page=inventory&action=modify&deck=<?php echo $datas[$i]['id']; ?>">Modifier</a></li> <?php }?>
+                                <?php if($_SESSION['id'] == $datas[$i]['autor_id']) { ?> <li><i class="icon-cog"></i> <a href="index.php?page=inventory&action=modify&deck=<?php echo $datas[$i]['deck_id']; ?>">Modifier</a></li> <?php }?>
                                 
                                 <li><i class="icon-align-left"></i> <a href="index.php?page=profile&action=stat&deck=<?php echo $datas[$i]['deck_id'];?>">Vos Statistique</a></li>
                                 <li><i class="icon-trash"></i> <a href="#">Supprimer</a></li>
                                 <li><i class="icon-tags"></i> <a href="#">photoshop</a>, <a href="#">tutorials</a></li>
                             </ul>
                         </div>
-
                     </article>
     <?php       }
             } ?>

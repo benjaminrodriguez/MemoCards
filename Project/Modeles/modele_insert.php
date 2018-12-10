@@ -91,5 +91,27 @@
       
     //--------------------------------------------------------------------------------
 
+    function new_question_INSERT($question_cards, $deck_id)
+    {
+        $bdd = bdd();
+        $req = $bdd->prepare(
+            'INSERT INTO recto (question_cards, deck_id)
+            VALUES (?, ?);
+            ');
+        $req->execute(array($question_cards, $deck_id));
+    }
+
+    //--------------------------------------------------------------------------------
+
+    function new_answer_INSERT($answer_cards, $recto_id)
+    {
+        $bdd = bdd();
+        $req = $bdd->prepare(
+            'INSERT INTO verso (answer_cards, statut_cards, recto_id)
+             VALUES (?, ?, ?);
+            ');
+        $req->execute(array($answer_cards, 'T', $recto_id));
+    }
+
     
 ?>

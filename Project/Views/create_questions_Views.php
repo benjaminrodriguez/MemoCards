@@ -2,6 +2,7 @@
 
     <div class="row">
         <div class="span8">
+
             <form action="" method="post">
                 <label for="question"> <h5>Nouvelle Question :</h5></label>
                 <input id="question" type="text" name="question" value="" placeholder="Nouvelle question"  style="width:600px;"> <br>
@@ -9,10 +10,11 @@
 
                 <div class="row">
                     <div class="span6">
-                        <button form="id_form" class="btn btn-large btn-warning" type="button" name="next_question" value="" >Ajouter la question</button>
+                        <button form="id_form" class="btn btn-large btn-warning" type="submit" name="next_question" value="" >Ajouter la question</button>
                     </div>
                 </div>
             </form>
+
         </div>
 
         <p>Votre deck doit contenir un minimum de 10 questions pour être valide </p>
@@ -21,7 +23,9 @@
             <h5>Contenu du deck :</h5>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla iaculis mattis lorem, quis gravida nunc iaculis ac. Proin tristique tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt sem eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla faucibus ligula eget ante varius ac euismod odio placerat. Nam sit amet felis non lorem faucibus rhoncus vitae id dui.</p>
         </div>
-<br><br>
+
+        <br><br>
+
         <div class="span2">
             <div class="post-summary-footer">
                 <ul class="post-data-3">
