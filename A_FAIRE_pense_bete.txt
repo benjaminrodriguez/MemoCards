@@ -35,16 +35,6 @@ SAMI :
 ------------------------------------------------------------------
 
 
-
-BENJI : 
-
-1) Limiter le nb de sujets qui s'affichent sur l'accueil forum
-
-2) VERIFIER FORMAT : https://www.w3schools.com/php/php_form_url_email.asp
-------------------------------------------------------------------
-------------------------------------------------------------------
-
-
 Modification à voir pour la BDD :
 
 
