@@ -13,7 +13,7 @@
     if (!isset($_POST['menu']))
     {
         $req = last_deck_play_SELECT($_SESSION['id']);
-        $datas = $req->fetchAll();
+        //$datas = $req->fetchAll();
         require(dirname(__FILE__).'/../Views/home_Views.php');
     }
     else if ($_POST['menu'] === 'profile')
