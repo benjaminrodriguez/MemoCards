@@ -1,17 +1,12 @@
 <?php
 
-
-
-
-
-
-
-
-
-
-
     require_once('./Views/profile_Views.php');
-
+    
+    if (isset($_GET['action'])) {
+        if ($_GET['action'] === "stat") {
+            
+        }
+    }
     /*
     // CHANGE LE PSEUDO
     require_once(dirname(__FILE__).'/php/change_username.php');
