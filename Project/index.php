@@ -14,11 +14,7 @@
     {
         if ($_GET['page'] == 'dc')
         {
-            session_unset();
-            session_destroy();
-            session_write_close();
-            header('Location: index.php');
-            exit;
+            require_once('Controllers/php/disconnect.php');
         }
         if ($_GET['page'] == 'connection')
         {

@@ -8,7 +8,7 @@
         exit;
     } 
 
-    require_once('Controllers/php/disconnect.php');
+    
     
     if (!isset($_POST['menu']))
     {
