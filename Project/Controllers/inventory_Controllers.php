@@ -26,13 +26,17 @@
 
     else if(isset($_POST['next_question']))
     {
+        var_dump($_POST, $_SESSION);
         // AJOUTE LA NOUVELLE QUESTION DANS LA BDD
-        $req = new_question_SELECT($_POST['question'], $_SESSION['deck_id']);
-        $new_question = $req->fetch();
+        new_question_INSERT($_POST['question'], $_SESSION['deck_id']);
         
-        var_dump($new_question);
         // AJOUTE LA NOUVELLE REPONSE DANS LA BDD
-        //$req = new_answer_INSERT($_POST['question'], )
+        $req = id_question_SELECT($_POST['question']);
+        $id_question = $req->fetchAll();
+        new_answer_INSERT($_POST['question'], $id_question[0]['id'] );
+
+        // REDIRECTION VERS LA CREATION DE QUESTION
+        header('Location: index.php?page=inventory&action=modify&deck='.$_SESSION['deck_id'].'');
     }
 
     else if((isset($_GET['action']) && $_GET['action'] == 'modify'))

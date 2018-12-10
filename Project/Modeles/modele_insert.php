@@ -96,9 +96,9 @@
         $bdd = bdd();
         $req = $bdd->prepare(
             'INSERT INTO recto (question_cards, deck_id)
-            VALUES (?, ?);
+             VALUES (?, ?);
             ');
-        $req->execute(array($question_cards, $deck_id));
+        $req->execute(array($question_cards, intval($deck_id)));
     }
 
     //--------------------------------------------------------------------------------

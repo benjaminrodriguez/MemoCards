@@ -380,4 +380,17 @@
 
     //--------------------------------------------------------------------------------
 
+    function id_question_SELECT($question_cards)
+    {
+        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+        $bdd = bdd();
+        $req = $bdd->prepare('  SELECT id
+                                FROM recto
+                                WHERE recto.question_cards = ?
+                            ');
+        $req->execute(array($question_cards));
+        return $req;
+    }
+
+    //--------------------------------------------------------------------------------
 ?>
