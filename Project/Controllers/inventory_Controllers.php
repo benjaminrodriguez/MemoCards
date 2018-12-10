@@ -30,6 +30,7 @@
         $req = my_deck_SELECT($_SESSION['id']);
         $datas = $req->fetchAll();
         require(dirname(__FILE__).'/../Views/inventory_Views.php');
+        echo 'last';
     } 
 
     // TEMPLATE DE LA PAGE

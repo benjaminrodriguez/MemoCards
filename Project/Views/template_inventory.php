@@ -8,10 +8,10 @@
 <!-- CSS
 ================================================== -->
 <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/bootstrap-responsive.css">
-<link rel="stylesheet" href="css/jquery.lightbox-0.5.css">
-<link rel="stylesheet" href="css/custom-styles.css">
+<link rel="stylesheet" href="Public/css/bootstrap.css">
+<link rel="stylesheet" href="Public/css/bootstrap-responsive.css">
+<link rel="stylesheet" href="Public/css/jquery.lightbox-0.5.css">
+<link rel="stylesheet" href="Public/css/custom-styles.css">
 
 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -28,8 +28,8 @@
 <!-- JS
 ================================================== -->
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/jquery.custom.js"></script>
+<script src="Public/js/bootstrap.js"></script>
+<script src="Public/js/jquery.custom.js"></script>
 
 
 </head>
