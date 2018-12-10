@@ -237,34 +237,24 @@
     
     </div> <!-- End Container -->
 
-    <!-- Footer Area
+     <!-- Footer Area
         ================================================== -->
+
 	<div class="footer-container"><!-- Begin Footer -->
     	<div class="container">
         	<div class="row footer-row">
                 <div class="span3 footer-col">
-                    <h5>About Us</h5>
-                   <img src="Public/img/piccolo-footer-logo.png" alt="Piccolo" /><br /><br />
+                    <h5>A notre propos</h5>
+                   <img src="Public/img/memocards.png" alt="Piccolo" /><br /><br />
                     <address>
-                        <strong>Design Team</strong><br />
-                        123 Main St, Suite 500<br />
-                        New York, NY 12345<br />
+                        <strong>Developper Team</strong><br />
+                        8 bis avenue Maurice Thorez<br />
+                        Ivry, 94200<br />
                     </address>
-                    <ul class="social-icons">
-                        <li><a href="#" class="social-icon facebook"></a></li>
-                        <li><a href="#" class="social-icon twitter"></a></li>
-                        <li><a href="#" class="social-icon dribble"></a></li>
-                        <li><a href="#" class="social-icon rss"></a></li>
-                        <li><a href="#" class="social-icon forrst"></a></li>
-                    </ul>
+                    
                 </div>
                 <div class="span3 footer-col">
-                    <h5>Latest Tweets</h5>
-                    <ul>
-                        <li><a href="#">@room122</a> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                        <li><a href="#">@room122</a> In interdum felis fermentum ipsum molestie sed porttitor ligula rutrum. Morbi blandit ultricies ultrices.</li>
-                        <li><a href="#">@room122</a> Vivamus nec lectus sed orci molestie molestie. Etiam mattis neque eu orci rutrum aliquam.</li>
-                    </ul>
+                   
                 </div>
                 <div class="span3 footer-col">
                     <h5>Latest Posts</h5>
@@ -277,31 +267,17 @@
                     </ul>
                 </div>
                 <div class="span3 footer-col">
-                    <h5>Flickr Photos</h5>
-                    <ul class="img-feed">
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                        <li><a href="#"><img src="Public/img/gallery/flickr-img-1.jpg" alt="Image Feed"></a></li>
-                    </ul>
+                   
                 </div>
             </div>
 
             <div class="row"><!-- Begin Sub Footer -->
                 <div class="span12 footer-col footer-sub">
                     <div class="row no-margin">
-                        <div class="span6"><span class="left">Copyright 2012 Piccolo Theme. All rights reserved.</span></div>
+                        <div class="span6"><span class="left">Copyright 2018 Memocards Theme. All rights reserved.</span></div>
                         <div class="span6">
                             <span class="right">
-                            <a href="#">Home</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Features</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Gallery</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Blog</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Contact</a>
+                            <a href="#">Home</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Profil</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">CardStore</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Forum</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Déconnexion</a>
                             </span>
                         </div>
                     </div>
@@ -310,7 +286,7 @@
 
         </div>
     </div><!-- End Footer --> 
-
+    
     <!-- Scroll to Top -->  
     <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
     
