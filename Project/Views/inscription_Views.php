@@ -1,13 +1,30 @@
 <?php $title = 'Incription'; ?>
 <?php ob_start(); ?>
+<html>
+  <head>
+        <meta charset="utf-8"/>
+      <!-- Le script du head -->
+      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="./Public/css/connection.css" rel="stylesheet" type="text/css" />
 
+    </head>
+<body>  
+<div class="background">
+<div class="page-container">
 
+    <form id="form" class="form-signin" action="index.php?page=connection" method="POST"> 
+     
+
+        <center><img class="mb-4"  src="./Public/img/memocards_black.png" alt=""></center>
         <form action="" method="POST" class="form-signin">
-            <h1 class="h3 mb-3 font-weight-normal">Inscrivez-vous</h1>
+            <!--<h1 class="h3 mb-3 font-weight-normal">Inscrivez-vous</h1>-->
 
             <label for="username"  class="sr-only">Username</label>
             <input type="text" name="username" value="" id="username" class="form-control" placeholder="Username"  autofocus>
-            <P> Le mot de passe doit contenir : 6 caractères minimum, au moins une majuscule, une minuscule et un chiffre</p>
+            <!-- <P> Le mot de passe doit contenir : 6 caractères minimum, au moins une majuscule, une minuscule et un chiffre</p>-->
             <input type="password" name="password" value="" id="pass" class="form-control" placeholder="Mot de passe" 
             pattern=".{6,}"   
              title="6 caracteres minimum, au moins une majuscule, une minuscule" >
@@ -16,8 +33,8 @@
 
             <input type="email" name="email" value="" id="email" class="form-control" placeholder="Email" >
             <div class="checkbox mb-3">
-            <p>Sexe : </p>
-            <input type="radio" name="sex" value="M">Homme
+            <p>Sexe : 
+            <input type="radio" name="sex" value="M" width:20px>Homme
             <input type="radio" name="sex" value="F" checked>Femme<br>
 
             <select name="region" class="form-control">
@@ -43,9 +60,20 @@
             </select><br>
 
             <input type="date" name="date_de_naissance" id="date_de_naissance" class="form-control" placeholder="Date de naissance" >
-            </div>
-            <button class="btn btn-lg btn-primary" type="submit">Inscription</button>
-        </form><br>
+            
+            <button type="submit">Inscription</button>
+        </form>
+        <!-- Bouton de retour à l'écran d'accueil -->
+<form action='index.php?page=home' method='POST'>
+    <button type="submit" value="Retour à l'écran de connexion">Retour à l'écran de connexion</button>
+</form>
+</div>
+    <center><p >&copy; MemoCards</p></center>
+
+</div>
+ </div>    
+ 
+ <!-- JS POUR EVITER LES CHAMPS VIDES-->
         <script>
         document.forms[0].addEventListener("submit", function(evenement) 
         { 
@@ -78,10 +106,6 @@
     </script>
     
 
-<!-- Bouton de retour à l'écran d'accueil -->
-        <form action='index.php?page=home' method='POST'>
-            <button type="submit" class="btn btn-lg btn-primary" value="Retour à l'écran de connexion">Retour à l'écran de connexion</button>
-        </form>
 
 
 <?php $content = ob_get_clean(); ?>
