@@ -22,10 +22,10 @@
         <label for="inputPassword" class="sr-only"></label><br>
         <input type="password" name="password" value="" id="inputPassword" class="form-control" placeholder="Password" required>
 
-        <!-- Notre boite de vérification -->
+        <!-- Notre boite de vérification 
         <div id="toggle-text" class="g-recaptcha" data-theme="dark" 
             data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI">
-        </div>
+        </div>-->
         <!--<script>
 			let isActive = false;
 			const formElement = document.querySelector('#form');
