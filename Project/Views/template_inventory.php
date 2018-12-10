@@ -46,8 +46,8 @@
         ================================================== -->
         <div class="span5 logo">
             <a href="index.htm"><img src="Public/img/memocards_black.png" alt="" /></a>
-            <br><br>
-            <h5>Mon inventaire</h5>
+            <br><br><br>
+            <h1>Mon inventaire</h1>
         </div>
         
         <!-- Main Navigation

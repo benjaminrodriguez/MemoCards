@@ -1,14 +1,7 @@
 <?php
 
-    // SELECTIONNE LES DECK DE L'UTILISATEUR
-    if (!isset($_GET['action'])) 
-    {
-        $req = my_deck_SELECT($_SESSION['id']);
-        $datas = $req->fetchAll();
-        require(dirname(__FILE__).'/../Views/inventory_Views.php');
-    } 
 
-    else if ($_GET['action'] == 'create_deck') 
+    if (isset($_GET['action']) && $_GET['action'] == 'create_deck') 
     {
         // CREATION DU DECK
         $req = categories_SELECT();
@@ -16,7 +9,7 @@
         require(dirname(__FILE__).'/../Views/create_deck_Views.php');
     } 
 
-    else if ($_GET['action'] == 'create_questions') 
+    else if (isset($_POST['action']) && $_POST['action'] == 'create_questions') 
     {
         // ATTRIBUT UNE IMAGE DE PROFIL AU DECK SI CELUI-CI N'EN POSSEDE PAS 
         if (empty($_POST['picture'])) $_POST['picture'] = './img/appareil_photo.jpg';
@@ -27,11 +20,17 @@
         $deck_id = $req->fetch();
         new_passed_INSERT($_SESSION['id'], $deck_id['id']);
 
-
         // CREATIONS DE 10 QUESTIONS MINIMUMS POUR LE DECK
         require(dirname(__FILE__).'/../Views/create_questions_Views.php');
-
     }
+
+    else if (!isset($_GET['action'])) 
+    {
+        // SELECTIONNE LES DECK DE L'UTILISATEUR
+        $req = my_deck_SELECT($_SESSION['id']);
+        $datas = $req->fetchAll();
+        require(dirname(__FILE__).'/../Views/inventory_Views.php');
+    } 
 
     // TEMPLATE DE LA PAGE
     require_once(dirname(__FILE__).'/../Views/template_inventory.php');
