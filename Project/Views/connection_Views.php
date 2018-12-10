@@ -20,7 +20,7 @@
     <form id="form" class="form-signin" action="index.php?page=connection" method="POST"> 
      
 
-        <center><img class="mb-4" src="./Public/img/memocards_black.png" alt=""></center>
+        <center><img class="mb-4"  src="./Public/img/memocards_black.png" alt=""></center>
 
         <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
 

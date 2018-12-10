@@ -174,6 +174,51 @@ $(document).ready(function () {
       </div><!-- End Header -->
      
     <div class="row headline"><!-- Begin Headline -->
+      <!-- AUDIO PLAYER--><br>
+      <audio id="audioPlayer">
+        <source src="./Public/song.ogg">
+        <source src="./Public/song.mp3">
+    </audio>
+
+    <button class="control" onclick="play('audioPlayer', this)">Play</button>
+    <button class="control" onclick="resume('audioPlayer')">Stop</button>
+    <script>
+    function play(idPlayer, control) {
+    var player = document.querySelector('#' + idPlayer);
+	
+    if (player.paused) {
+        player.play();
+        control.textContent = 'Pause';
+    } else {
+        player.pause();	
+        control.textContent = 'Play';
+    }
+    }
+
+    function resume(idPlayer) {
+        var player = document.querySelector('#' + idPlayer);
+        
+        player.currentTime = 0;
+        player.pause();
+    }
+    </script>
+
+    <span class="volume">
+    <a class="stick1" onclick="volume('audioPlayer', 0)"></a>
+    <a class="stick2" onclick="volume('audioPlayer', 0.3)"></a>
+    <a class="stick3" onclick="volume('audioPlayer', 0.5)"></a>
+    <a class="stick4" onclick="volume('audioPlayer', 0.7)"></a>
+    <a class="stick5" onclick="volume('audioPlayer', 1)"></a>
+</span>
+    
+    <script>
+    ffunction volume(idPlayer, vol) {
+    var player = document.querySelector('#' + idPlayer);
+	
+    player.volume = vol;	
+}
+    </script>
+    <!-- END AUDIO PLAYER-->
     
     
      	<!-- Slider Carousel
@@ -453,34 +498,8 @@ $(document).ready(function () {
         src="https://www.infoclimat.fr/public-api/mixed/iframeSLIDE?_ll=48.85341,2.3488&_inc=WyJQYXJpcyIsIjQyIiwiMjk4ODUwNyIsIkZSIl0=&_auth=CRNfSAZ4ByVSf1tsD3lReAJqAjcNewIlC3cHZFo%2FUSwHbANiB2dVMwJsA35XeAo8VXgDYFphV2cLYAB4DH5VNAljXzMGbQdgUj1bPg8gUXoCLAJjDS0CJQtgB2ZaKVE0B2ADeQdjVT8CcwNlV2cKIVV5A2JaYFdrC2wAYwxlVTAJYl8yBmUHelIiWzwPbFFlAmQCZA0xAmsLOQdkWj5RYQcxAzEHYlUpAm8DaFduCjlVYQNrWmJXaQt3AHgMGFVFCXdfewYnBzBSe1skD2pROwJl&_c=af8bf9a4d019d2172ab6c098d588c0fa">
         </iframe>
     </center>
-    <!--<script src="http://js.api.here.com/v3/3.0/mapsjs-core.js"
-  type="text/javascript" charset="utf-8"></script>
-  <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js"
-  type="text/javascript" charset="utf-8"></script>
-  </head>
-  <body>
-  <div style="width: 640px; height: 480px" id="mapContainer"></div>
-  <script>
-    // Initialize the platform object:
-    var platform = new H.service.Platform({
-    'app_id': 'ZQKdDi6rPqkVhcdLf5c4',
-    'app_code': '5SIZilvraM-CH0eooQLQSA'
-    });
 
-    // Obtain the default map types from the platform object
-    var maptypes = platform.createDefaultLayers();
-
-    // Instantiate (and display) a map object:
-    var map = new H.Map(
-    document.getElementById('mapContainer'),
-    maptypes.normal.map,
-    {
-      zoom: 10,
-      center: { lng: 13.4, lat: 52.51 }
-    });
-  </script>-->
-
-
+  
     <!-- Footer Area
         ================================================== -->
 
