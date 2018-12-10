@@ -12,6 +12,14 @@
     
     if (isset($_GET['page']) && !empty($_GET['page'])) 
     {
+        if ($_GET['page'] == 'dc')
+        {
+            session_unset();
+            session_destroy();
+            session_write_close();
+            header('Location: index.php');
+            exit;
+        }
         if ($_GET['page'] == 'connection')
         {
             if(isset($_SESSION['username']))  header('Location: index.php?page=home');
