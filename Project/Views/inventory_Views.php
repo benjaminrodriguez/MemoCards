@@ -4,7 +4,9 @@
     <!-- Affiche les 3 derniers decks utilisés -->
         <p><h1> <i>Vos decks :</i>  </h1></p>
 
+
     <?php for($i=0; $i<8; $i++)
+
             { 
                 if(isset($datas[$i]['name'])) 
                 { ?>
@@ -19,14 +21,16 @@
                             <ul class="post-data-3">
                                 <li><i class="icon-calendar"></i><?php echo htmlspecialchars($datas[$i]['date_creation']); ?></li>
 
+
                                 <!-- Bouton modifier deck -->
                                 <?php if($_SESSION['id'] == $datas[$i]['autor_id']) { ?> <li><i class="icon-cog"></i> <a href="index.php?page=inventory&action=modify&deck=<?php echo $datas[$i]['id']; ?>">Modifier</a></li> <?php }?>
                                 
-                                <li><i class="icon-align-left"></i> <a href="#">Vos Statistique</a></li>
+                                <li><i class="icon-align-left"></i> <a href="index.php?page=profile&action=stat&deck=<?php echo $datas[$i]['deck_id'];?>">Vos Statistique</a></li>
                                 <li><i class="icon-trash"></i> <a href="#">Supprimer</a></li>
                                 <li><i class="icon-tags"></i> <a href="#">photoshop</a>, <a href="#">tutorials</a></li>
                             </ul>
                         </div>
+
                     </article>
     <?php       }
             } ?>

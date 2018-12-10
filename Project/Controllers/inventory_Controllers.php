@@ -36,7 +36,7 @@
     {
         // SELECTIONNE LES DECK DE L'UTILISATEUR
         $req = my_deck_SELECT($_SESSION['id']);
-        $datas = $req->fetchAll();
+        $datas = $req->fetchAll(PDO::FETCH_ASSOC);
         require(dirname(__FILE__).'/../Views/inventory_Views.php');
     } 
 

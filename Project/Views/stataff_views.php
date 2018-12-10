@@ -1,7 +1,7 @@
 <?php
 foreach ($q as $key => $value) {
     echo "<b> Carte ".($key+1)." : ".$value['question_cards']."&nbsp &nbsp </b>";
-    
+
     if (intval($value['played_cards']) === 0) {
        ?>
        <i>  La carte n'a pas encore été jouée.</i><br><br>
