@@ -61,7 +61,7 @@
     <form action="index.php?page=inscription" method="POST">
         <button type="submit"  id="inscription" name="inscription" value="inscription"><h3>Inscription</h3></button>
     </form>
-    <center><p class="mt-5 mb-3 text-muted">&copy; MemoCards</p></center>
+    <center><p color: white>&copy; MemoCards</p></center>
 
 </div>
  </div>

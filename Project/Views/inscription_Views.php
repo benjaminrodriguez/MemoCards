@@ -18,7 +18,7 @@
     <form id="form" class="form-signin" action="index.php?page=connection" method="POST"> 
      
 
-        <center><img class="mb-4"  src="./Public/img/memocards_white.png" alt=""></center>
+        <center><img class="mb-4"  src="./Public/img/memocards_white.png" witdh=100 alt=""></center>
         <form action="" method="POST" class="form-signin">
             <!--<h1 class="h3 mb-3 font-weight-normal">Inscrivez-vous</h1>-->
 
