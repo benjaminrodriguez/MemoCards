@@ -14,7 +14,7 @@
     {
         $req = last_deck_play_SELECT($_SESSION['id']);
         //$datas = $req->fetchAll();
-        require(dirname(__FILE__).'/../Views/home_Views.php');
+        require(dirname(__FILE__).'/../Views/template.php');
     }
     else if ($_POST['menu'] === 'profile')
     {

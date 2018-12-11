@@ -148,7 +148,7 @@
         ================================================== --> 
         <div class="span8 blog">
 
-                <?php echo $content; ?>
+                <?php if(isset($content)) echo $content; ?>
 
         </div>   
 
