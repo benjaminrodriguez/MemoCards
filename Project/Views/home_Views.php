@@ -570,7 +570,11 @@ window.onload = heure;
                         <div class="span6"><span class="left">Copyright 2018 Memocards Theme. All rights reserved.</span></div>
                         <div class="span6">
                             <span class="right">
-                            <a href="#">Home</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Profil</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">CardStore</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Forum</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">Déconnexion</a>
+                            <a href="index.php?page=home">Home</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                            <a href="index.php?page=profile">Profil</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                            <a href="index.php?page=store">CardStore</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                            <a href="index.php?page=forum">Forum</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                            <a href="index.php?page=dc"> Déconnexion</a>
                             </span>
                         </div>
                     </div>

@@ -90,11 +90,13 @@
                     <li><a href="gallery-single.htm">Gallery Single</a></li>
                 </ul>
              </li>
-             <li><a href="index.php?page=forum">Forum</a></li>
+             <li><a href="index.php?page=inventory">Mon inventaire</a></li>
 
-             <li><a href="index.php?page=store">Cards Store</a></li>
+                <li><a href="index.php?page=forum">Forum</a></li>
 
-             <li><a href="index.php">Déconnexion</a></li>
+                <li><a href="index.php?page=store">Cards Store</a></li>
+
+                <li><a href="index.php?page=dc">Déconnexion</a></li>
 
             </ul>
            
