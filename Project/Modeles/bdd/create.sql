@@ -137,6 +137,7 @@ CREATE TABLE IF NOT EXISTS `memocards`.`succes_rate` (
   `chain` INT NOT NULL,
   `played_cards` INT NULL,
   `verso_id` INT NOT NULL,
+  `nb_succes` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_succes_rate_verso_idx` (`verso_id` ASC) ,
   CONSTRAINT `fk_succes_rate_verso`
