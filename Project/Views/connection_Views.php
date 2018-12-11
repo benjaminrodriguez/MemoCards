@@ -183,5 +183,5 @@ function snowNN6() {
 <!-- FIN IMG FOND -->
 
 <?php $content = ob_get_clean(); ?>
-<?php require(dirname(__FILE__).'/template.php'); ?>
+<?php require(dirname(__FILE__).'/template_accueil.php'); ?>
 </body>
