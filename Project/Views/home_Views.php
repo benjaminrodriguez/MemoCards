@@ -255,10 +255,11 @@ window.onload = heure;
      	<!-- VIDEO YT FLASHCARDS
         ================================================== -->
         <div class="span8">
-            <<iframe width="760" height="428" 
+            <iframe width="760" height="428" 
             src="https://www.youtube.com/embed/n3CkA3Qc8kY?autoplay=1" frameborder="0"  allow="accelerometer; 
             autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div> 
+        <p>&copy; FabienOlicard</p>
         
         <!-- Headline Text
         ================================================== -->
@@ -268,11 +269,13 @@ window.onload = heure;
             MemoCards reprend la méthode d’apprentissage de flash-cards. Le principe des flash cards est à la fois simple et efficace, elle consiste à inscrire une information sur le recto d’une carte et l’information associée au verso. Il ne vous reste plus qu’à apprendre en vous amusant.
         </div>
     </div><!-- End Headline -->
-    
+    <p>&copy; FabienOlicard</p>
+
     <div class="row gallery-row"><!-- Begin Gallery Row --> 
       
     	<div class="span12">
             <h5 class="title-bg">récemment utilisé
+            
                 <small> Reprendre vos parties en cours</small>
                 <button class="btn btn-mini btn-inverse hidden-phone" type="button">Voir plus</button>
             </h5>
