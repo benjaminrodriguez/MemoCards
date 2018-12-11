@@ -30,7 +30,7 @@
              title="6 caracteres minimum, au moins une majuscule, une minuscule" >
             <label for="pass" class="sr-only">Password</label>
             <div class="checkbox mb-3">
-            <script>
+            <script>/*
                 // Vérification de la longueur du mot de passe saisi
                 document.getElementById("password").addEventListener("input", function (e) {
                     var mdp = e.target.value; // Valeur saisie dans le champ mdp
@@ -46,7 +46,7 @@
                     var aideMdpElt = document.getElementById("aideMdp");
                     aideMdpElt.textContent = "Longueur : " + longueurMdp; // Texte de l'aide
                     aideMdpElt.style.color = couleurMsg; // Couleur du texte de l'aide
-                });
+                });*/
             </script>
             <input type="email" name="email" value="" id="email" class="form-control" placeholder="Email" >
             <div class="checkbox mb-3">
@@ -77,10 +77,7 @@
             </select><br>
 
             <input type="date" name="date_de_naissance" id="date_de_naissance" class="form-control" placeholder="Date de naissance" >
-            
-            <button type="submit">Inscription</button>
-        </form>
-         <!-- JS POUR EVITER LES CHAMPS VIDES-->
+            <!-- JS POUR EVITER LES CHAMPS VIDES-->
          <script>
         document.forms[0].addEventListener("submit", function(evenement) 
         { 
@@ -111,6 +108,9 @@
             }
         });
     </script>
+            <button type="submit">Inscription</button>
+        </form>
+         
         <!-- Bouton de retour à l'écran d'accueil -->
 <form action='index.php?page=home' method='POST'>
     <button type="submit" value="Retour à l'écran de connexion">Retour à l'écran de connexion</button>
@@ -127,4 +127,4 @@
 
 
 <?php $content = ob_get_clean(); ?>
-<?php require(dirname(__FILE__).'/template.php'); ?>
+<?php require(dirname(__FILE__).'/template_accueil.php'); ?>

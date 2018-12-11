@@ -11,7 +11,14 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="./Public/css/connection.css" rel="stylesheet" type="text/css" />
-
+    <!-- jQuery (Media Temple) : -->
+    <script charset="utf-8" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+    
+    <!-- Google : -->
+    <script charset="utf-8" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    
+    <!-- Microsoft : -->
+    <script charset="utf-8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.1.min.js"></script>
     </head>
 <body>  
 <div class="background">
