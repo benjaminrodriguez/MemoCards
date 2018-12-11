@@ -13,6 +13,8 @@
 
 --------------------------- A TRAITER EN PRIORITE -------------------
 
+1) Limiter le liens url pour mettre une photo à 255 caractères. Si le liens dépasse la créations de deck BUGGGGGG !!!!!!!!!
+
 1) Sur l'affichage des sujets du forum passer le format de date de en à fr
 
 2) Hobbies dans le profil !!!!

@@ -5,45 +5,59 @@
 
             <form action="" method="POST">
                 <label for="question"> <h5>Nouvelle Question :</h5></label>
-                <input id="question" type="text" name="question" value="" placeholder="Nouvelle question"  style="width:600px;"> <br>
-                <input id="answer" type="text" name="answer" value="" placeholder="Réponse de la question" style="width:600px;">
+                <input id="question" type="text" name="question" value="<?php if(isset($_GET['question'])) echo $modify_question[0] ; ?>" placeholder="Nouvelle question"  style="width:600px;" required> <br>
+                <input id="answer" type="text" name="answer" value="<?php if(isset($_GET['answer'])) echo $modify_answer[0] ; ?>" placeholder="Réponse de la question" style="width:600px;" required>
 
                 <div class="row">
                     <div class="span6">
-                        <button class="btn btn-large btn-warning" type="submit" name="next_question" value="" >Ajouter la question</button>
+                        <?php if(isset($_GET['question']) && isset($_GET['answer'])) 
+                        { ?>  
+                             <button class="btn btn-large btn-warning" type="submit" name="modify_cards" value="" >Modifier la carte</button>
+                             <a class="btn btn-large btn-inverse" href="index.php?page=inventory&action=modify&deck=<?php echo $_SESSION['deck_id']?>">Annuler</a>
+              <?php     } ?>
+                <?php  if(!isset($_GET['question']) && !isset($_GET['answer']))  { ?> <button class="btn btn-large btn-warning" type="submit" name="next_question" value="" >Ajouter la question</button> <?php } ?>
+                        
                     </div>
                 </div>
             </form>
 
         </div>
 
-        <p>Votre deck doit contenir un minimum de 10 questions pour être valide </p>
-        <h5>Contenu du deck :</h5>
+        
+        <center><h4>Contenu du deck :</h4>
+        <p>Votre deck doit contenir un minimum de 10 questions pour être jouable. </p></center>
 
-        <div class="span6">   
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla iaculis mattis lorem, quis gravida nunc iaculis ac. Proin tristique tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt sem eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla faucibus ligula eget ante varius ac euismod odio placerat. Nam sit amet felis non lorem faucibus rhoncus vitae id dui.</p>
-        </div>  <br><br>
+          
 
-        <div class="span2">
-            <div class="post-summary-footer">
-                <ul class="post-data-3">
-                    <li><i class="icon-cog"></i> <a href="index.php?page=inventory&action=modify">Modifier</a><br><br>
-                    <i class="icon-trash"></i> <a href="#">Supprimer</a></li>
-                </ul>
-            </div>
-        </div>
+            <?php foreach ($questions_deck as $key => $value)
+                { ?>
 
+
+                <div class="span2">
+                    <div class="post-summary-footer">
+                        <ul class="post-data-3">
+                            <li><i class="icon-cog"></i> <a href="index.php?page=inventory&action=modify&deck=<?php echo $questions_deck[$key]['deck_id'].'&question='.$questions_deck[$key]['id'].'&answer='.$answers_deck[$key]['id']; ?>">Modifier</a><br>
+                            <i class="icon-trash"></i> <a href="#">Supprimer</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                    <div class="span6"> 
+
+            <?php      echo '<h5>#'.($key+1).' : </h5> <b>Question : </b>'.$questions_deck[$key]['question_cards'];
+                       echo '<br><b>Réponse :</b> '.$answers_deck[$key]['answer_cards']; ?>
+
+                    </div>  <br><br>
+
+
+        <?php } ?>
     </div>
+    <?php /*  echo 'questions :';
+        var_dump($questions_deck);
 
-    post : 
-    <?php var_dump($_POST); ?>
-
-    <br> session :
-    <?php var_dump($_SESSION); ?>
-
-
+        echo 'réponses:';
+        var_dump($answers_deck);*/ ?>
 
 <?php $content = ob_get_clean(); ?>
-
-
 

@@ -88,4 +88,30 @@
 
     //--------------------------------------------------------------------------------
 
+     function question_UPDATE($question_modify, $id_question)
+     {
+         $bdd = bdd();
+         $req = $bdd->prepare(' UPDATE recto
+                                SET question_cards = ? 
+                                WHERE id = ? 
+                                LIMIT 1
+                             ');
+         $req->execute(array($question_modify, intval($id_question)));
+     }
+ 
+     //--------------------------------------------------------------------------------
+
+     function answer_UPDATE($answer_modify, $id_answer)
+     {
+         $bdd = bdd();
+         $req = $bdd->prepare(' UPDATE verso
+                                SET answer_cards = ? 
+                                WHERE id = ? 
+                                LIMIT 1
+                             ');
+         $req->execute(array($answer_modify, intval($id_answer)));
+     }
+ 
+     //--------------------------------------------------------------------------------
+
 ?>

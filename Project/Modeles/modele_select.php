@@ -335,7 +335,7 @@
     {
         //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
         $bdd = bdd();
-        $req = $bdd->prepare('  SELECT verso.answer_cards, verso.statut_cards
+        $req = $bdd->prepare('  SELECT verso.id, verso.answer_cards, verso.statut_cards
                                 FROM verso
                                 LEFT JOIN recto on verso.recto_id = recto.id
                                 LEFT JOIN deck on recto.deck_id = deck.id
@@ -393,4 +393,37 @@
     }
 
     //--------------------------------------------------------------------------------
+
+    function question_by_id_SELECT($id_card)
+    {
+        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+        $bdd = bdd();
+        $req = $bdd->prepare('  SELECT recto.question_cards
+                                FROM recto
+                                WHERE id = ?
+                            ');
+        $req->execute(array($id_card));
+        return $req;
+    }
+
+    //--------------------------------------------------------------------------------
+
+    function answer_by_id_SELECT($id_card)
+    {
+        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+        $bdd = bdd();
+        $req = $bdd->prepare('  SELECT verso.answer_cards
+                                FROM verso
+                                WHERE id = ?
+                            ');
+        $req->execute(array($id_card));
+        return $req;
+    }
+
+    //--------------------------------------------------------------------------------
+
+
+
+
+
 ?>

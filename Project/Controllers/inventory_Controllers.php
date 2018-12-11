@@ -9,6 +9,26 @@
         require(dirname(__FILE__).'/../Views/create_deck_Views.php');
     } 
 
+    else if (isset($_POST['modify_cards']))
+    {
+        // RECUPERE LA QUESTION SELECTIONNE
+        $req =  question_by_id_SELECT($_GET['question']);
+        $modify_question = $req->fetch();
+
+        // RECUPERE LA REPONSE SELECTIONNE
+        $req =  answer_by_id_SELECT($_GET['answer']);
+        $modify_answer = $req->fetch();
+
+        // MODIFIE LA QUESTION SI ELLE EST DIFFERENTE
+        if($_POST['question'] !== $modify_question[0])   question_UPDATE($_POST['question'], $_GET['question']);
+
+        // MODIFIE LA REPONSE SI ELLE EST DIFFERENTE
+        if($_POST['answer'] !== $modify_answer[0])  answer_UPDATE($_POST['answer'], $_GET['answer']);
+
+        header('Location: index.php?page=inventory&action=modify&deck='.$_SESSION['deck_id'].'');
+        exit();
+    }
+
     else if (isset($_POST['action']) && $_POST['action'] == 'create_questions') 
     {
         // ATTRIBUT UNE IMAGE DE PROFIL AU DECK SI CELUI-CI N'EN POSSEDE PAS 
@@ -26,14 +46,13 @@
 
     else if(isset($_POST['next_question']))
     {
-        var_dump($_POST, $_SESSION);
         // AJOUTE LA NOUVELLE QUESTION DANS LA BDD
         new_question_INSERT($_POST['question'], $_SESSION['deck_id']);
         
         // AJOUTE LA NOUVELLE REPONSE DANS LA BDD
         $req = id_question_SELECT($_POST['question']);
         $id_question = $req->fetchAll();
-        new_answer_INSERT($_POST['question'], $id_question[0]['id'] );
+        new_answer_INSERT($_POST['answer'], $id_question[0]['id'] );
 
         // REDIRECTION VERS LA CREATION DE QUESTION
         header('Location: index.php?page=inventory&action=modify&deck='.$_SESSION['deck_id'].'');
@@ -52,15 +71,20 @@
         $answers_deck = $req->fetchAll();
 
 
+        // MODIFIER UNE QUESTION / REPONSE
+        if(isset($_GET['question']) && isset($_GET['answer']))
+        {
+            $req =  question_by_id_SELECT($_GET['question']);
+            $modify_question = $req->fetch();
+
+            $req =  answer_by_id_SELECT($_GET['answer']);
+            $modify_answer = $req->fetch();
+
+            //var_dump($modify_question, $modify_answer);
+        } 
+
         // CREATIONS DE QUESTIONS SUR LE DECK
         require(dirname(__FILE__).'/../Views/create_questions_Views.php');
-
-        echo 'questions :';
-        var_dump($questions_deck);
-
-        echo 'réponses:';
-        var_dump($answers_deck);
-        
     }
 
     else if (!isset($_GET['action'])) 
