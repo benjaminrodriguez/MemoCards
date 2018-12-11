@@ -16,45 +16,22 @@
 <div class="page-container">
 
     <center><img class="mb-4"  src="./Public/img/memocards_white.png" width="600" alt=""></center>
-    <form id="form" class="form-signin" action="index.php?page=connection" method="POST"> 
-     
+    
 
-        <form action="" method="POST" class="form-signin">
-            <!--<h1 class="h3 mb-3 font-weight-normal">Inscrivez-vous</h1>-->
+        <form action="index.php?page=inscription" method="POST" class="form-signin">
+        <div id="erreur">
+    <p>Vous n'avez pas rempli correctement les champs du formulaire !</p>
+</div>
 
-            <label for="username"  class="sr-only">Username</label>
-            <input type="text" name="username" value="" id="username" class="form-control" placeholder="Username"  autofocus>
-            <!-- <P> Le mot de passe doit contenir : 6 caractères minimum, au moins une majuscule, une minuscule et un chiffre</p>-->
-            <input type="password" name="password" value="" id="pass" class="form-control" placeholder="Mot de passe" 
-            pattern=".{6,}"   
-             title="6 caracteres minimum, au moins une majuscule, une minuscule" >
-            <label for="pass" class="sr-only">Password</label>
-            <div class="checkbox mb-3">
-            <script>/*
-                // Vérification de la longueur du mot de passe saisi
-                document.getElementById("password").addEventListener("input", function (e) {
-                    var mdp = e.target.value; // Valeur saisie dans le champ mdp
-                    var longueurMdp = "faible";
-                    var couleurMsg = "red"; // Longueur faible => couleur rouge
-                    if (mdp.length >= 8) {
-                        longueurMdp = "suffisante";
-                        couleurMsg = "green"; // Longueur suffisante => couleur verte
-                    } else if (mdp.length >= 4) {
-                        longueurMdp = "moyenne";
-                        couleurMsg = "orange"; // Longueur moyenne => couleur orange
-                    }
-                    var aideMdpElt = document.getElementById("aideMdp");
-                    aideMdpElt.textContent = "Longueur : " + longueurMdp; // Texte de l'aide
-                    aideMdpElt.style.color = couleurMsg; // Couleur du texte de l'aide
-                });*/
-            </script>
-            <input type="email" name="email" value="" id="email" class="form-control" placeholder="Email" >
-            <div class="checkbox mb-3">
-            <p>Sexe : 
-            <input type="radio" name="sex" value="M" width:20px>Homme
-            <input type="radio" name="sex" value="F" checked>Femme<br>
+<form>
+    <label for="username"></label> <input type="text" name="username"id="username" class="champ"placeholder="Username" />
+    <label for="password"></label> <input type="password" name="password" id="password" class="champ"placeholder="Mot de passe" />
+    <label for="confirmation"></label>  <input type="password" id="confirmation" class="champ" placeholder="Confirmation mot de passe" />
+    <label for="email"></label> <input type="text" name="email" id="mail" class="champ" placeholder="E-mail"/><br>
+    <input type="radio" name="sex" value="M" width:20px class="champ">Homme
+    <input type="radio" name="sex" value="F" checked class="champ">Femme<br>
 
-            <select name="region" class="form-control">
+            <select name="region" class="form-control" class="champ">
                 <option value="region" disabled selected>Région</option> 
                 <option value="hauts_de_france">Hauts-de-France</option> 
                 <option value="normandie">Normandie</option>
@@ -76,42 +53,92 @@
                 <option value="la_reunion">La Réunion</option>
             </select><br>
 
-            <input type="date" name="date_de_naissance" id="date_de_naissance" class="form-control" placeholder="Date de naissance" >
-            <button type="submit">Inscription</button>
+            <input type="date" name="date_de_naissance" id="date_de_naissance" class="champ" placeholder="Date de naissance" >
 
-            <!-- JS POUR EVITER LES CHAMPS VIDES-->
-         <script>
-        document.forms[0].addEventListener("submit", function(evenement) 
-        { 
-            if (document.getElementById("email").value == "") {
-                evenement.preventDefault();
-                alert("Tapez un email valable ");
-                document.getElementById("email").focus();
+    <input type="submit" id="envoi" value="Inscription"/> 
+   <!-- <input type="reset" id="rafraichir" value="Rafraîchir" /> -->
+</form>
+
+<!-- on inclut la bibliothèque depuis les serveurs de Google -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        
+        var $username = $('#username'),
+            $password = $('#password'),
+            $confirmation = $('#confirmation'),
+            $mail = $('#mail'),
+            $envoi = $('#envoi'),
+            $reset = $('#rafraichir'),
+            $erreur = $('#erreur'),
+            $champ = $('.champ');
+
+        $champ.keyup(function(){
+            if($(this).val().length < 5){ // si la chaîne de caractères est inférieure à 5
+                $(this).css({ // on rend le champ rouge
+                    borderColor : 'red',
+                color : 'red'
+                });
             }
-            else if (document.getElementById("username").value == "") {
-                evenement.preventDefault();
-                alert("Pensez à taper un username !");
-                document.getElementById("username").focus();
-            }
-            else if (document.getElementById("password").value == "") {
-                evenement.preventDefault();
-                alert("Pensez à taper un password !");
-                document.getElementById("password").focus();
-            }
-            else if (document.getElementById("region").value == "") {
-                evenement.preventDefault();
-                alert("Pensez à taper une région !");
-                document.getElementById("region").focus();
-            }
-            else if (document.getElementById("date_de_naissance").value == "") {
-                evenement.preventDefault();
-                alert("Pensez à taper une date !");
-                document.getElementById("date_de_naissance").focus();
+            else{
+                $(this).css({ // si tout est bon, on le rend vert
+                borderColor : 'green',
+                color : 'green'
+            });
             }
         });
-     </script>
-        </form>
-         
+
+        $confirmation.keyup(function(){
+            if($(this).val() != $password.val()){ // si la confirmation est différente du mot de passe
+                $(this).css({ // on rend le champ rouge
+                    borderColor : 'red',
+                color : 'red'
+                });
+            }
+            else{
+            $(this).css({ // si tout est bon, on le rend vert
+                borderColor : 'green',
+                color : 'green'
+            });
+            }
+        });
+
+        $envoi.click(function(e){
+
+            // puis on lance la fonction de vérification sur tous les champs :
+            verifier($username);
+            verifier($password);
+            verifier($confirmation);
+            verifier($mail);
+            if(!verifier($username) && !verifier($password) && !verifier($confirmation) && !verifier($mail))
+            {
+                e.preventDefault(); // on annule la fonction par défaut du bouton d'envoi
+            }
+        });
+
+        $reset.click(function(){
+            $champ.css({ // on remet le style des champs comme on l'avait défini dans le style CSS
+                borderColor : '#ccc',
+                color : '#555'
+            });
+            $erreur.css('display', 'none'); // on prend soin de cacher le message d'erreur
+        });
+
+        function verifier(champ){
+            if(champ.val() == ""){ // si le champ est vide
+                $erreur.css('display', 'block'); // on affiche le message d'erreur
+                champ.css({ // on rend le champ rouge
+                    borderColor : 'red',
+                    color : 'red'
+                });
+            } else {
+                return true;
+            }
+        }
+
+    });
+</script>         
+
         <!-- Bouton de retour à l'écran d'accueil -->
 <form action='index.php?page=home' method='POST'>
     <button type="submit" value="Retour à l'écran de connexion">Retour à l'écran de connexion</button>
