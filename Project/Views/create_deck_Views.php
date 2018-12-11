@@ -39,7 +39,7 @@
 
     <div class="row">
             <div class="span4">
-                <button form="id_form" class="btn btn-large btn-warning" type="subbit" name="action" value="create_questions">Continuer</button>
+                <button form="id_form" class="btn btn-large btn-warning" type="subbit" name="action" value="create_questions">Créer le deck</button>
             </div>
     </div>
 

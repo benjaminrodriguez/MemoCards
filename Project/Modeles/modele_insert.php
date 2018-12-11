@@ -113,5 +113,17 @@
         $req->execute(array($answer_cards, 'T', $recto_id));
     }
 
+    //--------------------------------------------------------------------------------
+
+    function succes_rate_INSERT($verso_id)
+    {
+        $bdd = bdd();
+        $req = $bdd->prepare(
+            'INSERT INTO succes_rate (level_cards, chain, played_cards, verso_id)
+             VALUES (0, 0, NULL, ?);
+            ');
+        $req->execute(array(intval($verso_id)));
+    }
+
     
 ?>

@@ -40,6 +40,7 @@
         $deck_id = $req->fetch();
         new_passed_INSERT($_SESSION['id'], $deck_id['id']);
 
+
         // CREATIONS DE QUESTIONS SUR LE DECK
         require(dirname(__FILE__).'/../Views/create_questions_Views.php');
     }
@@ -53,6 +54,11 @@
         $req = id_question_SELECT($_POST['question']);
         $id_question = $req->fetchAll();
         new_answer_INSERT($_POST['answer'], $id_question[0]['id'] );
+
+        // AJOUTE LA CARTE DANS LA TABLE SUCCES_CARDS DANS BDD
+        $req = verso_id_SELECT($_POST['answer']);
+        $verso_id = $req->fetch();
+        succes_rate_INSERT($verso_id[0]);
 
         // REDIRECTION VERS LA CREATION DE QUESTION
         header('Location: index.php?page=inventory&action=modify&deck='.$_SESSION['deck_id'].'');
