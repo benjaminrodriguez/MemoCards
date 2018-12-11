@@ -9,28 +9,28 @@
     require('Modeles/modele_update.php');
     //require(dirname(__FILE__).'/./Controllers/php/token.php');
 
-    
-    if (isset($_GET['page']) && !empty($_GET['page'])) 
+
+    if ($_GET['page'] == 'connection')
+    {
+        if(isset($_SESSION['username']))  header('Location: index.php?page=home');
+        //connection();
+        else require_once('Controllers/connection_Controllers.php');
+    }
+    else if ($_GET['page'] == 'inscription')
+    {
+        //inscription();
+        require_once('Controllers/inscription_Controllers.php');
+    }
+    else if (isset($_GET['page']) && !empty($_GET['page']) && isset($_SESSION['id'])) 
     {
         if ($_GET['page'] == 'dc')
         {
             require_once('Controllers/php/disconnect.php');
         }
-        if ($_GET['page'] == 'connection')
-        {
-            if(isset($_SESSION['username']))  header('Location: index.php?page=home');
-            //connection();
-            else require_once('Controllers/connection_Controllers.php');
-        }
         else if ($_GET['page'] == 'home') 
         {
             //home();
             require_once('Controllers/home_Controllers.php');
-        }
-        else if ($_GET['page'] == 'inscription')
-        {
-            //inscription();
-            require_once('Controllers/inscription_Controllers.php');
         }
         else if ($_GET['page'] == 'profile')
         {
@@ -64,10 +64,12 @@
         else
         {
             header('Location: index.php?page=connection');
+            exit();
         }
     }
     else 
     {
         header('Location: index.php?page=connection');
+        exit();
     }
 ?>
