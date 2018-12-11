@@ -10,7 +10,6 @@
             { 
                 if(isset($datas[$i]['name'])) 
                 { 
-                    var_dump($_POST);
                     ?>
                     <!-- Blog Post 1 -->
                     <article class="clearfix">
