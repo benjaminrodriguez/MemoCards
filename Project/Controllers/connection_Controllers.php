@@ -46,7 +46,7 @@
                 header('Location: index.php?page=home');
                 exit;
             } 
-            else
+            else if (!password_verify($_POST['password'], $data['password']))
             {
                 require(dirname(__FILE__).'/../Public/js/erreur_auth.js');
             }

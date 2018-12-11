@@ -77,6 +77,8 @@
             </select><br>
 
             <input type="date" name="date_de_naissance" id="date_de_naissance" class="form-control" placeholder="Date de naissance" >
+            <button type="submit">Inscription</button>
+
             <!-- JS POUR EVITER LES CHAMPS VIDES-->
          <script>
         document.forms[0].addEventListener("submit", function(evenement) 
@@ -104,27 +106,23 @@
             else if (document.getElementById("date_de_naissance").value == "") {
                 evenement.preventDefault();
                 alert("Pensez à taper une date !");
-                document.getElementById("date").focus();
+                document.getElementById("date_de_naissance").focus();
             }
         });
-    </script>
-            <button type="submit">Inscription</button>
+     </script>
         </form>
          
         <!-- Bouton de retour à l'écran d'accueil -->
 <form action='index.php?page=home' method='POST'>
     <button type="submit" value="Retour à l'écran de connexion">Retour à l'écran de connexion</button>
 </form>
+
+
 </div>
     <center><p >&copy; MemoCards</p></center>
 
 </div>
  </div>    
  
-
-    
-
-
-
 <?php $content = ob_get_clean(); ?>
 <?php require(dirname(__FILE__).'/template_accueil.php'); ?>

@@ -176,8 +176,8 @@ $(document).ready(function () {
     <div class="row headline"><!-- Begin Headline -->
     <!-- HEURE DYNAMIQUE -->
 
-    <script language="JavaScript">
-<!--
+  <!--
+  <script language="JavaScript">
 function heure () {
 var Maintenant = new Date();
 var heures = Maintenant.getHours();
@@ -190,7 +190,7 @@ document.formhorloge.horloge.value = heures + minutes + secondes;
 setTimeout("heure()",1000);
 }
 window.onload = heure;
-// -->
+// 
 </script>
 </head>
 
@@ -201,11 +201,11 @@ window.onload = heure;
 
 <form name="formhorloge">
 <input type="button" name="horloge" value="">
-</form>
+</form> -->
     <!-- FIN HEURE DYNAMIQUE -->
 
       <!-- AUDIO PLAYER--><br>
-      <audio id="audioPlayer">
+    <!--  <audio id="audioPlayer">
         <source src="./Public/song.ogg">
         <source src="./Public/song.mp3">
     </audio>
@@ -247,23 +247,18 @@ window.onload = heure;
 	
     player.volume = vol;	
 }
-    </script>
+    </script> -->
     <!-- END AUDIO PLAYER-->
     
     
-     	<!-- Slider Carousel
+    
+     	<!-- VIDEO YT FLASHCARDS
         ================================================== -->
         <div class="span8">
-            <div class="flexslider">
-              <ul class="slides">
-                <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-                <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-                <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-                <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-                <li><a href="gallery-single.htm"><img src="img/gallery/slider-img-1.jpg" alt="slider" /></a></li>
-              </ul>
-            </div>
-        </div>
+            <<iframe width="760" height="428" 
+            src="https://www.youtube.com/embed/n3CkA3Qc8kY?autoplay=1" frameborder="0"  allow="accelerometer; 
+            autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div> 
         
         <!-- Headline Text
         ================================================== -->
@@ -524,10 +519,12 @@ window.onload = heure;
     
     </div> <!-- End Container -->
    
+   <!-- METEO API
+        ================================================== 
         <iframe seamless width="888" height="336" frameborder="0" 
         src="https://www.infoclimat.fr/public-api/mixed/iframeSLIDE?_ll=48.85341,2.3488&_inc=WyJQYXJpcyIsIjQyIiwiMjk4ODUwNyIsIkZSIl0=&_auth=CRNfSAZ4ByVSf1tsD3lReAJqAjcNewIlC3cHZFo%2FUSwHbANiB2dVMwJsA35XeAo8VXgDYFphV2cLYAB4DH5VNAljXzMGbQdgUj1bPg8gUXoCLAJjDS0CJQtgB2ZaKVE0B2ADeQdjVT8CcwNlV2cKIVV5A2JaYFdrC2wAYwxlVTAJYl8yBmUHelIiWzwPbFFlAmQCZA0xAmsLOQdkWj5RYQcxAzEHYlUpAm8DaFduCjlVYQNrWmJXaQt3AHgMGFVFCXdfewYnBzBSe1skD2pROwJl&_c=af8bf9a4d019d2172ab6c098d588c0fa">
         </iframe>
-    </center>
+    </center> -->
 
   
     <!-- Footer Area
