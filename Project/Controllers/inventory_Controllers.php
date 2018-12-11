@@ -97,5 +97,5 @@
     } 
 
     // TEMPLATE DE LA PAGE
-    require_once(dirname(__FILE__).'/../Views/template_inventory.php');
+    require_once(dirname(__FILE__).'/../Views/template.php');
 ?>

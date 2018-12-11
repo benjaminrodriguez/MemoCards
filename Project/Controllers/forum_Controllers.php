@@ -1,7 +1,5 @@
 <?php    
 
-    // HEADER
-    require(dirname(__FILE__).'/../Views/top_menu_Views.php');
 
     // CREER SUJET
     if (!isset($_GET['subject_id'])) 
@@ -80,6 +78,6 @@
         }
     }
     
-    require(dirname(__FILE__).'/../Views/forum_Views.php');
+    require(dirname(__FILE__).'/../Views/template.php');
 ?>
         
