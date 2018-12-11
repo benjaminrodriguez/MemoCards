@@ -422,8 +422,18 @@
 
     //--------------------------------------------------------------------------------
 
+    function verso_id_SELECT($answer)
+    {
+        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+        $bdd = bdd();
+        $req = $bdd->prepare('  SELECT verso.id
+                                FROM verso
+                                WHERE verso.answer_cards = ?
+                            ');
+        $req->execute(array($answer));
+        return $req;
+    }
 
-
-
+    //--------------------------------------------------------------------------------
 
 ?>
