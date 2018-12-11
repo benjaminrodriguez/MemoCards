@@ -317,6 +317,36 @@
 
     //--------------------------------------------------------------------------------
 
+    function questions_deck_SELECT($deck_id)
+    {
+        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+        $bdd = bdd();
+        $req = $bdd->prepare('  SELECT *
+                                FROM recto
+                                WHERE recto.deck_id = ?
+                            ');
+        $req->execute(array($deck_id));
+        return $req;
+    }
+
+    //--------------------------------------------------------------------------------
+    
+    function answers_deck_SELECT($deck_id)
+    {
+        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+        $bdd = bdd();
+        $req = $bdd->prepare('  SELECT verso.id, verso.answer_cards, verso.statut_cards
+                                FROM verso
+                                LEFT JOIN recto on verso.recto_id = recto.id
+                                LEFT JOIN deck on recto.deck_id = deck.id
+                                WHERE deck.id = ?
+                            ');
+        $req->execute(array($deck_id));
+        return $req;
+    }
+
+    //--------------------------------------------------------------------------------
+
     function questforstat_SELECT($iddeck, $iduser)
     {
         //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
@@ -349,5 +379,51 @@
     }
 
     //--------------------------------------------------------------------------------
+
+    function id_question_SELECT($question_cards)
+    {
+        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+        $bdd = bdd();
+        $req = $bdd->prepare('  SELECT id
+                                FROM recto
+                                WHERE recto.question_cards = ?
+                            ');
+        $req->execute(array($question_cards));
+        return $req;
+    }
+
+    //--------------------------------------------------------------------------------
+
+    function question_by_id_SELECT($id_card)
+    {
+        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+        $bdd = bdd();
+        $req = $bdd->prepare('  SELECT recto.question_cards
+                                FROM recto
+                                WHERE id = ?
+                            ');
+        $req->execute(array($id_card));
+        return $req;
+    }
+
+    //--------------------------------------------------------------------------------
+
+    function answer_by_id_SELECT($id_card)
+    {
+        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+        $bdd = bdd();
+        $req = $bdd->prepare('  SELECT verso.answer_cards
+                                FROM verso
+                                WHERE id = ?
+                            ');
+        $req->execute(array($id_card));
+        return $req;
+    }
+
+    //--------------------------------------------------------------------------------
+
+
+
+
 
 ?>
