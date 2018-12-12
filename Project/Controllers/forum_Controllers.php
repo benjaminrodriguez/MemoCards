@@ -60,10 +60,18 @@
         //unset($_POST);
         
         // AFFICHE LE PREMIER MESSAGE DU SUJET
-        first_messages_subject_SELECT($_GET['subject_id']);
+        $q = first_messages_subject_SELECT($_GET['subject_id'],$_SESSION['id']);
+        //var_dump($q);
+        echo '<b>'.htmlspecialchars($q[0]['content']).' le '.
+        htmlspecialchars($q[0]['date_posted']).' par '.
+        htmlspecialchars($q[0]['username']).'</b><br>';
 
+
+        
         // AFFICHE MESSAGES D'UN SUJET
         $print_message = messages_subject_SELECT(intval($_GET['subject_id']));
+        //var_dump($print_message);
+        
         foreach ($print_message as $key => $value) 
         {
             require(dirname(__FILE__).'/../Views/forum_Views.php');

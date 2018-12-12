@@ -1,29 +1,30 @@
 <?php 
     if (!isset($_GET['subject_id']))
     { 
-?>
-    <form action='' method='POST'>
-        <button class="btn btn-lg btn-primary btn-block" name="choix_forum" value="creer_sujet">Créer un sujet</button>
-    </form>
-<?php 
+        ?>
+        <form action='' method='POST'>
+            <button class="btn btn-lg btn-primary btn-block" name="choix_forum" value="creer_sujet">Créer un sujet</button>
+        </form>
+        <?php 
     }
-    if (!isset($_GET['subject_id']) && isset($_POST['choix_forum']) 
-        && $_POST['choix_forum'] === 'creer_sujet' 
-        )
+
+    if (!isset($_GET['subject_id']) && isset($_POST['choix_forum']) && $_POST['choix_forum'] === 'creer_sujet')
     {
-?>
-    <form action='' method='POST'>
+        ?>  
+        <form action='' method='POST'>
 
-        <input type='text' name='title' placeholder="Titre" required><br>
+            <input type='text' name='title' placeholder="Titre" required><br>
 
-        <textarea name='content' rows="4" cols="50" placeholder="Describe here" required> </textarea><br>
+            <textarea name='content' rows="4" cols="50" placeholder="Describe here" required> </textarea><br>
 
-        <input type="hidden" name="choix_forum" value="creer_sujet" >
+            <input type="hidden" name="choix_forum" value="creer_sujet" >
 
-        <button class="btn btn-lg btn-primary" type="submit">Créer sujet</button>
-    </form>
-<?php
+            <button class="btn btn-lg btn-primary" type="submit">Créer sujet</button>
+        </form>
+        <?php
     }
+    
+
     if (isset($print_message) && isset($key)) 
     {
         if (isset($print_message[$key]) && isset($_GET['subject_id'])) 
@@ -34,18 +35,20 @@
             .htmlspecialchars($print_message[$key]['id']).'&subject_id='.htmlspecialchars($_SESSION['subject_id']).'"> Supprimer mon message</a><br><br>' ;
         }
     }
+
     if (isset($_GET['subject_id']) && isset($_SESSION['print_messages']) && $_SESSION['print_messages'] == false)
     {
-    $_SESSION['print_messages'] = true;
-?>
-    <form action='' method='POST'>
+        $_SESSION['print_messages'] = true;
+        ?>
+        <form action='' method='POST'>
 
-    <textarea name='content' rows="4" cols="50" placeholder="Describe yourself here" required> </textarea><br>
+        <textarea name='content' rows="4" cols="50" placeholder="Describe yourself here" required> </textarea><br>
 
-    <input type="hidden" name="choix_forum" value="write_topic" >
+        <input type="hidden" name="choix_forum" value="write_topic" >
 
-    <button class="btn btn-lg btn-primary" type="submit">Poster message</button>
-    </form>
-<?php
+        <button class="btn btn-lg btn-primary" type="submit">Poster message</button>
+
+        </form>
+        <?php
     } 
 ?>

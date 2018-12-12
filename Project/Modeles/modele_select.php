@@ -223,18 +223,32 @@
     function first_messages_subject_SELECT($id)
     {
         $bdd = bdd();
-        $forum = $bdd->prepare('SELECT subject.content, subject.date_posted, user.username
-                                FROM subject
-                                INNER JOIN user ON subject.user_id=user.id
-                                WHERE subject.id = ?
-                                LIMIT 1;
-                                ');
+        $query ='SELECT subject.content, subject.date_posted, user.username
+                FROM subject
+                INNER JOIN user ON subject.user_id= user.id AND subject.id = :subid
+                LIMIT 1;';
+        $query_params = array(
+            ':subid' => $id
+            );
+        
+        try {
+            $stmt = $bdd->prepare($query);
+            $stmt->execute($query_params);
+        } catch(Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+        $f = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $f;
+        
+        
+        
+       /* 
         while ($subject = $forum->fetch($id)) 
         {
             echo $subject['content'].' le '.$subject['date_posted'].' par '.$subject['username'].'<br>';
         }
         $forum->closeCursor();
-        
+        */
     }
     
     //-------------------------------------------------------------------------------
