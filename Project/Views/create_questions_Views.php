@@ -29,8 +29,11 @@
 
           
 
-            <?php foreach ($questions_deck as $key => $value)
-                { ?>
+        <?php 
+        if (isset($questions_deck)) {
+            
+            foreach ($questions_deck as $key => $value)
+            { ?>
 
 
                 <div class="span2">
@@ -45,13 +48,13 @@
 
                     <div class="span6"> 
 
-            <?php      echo '<h5>#'.($key+1).' : </h5> <b>Question : </b>'.$questions_deck[$key]['question_cards'];
-                       echo '<br><b>Réponse :</b> '.$answers_deck[$key]['answer_cards']; ?>
-
-                    </div>  <br><br>
-
-
-        <?php } ?>
+            <?php      
+            echo '<h5>#'.($key+1).' : </h5> <b>Question : </b>'.$questions_deck[$key]['question_cards'];     
+            echo '<br><b>Réponse :</b> '.$answers_deck[$key]['answer_cards']; ?>
+            </div> <br><br>
+            <?php 
+            } 
+        }?>
     </div>
     <?php /*  echo 'questions :';
         var_dump($questions_deck);

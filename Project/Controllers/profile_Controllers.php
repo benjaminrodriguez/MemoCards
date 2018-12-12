@@ -6,7 +6,11 @@
         if ($_GET['action'] === "stat") {
             require_once('Controllers/php/stat.php');
         }
+        if ($_GET['action'] === "unsub") {
+            require_once('Controllers/php/unsub.php');
+        }
     }
+    
     /*
     // CHANGE LE PSEUDO
     require_once(dirname(__FILE__).'/php/change_username.php');
