@@ -18,9 +18,9 @@
                         <p> <?php echo htmlspecialchars($datas[$i]['description']); ?> </p>
 
                         <!-- <button class="btn btn-mini btn-inverse" type="button" name="top_3_deck" value="<?php //echo $datas[$i]['id']; ?>">Lancer une partie</button> -->
-                        <a class="btn btn-mini btn-inverse" href="index.php?page=game&deck=<?php echo htmlspecialchars($datas[$i]['deck_id']);?>"><font size="3">Jouer avec ce deck</font></a>
+                        <a class="btn btn-mini btn-inverse" href="index.php?page=game&deck=<?php echo htmlspecialchars($datas[$i]['deck_id']);?>"><font size="3">MODE QCM </font></a>
 
-                        <button class="btn btn-mini btn-inverse" type="submit" name="start_game" value="<?php echo htmlspecialchars($datas[$i]['deck_id']); ?>">Lancer une partie</button>
+                        <!-- <button class="btn btn-mini btn-inverse" type="submit" name="start_game" value="<?php //echo htmlspecialchars($datas[$i]['deck_id']); ?>">Lancer une partie</button> -->
                         
 
                         <div class="post-summary-footer">

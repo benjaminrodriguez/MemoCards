@@ -173,7 +173,7 @@
             ' date du : ' .$subject['date_posted']. ' par ' .$subject['username'].'</a><br><br>';
             */
             ?>
-                <form method="post" action="index.php?page=forum&subject_id=<?php echo $subject['id']; ?>">
+                 <form method="post" action="index.php?page=forum&subject_id=<?php echo $subject['id']; ?>">
                 Sujet :<button name="subject_id" value="<?php echo $subject['id']; ?>">  <?php echo $subject['title']; ?> </button>
                     <?php echo 'posté le : '.$subject['date_posted'].' par '.$subject['username'].'</a><br><br>'; ?>
                 </form> 
