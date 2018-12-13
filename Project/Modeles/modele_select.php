@@ -169,19 +169,18 @@
 
     //-------------------------------------------------------------------------------
 
-    function messages_subject_SELECT($id)
+    function messages_subject_SELECT($subject_id)
     {
         $bdd = bdd();
-        $forum = $bdd->prepare('SELECT message.content_message, message.date, user.username, message.id, message.autor_id
+        $req= $bdd->prepare('SELECT *
                                 FROM message
                                 INNER JOIN subject ON message.subject_id=subject.id
                                 INNER JOIN user ON subject.user_id=user.id
                                 WHERE subject_id = ?
-                                ORDER BY date DESC;
+                                ORDER BY date ASC;
                                 ');
-        $count = 0;
-        $forum->execute(array(intval($id)));
-        $message = $forum->fetchAll(PDO::FETCH_ASSOC);
+        $req->execute(array(intval($subject_id)));
+        $message = $req->fetchAll(PDO::FETCH_ASSOC);
         return $message;
     }
 
@@ -457,4 +456,35 @@
     }
     
     //--------------------------------------------------------------------------------
+    
+    function find_autor_SELECT($user_id)
+    {
+        $bdd = bdd();
+        $req = $bdd->prepare('SELECT user.username
+                                FROM user
+                                WHERE user.id = ? 
+                            ');
+        $req->execute(array(intval($user_id)));
+        $autor = $req->fetch();
+        return $autor;
+    }
+    
+    //--------------------------------------------------------------------------------
+
+    function count_message_SELECT($subject_id)
+    {
+        $bdd = bdd();
+        $req = $bdd->prepare('  SELECT COUNT(content_message) as count_message
+                                FROM message
+                                WHERE subject_id = ?
+                            ');
+        $req->execute(array(intval($subject_id)));
+        $count_message = $req->fetch();
+        return $count_message;
+    }
+    
+    //--------------------------------------------------------------------------------
+
+
+
 ?>

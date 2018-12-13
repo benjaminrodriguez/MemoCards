@@ -54,7 +54,7 @@
 
     // ----------------------------------------------------------------------------
 
-    function write_topic_INSERT($content, $autor_id, $subject_id)
+    function write_topic_INSERT($new_message, $autor_id, $subject_id)
     {
         $bdd = bdd();
         // INSCRIPTION
@@ -62,7 +62,7 @@
             'INSERT INTO message (date, content_message, autor_id, subject_id)
             VALUES (NOW(), ?, ?, ?);
             ');
-        $creer_sujet->execute(array($content, $autor_id, $subject_id));
+        $creer_sujet->execute( array( $new_message, intval($autor_id), intval($subject_id) ) );
     }
 
     // ----------------------------------------------------------------------------

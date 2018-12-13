@@ -21,8 +21,8 @@
                     <div class="post-summary-footer">
                         <ul class="post-data">
                             <li><i class="icon-calendar"></i>  <?php echo $info_subject[0]['date_posted']; ?> </li>
-                            <li><i class="icon-user"></i> <a href="#">Admin</a></li>
-                            <li><i class="icon-comment"></i> <a href="#">5 Comments</a></li>
+                            <li><i class="icon-user"></i> <a href="#"><?php echo $info_subject['username']; ?></a></li>
+                            <li><i class="icon-comment"></i> <a href="#"> <?php echo $count_message['count_message']; ?> commentaires</a></li>
                             <li><i class="icon-tags"></i> <a href="#">photoshop</a>, <a href="#">tutorials</a>, <a href="#">illustration</a></li>
                         </ul>
                     </div>
@@ -41,61 +41,62 @@
         <!-- Post Comments
         ================================================== --> 
             <section class="comments">
-                <h4 class="title-bg"><a name="comments"></a>5 Comments so far</h4>
+                <h4 class="title-bg"><a name="comments"></a> <?php echo $count_message['count_message']; ?> commentaires jusqu'à présent</h4>
                <ul>
+                
+                    <?php
+                        foreach($print_message as $key => $value)
+                        {   
+                    ?>
+
+                            <li>
+                                <span class="comment-name"> <?php echo $autors[$key]['username'] ;  ?> </span>
+                                <span class="comment-date"> <?php echo $print_message[$key]['date'] ;  ?>  || <a href="#">Répondre</a> ||</span>
+                                <div class="comment-content"> <?php echo $print_message[$key]['content_message'] ;  ?> </div>
+                            </li>
+
+                    <?php
+                        }
+                    ?>
+
+
+
+                <!--
                     <li>
                         <span class="comment-name">John Doe</span>
-                        <span class="comment-date">March 15, 2015 | <a href="#">Reply</a></span>
+                        <span class="comment-date">March 15, 2015 || <a href="#">Répondre</a> ||</span>
                         <div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam venenatis, ligula quis sagittis euismod, odio ante molestie tortor, eget ullamcorper lacus nunc a ligula. Donec est lacus, aliquet in interdum id, rutrum ac tellus. Ut rutrum, justo et lobortis commodo, est metus ornare tortor, vitae luctus turpis leo sed magna. In leo dolor, suscipit non mattis in.</div>
+                -->
                         <!-- Reply -->
+                <!--
                         <ul>
                             <li>
-    
                                 <span class="comment-name">Jason Doe</span>
-                                <span class="comment-date">March 15, 2015 | <a href="#">Reply</a></span>
-                                <div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam venenatis, ligula quis sagittis euismod, odio ante molestie tortor, eget ullamcorper lacus nunc a ligula. Donec est lacus, aliquet in interdum id, rutrum ac tellus. Ut rutrum, justo et lobortis commodo, est metus ornare tortor, vitae luctus turpis leo sed magna. In leo dolor, suscipit non mattis in.</div>
-                                </li>
+                                <span class="comment-date">March 15, 2015 || <a href="#">Répondre</a> || </span>
+                                <div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam venenatis, ligula quis sagittis euismod, odio ante molestie tortor, eget ullamcorper lacus nunc a ligula. Donec est lacus, aliquet in interdum id, rutrum ac tellus. Ut rutrum, justo et lobortis commodo, est metus ornare tortor, vitae luctus turpis leo sed magna. In leo dolor, suscipit non mattis in.</div></span>
+                            </li>
+
                              <li>
-    
                                 <span class="comment-name">Jason Doe</span>
-                                <span class="comment-date">March 15, 2015 | <a href="#">Reply</a></span>
-                                <div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam venenatis, ligula quis sagittis euismod, odio ante molestie tortor, eget ullamcorper lacus nunc a ligula. Donec est lacus, aliquet in interdum id, rutrum ac tellus. Ut rutrum, justo et lobortis commodo, est metus ornare tortor, vitae luctus turpis leo sed magna. In leo dolor, suscipit non mattis in.</div>
+                                <span class="comment-date">March 15, 2015 || <a href="#">Répondre</a> ||</span>
+                                <div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam venenatis, ligula quis sagittis euismod, odio ante molestie tortor, eget ullamcorper lacus nunc a ligula. Donec est lacus, aliquet in interdum id, rutrum ac tellus. Ut rutrum, justo et lobortis commodo, est metus ornare tortor, vitae l suscipit non mattis in.</div> </span>
                                 </li>
                          </ul>
                     </li>
-                    <li>
-                        <span class="comment-name">John Doe</span>
-                        <span class="comment-date">March 15, 2015 | <a href="#">Reply</a></span>
-                        <div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam venenatis, ligula quis sagittis euismod, odio ante molestie tortor, eget ullamcorper lacus nunc a ligula. Donec est lacus, aliquet in interdum id, rutrum ac tellus. Ut rutrum, justo et lobortis commodo, est metus ornare tortor, vitae luctus turpis leo sed magna. In leo dolor, suscipit non mattis in.</div>
-                    </li>
-                    <li>
-                        <span class="comment-name">John Doe</span>
-                        <span class="comment-date">March 15, 2015 | <a href="#">Reply</a></span>
-                        <div class="comment-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam venenatis, ligula quis sagittis euismod, odio ante molestie tortor, eget ullamcorper lacus nunc a ligula. Donec est lacus, aliquet in interdum id, rutrum ac tellus. Ut rutrum, justo et lobortis commodo, est metus ornare tortor, vitae luctus turpis leo sed magna. In leo dolor, suscipit non mattis in.</div>
-                    </li>
+                -->
+
                     
                </ul>
             
                 <!-- Comment Form -->
                 <div class="comment-form-container">
-                    <h6>Leave a Comment</h6>
-                    <form action="#" id="comment-form">
-                        <div class="input-prepend">
-                            <span class="add-on"><i class="icon-user"></i></span>
-                            <input class="span4" id="prependedInput" size="16" type="text" placeholder="Name">
-                        </div>
-                        <div class="input-prepend">
-                            <span class="add-on"><i class="icon-envelope"></i></span>
-                            <input class="span4" id="prependedInput" size="16" type="text" placeholder="Email Address">
-                        </div>
-                        <div class="input-prepend">
-                            <span class="add-on"><i class="icon-globe"></i></span>
-                            <input class="span4" id="prependedInput" size="16" type="text" placeholder="Website URL">
-                        </div>
-                        <textarea class="span6"></textarea>
+                    <h6>Laisser un commentaire</h6>
+                    <form method="POST" action="" id="comment-form">
+
+                        <textarea class="span6" name="new_message"></textarea>
                         <div class="row">
                             <div class="span2">
-                                <input type="submit" class="btn btn-inverse" value="Post My Comment">
+                                <input type="submit" class="btn btn-inverse" value="Poster mon commentaire">
                             </div>
                         </div>
                     </form>

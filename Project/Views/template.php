@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Mon inventaire</title>
+<title>  <?php if (isset($title)) echo $title; ?></title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- CSS
@@ -47,7 +47,7 @@
         <div class="span5 logo">
             <a href="index.php"><img src="Public/img/memocards_black.png" alt="" /></a>
             <br><br><br>
-            <h1>Mon inventaire</h1>
+            <h1> <?php if (isset($section)) echo $section; ?></h1>
         </div>
         
         <!-- Main Navigation

@@ -13,16 +13,22 @@
     if (!isset($_GET['subject_id']) && isset($_GET['choix_forum']) && $_GET['choix_forum'] === 'creer_sujet')
     {
         ?>  
-        <form action='' method='POST'>
+        <!-- Comment Form -->
+        <div class="comment-form-container">
+                    <h6>Créer un sujet </h6>
+                    <form method="POST" action="" >
 
-            <input type='text' name='title' placeholder="Titre" required><br>
+                        <input type='text' name='title' placeholder="Titre" required><br>
 
-            <textarea name='content' rows="4" cols="900000" placeholder="Describe here" required> </textarea><br>
-
-            <input type="hidden" name="choix_forum" value="creer_sujet" >
-
-            <button class="btn btn-lg btn-primary" type="submit">Créer sujet</button>
-        </form>
+                        <textarea class="span6" name="content" required></textarea>
+                        <div class="row">
+                            <div class="span2">
+                                <input type="hidden" name="choix_forum" value="creer_sujet" >
+                                <button class="btn btn-lg btn-primary" type="submit">Créer sujet</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
         <?php
     }
     

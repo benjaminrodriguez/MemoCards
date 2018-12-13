@@ -7,8 +7,17 @@
         // RECUPERE LES SUJETS DU FORUM
         $req = subjects_SELECT();
         $subjects_views = $req->fetchAll();
-        //var_dump($subjects_views);
         
+        
+        foreach($subjects_views as $key => $value)
+        {
+            $count = count_message_SELECT($subjects_views[$key][0]);
+            $subjects_views[$key]['count_message'] = $count['count_message'];
+        }
+
+        //var_dump($subjects_views);
+
+
         if (isset($_GET['choix_forum']) && $_GET['choix_forum'] === 'creer_sujet')
         {   
             // CREER UN SUJET
@@ -74,13 +83,6 @@
     /* if (isset($_GET['subject_id'])) 
     {
         
-        // ON ECRIT MESSAGE DANS SUJET
-        if (isset($_POST['choix_forum']) && $_POST['choix_forum'] == 'write_topic')
-        {
-            write_topic_INSERT(htmlspecialchars($_POST['content']), intval($_SESSION['id']), intval($_GET['subject_id']));
-            unset($_POST);
-        }
-        //unset($_POST);
         
         // AFFICHE LE PREMIER MESSAGE DU SUJET
         $q = first_messages_subject_SELECT($_GET['subject_id'],$_SESSION['id']);
@@ -109,15 +111,49 @@
         }
     }*/
 
-    if (isset($_GET['subject_id']))
+    if ( isset($_POST['new_message']) )
     {
-        $req = info_subjects_SELECT($_GET['subject_id']);
-        $info_subject = $req->FetchAll();
-        var_dump($info_subject);
-        require(dirname(__FILE__).'/../Views/forum_single_Views.php');
-
+        write_topic_INSERT($_POST['new_message'], $_SESSION['id'], $_GET['subject_id']);
+        header('Location: index.php?page=forum&subject_id='.$_GET['subject_id'].'');
     }
 
+    if ( isset($_GET['subject_id']) )
+    {
+        // RECUPERE LES INFORMATIONS DU SUJET
+        $req = info_subjects_SELECT($_GET['subject_id']);
+        $info_subject = $req->FetchAll();
+        $username = find_autor_SELECT($info_subject[0]['user_id']);
+        $info_subject['username'] = $username['username'];
+
+        // COMPTE LE NOMBRE DE MESSAGE DANS LE SUJET
+        $count_message = count_message_SELECT($_GET['subject_id']);
+        //var_dump($count_message);
+
+        // RECUPERE LES MESSAGES DU POST
+        $print_message = messages_subject_SELECT($_GET['subject_id']);
+        
+
+        // RELIE LES autors.id A LEUR user.username
+        $autors = array();
+        foreach($print_message as $key => $value)
+        {
+            $username = find_autor_SELECT($print_message[$key]['autor_id']);
+            array_push($autors, $username);
+        }
+
+        //var_dump($print_message);
+        //var_dump($autors);
+        //var_dump($info_subject);
+
+        require(dirname(__FILE__).'/../Views/forum_single_Views.php');
+    }
+
+
+
+
+
+    $title = 'Forum';
+    $section = 'Le Forum';
     require(dirname(__FILE__).'/../Views/template.php');
 ?>
         

@@ -9,7 +9,7 @@
                         <h4 class="title-bg"><?php echo $subjects_views[$key]['date_posted'] ?></h4>
                         <ul class="post-data">
                             <li><i class="icon-user"></i> <a href="#"><?php echo $subjects_views[$key]['status'].' : '.$subjects_views[$key]['username'] ; ?></a></li>
-                            <li><i class="icon-comment"></i> <a href="#">5 Comments</a></li>
+                            <li><i class="icon-comment"></i> <a href="#"><?php echo $subjects_views[$key]['count_message']; ?> Commentaires</a></li>
                             <li><i class="icon-tags"></i> <a href="#">photoshop</a>, <a href="#">tutorials</a>, <a href="#">illustration</a>, <a href="#">events</a></li>
                         </ul>
                         <button onclick="location.href='index.php?page=forum&subject_id=<?php echo $subjects_views[$key][0]; ?>'" class="btn btn-small btn-inverse">Voir plus</button>
