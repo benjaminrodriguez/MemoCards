@@ -269,7 +269,7 @@ window.onload = heure;
             MemoCards reprend la méthode d’apprentissage de flash-cards. Le principe des flash cards est à la fois simple et efficace, elle consiste à inscrire une information sur le recto d’une carte et l’information associée au verso. Il ne vous reste plus qu’à apprendre en vous amusant.
         </div>
     </div><!-- End Headline -->
-    <p>&copy; FabienOlicard</p>
+    <p>&copy; Vidéo de FabienOlicard - YouTube</p>
 
     <div class="row gallery-row"><!-- Begin Gallery Row --> 
       
@@ -540,9 +540,9 @@ window.onload = heure;
                     <h5>A notre propos</h5>
                    <img src="Public/img/memocards.png" alt="Piccolo" /><br /><br />
                     <address>
-                        <strong>Developper Team</strong><br />
-                        8 bis avenue Maurice Thorez<br />
-                        Ivry, 94200<br />
+                        <strong>Équipe de Projet-Informatique de semestre 2</strong><br />
+                        Sami ANKI, Benjamin RODRIGUEZ, Yann SIMAJCHEL<br />
+                        <br />
                     </address>
                     
                 </div>
