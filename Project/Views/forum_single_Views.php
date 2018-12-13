@@ -22,7 +22,7 @@
                         <ul class="post-data">
                             <li><i class="icon-calendar"></i>  <?php echo $info_subject[0]['date_posted']; ?> </li>
                             <li><i class="icon-user"></i> <a href="#"><?php echo $info_subject['username']; ?></a></li>
-                            <li><i class="icon-comment"></i> <a href="#"> <?php echo $count_message['count_message']; ?> commentaires</a></li>
+                            <li><i class="icon-comment"></i> <a href="#"> <?php echo $count_message['count_message']; ?> réponses </a></li>
                             <li><i class="icon-tags"></i> <a href="#">photoshop</a>, <a href="#">tutorials</a>, <a href="#">illustration</a></li>
                         </ul>
                     </div>
@@ -41,7 +41,7 @@
         <!-- Post Comments
         ================================================== --> 
             <section class="comments">
-                <h4 class="title-bg"><a name="comments"></a> <?php echo $count_message['count_message']; ?> commentaires jusqu'à présent</h4>
+                <h4 class="title-bg"><a name="comments"></a> <?php echo $count_message['count_message']; ?> réponses jusqu'à présent</h4>
                <ul>
                 
                     <?php
