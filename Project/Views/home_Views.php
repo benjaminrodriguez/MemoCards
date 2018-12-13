@@ -295,8 +295,8 @@ window.onload = heure;
                     <li  class="span3 gallery-item" data-id="id-1" data-type="illustration">
                         <span class="gallery-hover-4col hidden-phone hidden-tablet"> 
                             <span class="gallery-icons">
-                                <a href="Public/img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
-                                <a href="gallery-single.htm" class="item-details-link"></a>
+                                <!-- <a href="Public/img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a> -->
+                                <!-- <a href="gallery-single.htm" class="item-details-link"></a> -->
                             </span>
                         </span> 
                         <a href="gallery-single.htm"> <img src="<?php echo $datas[$i]['picture']; ?>" alt="Gallery"> </a>
