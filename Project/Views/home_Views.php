@@ -572,8 +572,9 @@ window.onload = heure;
                             <span class="right">
                             <a href="index.php?page=home">Home</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
                             <a href="index.php?page=profile">Profil</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-                            <a href="index.php?page=store">CardStore</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                            <a href="index.php?page=inventory">Inventaire de deck</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
                             <a href="index.php?page=forum">Forum</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                            <a href="index.php?page=store">CardStore</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
                             <a href="index.php?page=dc"> Déconnexion</a>
                             </span>
                         </div>
