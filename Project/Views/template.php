@@ -168,22 +168,32 @@
                 </div>
             </section>
 
-            
-            <!--Categories-->
-            <h5 class="title-bg">Option</h5>
-            <ul class="post-category-list">
-                <h5><li><a href="index.php?page=inventory&action=create_deck"><i class="icon-plus-sign"></i>Créer un nouveau deck</a></li>
+        <?php
+            if(isset($_GET['page']) && ($_GET['page'] == 'inventory') || $_GET['page'] == 'forum') { ?>
 
+                <!--Categories-->
+                <h5 class="title-bg">Option</h5>
+                <ul class="post-category-list">
 
-                <li><a href="index.php?page=inventory&action=create_deck"><i class="icon-wrench"></i>Modifier paramètres du deck</a></li></h5>
+            <?php
+                if($_GET['page'] == 'inventory') { ?>
+                    <h5><li><a href="index.php?page=inventory&action=create_deck"><i class="icon-plus-sign"></i>Créer un nouveau deck</a></li>
+                    <li><a href="index.php?page=inventory&action=create_deck"><i class="icon-wrench"></i>Modifier paramètres du deck</a></li></h5>
+            <?php   
+                }else if ($_GET['page'] == 'forum') { ?>
+                    <h5><li><a href="index.php?page=forum&choix_forum=creer_sujet"><i class="icon-plus-sign"></i>Créer un nouveau sujet</a></li> </h5>
+            <?php
+                } ?>
 
-
-               <!-- <li><a href="#"><i class="icon-plus-sign"></i>Illustration</a></li>
-                <li><a href="#"><i class="icon-plus-sign"></i>Tutorials</a></li>
-                <li><a href="#"><i class="icon-plus-sign"></i>News</a></li>-->
-            </ul>
-
+                    <!-- <li><a href="#"><i class="icon-plus-sign"></i>Illustration</a></li>
+                        <li><a href="#"><i class="icon-plus-sign"></i>Tutorials</a></li>
+                        <li><a href="#"><i class="icon-plus-sign"></i>News</a></li>-->
+                    </ul>
+        <?php
+            } ?>
            
+
+
             <h5 class="title-bg">FORUM : Les sujets les plus populaires</h5>
             <ul class="popular-posts">
                 <li>

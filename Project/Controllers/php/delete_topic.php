@@ -1,9 +1,0 @@
-<?php
-
-// SUPPRIMER UN SUJET
-
-        
-        
-
-
-    ?>

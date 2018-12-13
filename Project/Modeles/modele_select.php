@@ -158,31 +158,13 @@
         // METTRE AU FORMAT FR
         //DATE_FORMAT(date_posted, '%m/%d/%Y %H:%i')
         $bdd = bdd();
-        $forum = $bdd->query('SELECT subject.id,title, date_posted, user.username AS username
+        $req = $bdd->query('SELECT *
                                 FROM subject
                                 INNER JOIN user ON subject.user_id=user.id
                                 ORDER BY date_posted DESC;
                             ');
-        //$forum->execute(array());
-        $count = 0;
-        while ($subject = $forum->fetch()) 
-        {
-            //return $subject;
-           /* $count++;
-            echo '<a href=index.php?page=forum&subject_id=' .$subject['id'].'> Sujet : '.$subject['title']. 
-            ' date du : ' .$subject['date_posted']. ' par ' .$subject['username'].'</a><br><br>';
-            */
-            ?>
-                 <form method="post" action="index.php?page=forum&subject_id=<?php echo $subject['id']; ?>">
-                Sujet :<button name="subject_id" value="<?php echo $subject['id']; ?>">  <?php echo $subject['title']; ?> </button>
-                    <?php echo 'posté le : '.$subject['date_posted'].' par '.$subject['username'].'</a><br><br>'; ?>
-                </form> 
-
-            <?php
-
-        }
-        $forum->closeCursor();
-
+        $req->execute(array());
+        return $req;
     }
 
     //-------------------------------------------------------------------------------
@@ -450,4 +432,29 @@
 
     //--------------------------------------------------------------------------------
 
+    function id_subjects_SELECT($user_id, $subject_content)
+    {
+        $bdd = bdd();
+        $req = $bdd->prepare('SELECT subject.id
+                                FROM subject
+                                WHERE subject.user_id = ? AND subject.content = ?
+                            ');
+        $req->execute(array(intval($user_id), htmlspecialchars($subject_content)));
+        return $req;
+    }
+    
+    //--------------------------------------------------------------------------------
+
+    function info_subjects_SELECT($subject_id)
+    {
+        $bdd = bdd();
+        $req = $bdd->prepare('SELECT *
+                                FROM subject
+                                WHERE subject.id = ? 
+                            ');
+        $req->execute(array(intval($subject_id)));
+        return $req;
+    }
+    
+    //--------------------------------------------------------------------------------
 ?>

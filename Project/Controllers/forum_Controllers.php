@@ -1,20 +1,39 @@
 <?php    
 
 
-    // CREER SUJET
+    
     if (!isset($_GET['subject_id'])) 
     {
-
-        // AFFICHE TOUS LES SUJETS DU FORUM
-        subjects_SELECT();
-
-        // ECRIRE UN SUJET
-        require_once(dirname(__FILE__).'/php/create_topic.php');
+        // RECUPERE LES SUJETS DU FORUM
+        $req = subjects_SELECT();
+        $subjects_views = $req->fetchAll();
+        //var_dump($subjects_views);
+        
+        if (isset($_GET['choix_forum']) && $_GET['choix_forum'] === 'creer_sujet')
+        {   
+            // CREER UN SUJET
+            if (isset($_POST['title']) && isset($_POST['content']))
+            {            
+                create_topic_INSERT(htmlspecialchars($_POST['title']), 'ouvert', htmlspecialchars($_POST['content']), $_SESSION['id']);
+                $req = id_subjects_SELECT($_SESSION['id'], $_POST['content']);
+                $id_subject = $req->fetch();
+                header('Location: index.php?page=forum&subject_id='.$id_subject['id'].'');
+                exit();
+            }
+            require(dirname(__FILE__).'/../Views/forum_Views.php');
+        } 
+        else 
+        {
+            // AFFICHE LES SUJETS
+            require(dirname(__FILE__).'/../Views/template_forum.php');
+        }
+        
     }
 
-    // SUPPRESSION SUJET
-    if (isset($_POST['choix_forum']) && $_POST['choix_forum'] == 'delete_topic')
+    
+    else if (isset($_POST['choix_forum']) && $_POST['choix_forum'] == 'delete_topic')
     {
+        // SUPPRESSION SUJET
         if ($_SESSION['statut'] == 'admin')
         {
             require_once(dirname(__FILE__).'/php/delete_topic.php');
@@ -52,11 +71,15 @@
         }
     }
 
-    if (isset($_GET['subject_id'])) 
+    /* if (isset($_GET['subject_id'])) 
     {
         
         // ON ECRIT MESSAGE DANS SUJET
-        require_once(dirname(__FILE__).'/php/write_topic.php');
+        if (isset($_POST['choix_forum']) && $_POST['choix_forum'] == 'write_topic')
+        {
+            write_topic_INSERT(htmlspecialchars($_POST['content']), intval($_SESSION['id']), intval($_GET['subject_id']));
+            unset($_POST);
+        }
         //unset($_POST);
         
         // AFFICHE LE PREMIER MESSAGE DU SUJET
@@ -84,8 +107,17 @@
         {
             $_SESSION['subject_id'] = intval($_GET['subject_id']);
         }
+    }*/
+
+    if (isset($_GET['subject_id']))
+    {
+        $req = info_subjects_SELECT($_GET['subject_id']);
+        $info_subject = $req->FetchAll();
+        var_dump($info_subject);
+        require(dirname(__FILE__).'/../Views/forum_single_Views.php');
+
     }
-    
+
     require(dirname(__FILE__).'/../Views/template.php');
 ?>
         

@@ -1,4 +1,6 @@
 <?php 
+    ob_start();
+/*
     if (!isset($_GET['subject_id']))
     { 
         ?>
@@ -6,9 +8,9 @@
             <button class="btn btn-lg btn-primary btn-block" name="choix_forum" value="creer_sujet">Créer un sujet</button>
         </form>
         <?php 
-    }
+    } */
 
-    if (!isset($_GET['subject_id']) && isset($_POST['choix_forum']) && $_POST['choix_forum'] === 'creer_sujet')
+    if (!isset($_GET['subject_id']) && isset($_GET['choix_forum']) && $_GET['choix_forum'] === 'creer_sujet')
     {
         ?>  
         <form action='' method='POST'>
@@ -51,4 +53,6 @@
         </form>
         <?php
     } 
+
+    $content = ob_get_clean();
 ?>
