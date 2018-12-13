@@ -20,10 +20,10 @@
 
 <!-- Favicons
 ================================================== -->
-<link rel="shortcut icon" href="Public/img/favicon.ico">
-<link rel="apple-touch-icon" href="Public/img/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="Public/img/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="Public/img/apple-touch-icon-114x114.png">
+<link rel="shortcut icon" href="./img/favicon.png">
+<link rel="apple-touch-icon" href="../Public/img/favicon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../Public/img/favicon.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../Public/img/favicon.png">
 
 <!-- JS
 ================================================== -->

@@ -260,7 +260,6 @@ window.onload = heure;
             src="https://www.youtube.com/embed/n3CkA3Qc8kY?autoplay=1" frameborder="0"  allow="accelerometer; 
             autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div> 
-        <p>&copy; FabienOlicard</p>
         
         <!-- Headline Text
         ================================================== -->
