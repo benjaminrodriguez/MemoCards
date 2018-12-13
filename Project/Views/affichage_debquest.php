@@ -3,3 +3,4 @@
 DECK N° <?php echo htmlspecialchars($_GET['deck']); ?> 
 <input type="submit" name="start" value ="Commencer">
 </form>
+<?php $content = ob_get_clean();?>

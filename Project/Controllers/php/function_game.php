@@ -9,6 +9,7 @@ function game_unset()
     
     
     require("./Views/affichage_debquest.php");
+    
     //require(dirname(__FILE__).'../Views/affichage_debquest.php');
     if (isset($_SESSION['list']))
     {
@@ -27,7 +28,6 @@ function game_unset()
         unset($_SESSION['iddelaquestiondavant']);
     }
 }
-
 //-----------------------------------------------------------------------------
 
 function game_getprevar()

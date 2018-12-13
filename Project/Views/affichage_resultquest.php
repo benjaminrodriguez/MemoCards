@@ -39,3 +39,5 @@ Vous n'avez répondu à aucune carte :c
 <form method='post' action='index.php?page=home'>
 <input type="submit" name="end" value ="Accueil">
 </form>
+
+<?php $content = ob_get_clean();?>

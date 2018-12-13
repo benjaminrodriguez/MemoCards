@@ -27,8 +27,8 @@ for ($x=0; $x < count($ans) ; $x++) {
 <form method="post" action="">
 <input type="submit" name="fin" value="Finir">
 </form>
-<?php $content = ob_get_clean(); ?>
-<?php require(dirname(__FILE__).'/template.php'); ?>
+
+
 
 
 
@@ -93,3 +93,4 @@ function nomDeFonction(event)
 
 }
 </script>
+<?php $content = ob_get_clean();?>
