@@ -19,19 +19,19 @@
     
 
         <form action="index.php?page=inscription" method="POST" class="form-signin">
-        <div id="erreur">
+       <!-- <div id="erreur">
     <p>Vous n'avez pas rempli correctement les champs du formulaire !</p>
-</div>
+</div> -->
 
-<form>
     <label for="username"></label> <input type="text" name="username"id="username" class="champ"placeholder="Username" />
-    <label for="password"></label> <input type="password" name="password" id="password" class="champ"placeholder="Mot de passe" />
-    <label for="confirmation"></label>  <input type="password" id="confirmation" class="champ" placeholder="Confirmation mot de passe" />
+    <label for="password"></label> <input type="password" name="password" id="password" class="champ"placeholder="Mot de passe" 
+    title="Le mot de passe doit contenir : 6 caractères minimum, au moins une majuscule, une minuscule et un chiffre"/>
+    <!-- <label for="confirmation"></label>  <input type="password" id="confirmation" class="champ" placeholder="Confirmation mot de passe" /> -->
     <label for="email"></label> <input type="text" name="email" id="mail" class="champ" placeholder="E-mail"/><br>
-    <input type="radio" name="sex" value="M" width:20px class="champ">Homme
-    <input type="radio" name="sex" value="F" checked class="champ">Femme<br>
+    <input type="radio" name="sex" value="M" width:20px class="champ" id="sexe">Homme
+    <input type="radio" name="sex" value="F" checked class="champ" id="sexe">Femme<br>
 
-            <select name="region" class="form-control" class="champ">
+            <select name="region" class="form-control" class="champ" id="region">
                 <option value="region" disabled selected>Région</option> 
                 <option value="hauts_de_france">Hauts-de-France</option> 
                 <option value="normandie">Normandie</option>
@@ -53,13 +53,13 @@
                 <option value="la_reunion">La Réunion</option>
             </select><br>
 
-            <input type="date" name="date_de_naissance" id="date_de_naissance" class="champ" placeholder="Date de naissance" >
+            <input type="date" name="date_de_naissance" id="date" class="champ" placeholder="Date de naissance" >
 
     <input type="submit" id="envoi" value="Inscription"/> 
    <!-- <input type="reset" id="rafraichir" value="Rafraîchir" /> -->
 </form>
 
-<!-- on inclut la bibliothèque depuis les serveurs de Google -->
+<!-- on inclut la bibliothèque depuis les serveurs de Google 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
@@ -68,13 +68,16 @@
             $password = $('#password'),
             $confirmation = $('#confirmation'),
             $mail = $('#mail'),
+            $sexe = $('#sex'),
+            $date = $('#date'),
+            $region = $('#region'),
             $envoi = $('#envoi'),
             $reset = $('#rafraichir'),
             $erreur = $('#erreur'),
             $champ = $('.champ');
 
         $champ.keyup(function(){
-            if($(this).val().length < 5){ // si la chaîne de caractères est inférieure à 5
+            if($(this).val().length < 6){ // si la chaîne de caractères est inférieure à 5
                 $(this).css({ // on rend le champ rouge
                     borderColor : 'red',
                 color : 'red'
@@ -110,7 +113,17 @@
             verifier($password);
             verifier($confirmation);
             verifier($mail);
-            if(!verifier($username) && !verifier($password) && !verifier($confirmation) && !verifier($mail))
+            verifier($sexe);
+            verifier($date);
+            verifier($region);
+
+            if(!verifier($username) 
+            && !verifier($password) 
+            && !verifier($confirmation) 
+            && !verifier($mail)
+            && !verifier($sexe) 
+            && !verifier($date) 
+            && !verifier($region))
             {
                 e.preventDefault(); // on annule la fonction par défaut du bouton d'envoi
             }
@@ -137,7 +150,7 @@
         }
 
     });
-</script>         
+</script>     -->    
 
         <!-- Bouton de retour à l'écran d'accueil -->
 <form action='index.php?page=home' method='POST'>
