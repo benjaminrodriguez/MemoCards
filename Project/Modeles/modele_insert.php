@@ -119,8 +119,8 @@
     {
         $bdd = bdd();
         $req = $bdd->prepare(
-            'INSERT INTO succes_rate (level_cards, chain, played_cards, verso_id)
-             VALUES (0, 0, NULL, ?);
+            'INSERT INTO succes_rate (level_cards, chain, played_cards, nb_succes, verso_id)
+             VALUES (0, 0, NULL, 0, ?);
             ');
         $req->execute(array(intval($verso_id)));
     }
