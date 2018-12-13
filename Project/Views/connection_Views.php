@@ -68,6 +68,7 @@
     <form action="index.php?page=inscription" method="POST">
         <button type="submit"  id="inscription" name="inscription" value="inscription"><h3>Inscription</h3></button>
     </form>
+    <?php var_dump($_POST); ?>
     <center><p color: white>&copy; MemoCards</p></center>
 
 </div>

@@ -23,7 +23,8 @@
     <p>Vous n'avez pas rempli correctement les champs du formulaire !</p>
 </div> -->
 
-    <label for="username"></label> <input type="text" name="username"id="username" class="champ"placeholder="Username" />
+    <label for="username"></label> <input type="text" name="username"id="username" class="champ"placeholder="Username"
+    title="L\'username doit faitre en 4 et 25 caractères" />
     <label for="password"></label> <input type="password" name="password" id="password" class="champ"placeholder="Mot de passe" 
     title="Le mot de passe doit contenir : 6 caractères minimum, au moins une majuscule, une minuscule et un chiffre"/>
     <!-- <label for="confirmation"></label>  <input type="password" id="confirmation" class="champ" placeholder="Confirmation mot de passe" /> -->
@@ -31,11 +32,11 @@
     <input type="radio" name="sex" value="M" width:20px class="champ" id="sexe">Homme
     <input type="radio" name="sex" value="F" checked class="champ" id="sexe">Femme<br>
 
-            <select name="region" class="form-control" class="champ" id="region">
-                <option value="region" disabled selected>Région</option> 
+            <select name="region" class="form-control" class="champ" id="region" required>
+                <option value="region" disabled >Région</option> 
                 <option value="hauts_de_france">Hauts-de-France</option> 
                 <option value="normandie">Normandie</option>
-                <option value="ile_de_france">Ile-de-France</option>
+                <option value="ile_de_france" selected>Ile-de-France</option>
                 <option value="bretagne">Bretagne</option>
                 <option value="pays_de_la_loire">Pays de la Loire</option>
                 <option value="centre_val_de_loire">Centre-Val de Loire</option>

@@ -31,7 +31,7 @@
 
     // VERIF LONGUEUR USERNAME
     $username = ($_POST["username"]);
-    if (strlen($username) > 25 ) 
+    if (strlen($username) > 25 || strlen($username) < 4) 
     {
         $valide_username = false;
     }
@@ -83,7 +83,7 @@
     
     // ON VERIFIE LA DATE DE NAISSANCE
     $now = date("Y-m-d");
-    if ($_POST['date_de_naissance'] > $now)
+    if ($_POST['date_de_naissance'] > $now || $_POST['date_de_naissance'] == "")
     {
         $date_naissance = false;
     }

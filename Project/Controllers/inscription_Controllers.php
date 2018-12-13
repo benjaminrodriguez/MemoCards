@@ -7,14 +7,16 @@
         require(dirname(__FILE__).'/../Controllers/php/pp_random.php');
         require(dirname(__FILE__).'/../Controllers/php/verif_inscription.php');
 
-        if ($valide_email == true 
+        if (
+        $valide_email == true 
         && $valide_password == true 
         && $conforme_password == true 
         && $valide_username == true
         && $lengt_email == true
         && $common_password == false
-        && $date_naissance == true) 
-        {
+        && $date_naissance == true
+        ){
+            
             // APPEL DE LA FONCTION SQL INSCRIPTION
             inscription_INSERT($_POST['username'], $passhache, $_POST['date_de_naissance'],
                                 'membre', $_POST['sex'], $_POST['region'],
@@ -55,6 +57,8 @@
         {
             require(dirname(__FILE__).'/../Public/js/bad_birthdate.js');
         }
+       
+
 
 
     }
