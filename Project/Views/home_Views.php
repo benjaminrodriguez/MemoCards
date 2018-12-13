@@ -540,8 +540,8 @@ window.onload = heure;
                     <h5>A notre propos</h5>
                    <img src="Public/img/memocards.png" alt="Piccolo" /><br /><br />
                     <address>
-                        <strong>Équipe de Projet-Informatique de semestre 2</strong><br />
-                        Sami ANKI, Benjamin RODRIGUEZ, Yann SIMAJCHEL<br />
+                        <strong>Équipe de PI IN'TECH de S2</strong><br />
+                         Benjamin, Sami, Yann <br />
                         <br />
                     </address>
                     
