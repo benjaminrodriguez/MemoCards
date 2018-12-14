@@ -29,10 +29,10 @@
      
 
 
-        <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
+        <input type="text" name="username" class="form-control" placeholder="Pseudo" required autofocus>
 
         <label for="inputPassword" class="sr-only"></label><br>
-        <input type="password" name="password" value="" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" name="password" value="" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
 
         <!-- Notre boite de vérification 
         <div id="toggle-text" class="g-recaptcha" data-theme="dark" 

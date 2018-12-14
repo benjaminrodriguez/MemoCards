@@ -33,17 +33,8 @@
     {
         if (isset($_POST['title']) && isset($_POST['description']) && isset($_POST['picture']) && isset($_POST['categorie']))
         {
-            // INTERDIT LES ESPACES
-            /* $tmp_title = $_POST['title'];
-            $tmp_description = $_POST['description'];
-            $tmp_picture = $_POST['picture'];
-            $tmp_categorie = $_POST['categorie'];
-
-            $_POST['title'] = str_replace(' ','',$_POST['title']);
-            $_POST['description'] = str_replace(' ','',$_POST['description']);
-            $_POST['picture'] = str_replace(' ','',$_POST['picture']);
-            $_POST['categorie'] = str_replace(' ','',$_POST['categorie']);*/
-
+            
+            // ELIMINE LES ESPACES
             $_POST['title'] = trim($_POST['title']);
             $_POST['description'] = trim($_POST['description']);
             $_POST['picture'] = trim($_POST['picture']);

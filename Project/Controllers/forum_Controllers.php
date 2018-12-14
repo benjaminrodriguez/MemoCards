@@ -16,6 +16,8 @@
             // CREER UN SUJET
             if (isset($_POST['title']) && isset($_POST['content']))
             {
+                
+                // ON ENLEVE LES ESPACES
                 $_POST['title'] = trim($_POST['title']);
                 $_POST['content'] = trim($_POST['content']);
                 if (!empty($_POST['title']) && !empty($_POST['content']))

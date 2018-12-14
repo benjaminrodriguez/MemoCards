@@ -248,7 +248,7 @@
             <section>
                 <div class="input-append">
                     <form action="#">
-                        <input id="appendedInputButton" size="16" type="text" placeholder="Search"><button class="btn" type="button"><i class="icon-search"></i></button>
+                        <input id="appendedInputButton" size="16" type="text" placeholder="Chercher"><button class="btn" type="button"><i class="icon-search"></i></button>
                     </form>
                 </div>
             </section>

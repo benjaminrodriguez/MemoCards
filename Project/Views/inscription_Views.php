@@ -23,7 +23,7 @@
     <p>Vous n'avez pas rempli correctement les champs du formulaire !</p>
 </div> -->
 
-    <label for="username"></label> <input type="text" name="username"id="username" class="champ"placeholder="Username"
+    <label for="username"></label> <input type="text" name="username"id="username" class="champ"placeholder="Pseudo"
     title="L\'username doit faitre en 4 et 25 caractères" />
     <label for="password"></label> <input type="password" name="password" id="password" class="champ"placeholder="Mot de passe" 
     title="Le mot de passe doit contenir : 6 caractères minimum, au moins une majuscule, une minuscule et un chiffre"/>
@@ -59,7 +59,6 @@
     <input type="submit" id="envoi" value="Inscription"/> 
    <!-- <input type="reset" id="rafraichir" value="Rafraîchir" /> -->
 </form>
-
 <!-- on inclut la bibliothèque depuis les serveurs de Google 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script>
@@ -152,6 +151,45 @@
 
     });
 </script>     -->    
+
+<script>
+// Contrôle du courriel en fin de saisie
+//CONTROLE MAIL
+document.getElementById("email").addEventListener("input", function (e) {
+    var validiteCourriel = "";
+    var couleurMsg = "red";
+    if (e.target.value.indexOf("@" && ".") === -1) {
+        // Le courriel saisi ne contient pas le caractère @
+        validiteCourriel = "Adresse invalide";
+    } else {
+      validiteCourriel = "Adresse valide";
+      var couleurMsg = "green"; 
+    }
+    var aideCourrielElt = document.getElementById("aideCourriel");
+    document.getElementById("aideCourriel").textContent = validiteCourriel;
+    aideCourrielElt.style.color = couleurMsg;
+});/*
+  //CONTROLE NUMERO DE TELEPHONE
+  document.getElementById("phone").addEventListener("input", function (e) {
+    var validitePhone = "";
+    var phone = e.target.value;
+    var couleurMsg = "red";
+    var type = typeof(phone);
+    if(type != "number"){
+        validitePhone = "Numero de telephone invalide";
+    } else if(type == "number"){
+    if (phone.length != 10) {
+        // Le courriel saisi ne contient pas le caractère @
+        validitePhone = "Numero de telephone invalide";
+    } else if(phone.length = 10) {
+      validitePhone = "Numero de telephone valide";
+      var couleurMsg = "green"; 
+    }
+    var aidePhoneElt = document.getElementById("aidePhone");
+    document.getElementById("aidePhone").textContent = validitePhone;
+    aidePhoneElt.style.color = couleurMsg;
+}});  */
+</script>
 
         <!-- Bouton de retour à l'écran d'accueil -->
 <form action='index.php?page=home' method='POST'>
