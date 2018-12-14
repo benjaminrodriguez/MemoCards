@@ -153,7 +153,7 @@
         <div class="span3 sidebar page-left-sidebar"><!-- Begin sidebar column -->
 
             <!--Navigation-->
-            <h5 class="title-bg">Option</h5>
+            <h5 class="title-bg">Options</h5>
             <ul class="post-category-list">
                 <li><a href="index.php?page=profile&menu=username"><i class="icon-plus-sign"></i>Modifier votre Pseudo</a></li>
                 <li><a href="index.php?page=profile&menu=password"><i class="icon-plus-sign"></i>Modifier votre mot de passe</a></li>
