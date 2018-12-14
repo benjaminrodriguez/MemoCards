@@ -40,9 +40,8 @@
         $deck_id = $req->fetch();
         new_passed_INSERT($_SESSION['id'], $deck_id['id']);
 
-//----------------------------------------------------------------------------------------------------------------a changer en header Location modify deck_id
+
         // CREATIONS DE QUESTIONS SUR LE DECK
-        //require(dirname(__FILE__).'/../Views/create_questions_Views.php');
         header('Location: index.php?page=inventory&action=modify&deck='.$deck_id['id'].'');
     }
 

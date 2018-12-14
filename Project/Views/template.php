@@ -68,6 +68,7 @@
                 </ul>
             </li>-->
 
+            <!--
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="page-full-width.htm">Mon Profil<b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -76,6 +77,7 @@
                     <li><a href="index.php?page=profile">Voir mes statistiques</a></li>
                     <li><a href="index.php?page=profile">Déconnexion</a></li>
                 </ul>
+            -->
                 
         
 </form>
@@ -90,6 +92,8 @@
                     <li><a href="gallery-single.htm">Gallery Single</a></li>
                 </ul>
              </li>-->
+
+             <li><a href="index.php?page=profile">Mon Profil</a></li>
 
             <li><a href="index.php?page=inventory">Mon inventaire</a></li>
 
