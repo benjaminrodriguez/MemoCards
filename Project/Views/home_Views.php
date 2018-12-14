@@ -78,14 +78,16 @@ $(document).ready(function () {
       
         <!-- Logo
         ================================================== -->
-        <div class="span5 logo">
+        <div class="span4 logo">
         	<a href="index.php"><img src="Public/img/memocards_black.png" width=380 alt="" /></a>
-            <h5>Apprendre... Pour mieux réussir</h5>
+            <h5>Apprendre... Pour mieux réussir
+            </h5>
         </div>
+        <?php //var_dump($_SESSION); ?>
         
         <!-- Main Navigation
         ================================================== -->
-        <div class="span7 navigation">
+        <div class="span6 navigation">
             <div class="navbar hidden-phone">
             
             <ul class="nav">
@@ -113,6 +115,7 @@ $(document).ready(function () {
                 
         
 </form>
+
             <!--</li>
              <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="gallery-4col.htm">Mon Inventaire <b class="caret"></b></a>
@@ -134,9 +137,8 @@ $(document).ready(function () {
              <li><a href="index.php?page=dc">Déconnexion</a></li>
 
             </ul>
-           
             </div>
-
+            
             <!-- Mobile Nav
             ================================================== -->
             <form action="#" id="mobile-nav" class="visible-phone">
@@ -170,6 +172,17 @@ $(document).ready(function () {
                 </div>
                 </form>
 
+        </div>
+        <div class="span2 logo">
+            <img src=<?php echo $_SESSION['profile_picture'];?> style="width:70px;height:70px;">
+            <div style="position:relative;left:140px;float:left"> 
+                <a href="index.php?page=profile"><b style="font-size:20px"><?php echo $_SESSION['username']; ?></b></a>
+                <br>
+                <i style="font-size:15px">
+                    <?php echo $_SESSION['status']; ?> 
+                </i>
+            </div>
+            
         </div>
         
       </div><!-- End Header -->
