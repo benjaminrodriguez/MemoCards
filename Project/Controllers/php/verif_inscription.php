@@ -18,6 +18,7 @@
     {
         $lengt_email = true;
     }
+    
     // VERIF LONGUEUR PASSWORD
     $password = ($_POST["password"]);
     if (strlen($password) < 6 || strlen($password) > 255 ) 
