@@ -69,15 +69,21 @@
                 </ul>
             </li>-->
 
+            <!--
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="page-full-width.htm">Mon Profil<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                 <li><a href="index.php?page=profile">Mes informations personnelles</a></li>
                     <li><a href="index.php?page=profile">Mes hobbies</a></li>
                     <li><a href="index.php?page=profile&action=unsub">Se désinscrire</a></li>
-                    <!-- <li><a href="index.php?page=profile&action=stat">Voir mes statistiques</a></li> -->
-                    <!-- <li><a href="index.php?page=profile">Déconnexion</a></li> -->
+                     <li><a href="index.php?page=profile&action=stat">Voir mes statistiques</a></li> 
+                     <li><a href="index.php?page=profile">Déconnexion</a></li> 
                 </ul>
+            -->
+
+            
+                
+
         
 </form>
             <!--</li>
@@ -91,6 +97,8 @@
                     <li><a href="gallery-single.htm">Gallery Single</a></li>
                 </ul>
              </li>-->
+
+             <li><a href="index.php?page=profile">Mon Profil</a></li>
 
             <li><a href="index.php?page=inventory">Mon inventaire</a></li>
 
