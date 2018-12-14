@@ -299,7 +299,7 @@ window.onload = heure;
                                 <a href="gallery-single.htm" class="item-details-link"></a>
                             </span>
                         </span> 
-                        <a href="gallery-single.htm"> <img src="<?php echo $datas[$i]['picture']; ?>" alt="Gallery"> </a>
+                        <a href="gallery-single.htm"> <img src="<?php echo $datas[$i]['picture']; ?>" style="width:500px;height:220px;" alt="Gallery"> </a>
                         <span class="project-details"><a href="gallery-single.htm"><?php echo $datas[$i]['name']; ?></a><?php echo $datas[$i]['description']; ?></span>
                     </li>
 

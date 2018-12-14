@@ -13,12 +13,13 @@
                     ?>
                     <!-- Blog Post 1 -->
                     <article class="clearfix">
-                        <a href="blog-single.htm"><img src="<?php echo htmlspecialchars($datas[$i]['picture']); ?>" alt="Post Thumb" class="align-left" style="width: 200px;" ></a>
+                        <a href="blog-single.htm"><img src="<?php echo htmlspecialchars($datas[$i]['picture']); ?>" alt="Post Thumb" class="align-left" style="width:230px;height:190px;" ></a>
                         <h4 class="title-bg"><a href="blog-single.htm"><?php echo htmlspecialchars($datas[$i]['name']); ?></a></h4>
                         <p> <?php echo htmlspecialchars($datas[$i]['description']); ?> </p>
 
                         <!-- <button class="btn btn-mini btn-inverse" type="button" name="top_3_deck" value="<?php //echo $datas[$i]['id']; ?>">Lancer une partie</button> -->
                         <a class="btn btn-mini btn-inverse" href="index.php?page=game&deck=<?php echo htmlspecialchars($datas[$i]['deck_id']);?>"><font size="3">MODE QCM </font></a>
+                        <a class="btn btn-mini btn-inverse" href="index.php?page=game2&deck=<?php echo htmlspecialchars($datas[$i]['deck_id']);?>"><font size="3">PRACTISE </font></a>
 
                         <!-- <button class="btn btn-mini btn-inverse" type="submit" name="start_game" value="<?php //echo htmlspecialchars($datas[$i]['deck_id']); ?>">Lancer une partie</button> -->
                         

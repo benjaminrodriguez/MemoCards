@@ -485,6 +485,26 @@
     
     //--------------------------------------------------------------------------------
 
-
-
+    
+    function game2_rep_SELECT($iddeck)
+    {
+        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+        $bdd = bdd();
+        $query = "SELECT `answer_cards`
+                FROM verso
+                WHERE `recto_id` = :id AND `statut_cards` LIKE 'T';";
+        
+        $query_params = array(
+            ':id' => $iddeck
+            );
+        
+        try {
+            $stmt = $bdd->prepare($query);
+            $stmt->execute($query_params);
+        } catch(Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+        $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $qu;
+    }
 ?>
