@@ -122,7 +122,6 @@
             $subtitle = 'Modifier votre mot de passe';
         }
 
-        if(isset($_POST['new_password1']) )   echo '<p>'.$_SESSION['error'].'</p>' ;
         
 ?>
 

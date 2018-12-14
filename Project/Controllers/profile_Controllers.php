@@ -58,17 +58,18 @@
     //Changer son password :
     if(isset($_POST['menu']) && $_POST['menu'] === "password")
     {
-        if(isset($_POST['old_password']) && isset($test_new_password))
+        
+        if(isset($_POST['old_password']))
         { 
-
             // ENLEVE LES ESPACES DEBUT ET FIN
             $_POST['old_password'] = trim($_POST['old_password']);
             if (!empty($_POST['old_password']))
             {
-
+               
                 // VERIF LONGUEUR PASSWORD
-                $password = $test_new_password;
-                if (strlen($password) < 6 || strlen($password) > 255 ) 
+                //$password1 = $_POST['new_password1'];
+                if (strlen($_POST['new_password1']) < 6 || strlen($_POST['new_password1']) > 255 
+                || strlen($_POST['new_password2']) < 6 || strlen($_POST['new_password2']) > 255) 
                 {
                     $valide_password = false;
                 }
@@ -78,7 +79,11 @@
                 }
 
                 // VERIFICATION CARACTERE PASSWORD
-                if (preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])#', $password))
+                $password1 = $_POST['new_password1'];
+                $password2 = $_POST['new_password2'];
+
+                if (preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])#', $password1) 
+                && preg_match('#^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])#', $password2))
                 {
                     $conforme_password = true;
                 }
@@ -86,9 +91,10 @@
                 {
                     $conforme_password = false;
                 }	
-                if ($valide_password && $conforme_password)
+                if ($valide_password === true && $conforme_password === false)
                 {
-
+                    echo 'coucou';
+                    die;
                     //Vérifie si le password actuel entré est correcte
                     $password = password_SELECT($_SESSION['id']);
                     $password = $password['password'];
