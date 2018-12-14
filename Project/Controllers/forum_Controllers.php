@@ -1,33 +1,35 @@
 <?php    
-
-
-    
     if (!isset($_GET['subject_id'])) 
     {
         // RECUPERE LES SUJETS DU FORUM
         $req = subjects_SELECT();
         $subjects_views = $req->fetchAll();
-        
-        
+      
         foreach($subjects_views as $key => $value)
         {
             $count = count_message_SELECT($subjects_views[$key][0]);
             $subjects_views[$key]['count_message'] = $count['count_message'];
         }
 
-        //var_dump($subjects_views);
-
-
         if (isset($_GET['choix_forum']) && $_GET['choix_forum'] === 'creer_sujet')
         {   
             // CREER UN SUJET
             if (isset($_POST['title']) && isset($_POST['content']))
-            {            
-                create_topic_INSERT(htmlspecialchars($_POST['title']), 'ouvert', htmlspecialchars($_POST['content']), $_SESSION['id']);
-                $req = id_subjects_SELECT($_SESSION['id'], $_POST['content']);
-                $id_subject = $req->fetch();
-                header('Location: index.php?page=forum&subject_id='.$id_subject['id'].'');
-                exit();
+            {
+                $_POST['title'] = str_replace(' ','',$_POST['title']);
+                $_POST['content'] = str_replace(' ','',$_POST['content']);
+                if (!empty($_POST['title']) && !empty($_POST['content']))
+                {           
+                    create_topic_INSERT(htmlspecialchars($_POST['title']), 'ouvert', htmlspecialchars($_POST['content']), $_SESSION['id']);
+                    $req = id_subjects_SELECT($_SESSION['id'], $_POST['content']);
+                    $id_subject = $req->fetch();
+                    header('Location: index.php?page=forum&subject_id='.$id_subject['id'].'');
+                    exit();
+                }
+                else 
+                {
+                    require(dirname(__FILE__).'/../Public/js/empty_form.js');
+                }
             }
             require(dirname(__FILE__).'/../Views/forum_Views.php');
         } 
@@ -111,10 +113,18 @@
         }
     }*/
 
-    if ( isset($_POST['new_message']) )
+    if (isset($_POST['new_message']))
     {
-        write_topic_INSERT($_POST['new_message'], $_SESSION['id'], $_GET['subject_id']);
-        header('Location: index.php?page=forum&subject_id='.$_GET['subject_id'].'');
+        $_POST['new_message'] = str_replace(' ','',$_POST['new_message']);
+        if (!empty($_POST['new_message'])) 
+        {
+            write_topic_INSERT($_POST['new_message'], $_SESSION['id'], $_GET['subject_id']);
+            header('Location: index.php?page=forum&subject_id='.$_GET['subject_id'].'');
+        }
+        else 
+        {
+            require(dirname(__FILE__).'/../Public/js/empty_form.js');
+        }
     }
 
     if ( isset($_GET['subject_id']) )
