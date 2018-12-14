@@ -16,8 +16,8 @@
             // CREER UN SUJET
             if (isset($_POST['title']) && isset($_POST['content']))
             {
-                $_POST['title'] = str_replace(' ','',$_POST['title']);
-                $_POST['content'] = str_replace(' ','',$_POST['content']);
+                $_POST['title'] = trim($_POST['title']);
+                $_POST['content'] = trim($_POST['content']);
                 if (!empty($_POST['title']) && !empty($_POST['content']))
                 {           
                     create_topic_INSERT(htmlspecialchars($_POST['title']), 'ouvert', htmlspecialchars($_POST['content']), $_SESSION['id']);

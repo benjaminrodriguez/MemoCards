@@ -44,7 +44,8 @@ INSERT INTO `categorie` (`id`, `name`, `description`) VALUES
 (13, 'Series', ''),
 (14, 'Films', ''),
 (15, 'TV', ''),
-(16, 'Proverbes', '');
+(16, 'Proverbes', ''),
+(17, 'Autre', '');
 
 --
 -- Déchargement des données de la table `user`

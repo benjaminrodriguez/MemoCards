@@ -31,14 +31,41 @@
 
     else if (isset($_POST['action']) && $_POST['action'] == 'create_questions') 
     {
-        // ATTRIBUT UNE IMAGE DE PROFIL AU DECK SI CELUI-CI N'EN POSSEDE PAS 
-        if (empty($_POST['picture'])) $_POST['picture'] = './Public/img/appareil_photo.jpg';
+        if (isset($_POST['title']) && isset($_POST['description']) && isset($_POST['picture']) && isset($_POST['categorie']))
+        {
+            // INTERDIT LES ESPACES
+            /* $tmp_title = $_POST['title'];
+            $tmp_description = $_POST['description'];
+            $tmp_picture = $_POST['picture'];
+            $tmp_categorie = $_POST['categorie'];
 
-        // INSERTION DU DECK DANS LA BDD
-        new_deck_INSERT($_POST['title'], $_POST['description'], $_SESSION['id'], $_POST['picture'], $_POST['categorie']);
-        $req = deck_id_SELECT($_POST['title']);
-        $deck_id = $req->fetch();
-        new_passed_INSERT($_SESSION['id'], $deck_id['id']);
+            $_POST['title'] = str_replace(' ','',$_POST['title']);
+            $_POST['description'] = str_replace(' ','',$_POST['description']);
+            $_POST['picture'] = str_replace(' ','',$_POST['picture']);
+            $_POST['categorie'] = str_replace(' ','',$_POST['categorie']);*/
+
+            $_POST['title'] = trim($_POST['title']);
+            $_POST['description'] = trim($_POST['description']);
+            $_POST['picture'] = trim($_POST['picture']);
+
+            if (!empty($_POST['title']) && !empty($_POST['description']) && !empty($_POST['picture']))
+            {
+                // ATTRIBUT UNE IMAGE DE PROFIL AU DECK SI CELUI-CI N'EN POSSEDE PAS 
+                if (empty($_POST['picture'])) $_POST['picture'] = './Public/img/appareil_photo.jpg';
+
+                // INSERTION DU DECK DANS LA BDD
+                new_deck_INSERT($_POST['title'], $_POST['description'], $_SESSION['id'], $_POST['picture'], $_POST['categorie']);
+                $req = deck_id_SELECT($tmp_title);
+                $deck_id = $req->fetch();
+                new_passed_INSERT($_SESSION['id'], $deck_id['id']);
+            }
+            else 
+            {
+                $_SESSION['empty'] = true;
+                require(dirname(__FILE__).'/../Public/js/empty_form.js');
+                exit;
+            }
+        }
 
 //----------------------------------------------------------------------------------------------------------------a changer en header Location modify deck_id
         // CREATIONS DE QUESTIONS SUR LE DECK

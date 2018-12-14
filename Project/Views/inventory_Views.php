@@ -3,8 +3,6 @@
     <form method="POST" action="">
     <!-- Affiche les 3 derniers decks utilisés -->
         <p><h1> <i>Vos decks :</i>  </h1></p>
-
-
     <?php for($i=0; $i<8; $i++)
 
             { 
