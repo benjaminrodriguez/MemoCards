@@ -44,7 +44,7 @@
       
         <!-- Logo
         ================================================== -->
-        <div class="span5 logo">
+        <div class="span4 logo">
             <a href="index.php"><img src="Public/img/memocards_black.png" alt="" /></a>
             <br><br><br>
             <h1> <?php if (isset($section)) echo $section; ?></h1>
@@ -52,7 +52,7 @@
         
         <!-- Main Navigation
         ================================================== -->
-        <div class="span7 navigation">
+        <div class="span6 navigation">
             <div class="navbar hidden-phone">
             
             <ul class="nav">
@@ -140,6 +140,18 @@
                 </div>
                 </form>
                 
+        </div>
+
+        <div class="span2 logo">
+            <img src=<?php echo $_SESSION['profile_picture'];?> style="width:70px;height:70px;">
+            <div style="position:relative;left:140px;float:left"> 
+                <a href="index.php?page=profile"><b style="font-size:20px"><?php echo $_SESSION['username']; ?></b></a>
+                <br>
+                <i style="font-size:15px">
+                    <?php echo $_SESSION['status']; ?> 
+                </i>
+            </div>
+            
         </div>
 
       </div><!-- End Header -->
