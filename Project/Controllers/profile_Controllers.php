@@ -34,4 +34,6 @@
     require(dirname(__FILE__).'/../Views/top_menu_Views.php');
     require(dirname(__FILE__).'/../Views/profile_menu_Views.php');
     */
+
+    require_once(dirname(__FILE__).'/../Views/template.php');
 ?>

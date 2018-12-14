@@ -57,6 +57,11 @@
             //game1();
             require_once('Controllers/game_Controllers.php');
         }
+        else if ($_GET['page'] == 'game2')
+        {
+            //game1();
+            require_once('Controllers/game2_Controllers.php');
+        }
         else if ($_GET['page'] == 'message')
         {
             //message();
