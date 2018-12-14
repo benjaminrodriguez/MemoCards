@@ -193,7 +193,7 @@ document.getElementById("email").addEventListener("input", function (e) {
 
         <!-- Bouton de retour à l'écran d'accueil -->
 <form action='index.php?page=home' method='POST'>
-    <button type="submit" value="Retour à l'écran de connexion">Retour à l'écran de connexion</button>
+    <button type="submit" value="Retour à l'écran de connexion" class="form-signin">Retour à l'écran de connexion</button>
 </form>
 
 
