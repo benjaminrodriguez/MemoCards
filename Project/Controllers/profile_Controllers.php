@@ -6,11 +6,16 @@
         if ($_GET['action'] === "stat") {
             require_once('Controllers/php/stat.php');
         }
-        if ($_GET['action'] === "unsub") {
-            require_once('Controllers/php/unsub.php');
-        }
+        
     }
     
+    if(isset($_GET['menu']) && $_GET['menu'] === "unsub")
+    {
+        require_once('Controllers/php/unsub.php');
+    }
+
+
+
     //Changer son pseudo 
     if(isset($_POST['menu']) && $_POST['menu'] === "username")
     {
