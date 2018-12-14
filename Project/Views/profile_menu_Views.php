@@ -86,14 +86,14 @@
             <form method="POST" action="">
                 <!-- Demande le mot de passe actuel. -->
                 <input type="password"  name="old_password" value="" placeholder="Mot de passe actuel" 
-                        title="Entrez votre mot de passe sans caractère spéciaux." required><br/>
+                title="Entrez votre mot de passe actuel" required><br/>
 
                 <!-- Demande le nouveau mot de passe. -->
                 <input type="password"  name="new_password1" value="" placeholder="Nouveau mot de passe" 
-                title="Entrez votre mot de passe sans caractère spéciaux." required><br/>
+                title="Le mot de passe doit contenir : 6 caractères minimum, au moins une majuscule, une minuscule et un chiffre" required><br/>
 
                 <input type="password"  name="new_password2" value="" placeholder="Confirmer mot de passe" 
-                title="Entrez votre mot de passe sans caractère spéciaux." required><br/>
+                title="Le mot de passe doit contenir : 6 caractères minimum, au moins une majuscule, une minuscule et un chiffre" required><br/>
                         
                 <input type="hidden" name="menu" value="password">
 

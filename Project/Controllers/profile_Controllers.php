@@ -67,7 +67,6 @@
             {
                
                 // VERIF LONGUEUR PASSWORD
-                //$password1 = $_POST['new_password1'];
                 if (strlen($_POST['new_password1']) < 6 || strlen($_POST['new_password1']) > 255 
                 || strlen($_POST['new_password2']) < 6 || strlen($_POST['new_password2']) > 255) 
                 {
@@ -91,10 +90,9 @@
                 {
                     $conforme_password = false;
                 }	
-                if ($valide_password === true && $conforme_password === false)
+                if ($valide_password === true && $conforme_password === true)
                 {
-                    echo 'coucou';
-                    die;
+                    
                     //Vérifie si le password actuel entré est correcte
                     $password = password_SELECT($_SESSION['id']);
                     $password = $password['password'];
@@ -114,6 +112,11 @@
                         password_UPDATE($new_password, intval($_SESSION['id']));
                         $_SESSION['error'] = "Votre mot de passe à été modifier avec succès.";
                     }
+                }
+                else if ($valide_password === false || ($conforme_password === false))
+                {
+                    require(dirname(__FILE__).'/../Public/js/conforme_password.js');
+                    exit;
                 }
             }
             else 
