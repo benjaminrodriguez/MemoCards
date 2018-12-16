@@ -180,7 +180,7 @@
                                 ORDER BY date ASC;
                                 ');
         $req->execute(array(intval($subject_id)));
-        $message = $req->fetchAll(PDO::FETCH_ASSOC);
+        $message = $req->fetchAll();
         return $message;
     }
 

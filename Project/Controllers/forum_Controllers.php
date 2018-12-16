@@ -1,4 +1,12 @@
-<?php    
+<?php   
+
+    if(isset($_GET['delete']))
+    {
+        delete_message_UPDATE($_GET['delete']);
+        header('Location: index.php?page=forum&subject_id='.$_GET['subject_id']);
+        exit();
+    }
+
     if (!isset($_GET['subject_id'])) 
     {
         // RECUPERE LES SUJETS DU FORUM

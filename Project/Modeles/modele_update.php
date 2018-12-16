@@ -114,4 +114,15 @@
  
      //--------------------------------------------------------------------------------
 
+     // SUPPRIME LE MESSAGE D'UN FORUM
+     function delete_message_UPDATE($id_message)
+     {
+         $bdd = bdd();
+         $req = $bdd->prepare(' UPDATE message
+                                SET content_message = ?
+                                WHERE id = ? 
+                                LIMIT 1
+                             ');
+         $req->execute(array('<i> ( Message supprimé ) </i>', $id_message));
+     }
 ?>

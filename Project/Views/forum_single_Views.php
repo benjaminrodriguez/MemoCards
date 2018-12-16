@@ -48,10 +48,31 @@
                         foreach($print_message as $key => $value)
                         {   
                     ?>
-
                             <li>
                                 <span class="comment-name"> <?php echo $autors[$key]['username'] ;  ?> </span>
-                                <span class="comment-date"> <?php echo $print_message[$key]['date'] ;  ?>  || <a href="#">Répondre</a> ||</span>
+                                <span class="comment-date"> <?php echo $print_message[$key]['date'] ;  ?>  &nbsp;&nbsp;&nbsp;&nbsp;|| &nbsp;&nbsp;&nbsp;&nbsp; <i class="icon-share-alt"></i><a href="#">Répondre</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                
+
+                                <?php if ($print_message[$key]['autor_id'] == $_SESSION['id']) { ?>
+                                    ||&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <i class="icon-trash"></i><a href="#myModal<?php echo $key; ?>"  data-toggle="modal">Supprimer</a></span>
+
+                                        <!-- Modal -->
+                                        <div class="modal hide fade" id="myModal<?php echo $key; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h5 id="myModalLabel">Demande de confirmation</h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Êtes-vous sûr de vouloir supprimer votre message ?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
+                                                <a href="index.php?page=forum&subject_id=<?php echo $_GET['subject_id'];  ?>&delete=<?php echo $print_message[$key][0]; ?>" class="btn btn-inverse">Supprimer </a>
+                                            </div>
+                                        </div>
+
+                                <?php } ?>
                                 <div class="comment-content"> <?php echo $print_message[$key]['content_message'] ;  ?> </div>
                             </li>
 
