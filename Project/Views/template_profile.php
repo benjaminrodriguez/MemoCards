@@ -46,6 +46,7 @@
         ================================================== -->
         <div class="span4 logo">
             <a href="index.php"><img src="Public/img/memocards_black.png" alt="" /></a>
+            <h5>Réviser mieux ... Apprenez-en plus !</h5>
             <br><br><br>
             <h1> <?php if (isset($section)) echo $section; ?></h1>
         </div>

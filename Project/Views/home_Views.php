@@ -80,8 +80,7 @@ $(document).ready(function () {
         ================================================== -->
         <div class="span4 logo">
         	<a href="index.php"><img src="Public/img/memocards_black.png" width=380 alt="" /></a>
-            <h5>Apprendre... Pour mieux réussir
-            </h5>
+            <h5>Réviser mieux ... Apprenez-en plus !</h5>
         </div>
         <?php //var_dump($_SESSION); ?>
         
@@ -293,7 +292,7 @@ window.onload = heure;
             <h5 class="title-bg">récemment utilisé
             
                 <small> Reprendre vos parties en cours</small>
-                <button class="btn btn-mini btn-inverse hidden-phone" type="button">Voir plus</button>
+                <a href="index.php?page=inventory"><button class="btn btn-mini btn-inverse hidden-phone" type="button">Voir plus</button></a>
             </h5>
     	
         <!-- Gallery Thumbnails

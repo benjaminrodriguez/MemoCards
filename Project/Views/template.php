@@ -47,6 +47,7 @@
         ================================================== -->
         <div class="span4 logo">
             <a href="index.php"><img src="Public/img/memocards_black.png" alt="" /></a>
+            <h5>Réviser mieux ... Apprenez-en plus !</h5>
             <br><br><br>
             <h1> <?php if (isset($section)) echo $section; ?></h1>
         </div>
@@ -199,7 +200,10 @@
             <?php
                 if($_GET['page'] == 'inventory') { ?>
                     <h5><li><a href="index.php?page=inventory&action=create_deck"><i class="icon-plus-sign"></i>Créer un nouveau deck</a></li>
-                    <li><a href="index.php?page=inventory&action=create_deck"><i class="icon-wrench"></i>Modifier paramètres du deck</a></li></h5>
+
+                    <?php if(isset($_GET['action']) && $_GET['action'] == 'modify') { ?>
+                            <li><a href="index.php?page=inventory&action=settings&deck=<?php echo $_GET['deck']; ?>"><i class="icon-wrench"></i>Modifier paramètres du deck</a></li></h5>
+                    <?php } ?>
             <?php   
                 }else if ($_GET['page'] == 'forum') { ?>
                     <h5><li><a href="index.php?page=forum&choix_forum=creer_sujet"><i class="icon-plus-sign"></i>Créer un nouveau sujet</a></li> </h5>
