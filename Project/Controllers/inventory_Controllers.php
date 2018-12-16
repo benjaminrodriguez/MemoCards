@@ -184,8 +184,19 @@
         //$datas = $req->fetchAll();
         $datas = $req->fetchAll(PDO::FETCH_ASSOC);
 
+        //---------- VOIR LES STATS DE TOUS DES DECKS ----------
+        $stats_views = questforstat_version2_SELECT($_SESSION['id']);
+
+        //var_dump($stats_views);
+        $m = NULL; $m++;
+        echo $m;
+
+
         require(dirname(__FILE__).'/../Views/inventory_Views.php');   
     } 
+
+    
+
 
     // TEMPLATE DE LA PAGE
     require_once(dirname(__FILE__).'/../Views/template.php');

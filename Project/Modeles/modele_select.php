@@ -348,12 +348,9 @@
         $bdd = bdd();
         $query = "SELECT recto.question_cards, succes_rate.level_cards, succes_rate.chain, succes_rate.played_cards, succes_rate.nb_succes
                     FROM user
-                    JOIN passed 
-                    ON passed.user_id = user.id AND user.id = :user
-                    JOIN deck
-                    ON passed.deck_id = deck.id
-                    JOIN recto
-                    ON recto.deck_id = deck.id AND deck.id = :id
+                    JOIN passed ON passed.user_id = user.id AND user.id = :user
+                    JOIN deck ON passed.deck_id = deck.id
+                    JOIN recto ON recto.deck_id = deck.id AND deck.id = :id
                     JOIN verso ON verso.recto_id = recto.id
                     JOIN succes_rate ON succes_rate.verso_id = verso.id
                     ORDER BY succes_rate.level_cards ASC;";
@@ -372,6 +369,36 @@
         $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $qu;
     }
+
+
+        //--------------------------------------------------------------------------------
+
+        function questforstat_version2_SELECT($id_user)
+        {
+            //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+            $bdd = bdd();
+            $query = "SELECT recto.question_cards, succes_rate.level_cards, succes_rate.chain, succes_rate.played_cards, succes_rate.nb_succes, deck.id as deck_id
+                        FROM user
+                        JOIN passed ON passed.user_id = user.id AND user.id = :user
+                        JOIN deck ON passed.deck_id = deck.id
+                        JOIN recto ON recto.deck_id = deck.id 
+                        JOIN verso ON verso.recto_id = recto.id
+                        JOIN succes_rate ON succes_rate.verso_id = verso.id
+                        ORDER BY succes_rate.level_cards ASC;";
+            
+            $query_params = array(
+                ':user' => $id_user
+                );
+            
+            try {
+                $stmt = $bdd->prepare($query);
+                $stmt->execute($query_params);
+            } catch(Exception $e) {
+                die('Erreur : ' . $e->getMessage());
+            }
+            $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $qu;
+        }
 
     //--------------------------------------------------------------------------------
 
