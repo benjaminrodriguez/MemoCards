@@ -1,3 +1,5 @@
+<?php ob_start(); ?>
+
 <p><h1> <i>Vos decks :</i>  </h1></p>
 
 <?php 
@@ -23,6 +25,6 @@
     </form>
 
     <?php $content = ob_get_clean(); ?>
-    <?php require(dirname(__FILE__).'/template.php'); 
+
 
 ?>
