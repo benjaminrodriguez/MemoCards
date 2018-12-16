@@ -222,6 +222,11 @@
                     echo $content; 
                 } 
                 ?>
+                
+                <?php if (isset($message)) {
+                    echo $message; 
+                } 
+                ?>
             <!--
             <div class="row">
                 <div class="span3">

@@ -40,6 +40,8 @@
     { 
 ?>      <form method="POST" action="index.php?page=profile&menu=username">
 
+            <p class="lead"> Votre nouveau pseudo doit contenir au minimum 4 caractères. </p>
+
             <div class="input-prepend">
                 <span class="add-on"><i class="icon-user">
                 </i></span><input class="span2" id="prependedInput" size="16" type="text" name="username" value="" 
@@ -51,28 +53,28 @@
             <a href="#myModal" role="button" class="btn btn-inverse" data-toggle="modal">Confirmer</a>
             
 
+            <!-- Modal -->
+            <div class="modal hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h5 id="myModalLabel">Message de confirmation</h5>
+                </div>
 
-    <!-- Modal -->
-    <div class="modal hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h5 id="myModalLabel">Message de confirmation</h5>
-        </div>
+                <div class="modal-body">
+                    <p>Êtes-vous sûr  de vouloir modifier votre pseudo ?</p>
+                </div>
 
-        <div class="modal-body">
-            <p>Êtes-vous sûr  de vouloir modifier votre pseudo ?</p>
-        </div>
-
-        <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Non.</button>
-            <button class="btn btn-inverse">Oui, je confirme !</button>
-        </div>
-    </div>
-
-
-
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Non.</button>
+                    <button class="btn btn-inverse">Oui, je confirme !</button>
+                </div>
+            </div>
 
         </form>
+
+
+
+       
 <?php 
         $subtitle = 'Modifier votre pseudo';
     }
@@ -83,7 +85,7 @@
 <?php if(!isset($test_old_password) && isset($_GET['menu']) && $_GET['menu'] == 'password' && !isset($_POST['new_password1']))
         { 
 ?>
-            <form method="POST" action="">
+            <form method="POST" action="index.php?page=profile&menu=password">
                 <!-- Demande le mot de passe actuel. -->
                 <input type="password"  name="old_password" value="" placeholder="Mot de passe actuel" 
                 title="Entrez votre mot de passe actuel" required><br/>
@@ -101,25 +103,40 @@
             
 
 
-            <!-- Modal -->
-            <div class="modal hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h5 id="myModalLabel">Message de confirmation</h5>
-                </div>
-        
-                <div class="modal-body">
-                    <p>Êtes-vous sûr  de vouloir modifier votre pseudo ?</p>
-                </div>
-        
-                <div class="modal-footer">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Non.</button>
-                    <button class="btn btn-inverse">Oui, je confirme !</button>
-                </div>
+                <!-- Modal -->
+                <div class="modal hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h5 id="myModalLabel">Message de confirmation</h5>
+                    </div>
+            
+                    <div class="modal-body">
+                        <p>Êtes-vous sûr  de vouloir modifier votre pseudo ?</p>
+                    </div>
+            
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">Non.</button>
+                        <button class="btn btn-inverse">Oui, je confirme !</button>
+                    </div>
             </div>
             </form>         
 <?php   
             $subtitle = 'Modifier votre mot de passe';
+        } 
+        if(isset($_SESSION['error']))
+        { 
+            $subtitle = 'Modifier votre mot de passe';
+        ?>
+            <!-- Alerts
+            ================================================== --> 
+            <div class="span4">  
+                <div class="alert alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong><?php echo $_SESSION['error']; ?></strong>
+                </div>
+            </div>
+    <?php
+            unset($_SESSION['error']);
         }
 
         

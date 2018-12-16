@@ -40,7 +40,8 @@
                     <div class="post-summary-footer">
                         <ul class="post-data-3">
                             <li><i class="icon-cog"></i> <a href="index.php?page=inventory&action=modify&deck=<?php echo $questions_deck[$key]['deck_id'].'&question='.$questions_deck[$key]['id'].'&answer='.$answers_deck[$key]['id']; ?>">Modifier</a><br>
-                            <i class="icon-trash"></i> <a href="#">Supprimer</a></li>
+                            <i class="icon-trash"></i> <a href="index.php?page=inventory&action=delete_card&deck=<?php echo $questions_deck[$key]['deck_id'].'&question='.$questions_deck[$key]['id'].'&answer='.$answers_deck[$key]['id']; ?>">Supprimer</a></li>
+                            
                         </ul>
                     </div>
                 </div>

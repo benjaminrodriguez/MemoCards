@@ -507,4 +507,106 @@
         $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $qu;
     }
+
+    //--------------------------------------------------------------------------------
+
+
+    function deck_succes_rate_SELECT($id_deck)
+    {
+        //SELECTIONNE TOUS LES ID NECESSAIRES POUR DELETE DE DECK
+        $bdd = bdd();
+        $req = $bdd->prepare ("  SELECT succes_rate.id as succes_rate_id
+                    FROM succes_rate
+                    LEFT JOIN verso ON verso.id = succes_rate.verso_id
+                    LEFT JOIN recto ON recto.id = verso.recto_id
+                    LEFT JOIN deck ON deck.id = recto.deck_id
+                    WHERE deck.id = ?;");
+        
+        $req->execute(array(htmlspecialchars(intval($id_deck))));
+        $all_id = $req->fetchAll();
+
+        return $all_id;
+    }
+
+    //--------------------------------------------------------------------------------
+
+    function deck_verso_SELECT($id_deck)
+    {
+        //SELECTIONNE TOUS LES ID NECESSAIRES POUR DELETE DE DECK
+        $bdd = bdd();
+        $req = $bdd->prepare ("  SELECT verso.id as verso_id
+                    FROM verso
+                    LEFT JOIN recto ON recto.id = verso.recto_id
+                    LEFT JOIN deck ON deck.id = recto.deck_id
+                    WHERE deck.id = ?;");
+        
+        $req->execute(array(htmlspecialchars(intval($id_deck))));
+        $all_id = $req->fetchAll();
+
+        return $all_id;
+    }
+
+    //--------------------------------------------------------------------------------
+
+    function deck_recto_SELECT($id_deck)
+    {
+        //SELECTIONNE TOUS LES ID NECESSAIRES POUR  DELETE DE DECK
+        $bdd = bdd();
+        $req = $bdd->prepare (" SELECT recto.id as recto_id
+                                FROM recto
+                                WHERE recto.deck_id = ?;");
+        
+        $req->execute(array(htmlspecialchars(intval($id_deck))));
+        $all_id = $req->fetchAll();
+
+        return $all_id;
+    }
+
+    //--------------------------------------------------------------------------------
+
+    function deck_comments_SELECT($id_deck)
+    {
+        //SELECTIONNE TOUS LES ID NECESSAIRES POUR DELETE DE DECK
+        $bdd = bdd();
+        $req = $bdd->prepare (" SELECT comments_deck.id as comments_deck_id
+                                FROM comments_deck
+                                WHERE comments_deck.deck_id = ?;");
+        
+        $req->execute(array(htmlspecialchars(intval($id_deck))));
+        $all_id = $req->fetchAll();
+
+        return $all_id;
+    }
+
+    //--------------------------------------------------------------------------------
+
+    function deck_hashtag_SELECT($id_deck)
+    {
+        //SELECTIONNE TOUS LES ID NECESSAIRES POUR DELETE DE DECK
+        $bdd = bdd();
+        $req = $bdd->prepare (" SELECT hashtag_has_deck.id as hashtag_id
+                                FROM hashtag_has_deck
+                                WHERE hashtag_has_deck.deck_id = ?;");
+        
+        $req->execute(array(htmlspecialchars(intval($id_deck))));
+        $all_id = $req->fetchAll();
+
+        return $all_id;
+    }
+
+    //--------------------------------------------------------------------------------
+
+    function deck_passed_SELECT($id_deck)
+    {
+        //SELECTIONNE TOUS LES ID NECESSAIRES POUR DELETE DE DECK
+        $bdd = bdd();
+        $req = $bdd->prepare (" SELECT passed.id as passed_id
+                                FROM passed
+                                WHERE passed.deck_id = ?;");
+        
+        $req->execute(array(htmlspecialchars(intval($id_deck))));
+        $all_id = $req->fetchAll();
+
+        return $all_id;
+    }
 ?>

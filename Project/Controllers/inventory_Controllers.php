@@ -1,5 +1,71 @@
 <?php
 
+    if (isset($_GET['action']) && $_GET['action'] == 'delete_card')
+    {
+        // BDD : SUPPRIME LE SUCCES_RATE DE LA CARTE
+        card_succes_rate_DELETE($_GET['answer']);
+        // BDD : SUPPRIME LA REPONSE DE LA CARTE
+        card_verso_DELETE($_GET['answer']);
+        // BDD : SUPPRIME LA QUESTION DE LA CARTE
+        card_recto_DELETE($_GET['question']);
+
+        header('Location: index.php?page=inventory&action=modify&deck='.$_GET['deck'].'');
+        exit();
+    }
+
+
+    if(isset($_POST['deck_delete']))
+    {
+        // BDD : SUPPRIME TOUT LES CARTES DANS LA TABLE : succes_rate
+        $all_id = deck_succes_rate_SELECT($_POST['deck_delete']);
+        foreach($all_id as $key => $value)
+        {
+            deck_succes_rate_DELETE($all_id[$key]['succes_rate_id']);
+        }
+
+        // BDD : SUPPRIME TOUT LES CARTES DANS LA TABLE : verso
+        $all_id = deck_verso_SELECT($_POST['deck_delete']);
+        foreach($all_id as $key => $value)
+        {
+            deck_verso_DELETE($all_id[$key]['verso_id']);
+        }
+
+        // BDD : SUPPRIME TOUT LES CARTES DANS LA TABLE : recto
+        $all_id = deck_recto_SELECT($_POST['deck_delete']);
+        foreach($all_id as $key => $value)
+        {
+            deck_recto_DELETE($all_id[$key]['recto_id']);
+        }
+
+        // BDD : SUPPRIME TOUT LES CARTES DANS LA TABLE : comments_deck
+        $all_id = deck_comments_SELECT($_POST['deck_delete']);
+        foreach($all_id as $key => $value)
+        {
+            deck_comments_DELETE($all_id[$key]['comments_deck_id']);
+        }
+
+        // BDD : SUPPRIME TOUT LES CARTES DANS LA TABLE : hashtag_has_deck
+        $all_id = deck_hashtag_SELECT($_POST['deck_delete']);
+        foreach($all_id as $key => $value)
+        {
+            deck_hashtag_DELETE($all_id[$key]['hashtag_id']);
+        }
+
+        // BDD : SUPPRIME TOUT LES CARTES DANS LA TABLE : passed
+        $all_id = deck_passed_SELECT($_POST['deck_delete']);
+        foreach($all_id as $key => $value)
+        {
+            deck_passed_DELETE($all_id[$key]['passed_id']);
+        }
+
+        // BDD : SUPPRIME LE DECK  DANS LA TABLE : deck
+        deck_final_DELETE($_POST['deck_delete']);
+
+
+        //echo $_POST['deck_delete'];
+        //var_dump($all_id);
+        header('Location: index.php?page=inventory');
+    }
 
     if (isset($_GET['action']) && $_GET['action'] == 'create_deck') 
     {
@@ -39,14 +105,14 @@
             $_POST['description'] = trim($_POST['description']);
             $_POST['picture'] = trim($_POST['picture']);
 
-            if (!empty($_POST['title']) && !empty($_POST['description']) && !empty($_POST['picture']))
+            if (!empty($_POST['title']) && !empty($_POST['description']) )
             {
                 // ATTRIBUT UNE IMAGE DE PROFIL AU DECK SI CELUI-CI N'EN POSSEDE PAS 
                 if (empty($_POST['picture'])) $_POST['picture'] = './Public/img/appareil_photo.jpg';
 
                 // INSERTION DU DECK DANS LA BDD
                 new_deck_INSERT($_POST['title'], $_POST['description'], $_SESSION['id'], $_POST['picture'], $_POST['categorie']);
-                $req = deck_id_SELECT($tmp_title);
+                $req = deck_id_SELECT($_POST['title']);
                 $deck_id = $req->fetch();
                 new_passed_INSERT($_SESSION['id'], $deck_id['id']);
             }
@@ -115,9 +181,10 @@
     {
         // SELECTIONNE LES DECK DE L'UTILISATEUR
         $req = my_deck_SELECT($_SESSION['id']);
+        //$datas = $req->fetchAll();
         $datas = $req->fetchAll(PDO::FETCH_ASSOC);
-        require(dirname(__FILE__).'/../Views/inventory_Views.php');
-        
+
+        require(dirname(__FILE__).'/../Views/inventory_Views.php');   
     } 
 
     // TEMPLATE DE LA PAGE

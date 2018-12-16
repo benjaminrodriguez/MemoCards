@@ -35,15 +35,16 @@
                 {
                     $valide_username = true;
                 }
-                if ($valide_username)
+
+
+                if ($valide_username === true)
                 {
-                    
                     //UPDATE dans la BDD le nouveau pseudo de l'user
                     $_SESSION['username'] = htmlspecialchars($_POST['username']);
                     username_UPDATE($_SESSION['username'], intval($_SESSION['id']));
                     
                     header('Location: index.php?page=profile&menu=username');
-                    exit;
+                    exit();
                 }
             }
             else 
@@ -56,25 +57,31 @@
 
 
     //Changer son password :
+    if (isset($_SESSION['error']))
+    {
+        header('index.php?page=profile&menu=password');
+    }
+
     if(isset($_POST['menu']) && $_POST['menu'] === "password")
     {
         
         if(isset($_POST['old_password']))
         { 
+            echo'ok';
             // ENLEVE LES ESPACES DEBUT ET FIN
             $_POST['old_password'] = trim($_POST['old_password']);
             if (!empty($_POST['old_password']))
             {
                
                 // VERIF LONGUEUR PASSWORD
-                if (strlen($_POST['new_password1']) < 6 || strlen($_POST['new_password1']) > 255 
-                || strlen($_POST['new_password2']) < 6 || strlen($_POST['new_password2']) > 255) 
+                if (strlen($_POST['new_password1']) > 6 && strlen($_POST['new_password1']) < 255 
+                && strlen($_POST['new_password2']) > 6 && strlen($_POST['new_password2']) < 255) 
                 {
-                    $valide_password = false;
+                    $valide_password = true;
                 }
                 else 
                 {
-                    $valide_password = true;
+                    $valide_password = false;
                 }
 
                 // VERIFICATION CARACTERE PASSWORD
@@ -90,6 +97,8 @@
                 {
                     $conforme_password = false;
                 }	
+
+
                 if ($valide_password === true && $conforme_password === true)
                 {
                     

@@ -167,11 +167,10 @@
        $bdd = bdd();
        $query =
        'DELETE FROM hashtag_has_deck
-       WHERE hashtag_has_deck.id = (
-           SELECT deck.id
-           FROM deck
-           WHERE deck.autor_id = :id
-            AND deck.status LIKE "privated"
+        WHERE hashtag_has_deck.id = (   SELECT deck.id
+                                        FROM deck
+                                        WHERE deck.autor_id = :id
+                                        AND deck.status LIKE "privated"
        )      
        ;';
        $query_params = array(':id' => $id);
@@ -202,5 +201,136 @@
            die('Erreur : ' . $e->getMessage());
        }
     }
+
+    //--------------------------------------------------------------------------------
+
+    function deck_succes_rate_DELETE($id_deck)
+    {
+        //DELETE LES SUCCES RATE DU DECK
+        $bdd = bdd();
+        $req = $bdd->prepare (" DELETE
+                                FROM succes_rate
+                                WHERE succes_rate.id = ?;");
+        
+        $req->execute(array(htmlspecialchars(intval($id_deck))));
+    }
+
+    //--------------------------------------------------------------------------------
+
+    function deck_verso_DELETE($id_deck)
+    {
+        //DELETE LES VERSO DU DECK
+        $bdd = bdd();
+        $req = $bdd->prepare (" DELETE
+                                FROM verso
+                                WHERE verso.id = ?;");
+        
+        $req->execute(array(htmlspecialchars(intval($id_deck))));
+    }
+
+    //--------------------------------------------------------------------------------
+
+    function deck_recto_DELETE($id_deck)
+    {
+        //DELETE LES RECTO DU DECK
+        $bdd = bdd();
+        $req = $bdd->prepare (" DELETE
+                                FROM recto
+                                WHERE recto.id = ?;");
+        
+        $req->execute(array(htmlspecialchars(intval($id_deck))));
+    }
+
+    //--------------------------------------------------------------------------------
+
+    function deck_comments_DELETE($id_deck)
+    {
+        //DELETE LES COMMENTS DU DECK
+        $bdd = bdd();
+        $req = $bdd->prepare (" DELETE
+                                FROM comments_deck
+                                WHERE comments_deck.id = ?;");
+        
+        $req->execute(array(htmlspecialchars(intval($id_deck))));
+    }
+
+    //--------------------------------------------------------------------------------
+
+    function deck_hashtag_DELETE($id_deck)
+    {
+        //DELETE LES HASHTAGS DU DECK
+        $bdd = bdd();
+        $req = $bdd->prepare (" DELETE
+                                FROM hashtag_has_deck
+                                WHERE hashtag_has_deck.id = ?;");
+        
+        $req->execute(array(htmlspecialchars(intval($id_deck))));
+    }
+
+    //--------------------------------------------------------------------------------
+
+    function deck_passed_DELETE($id_deck)
+    {
+        //DELETE LES PASSED DU DECK
+        $bdd = bdd();
+        $req = $bdd->prepare (" DELETE
+                                FROM passed
+                                WHERE passed.id = ?;");
+        
+        $req->execute(array(htmlspecialchars(intval($id_deck))));
+    }
+
+    //--------------------------------------------------------------------------------
+
+    function deck_final_DELETE($id_deck)
+    {
+        //DELETE LE DECK
+        $bdd = bdd();
+        $req = $bdd->prepare (" DELETE
+                                FROM deck
+                                WHERE deck.id = ?;");
+        
+        $req->execute(array(htmlspecialchars(intval($id_deck))));
+    }
+
+    //--------------------------------------------------------------------------------
+
+    function card_succes_rate_DELETE($id_deck)
+    {
+        //DELETE LE SUCCES_RATE DE LA CARTE
+        $bdd = bdd();
+        $req = $bdd->prepare (" DELETE
+                                FROM succes_rate
+                                WHERE succes_rate.verso_id = ?;");
+        
+        $req->execute(array(htmlspecialchars(intval($id_deck))));
+    }
+
+    //--------------------------------------------------------------------------------
+
+    function card_verso_DELETE($id_deck)
+    {
+        //DELETE LA REPONSE DE LA CARTE
+        $bdd = bdd();
+        $req = $bdd->prepare (" DELETE
+                                FROM verso
+                                WHERE verso.id = ?;");
+        
+        $req->execute(array(htmlspecialchars(intval($id_deck))));
+    }
+
+    //--------------------------------------------------------------------------------
+
+    function card_recto_DELETE($id_deck)
+    {
+        //DELETE LA QUESTION DE LA CARTE
+        $bdd = bdd();
+        $req = $bdd->prepare (" DELETE
+                                FROM recto
+                                WHERE recto.id = ?;");
+        
+        $req->execute(array(htmlspecialchars(intval($id_deck))));
+    }
+
 ?>
 

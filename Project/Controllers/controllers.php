@@ -1,4 +1,5 @@
 <?php
+/*
     //require(dirname(__FILE__).'/../Modeles/modeles.php');
     require(dirname(__FILE__).'/../Controllers/php/function_game.php');
 
@@ -343,5 +344,6 @@
         
         } //fin du switch<
     }
+    */
 ?>
 
