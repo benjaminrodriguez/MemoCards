@@ -20,7 +20,7 @@
     }
     
     // VERIF LONGUEUR PASSWORD
-    $password = ($_POST["password"]);
+    $password = (trim($_POST["password"]));
     if (strlen($password) < 6 || strlen($password) > 255 ) 
     {
         $valide_password = false;
@@ -46,7 +46,6 @@
     {
         $conforme_password = true;
 	}
-	
     else 
     {
         $conforme_password = false;
