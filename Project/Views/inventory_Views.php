@@ -14,12 +14,14 @@
                     <!-- Blog Post 1 -->
                     <article class="clearfix">
                         <a href="blog-single.htm"><img src="<?php echo htmlspecialchars($datas[$key]['picture']); ?>" alt="Post Thumb" class="align-left" style="width:230px;height:190px;" ></a>
-                        <h4 class="title-bg"><a href="blog-single.htm"><?php echo htmlspecialchars($datas[$key]['name']); ?></a></h4>
-                        <p> <?php echo htmlspecialchars($datas[$key]['description']); ?> </p>
+                        <h4 class="title-bg"><a href="index.php?page=inventory&training=<?php echo htmlspecialchars($datas[$key]['deck_id']);?>&card=1"><?php echo htmlspecialchars($datas[$key]['name']); ?></a></h4>
+                        <p> <b> <i> <u> Description </u> :</i> </b>  <br>
+                         <?php echo htmlspecialchars($datas[$key]['description']); ?> </p>
 
                         <!-- <button class="btn btn-mini btn-inverse" type="button" name="top_3_deck" value="<?php //echo $datas[$key]['id']; ?>">Lancer une partie</button> -->
-                        <a class="btn btn-info" href="index.php?page=game&deck=<?php echo htmlspecialchars($datas[$key]['deck_id']);?>"><font size="3">MODE QCM </font></a>
-                        <a class="btn btn-success" href="index.php?page=game2&deck=<?php echo htmlspecialchars($datas[$key]['deck_id']);?>"><font size="3">ENTRAINEMENT </font></a>
+                        <a class="btn btn-success" href="index.php?page=inventory&training=<?php echo htmlspecialchars($datas[$key]['deck_id']);?>&card=1"><font size="3">Entrainement </font></a>
+                        <a class="btn btn-info" href="index.php?page=game&deck=<?php echo htmlspecialchars($datas[$key]['deck_id']);?>"><font size="3">QCM </font></a>
+                        <a class="btn btn-warning" href="index.php?page=game2&deck=<?php echo htmlspecialchars($datas[$key]['deck_id']);?>"><font size="3">Révision </font></a>
 
                         <!-- <button class="btn btn-mini btn-inverse" type="submit" name="start_game" value="<?php //echo htmlspecialchars($datas[$key]['deck_id']); ?>">Lancer une partie</button> -->
                         

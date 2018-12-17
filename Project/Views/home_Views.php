@@ -315,7 +315,7 @@ window.onload = heure;
                             </span>
                         </span> 
                         <a href="gallery-single.htm"> <img src="<?php echo $datas[$i]['picture']; ?>" style="width:500px;height:220px;" alt="Gallery"> </a>
-                        <span class="project-details"><a href="gallery-single.htm"><?php echo $datas[$i]['name']; ?></a><?php echo $datas[$i]['description']; ?></span>
+                        <span class="project-details"><a href="index.php?page=inventory&training=<?php echo htmlspecialchars($datas[$i]['id']);?>&card=1"><?php echo $datas[$i]['name']; ?></a><?php echo $datas[$i]['description']; ?></span>
                     </li>
 
 <?php       } 

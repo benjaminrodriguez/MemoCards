@@ -636,4 +636,25 @@
 
         return $all_id;
     }
+
+    //--------------------------------------------------------------------------------
+
+    function training_deck_SELECT($id_user, $id_deck)
+    {
+        //SELECTIONNE TOUS LES ID NECESSAIRES POUR DELETE DE DECK
+        $bdd = bdd();
+        $req = $bdd->prepare (" SELECT  deck.id as deck_id, recto.question_cards, recto.id as recto_id, verso.answer_cards, verso.id as verso_id
+                                FROM user
+                                JOIN passed ON passed.user_id = user.id AND user.id = ?
+                                JOIN deck ON passed.deck_id = deck.id
+                                JOIN recto ON recto.deck_id = deck.id AND deck.id = ?
+                                JOIN verso ON verso.recto_id = recto.id
+                                JOIN succes_rate ON succes_rate.verso_id = verso.id
+                            ;");
+        
+        $req->execute(array($id_user, htmlspecialchars(intval($id_deck))));
+        $deck = $req->fetchAll();
+
+        return $deck;
+    }
 ?>
