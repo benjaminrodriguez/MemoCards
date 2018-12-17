@@ -608,5 +608,84 @@
         $all_id = $req->fetchAll();
 
         return $all_id;
+    } 
+    //--------------------------------------------------------------------------------
+
+    
+    function unsub_SELECT($a,$b,$c,$d)
+    {
+        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+        $bdd = bdd();
+        $query = "SELECT $a
+                FROM $b
+                WHERE $c= $d;";
+        
+        /*$query_params = array(
+            ':sel' => $a,
+            ':fr' => $b,
+            ':wh' => $c,
+            ':wh2' => $d
+            );*/
+        
+        try {
+            $stmt = $bdd->prepare($query);
+            $stmt->execute();
+        } catch(Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+        $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $qu;
     }
+
+    //--------------------------------------------------------------------------------
+
+    
+    function deckunsub_SELECT($a)
+    {
+        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+        $bdd = bdd();
+        $query = "SELECT deck.id AS id
+                FROM deck
+                WHERE autor_id = :id AND status LIKE 'privated';";
+        
+        $query_params = array(
+            ':id' => $a
+            );
+        
+        try {
+            $stmt = $bdd->prepare($query);
+            $stmt->execute($query_params);
+        } catch(Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+        $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $qu;
+    }
+
+    
+    //--------------------------------------------------------------------------------
+
+    
+    function succunsub_SELECT($a)
+    {
+        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+        $bdd = bdd();
+        $query = "SELECT id
+                  FROM verso 
+                  WHERE recto_id = :id AND statut_cards LIKE 'T';";
+        
+        $query_params = array(
+            ':id' => $a
+            );
+        
+        try {
+            $stmt = $bdd->prepare($query);
+            $stmt->execute($query_params);
+        } catch(Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+        $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $qu;
+    }
+
 ?>

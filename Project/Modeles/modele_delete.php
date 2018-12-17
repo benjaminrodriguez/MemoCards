@@ -332,5 +332,28 @@
         $req->execute(array(htmlspecialchars(intval($id_deck))));
     }
 
+    //--------------------------------------------------------------------------------
+
+    function var_DELETE($a,$b,$c)
+    {
+        $bdd = bdd();
+       $query =
+       "DELETE FROM $a
+       WHERE $b = $c
+       ;";
+       /*$query_params = array(
+           ':a' => $a,
+           ':b' => $b,
+           ':c' => $c
+        );*/
+       try {
+           $stmt = $bdd->prepare($query);
+           $stmt->execute();
+       } catch(Exception $e) {
+           die('Erreur : ' . $e->getMessage());
+       }
+    }
+    
+
 ?>
 
