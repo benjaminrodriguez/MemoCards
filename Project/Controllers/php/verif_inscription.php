@@ -31,7 +31,7 @@
     }
 
     // VERIF LONGUEUR USERNAME
-    $username = ($_POST["username"]);
+    $username = (trim($_POST["username"]));
     if (strlen($username) > 25 || strlen($username) < 4) 
     {
         $valide_username = false;
