@@ -197,6 +197,14 @@
         //---------- VOIR LES STATS DE TOUS DES DECKS ----------
         $stats_views = questforstat_version2_SELECT($_SESSION['id']);
 
+        $count_question = array();
+        foreach($datas as $key => $value)
+        {
+            array_push($count_question, count_question_deck_SELECT($datas[$key]['deck_id']) );
+        }
+        var_dump($count_question);
+
+        
         require(dirname(__FILE__).'/../Views/inventory_Views.php');   
     } 
 

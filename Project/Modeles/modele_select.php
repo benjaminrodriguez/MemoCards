@@ -735,4 +735,27 @@
 
         return $deck;
     }
+
+    //----------------------------------------------------------------------------------
+
+    function count_question_deck_SELECT($id_deck)
+    {
+        //SELECTIONNE TOUS LES ID NECESSAIRES POUR DELETE DE DECK
+        $bdd = bdd();
+        $req = $bdd->prepare (" SELECT COUNT(answer_cards) as count_question, deck.id
+                                FROM verso
+                                LEFT JOIN recto ON recto.id = verso.recto_id
+                                LEFT JOIN deck ON deck.id = recto.deck_id
+                                WHERE recto.deck_id = ?
+                            ;");
+        
+        $req->execute(array(htmlspecialchars(intval($id_deck))));
+        $deck = $req->fetchAll();
+
+        return $deck;
+    }
+
+
+
+
 ?>

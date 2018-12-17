@@ -18,10 +18,39 @@
                         <p> <b> <i> <u> Description </u> :</i> </b>  <br>
                          <?php echo htmlspecialchars($datas[$key]['description']); ?> </p>
 
-                        <!-- <button class="btn btn-mini btn-inverse" type="button" name="top_3_deck" value="<?php //echo $datas[$key]['id']; ?>">Lancer une partie</button> -->
-                        <a class="btn btn-success" href="index.php?page=inventory&training=<?php echo htmlspecialchars($datas[$key]['deck_id']);?>&card=1"><font size="3">Entrainement </font></a>
-                        <a class="btn btn-info" href="index.php?page=game&deck=<?php echo htmlspecialchars($datas[$key]['deck_id']);?>"><font size="3">QCM </font></a>
-                        <a class="btn btn-warning" href="index.php?page=game2&deck=<?php echo htmlspecialchars($datas[$key]['deck_id']);?>"><font size="3">Révision </font></a>
+                        <?php if(intval($count_question[$key][0]['count_question']) >= 10) {  ?>
+                                <!-- <button class="btn btn-mini btn-inverse" type="button" name="top_3_deck" value="<?php //echo $datas[$key]['id']; ?>">Lancer une partie</button> -->
+                                <a class="btn btn-success" href="index.php?page=inventory&training=<?php echo htmlspecialchars($datas[$key]['deck_id']);?>&card=1"><font size="3">Entrainement </font></a>
+                                <a class="btn btn-info" href="index.php?page=game&deck=<?php echo htmlspecialchars($datas[$key]['deck_id']);?>"><font size="3">QCM </font></a>
+                                <a class="btn btn-warning" href="index.php?page=game2&deck=<?php echo htmlspecialchars($datas[$key]['deck_id']);?>"><font size="3">Révision </font></a>
+                        <?php } else {?>
+                                <a class="btn btn-inverse" href="#myQuestion"><font size="3">Entrainement </font></a>
+                                <a class="btn btn-inverse" href="#myQuestion"><font size="3">QCM </font></a>
+                                <a class="btn btn-inverse" href="#myQuestion"><font size="3">Révision </font></a>
+
+                                    <!-- Modal -->
+                                    <div class="modal hide fade" id="myQuestion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                            <h5 id="myModalLabel">Rappel</h5>
+                                        </div>
+                                
+                                        <div class="modal-body">
+                                            <p>Pour jouer avec ce deck il est nécessaire d'y créer au moins 10 questions.
+                                                <br> Rendez-vous sur l'option "modifier" pour ajouter ou modifier des questions. </p>
+                                        </div>
+
+                                    
+                                        <div class="modal-footer">
+                                            <button class="btn" data-dismiss="modal" aria-hidden="true">ok.</button>
+                                            
+                                            <button type="submit" name="question" value="question" class="btn btn-inverse">Oui, je confirme !</button>
+                                            <!--<a href="index.php?page=inventory&deck_delete=3" class="btn btn-inverse">Oui, je confirme !</a>-->
+                                        </div> 
+                                     
+                                    </div>
+
+                        <?php } ?>
 
                         <!-- <button class="btn btn-mini btn-inverse" type="submit" name="start_game" value="<?php //echo htmlspecialchars($datas[$key]['deck_id']); ?>">Lancer une partie</button> -->
                         
@@ -56,12 +85,13 @@
                                             $nb = 0;
                                             foreach($stats_views as $key1 => $value1) 
                                             {
-                                                if($stats_views[$key1]['deck_id'] == $datas[$key]['deck_id']) 
+                                                if($stats_views[$key1]['deck_id'] == $datas[$key]['deck_id']  &&  intval($stats_views[$key1]['played_cards']) !== 0) 
                                                 {
                                                     $total += intval(intval($stats_views[$key1]['nb_succes'])/intval($stats_views[$key1]['played_cards'])*100);
                                                     $nb++;
                                                 }
                                             }
+                                            ($nb === 0)? $nb++ : NULL ;
                                             $moyenne = $total / $nb;
                                             $moyenne = number_format($moyenne, 2, ',', ' ');
                                         
@@ -128,7 +158,7 @@
                                                     <i>  La carte a été jouée <?php echo $stats_views[$key1]['played_cards']; ?> fois avec 
                                                     <?php echo intval(intval($stats_views[$key1]['nb_succes'])/intval($stats_views[$key1]['played_cards'])*100); ?> % de réussite.</i> 
                                                     &nbsp &nbsp &nbsp &nbsp 
-                                                    <br><img src="./Public/img/level/first.PNG" style="width:30px; height:30px;" > Lv. 2 Continues comme ca !<br><br></div><?php
+                                                    <br><img src="./Public/img/level/first.PNG" style="width:30px; height:30px;" > Lv. 2 Continues comme ca !<br><br><?php
                                                    }
                                                    else {
                                                     ?>
@@ -154,7 +184,7 @@
                                         <!--<a href="" class="btn btn-inverse">Oui, je confirme !</a>-->
                                     </div> 
 
-                                    </div>
+                            </div>
 
 
 
