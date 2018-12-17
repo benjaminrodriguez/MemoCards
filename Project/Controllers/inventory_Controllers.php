@@ -202,7 +202,7 @@
         {
             array_push($count_question, count_question_deck_SELECT($datas[$key]['deck_id']) );
         }
-        var_dump($count_question);
+        //var_dump($count_question);
 
         
         require(dirname(__FILE__).'/../Views/inventory_Views.php');   
