@@ -36,6 +36,7 @@ foreach ($listiddeck as $key => $value) {
 }
 //delhobbies
 var_DELETE('hobbies_has_user','user_id',$id);
+var_DELETE('user','id',$id);
 /*
 succes_rate_unsub_DELETE($id);
 verso_unsub_DELETE($id);
