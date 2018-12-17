@@ -1,4 +1,4 @@
-:valid {
+/*:valid {
     box-shadow: 0 0 2px 1px green;
  } 
  .background
@@ -54,3 +54,143 @@
     border-radius: 50%;
     color:white;
     }
+*/
+    /* ============================================= Training mode ==============================================================*/
+    /**{
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        font-family: "montserrat";
+      }
+      body{
+        background: #333;
+      }*/
+      .middle{
+        position: absolute;
+        top:60%;
+        left: 37%;
+        transform: translate(-50%,-50%);
+      }
+      .card{
+        cursor: pointer;
+        width: 340px;
+        height: 480px;
+      }
+      .front,.back{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        backface-visibility: hidden;
+        position: absolute;
+        transition: transform .6s linear;
+      }
+      .front img{
+        /*height: 100%;*/
+        z-index: -1;
+      }
+      /*.front h1{
+        background-image: url('./../img/deck_training/card_blue.jpeg');
+        background-size: 100% 100%;
+      }*/
+      .front{
+        transform: perspective(600px) rotateY(0deg);
+      }
+      .back{
+        background: #f1f1f1;
+        transform: perspective(600px) rotateY(180deg);
+      }
+      .back-content{
+        color: #2c3e50;
+        text-align: center;
+        /*width: 100%;*/
+      }
+      .sm{
+        margin: 20px 0;
+      }
+      .sm a{
+        display: inline-flex;
+        width: 40px;
+        height: 40px;
+        justify-content: center;
+        align-items: center;
+        color: #2c3e50;
+        font-size: 18px;
+        transition: 0.4s;
+        border-radius: 50%
+      }
+      .sm a:hover{
+        background: #2c3e50;
+        color: white;
+      }
+      .card:hover > .front{
+        transform: perspective(600px) rotateY(-180deg);
+      }
+      .card:hover > .back{
+        transform: perspective(600px) rotateY(0deg);
+      }
+
+ /* ============================================= button Training mode ==============================================================*/
+
+      .btn-oval {
+        display: inline-block;
+        width: 240px;
+        height: 70px;
+        box-sizing: border-box;
+        text-align: center;
+        color: #fff;
+        text-decoration: none;
+        background: linear-gradient(#89c13e, #599c02);
+        background-color: #6fad1d;
+        border-radius: 35px;
+        border: 1px solid #579a00;
+        font: bold 30px/70px Arial;
+        box-shadow: inset 0 2px 2px #cce464, inset 1px 0 3px #b2dc2d,
+          inset -1px 0 3px #b2dc2d, inset 0 -2px 2px #89d301,
+          0 0 3px rgba(0, 0, 0, 0.24);
+        text-shadow: 0 1px #45880d;
+        outline: none;
+      }
+
+      .suivant {
+        position: absolute;
+        top:80%;
+        left: 105%;
+      }
+
+      .precedent {
+        position: absolute;
+        top:80%;
+        left: -75%;
+      }
+
+      .btn-oval:before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        background: #d7d7d7;
+        z-index: -1;
+        border-radius: 50px;
+        box-shadow: inset 0 1px 2px #bbb;
+      }
+      .btn-oval:hover {
+        background: linear-gradient(#97d444, #65ad07);
+        box-shadow: inset 0 1px 0 #e2f498, inset 0 2px 0 #ceec87,
+          inset 0 3px 0 #c3e67c, inset 0 5px 0 #bae475, inset 1px 0 3px #b2dc2d,
+          inset -1px 0 3px #b2dc2d, inset 0 -2px 2px #89d301,
+          0 0 3px rgba(0, 0, 0, 0.24);
+      }
+      .btn-oval:active {
+        background: linear-gradient(#83bb37, #599c02);
+        box-shadow: inset 0 3px 7px #3c7b00;
+        padding: 1px 0 0 1px;
+      }
+      
+      /* Center Button */
+
+      .btn-oval {
+        margin: auto;
+      }

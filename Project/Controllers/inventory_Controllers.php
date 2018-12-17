@@ -177,6 +177,16 @@
         require(dirname(__FILE__).'/../Views/create_questions_Views.php');
     }
 
+    else if (isset($_GET['training']) && isset($_GET['card']))
+    {
+        $training = training_deck_SELECT($_SESSION['id'], $_GET['training']);
+        //var_dump($training);
+
+        if(intval($_GET['card']) > count($training)) header('Location: index.php?page=inventory&training='.$_GET['training'].'&card='.count($training));
+        if(intval($_GET['card']) <= 0) header('Location: index.php?page=inventory&training='.$_GET['training'].'&card=1');
+        require_once('./Views/training_Views.php');
+    }
+
     else if (!isset($_GET['action'])) 
     {
         // SELECTIONNE LES DECK DE L'UTILISATEUR
@@ -184,8 +194,14 @@
         //$datas = $req->fetchAll();
         $datas = $req->fetchAll(PDO::FETCH_ASSOC);
 
+        //---------- VOIR LES STATS DE TOUS DES DECKS ----------
+        $stats_views = questforstat_version2_SELECT($_SESSION['id']);
+
         require(dirname(__FILE__).'/../Views/inventory_Views.php');   
     } 
+
+    
+
 
     // TEMPLATE DE LA PAGE
     require_once(dirname(__FILE__).'/../Views/template.php');

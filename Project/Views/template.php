@@ -13,6 +13,9 @@
 <link rel="stylesheet" href="Public/css/jquery.lightbox-0.5.css">
 <link rel="stylesheet" href="Public/css/custom-styles.css">
 
+<link rel="stylesheet" href="Public/css/styles.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+
 
 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>

@@ -348,12 +348,9 @@
         $bdd = bdd();
         $query = "SELECT recto.question_cards, succes_rate.level_cards, succes_rate.chain, succes_rate.played_cards, succes_rate.nb_succes
                     FROM user
-                    JOIN passed 
-                    ON passed.user_id = user.id AND user.id = :user
-                    JOIN deck
-                    ON passed.deck_id = deck.id
-                    JOIN recto
-                    ON recto.deck_id = deck.id AND deck.id = :id
+                    JOIN passed ON passed.user_id = user.id AND user.id = :user
+                    JOIN deck ON passed.deck_id = deck.id
+                    JOIN recto ON recto.deck_id = deck.id AND deck.id = :id
                     JOIN verso ON verso.recto_id = recto.id
                     JOIN succes_rate ON succes_rate.verso_id = verso.id
                     ORDER BY succes_rate.level_cards ASC;";
@@ -372,6 +369,36 @@
         $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $qu;
     }
+
+
+        //--------------------------------------------------------------------------------
+
+        function questforstat_version2_SELECT($id_user)
+        {
+            //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+            $bdd = bdd();
+            $query = "SELECT recto.question_cards, succes_rate.level_cards, succes_rate.chain, succes_rate.played_cards, succes_rate.nb_succes, deck.id as deck_id
+                        FROM user
+                        JOIN passed ON passed.user_id = user.id AND user.id = :user
+                        JOIN deck ON passed.deck_id = deck.id
+                        JOIN recto ON recto.deck_id = deck.id 
+                        JOIN verso ON verso.recto_id = recto.id
+                        JOIN succes_rate ON succes_rate.verso_id = verso.id
+                        ORDER BY succes_rate.level_cards ASC;";
+            
+            $query_params = array(
+                ':user' => $id_user
+                );
+            
+            try {
+                $stmt = $bdd->prepare($query);
+                $stmt->execute($query_params);
+            } catch(Exception $e) {
+                die('Erreur : ' . $e->getMessage());
+            }
+            $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $qu;
+        }
 
     //--------------------------------------------------------------------------------
 
@@ -614,7 +641,7 @@
     
     function unsub_SELECT($a,$b,$c,$d)
     {
-        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+        
         $bdd = bdd();
         $query = "SELECT $a
                 FROM $b
@@ -642,7 +669,7 @@
     
     function deckunsub_SELECT($a)
     {
-        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+        
         $bdd = bdd();
         $query = "SELECT deck.id AS id
                 FROM deck
@@ -668,7 +695,7 @@
     
     function succunsub_SELECT($a)
     {
-        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+       
         $bdd = bdd();
         $query = "SELECT id
                   FROM verso 
@@ -688,4 +715,24 @@
         return $qu;
     }
 
+    //----------------------------------------------------------------------------------
+
+    function training_deck_SELECT($id_user, $id_deck)
+    {
+        //SELECTIONNE TOUS LES ID NECESSAIRES POUR DELETE DE DECK
+        $bdd = bdd();
+        $req = $bdd->prepare (" SELECT  deck.id as deck_id, recto.question_cards, recto.id as recto_id, verso.answer_cards, verso.id as verso_id
+                                FROM user
+                                JOIN passed ON passed.user_id = user.id AND user.id = ?
+                                JOIN deck ON passed.deck_id = deck.id
+                                JOIN recto ON recto.deck_id = deck.id AND deck.id = ?
+                                JOIN verso ON verso.recto_id = recto.id
+                                JOIN succes_rate ON succes_rate.verso_id = verso.id
+                            ;");
+        
+        $req->execute(array($id_user, htmlspecialchars(intval($id_deck))));
+        $deck = $req->fetchAll();
+
+        return $deck;
+    }
 ?>
