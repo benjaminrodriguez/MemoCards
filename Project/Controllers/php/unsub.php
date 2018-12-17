@@ -31,11 +31,12 @@ foreach ($listiddeck as $key => $value) {
     //delpasse
     var_DELETE('hashtag_has_deck','deck_id',$value['id']);
     //del#
-    var_DELETE('deck','deck_id',$value['id']);
+    var_DELETE('deck','id',$value['id']);
     //eldeck
 }
 //delhobbies
 var_DELETE('hobbies_has_user','user_id',$id);
+var_DELETE('user','id',$id);
 /*
 succes_rate_unsub_DELETE($id);
 verso_unsub_DELETE($id);

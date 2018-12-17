@@ -186,4 +186,40 @@
         }
 ?>      
 
-<?php $content = ob_get_clean(); ?>
+
+
+<!-- --------------------------- unsub --------------------------- -->
+<?php
+    if(isset($_GET['menu']) && $_GET['menu'] == 'unsub')
+    { 
+?>  
+        <form method="POST" action="index.php?page=profile&menu=unsub">
+            <input type="hidden" name="unsubconfirm" value="0">
+
+            <p class="lead"> Cliquez pour supprimer votre compte. </p>
+
+            <a href="#myModalunsub" role="button" class="btn btn-inverse" data-toggle="modal">Confirmer</a>
+        
+
+            <!-- Modal -->
+            <div class="modal hide fade" id="myModalunsub" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h5 id="myModalLabel">Message de confirmation</h5>
+                </div>
+
+                <div class="modal-body">
+                    <p>Êtes-vous sûr  de vouloir supprimer votre compte ?</p>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Non.</button>
+                    <button class="btn btn-inverse">Oui, je confirme !</button>
+                </div>
+            </div>
+
+        </form>
+<?php
+    }
+
+ $content = ob_get_clean(); ?>

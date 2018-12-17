@@ -2,7 +2,7 @@
 <form method='post' action=''>
 
 <p style="font-size:25px"><b>
-DECK N° <?php echo htmlspecialchars($_GET['deck']); ?> 
+DECK  <?php echo htmlspecialchars($deckname[0]['name']); ?> 
 </b></p>
 <input type="submit" name="start" class="btn btn-success" value ="Commencer">
 </form>

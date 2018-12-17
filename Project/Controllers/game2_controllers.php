@@ -7,6 +7,7 @@ if (isset($_POST['start'])) {
 }
 if (!isset($_SESSION['deck']))
 {
+    $deckname = namedeck_SELECT($_GET['deck']);
     require("./Views/affichage_debquest.php");
     if (isset($_SESSION['list']))
     {

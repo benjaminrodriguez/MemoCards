@@ -736,6 +736,7 @@
         return $deck;
     }
 
+
     //----------------------------------------------------------------------------------
 
     function count_question_deck_SELECT($id_deck)
@@ -758,4 +759,26 @@
 
 
 
+//--------------------------------------------------------------------------------
+
+    function namedeck_SELECT($a)
+    {
+       
+        $bdd = bdd();
+        $query = "SELECT `name` FROM deck WHERE id = :id;";
+        
+        $query_params = array(
+            ':id' => $a
+            );
+        
+        try {
+            $stmt = $bdd->prepare($query);
+            $stmt->execute($query_params);
+        } catch(Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+        $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $qu;
+    }
 ?>
+

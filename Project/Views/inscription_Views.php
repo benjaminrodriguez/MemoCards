@@ -19,18 +19,77 @@
     
 
         <form action="index.php?page=inscription" method="POST" class="form-signin">
-       <!-- <div id="erreur">
-    <p>Vous n'avez pas rempli correctement les champs du formulaire !</p>
-</div> -->
+    <title>Inscription</title>
 
-    <label for="username"></label> <input type="text" name="username"id="username" class="champ"placeholder="Pseudo"
-    title="L\'username doit faitre en 4 et 25 caractères" />
-    <label for="password"></label> <input type="password" name="password" id="password" class="champ"placeholder="Mot de passe" 
-    title="Le mot de passe doit contenir : 6 caractères minimum, au moins une majuscule, une minuscule et un chiffre"/>
-    <!-- <label for="confirmation"></label>  <input type="password" id="confirmation" class="champ" placeholder="Confirmation mot de passe" /> -->
-    <label for="email"></label> <input type="text" name="email" id="mail" class="champ" placeholder="E-mail"/><br>
-    <input type="radio" name="sex" value="M" width:20px class="champ" id="sexe">Homme
-    <input type="radio" name="sex" value="F" checked class="champ" id="sexe">Femme<br>
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.1/examples/checkout/form-validation.css" rel="stylesheet">
+  </head>
+
+  <body class="bg-light">
+
+    <div class="container">
+      <div class="py-12 text-center">
+        <p class="lead"></p>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 order-md-2 mb-4">
+
+        </div>
+        <div class="col-md-12 order-md-1">
+        
+          <form enctype="multipart/form-data" action="index.php?action=addUser" method="POST">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="username"></label>
+                <input type="text" class="champ" id="username" name="username" placeholder="Username" required
+                title="L'username doit faitre en 4 et 25 caractères" />
+                <div class="invalid-feedback">
+                  Entrez votre username 
+                </div>
+              </div>
+              <hr class="mb-4">
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="mdp"></label>
+                <input type="password" class="champ" id="mdp" name="password" placeholder="Mot de passe"required
+                title="Le mot de passe doit contenir : 6 caractères minimum, au moins une majuscule, une minuscule et un chiffre"/>
+
+                <div class="invalid-feedback">
+                  Entrez un mot de passe
+                </div>
+              </div>
+            </div>
+
+              <div class="col-md-6 mb-3">
+               <label for="mdp2"></label>
+                <input type="password" class="champ" id="mdp2" name="confirmPassword" placeholder="Confirmation de mot de passe"required
+                title="Le mot de passe doit contenir : 6 caractères minimum, au moins une majuscule, une minuscule et un chiffre"/>
+
+                <div class="invalid-feedback">
+                  Confirmer votre mot de passe.
+                </div>
+              </div>
+            <div class="mb-3">
+              <label for="email"></label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+        
+                <input type="email" class="champ" id="email" placeholder="you@memocards.com" name="email" required></div>
+
+                <div class="invalid-feedback" style="width: 100%;"> 
+                  Entrez votre adresse mail.
+                </div>
+              </div>
+              <span id="aideCourriel"></span>
+            </div><br><br>
+            <input type="radio" name="sex" value="M" width="10px" class="champ"  id="sexe"><div style="color:white;">Homme</div>
+            <input type="radio" name="sex" value="F" checked class="champ" id="sexe"><div style="color:white;">Femme</div><br>
 
             <select name="region" class="form-control" class="champ" id="region" required>
                 <option value="region" disabled >Région</option> 
@@ -54,154 +113,37 @@
                 <option value="la_reunion">La Réunion</option>
             </select><br>
 
-            <input type="date" name="date_de_naissance" id="date" class="champ" placeholder="Date de naissance" >
+            <input type="date" name="date_de_naissance" id="date" class="champ" placeholder="Date de naissance" ><br><br>
+            <button class="btn btn-lg btn-block" name="SignIn" type="submit">S'inscire</button>
 
-    <input type="submit" id="envoi" value="Inscription"/> 
-   <!-- <input type="reset" id="rafraichir" value="Rafraîchir" /> -->
-</form>
-<!-- on inclut la bibliothèque depuis les serveurs de Google 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script>
-    $(document).ready(function(){
-        
-        var $username = $('#username'),
-            $password = $('#password'),
-            $confirmation = $('#confirmation'),
-            $mail = $('#mail'),
-            $sexe = $('#sex'),
-            $date = $('#date'),
-            $region = $('#region'),
-            $envoi = $('#envoi'),
-            $reset = $('#rafraichir'),
-            $erreur = $('#erreur'),
-            $champ = $('.champ');
+                </div>
+              </div>
+            </div>
+            
+          </form>
+        </div>
+      </div>
 
-        $champ.keyup(function(){
-            if($(this).val().length < 6){ // si la chaîne de caractères est inférieure à 5
-                $(this).css({ // on rend le champ rouge
-                    borderColor : 'red',
-                color : 'red'
-                });
-            }
-            else{
-                $(this).css({ // si tout est bon, on le rend vert
-                borderColor : 'green',
-                color : 'green'
-            });
-            }
-        });
-
-        $confirmation.keyup(function(){
-            if($(this).val() != $password.val()){ // si la confirmation est différente du mot de passe
-                $(this).css({ // on rend le champ rouge
-                    borderColor : 'red',
-                color : 'red'
-                });
-            }
-            else{
-            $(this).css({ // si tout est bon, on le rend vert
-                borderColor : 'green',
-                color : 'green'
-            });
-            }
-        });
-
-        $envoi.click(function(e){
-
-            // puis on lance la fonction de vérification sur tous les champs :
-            verifier($username);
-            verifier($password);
-            verifier($confirmation);
-            verifier($mail);
-            verifier($sexe);
-            verifier($date);
-            verifier($region);
-
-            if(!verifier($username) 
-            && !verifier($password) 
-            && !verifier($confirmation) 
-            && !verifier($mail)
-            && !verifier($sexe) 
-            && !verifier($date) 
-            && !verifier($region))
-            {
-                e.preventDefault(); // on annule la fonction par défaut du bouton d'envoi
-            }
-        });
-
-        $reset.click(function(){
-            $champ.css({ // on remet le style des champs comme on l'avait défini dans le style CSS
-                borderColor : '#ccc',
-                color : '#555'
-            });
-            $erreur.css('display', 'none'); // on prend soin de cacher le message d'erreur
-        });
-
-        function verifier(champ){
-            if(champ.val() == ""){ // si le champ est vide
-                $erreur.css('display', 'block'); // on affiche le message d'erreur
-                champ.css({ // on rend le champ rouge
-                    borderColor : 'red',
-                    color : 'red'
-                });
-            } else {
-                return true;
-            }
-        }
-
-    });
-</script>     -->    
-
-<script>
-// Contrôle du courriel en fin de saisie
-//CONTROLE MAIL
-document.getElementById("email").addEventListener("input", function (e) {
-    var validiteCourriel = "";
-    var couleurMsg = "red";
-    if (e.target.value.indexOf("@" && ".") === -1) {
-        // Le courriel saisi ne contient pas le caractère @
-        validiteCourriel = "Adresse invalide";
-    } else {
-      validiteCourriel = "Adresse valide";
-      var couleurMsg = "green"; 
-    }
-    var aideCourrielElt = document.getElementById("aideCourriel");
-    document.getElementById("aideCourriel").textContent = validiteCourriel;
-    aideCourrielElt.style.color = couleurMsg;
-});/*
-  //CONTROLE NUMERO DE TELEPHONE
-  document.getElementById("phone").addEventListener("input", function (e) {
-    var validitePhone = "";
-    var phone = e.target.value;
-    var couleurMsg = "red";
-    var type = typeof(phone);
-    if(type != "number"){
-        validitePhone = "Numero de telephone invalide";
-    } else if(type == "number"){
-    if (phone.length != 10) {
-        // Le courriel saisi ne contient pas le caractère @
-        validitePhone = "Numero de telephone invalide";
-    } else if(phone.length = 10) {
-      validitePhone = "Numero de telephone valide";
-      var couleurMsg = "green"; 
-    }
-    var aidePhoneElt = document.getElementById("aidePhone");
-    document.getElementById("aidePhone").textContent = validitePhone;
-    aidePhoneElt.style.color = couleurMsg;
-}});  */
-</script>
-
-        <!-- Bouton de retour à l'écran d'accueil -->
-<form action='index.php?page=home' method='POST'>
+    </div>
+    <form action='index.php?page=home' method='POST'>
     <button type="submit" value="Retour à l'écran de connexion" class="form-signin">Retour à l'écran de connexion</button>
 </form>
 
 
 </div>
-    <center><p >&copy; MemoCards</p></center>
+    <center><p style="color:gold;">&copy; MemoCards</p></center>
 
 </div>
- </div>    
- 
-<?php $content = ob_get_clean(); ?>
-<?php require(dirname(__FILE__).'/template_accueil.php'); ?>
+ </div>  
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.1/dist/js/bootstrap.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/holder.min.js"></script>
+    <script src="./Public/js/inscription.js"></script>
+  </body>
+</html>

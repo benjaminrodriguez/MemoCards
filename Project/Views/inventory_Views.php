@@ -126,7 +126,7 @@
                                                     </div>
                                         <?php } ?>
                                                     
-                                                </div>
+                                            </div>
 
 
                                             <div class="span4">

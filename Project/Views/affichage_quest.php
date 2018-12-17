@@ -62,10 +62,10 @@ function nomDeFonction(event)
     larep = document.getElementById('span'+indice); 
     if (liste[indice].value === "F") {
         larep.style.color = "#b92b27";
-        document.getElementById("msgrep").innerHTML = "<div class='well'><font size='4' color='red'>Mauvaise réponse :c</font></div>";      
+        document.getElementById("msgrep").innerHTML = "<div class='well'><font size='4' color='red'>Fais un effort sérieux...</font></div>";      
     } else {
         larep.style.color = "#45a247";
-        document.getElementById("msgrep").innerHTML = "<div class='well'><font size='4' color='green' >Bonne réponse :></font></div>";
+        document.getElementById("msgrep").innerHTML = "<div class='well'><font size='4' color='green' >Bonne réponse!</font></div>";
     }
     setTimeout(function () { document.getElementById('monFormulaire').submit(); }, 1000);
     

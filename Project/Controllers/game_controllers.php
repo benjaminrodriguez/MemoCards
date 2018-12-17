@@ -8,6 +8,7 @@ if (isset($_POST['start'])) {
 }
 if (!isset($_SESSION['deck']))
 {
+    $deckname = namedeck_SELECT($_GET['deck']);
     require("./Views/affichage_debquest.php");
     if (isset($_SESSION['list']))
     {
@@ -52,6 +53,7 @@ else
 
     if (isset($_POST['answer'])) 
     {
+        $_SESSION['cpt']++;
             //SAVE THE ANSWERS FOR THE DISPLAY AT THE END
 
         $_SESSION['listend'][0][] = $_POST['answer'];
@@ -146,7 +148,7 @@ else
         require("./Views/affichage_quest.php");
 
 
-        $_SESSION['cpt']++;
+        
         //$_SESSION['list'] = $list;
         $_SESSION['iddelaquestiondavant'] = $IDDELAQUESTION;
     }
