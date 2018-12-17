@@ -1,5 +1,5 @@
 <?php
-
+//var_dump($_POST);
     if(!isset($_GET['menu']) || empty($_GET['menu'])) header('Location: index.php?page=profile&menu=username');
     
     /*if (isset($_GET['menu'])) {
@@ -23,10 +23,11 @@
         
     }*/
     
-    if(isset($_GET['menu']) && $_GET['menu'] === "unsub")
-    {
-        require_once('Controllers/php/unsub.php');
-    }
+  
+        if(isset($_POST['unsubconfirm'])){
+           
+            require_once('Controllers/php/unsub.php');
+        }
 
 
 

@@ -31,7 +31,7 @@ foreach ($listiddeck as $key => $value) {
     //delpasse
     var_DELETE('hashtag_has_deck','deck_id',$value['id']);
     //del#
-    var_DELETE('deck','deck_id',$value['id']);
+    var_DELETE('deck','id',$value['id']);
     //eldeck
 }
 //delhobbies
