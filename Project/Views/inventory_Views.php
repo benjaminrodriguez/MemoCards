@@ -96,7 +96,7 @@
                                                     </div>
                                         <?php } ?>
                                                     
-                                                </div>
+                                            </div>
 
 
                                             <div class="span4">
@@ -128,7 +128,7 @@
                                                     <i>  La carte a été jouée <?php echo $stats_views[$key1]['played_cards']; ?> fois avec 
                                                     <?php echo intval(intval($stats_views[$key1]['nb_succes'])/intval($stats_views[$key1]['played_cards'])*100); ?> % de réussite.</i> 
                                                     &nbsp &nbsp &nbsp &nbsp 
-                                                    <br><img src="./Public/img/level/first.PNG" style="width:30px; height:30px;" > Lv. 2 Continues comme ca !<br><br></div><?php
+                                                    <br><img src="./Public/img/level/first.PNG" style="width:30px; height:30px;" > Lv. 2 Continues comme ca !<br><br><?php
                                                    }
                                                    else {
                                                     ?>

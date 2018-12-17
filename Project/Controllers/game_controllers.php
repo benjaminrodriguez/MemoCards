@@ -52,6 +52,7 @@ else
 
     if (isset($_POST['answer'])) 
     {
+        $_SESSION['cpt']++;
             //SAVE THE ANSWERS FOR THE DISPLAY AT THE END
 
         $_SESSION['listend'][0][] = $_POST['answer'];
@@ -146,7 +147,7 @@ else
         require("./Views/affichage_quest.php");
 
 
-        $_SESSION['cpt']++;
+        
         //$_SESSION['list'] = $list;
         $_SESSION['iddelaquestiondavant'] = $IDDELAQUESTION;
     }

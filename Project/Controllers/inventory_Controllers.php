@@ -200,6 +200,27 @@
         require(dirname(__FILE__).'/../Views/inventory_Views.php');   
     } 
 
+if (isset($_SESSION['deck'])) {
+    
+    if (isset($_SESSION['list']))
+    {
+        unset($_SESSION['list']);
+    }
+    if (isset($_SESSION['cpt']))
+    {
+        unset($_SESSION['cpt']);
+    }
+    if (isset($_SESSION['cptall']))
+    {
+        unset($_SESSION['cptall']);
+    }
+    if (isset($_SESSION['iddelaquestiondavant']))
+    {
+        unset($_SESSION['iddelaquestiondavant']);
+    }
+    unset($_SESSION['deck']);
+}
+
     
 
 
