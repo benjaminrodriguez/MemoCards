@@ -23,8 +23,8 @@
         
     }*/
     
-  
-        if(isset($_POST['unsubconfirm'])){
+
+     if(isset($_POST['unsubconfirm'])){
            
             require_once('Controllers/php/unsub.php');
         }
@@ -60,6 +60,11 @@
                     
                     header('Location: index.php?page=profile&menu=username');
                     exit();
+                }
+                else 
+                {
+                    require(dirname(__FILE__).'/../Public/js/invalide_password.js');
+                    exit; 
                 }
             }
             else 
@@ -160,7 +165,7 @@
         $_POST['profile_picture'] = trim($_POST['profile_picture']);
         if (!empty($_POST['profile_picture']))
         {
-            if (strlen($password) < 255) 
+            if (strlen($_POST['profile_picture']) < 255) 
             {
                 picture_UPDATE(htmlspecialchars($_POST['profile_picture']), intval($_SESSION['id']));
                 $_SESSION['profile_picture'] = htmlspecialchars($_POST['profile_picture']);
