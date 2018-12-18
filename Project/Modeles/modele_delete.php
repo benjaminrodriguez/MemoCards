@@ -354,6 +354,31 @@
        }
     }
     
+     // ----------------------------------------------------------------------------
 
+     function subject_DELETE ($subject_id)
+     {
+         // DELETE CONTENU SUBJECT
+         $bdd = bdd();
+         $desinscription = $bdd->prepare(
+         'DELETE FROM message WHERE message.subject_id = ?;
+         ');
+         $desinscription->execute(array(intval($subject_id)));
+     }
+     
+     // ----------------------------------------------------------------------------
+
+     function subject_content_DELETE ($subject_id)
+     {
+         // DELETE SUBJECT VIDE
+         $bdd = bdd();
+         $desinscription = $bdd->prepare(
+         'DELETE FROM subject WHERE subject.id = ?;
+         ');
+         $desinscription->execute(array(intval($subject_id)));
+     }
+     
+     // ----------------------------------------------------------------------------
+    
 ?>
 
