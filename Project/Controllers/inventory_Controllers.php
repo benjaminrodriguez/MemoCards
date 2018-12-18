@@ -97,18 +97,20 @@
 
     else if (isset($_POST['action']) && $_POST['action'] == 'create_questions') 
     {
-        if (isset($_POST['title']) && isset($_POST['description']) && isset($_POST['picture']) && isset($_POST['categorie']))
-        {
             
             // ELIMINE LES ESPACES
-            $_POST['title'] = trim($_POST['title']);
-            $_POST['description'] = trim($_POST['description']);
-            $_POST['picture'] = trim($_POST['picture']);
+            if (isset($_POST['title']))  $_POST['title'] = trim($_POST['title']);
+            if (isset($_POST['description']))  $_POST['description'] = trim($_POST['description']);
+            if (isset($_POST['picture']))  $_POST['picture'] = trim($_POST['picture']);
+            if (isset($_POST['hashtags']))  $_POST['hashtags'] = trim($_POST['hashtags']);
 
             if (!empty($_POST['title']) && !empty($_POST['description']) )
             {
                 // ATTRIBUT UNE IMAGE DE PROFIL AU DECK SI CELUI-CI N'EN POSSEDE PAS 
-                if (empty($_POST['picture'])) $_POST['picture'] = './Public/img/appareil_photo.jpg';
+                if (empty($_POST['picture'])  ||  strlen($_POST['picture']) >  255) 
+                {
+                    $_POST['picture'] = './Public/img/appareil_photo.jpg';
+                }
 
                 // INSERTION DU DECK DANS LA BDD
                 new_deck_INSERT($_POST['title'], $_POST['description'], $_SESSION['id'], $_POST['picture'], $_POST['categorie']);
@@ -122,7 +124,7 @@
                 require(dirname(__FILE__).'/../Public/js/empty_form.js');
                 exit;
             }
-        }
+    
 
 
         // CREATIONS DE QUESTIONS SUR LE DECK
@@ -135,9 +137,9 @@
         new_question_INSERT($_POST['question'], $_SESSION['deck_id']);
         
         // AJOUTE LA NOUVELLE REPONSE DANS LA BDD
-        $req = id_question_SELECT($_POST['question']);
-        $id_question = $req->fetchAll();
-        new_answer_INSERT($_POST['answer'], $id_question[0]['id'] );
+        $id_question = id_question_SELECT($_POST['question']);
+        
+        new_answer_INSERT($_POST['answer'], $id_question['id'] );
 
         // AJOUTE LA CARTE DANS LA TABLE SUCCES_CARDS DANS BDD
         $req = verso_id_SELECT($_POST['answer']);

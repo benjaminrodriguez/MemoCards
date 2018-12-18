@@ -154,13 +154,15 @@
       .suivant {
         position: absolute;
         top:80%;
-        left: 105%;
+        left: 47%;
+        
+      
       }
 
       .precedent {
         position: absolute;
         top:80%;
-        left: -75%;
+        left: 12%;
       }
 
       .btn-oval:before {
