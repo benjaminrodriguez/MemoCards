@@ -16,7 +16,7 @@
         && $common_password == false
         && $date_naissance == true
         ){
-            
+            $_POST['email'] = strtolower($_POST['email']);
             // APPEL DE LA FONCTION SQL INSCRIPTION
             inscription_INSERT($_POST['username'], $passhache, $_POST['date_de_naissance'],
                                 'membre', $_POST['sex'], $_POST['region'],

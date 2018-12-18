@@ -1,4 +1,3 @@
-minuscule adresse mail
 meme police inscirption
 le compte est pas delete lors de la suppression de compte
 loisirs su inventaire de deck
