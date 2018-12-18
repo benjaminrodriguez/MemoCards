@@ -1,6 +1,6 @@
 <?php
     // ----------------------------------------------------------------------------
-
+    //mise a jour des données de la carte
     function carte_UPDATE($id,$ply,$chain,$lv,$win)
     {
         $bdd = bdd();
@@ -22,6 +22,23 @@
             ':win' => $win,
             ':lvcard' => $lv);
 
+        try {
+            $stmt = $bdd->prepare($query);
+            $stmt->execute($query_params);
+        } catch(Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+
+    // ----------------------------------------------------------------------------
+
+    function unsub_subject_UPDATE($id)
+    {
+        $bdd = bdd();
+        $query = "UPDATE `subject` SET `user_id`=NULL WHERE user_id = :id";
+
+        $query_params = array(
+            ':id' => $id);
         try {
             $stmt = $bdd->prepare($query);
             $stmt->execute($query_params);

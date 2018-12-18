@@ -11,10 +11,23 @@
     {
         // RECUPERE LES SUJETS DU FORUM
         $req = subjects_SELECT();
+        $name = [];
+        $type = [];
         $subjects_views = $req->fetchAll();
+        //var_dump($subjects_views);
       
         foreach($subjects_views as $key => $value)
         {
+            if ($value['user_id'] > 0) {
+                //echo $value['user_id'];
+                $tempname = recup_name_SELECT($value['user_id'], $value['id']);
+                $name[$key] = $tempname[0]['username'];
+                $type[$key] = $tempname[0]['status'];
+            } else {
+                $name[$key] = "Compte Supprimé";
+                $type[$key] = "Inconnu";
+            }
+            //var_dump($name);
             $count = count_message_SELECT($subjects_views[$key][0]);
             $subjects_views[$key]['count_message'] = $count['count_message'];
         }

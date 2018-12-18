@@ -1,6 +1,6 @@
 <?php
 $id = $_SESSION['id'];
-
+//var_dump($_SESSION);
 $listiddeck = deckunsub_SELECT($id);
 //var_dump($listiddeck);
 
@@ -36,7 +36,11 @@ foreach ($listiddeck as $key => $value) {
 }
 //delhobbies
 var_DELETE('hobbies_has_user','user_id',$id);
+
+unsub_subject_UPDATE($id);
 var_DELETE('user','id',$id);
+//echo'dndejnendjendjen';
+
 /*
 succes_rate_unsub_DELETE($id);
 verso_unsub_DELETE($id);
