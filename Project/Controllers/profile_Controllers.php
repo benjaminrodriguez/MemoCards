@@ -63,7 +63,7 @@
                 }
                 else 
                 {
-                    require(dirname(__FILE__).'/../Public/js/invalide_password.js');
+                    require(dirname(__FILE__).'/../Public/js/length_username.js');
                     exit; 
                 }
             }

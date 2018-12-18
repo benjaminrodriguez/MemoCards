@@ -42,7 +42,7 @@ document.getElementById("email").addEventListener("input", function (e) {
 
 
 //CONTROLE MOT DE PASSE
-function password() {
+/*function password() {
     var mdp = document.getElementById("mdp").value;
     var confirm = document.getElementById("mdp2").value;
     var validitePass = "";
@@ -57,4 +57,4 @@ function password() {
     var aidePass = document.getElementById("aidePass");
     document.getElementById("aidePass").textContent = validitePass;
     aidePassElt.style.color = couleurMsg;
-}
+} */

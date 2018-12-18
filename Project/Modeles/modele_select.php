@@ -429,12 +429,14 @@
     {
         //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
         $bdd = bdd();
-        $req = $bdd->prepare('  SELECT id
+        $req = $bdd->prepare('  SELECT recto.id
                                 FROM recto
-                                WHERE recto.question_cards = ?
+                                ORDER BY recto.id DESC
+                                LIMIT 1
                             ');
         $req->execute(array($question_cards));
-        return $req;
+        $id_question = $req->fetch();
+        return $id_question;
     }
 
     //--------------------------------------------------------------------------------

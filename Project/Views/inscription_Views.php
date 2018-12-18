@@ -45,7 +45,7 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="username"></label>
-                <input type="text" class="champ" id="username" name="username" placeholder="Username" required
+                <input type="text" class="champ" id="username" name="username" placeholder="Pseudo" required
                 title="L'username doit faitre en 4 et 25 caractères" />
                 <div class="invalid-feedback">
                   Entrez votre username 
@@ -65,6 +65,7 @@
               </div>
             </div>
 
+<!--
               <div class="col-md-6 mb-3">
                <label for="mdp2"></label>
                 <input type="password" class="champ" id="mdp2" name="confirmPassword" placeholder="Confirmation de mot de passe"required
@@ -74,6 +75,8 @@
                   Confirmer votre mot de passe.
                 </div>
               </div>
+-->
+
             <div class="mb-3">
               <label for="email"></label>
               <div class="input-group">

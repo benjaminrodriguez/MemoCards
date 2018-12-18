@@ -14,7 +14,18 @@
     </div>
 
 
-    <?php if(intval($_GET['card']) < count($training)) 
+    <div class="back">
+       <div class="back-content middle">
+            <h1> <u> Réponse </u></h1>  <br><br>
+            <h1> <?php echo $training[(intval($_GET['card'])-1)]['answer_cards']; ?> </h1> 
+
+        </div>
+    </div>
+
+
+</div>
+
+<?php if(intval($_GET['card']) < count($training)) 
     { ?>
         <div class="suivant">
             <a href="index.php?page=inventory&training=18&card=<?php echo (intval($_GET['card'])+1); ?>" class="btn btn-oval">Suivant</a>
@@ -30,20 +41,6 @@
         </div>
     <?php
     } ?>
-
-
-    <div class="back">
-       <div class="back-content middle">
-            <h1> <u> Réponse </u></h1>  <br><br>
-            <h1> <?php echo $training[(intval($_GET['card'])-1)]['answer_cards']; ?> </h1> 
-
-        </div>
-    </div>
-
-       
-    
-
-</div>
 
 
 
