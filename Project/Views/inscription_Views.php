@@ -45,7 +45,7 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="username"></label>
-                <input type="text" class="champ" id="username" name="username" placeholder="Username" required
+                <input type="text" class="champ" id="username" name="username" placeholder="Pseudo" required
                 title="L'username doit faitre en 4 et 25 caractères" />
                 <div class="invalid-feedback">
                   Entrez votre username 
