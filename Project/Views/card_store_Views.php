@@ -168,7 +168,7 @@
                 <div class="input-append">
                     <form action="./index.php?page='store'&query='<?php $_GET['query'] ?>'" method="GET">
                         <!-- <input type="text"  value="Search / Rechercher..." onfocus="if(this.value=='Search / Rechercher...')this.value=''" onblur="if(this.value=='')this.value='Search / Rechercher...'" autocomplete="off"/> -->
-                        <input name="query" id="appendedInputButton" size="16" type="text" placeholder="Chercher"><button class="btn" type="button"><i class="icon-search"></i></button>
+                        <input name="query" id="appendedInputButton" size="16" type="text" placeholder="Chercher" onkeyup="myFunction()"><button class="btn" type="button"><i class="icon-search"></i></button>
                     </form>
                 </div>
             </section>
