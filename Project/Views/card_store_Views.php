@@ -79,6 +79,10 @@
                 
         
 </form>
+    <form action="" method="GET">
+        <fieldset>
+        </fieldset>
+    </form>
             <!--</li>
              <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="gallery-4col.htm">Mon Inventaire <b class="caret"></b></a>
@@ -162,8 +166,9 @@
             <!--Search-->
             <section>
                 <div class="input-append">
-                    <form action="#">
-                        <input id="appendedInputButton" size="16" type="text" placeholder="Chercher"><button class="btn" type="button"><i class="icon-search"></i></button>
+                    <form action="./index.php?page='store'&query='<?php $_GET['query'] ?>'" method="GET">
+                        <!-- <input type="text"  value="Search / Rechercher..." onfocus="if(this.value=='Search / Rechercher...')this.value=''" onblur="if(this.value=='')this.value='Search / Rechercher...'" autocomplete="off"/> -->
+                        <input name="query" id="appendedInputButton" size="16" type="text" placeholder="Chercher"><button class="btn" type="button"><i class="icon-search"></i></button>
                     </form>
                 </div>
             </section>
@@ -180,7 +185,7 @@
                     <h5><li><a href="index.php?page=inventory&action=create_deck"><i class="icon-plus-sign"></i>Créer un nouveau deck</a></li>
                     <li><a href="index.php?page=inventory&action=create_deck"><i class="icon-wrench"></i>Modifier paramètres du deck</a></li></h5>
             <?php   
-                }else if ($_GET['page'] == 'forum') { ?>
+                } else if ($_GET['page'] == 'forum') { ?>
                     <h5><li><a href="index.php?page=forum&choix_forum=creer_sujet"><i class="icon-plus-sign"></i>Créer un nouveau sujet</a></li> </h5>
             <?php
                 } ?>

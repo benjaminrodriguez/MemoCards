@@ -805,5 +805,22 @@
         $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $qu;
     }
+
+    //--------------------------------------------------------------------------------
+
+    function getSearch($name)
+{
+    $bdd = bdd();
+    $res = "%" . $name . "%";
+    $req = $db->prepare('SELECT deck.name AS "Nom deck", categorie.name AS "Catégorie", hashtag.name AS "Hashtag"
+                        FROM deck
+                        INNER JOIN categorie ON categorie.id=deck.categorie_id
+                        INNER JOIN hashtag_has_deck ON deck.id=hashtag_has_deck.deck_id
+                        INNER JOIN hashtag ON hashtag.id=hashtag_has_deck.hashtag_id
+                        WHERE deck.name = ? OR categorie.name= ? OR hashtag.name= ?;');
+    $req->execute(array($name, $res, $res));
+    $req = $req->fetchAll();
+    return $req;
+}
 ?>
 
