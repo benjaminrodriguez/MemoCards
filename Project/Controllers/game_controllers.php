@@ -50,6 +50,7 @@ else
         $_SESSION['cptall'] = nb_card_SELECT($_SESSION['deck']);
         $_SESSION['cptall'] = intval($_SESSION['cptall'][0]['count']);
     }
+   
 
     if (isset($_POST['answer'])) 
     {
@@ -59,7 +60,6 @@ else
         $_SESSION['listend'][0][] = $_POST['answer'];
         $_SESSION['listend'][1][] = $_SESSION['iddelaquestiondavant'];
 
-        //$listend[$_SESSION['iddelaquestiondavant']] = $_POST['answer'];
         
         //GET THE INFO ABOUT THE CARD
         $getquest = carte_recup_SELECT($_SESSION['iddelaquestiondavant']);
@@ -93,15 +93,32 @@ else
         }
         
         //UPDATE THEM
+        unset($_POST['answer']);
+        //var_dump($_POST);
         carte_UPDATE($getquest[0]['id'], $played_card, $chain, $level_card,$win);
+        header('Location: index.php?page=game&deck='.$_SESSION['deck']);
+        exit();
     }
+    //var_dump($_SESSION['listend']);
 
     if (isset($_POST['fin']))
     {
         $_SESSION['cpt'] = $_SESSION['cptall'] + 1;
     }
 
-    if ($_SESSION['cpt'] <= intval($_SESSION['cptall']))
+    
+    $testifrep = true;
+    
+    if (isset($_SESSION['listend'][1])) {
+        $testifrep = array_search( $_SESSION['iddelaquestiondavant'], $_SESSION['listend'][1]);
+        if ($testifrep !== false) {
+            $testifrep = true; //lutilisateur a repondu a la question d'id stocké
+            unset($_SESSION['iddelaquestiondavant']);
+        }
+    } 
+    //var_dump($testifrep);
+
+    if ($_SESSION['cpt'] <= intval($_SESSION['cptall']) && $testifrep === true && !isset($_SESSION['iddelaquestiondavant']))
     {
         //CHANGE THE WAY TO SELECT A CARD
         $choice = rand(0, 100);
@@ -132,6 +149,7 @@ else
         }
         //var_dump($questions);
 
+
         //SAVE THE ID OF THE CHOSEN QUESTION;
         $IDDELAQUESTION = $questions[0]['id'];
         $_SESSION['list'][]= $IDDELAQUESTION;
@@ -145,12 +163,17 @@ else
         $q = carte_quest_SELECT($IDDELAQUESTION);
 
         //require(dirname(__FILE__).'./Views/affichage_quest.php');
+        
         require("./Views/affichage_quest.php");
-
-
         
         //$_SESSION['list'] = $list;
         $_SESSION['iddelaquestiondavant'] = $IDDELAQUESTION;
+    }
+
+    else if ($_SESSION['cpt'] <= intval($_SESSION['cptall'])) {
+        $ans = verso_recup_SELECT($_SESSION['iddelaquestiondavant']);
+        $q = carte_quest_SELECT($_SESSION['iddelaquestiondavant']);
+        require("./Views/affichage_quest.php");
     }
     else
     {
