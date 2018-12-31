@@ -152,6 +152,30 @@
 
     // ----------------------------------------------------------------------------
 
+    function recup_name_SELECT($id, $id2)
+    {
+        $bdd = bdd();
+        $query = "SELECT username, user.status
+        FROM user
+        JOIN subject ON subject.user_id = user.id AND subject.user_id = :id AND subject.id = :id2;";
+        //unset($query_params);
+        $query_params = array(
+            ':id' => $id,
+            'id2' => $id2
+            );
+
+        try {
+            $stmt = $bdd->prepare($query);
+            $stmt->execute($query_params);
+        } catch(Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+        $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $qu;
+    }
+
+    // ----------------------------------------------------------------------------
+
     function subjects_SELECT()
     {
         // AFFICHAGE DE TOUS LES SUJETS LORS DE L'ARRIVEE SUT LE FORUM
@@ -160,7 +184,6 @@
         $bdd = bdd();
         $req = $bdd->query('SELECT *
                                 FROM subject
-                                INNER JOIN user ON subject.user_id=user.id
                                 ORDER BY date_posted DESC;
                             ');
         $req->execute(array());
@@ -782,5 +805,22 @@
         $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $qu;
     }
+
+    //--------------------------------------------------------------------------------
+
+    function getSearch($name)
+{
+    $bdd = bdd();
+    $res = "%" . $name . "%";
+    $req = $db->prepare('SELECT deck.name AS "Nom deck", categorie.name AS "Catégorie", hashtag.name AS "Hashtag"
+                        FROM deck
+                        INNER JOIN categorie ON categorie.id=deck.categorie_id
+                        INNER JOIN hashtag_has_deck ON deck.id=hashtag_has_deck.deck_id
+                        INNER JOIN hashtag ON hashtag.id=hashtag_has_deck.hashtag_id
+                        WHERE deck.name = ? OR categorie.name= ? OR hashtag.name= ?;');
+    $req->execute(array($name, $res, $res));
+    $req = $req->fetchAll();
+    return $req;
+}
 ?>
 

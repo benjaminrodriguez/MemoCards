@@ -216,6 +216,10 @@ if (isset($_SESSION['deck'])) {
     {
         unset($_SESSION['list']);
     }
+    if (isset($_SESSION['listend']))
+    {
+        unset($_SESSION['listend']);
+    }
     if (isset($_SESSION['cpt']))
     {
         unset($_SESSION['cpt']);

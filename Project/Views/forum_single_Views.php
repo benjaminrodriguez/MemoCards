@@ -79,8 +79,27 @@
                     <?php
                         }
                     ?>
+                    <!-- NEED CHECK SAMI DELETE SUBJECT ADMIN FORUM -->
+                    <?php if ($print_message[$key]['status'] == $_SESSION['status']) { ?>
+                                    ||&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <i class="icon-trash"></i><a href="#myModal<?php echo $key; ?>"  data-toggle="modal">Supprimer</a></span>
+                                    <?php ?>
+                                        <!-- Modal -->
+                                        <div class="modal hide fade" id="myModal<?php echo $key; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h5 id="myModalLabel">Demande de confirmation</h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Êtes-vous sûr de vouloir supprimer votre message ?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
+                                                <a href="index.php?page=forum&subject_id=<?php echo $_GET['subject_id'];  ?>&delete=<?php echo $print_message[$key][0]; ?>" class="btn btn-inverse">Supprimer </a>
+                                            </div>
+                                        </div>
 
-
+                                <?php } ?>
 
                 <!--
                     <li>

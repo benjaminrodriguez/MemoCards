@@ -8,7 +8,7 @@
                     <div class="span2 blog-style-2">
                         <h4 class="title-bg"><?php echo $subjects_views[$key]['date_posted'] ?></h4>
                         <ul class="post-data">
-                            <li><i class="icon-user"></i> <a href="#"><?php echo $subjects_views[$key]['status'].' : '.$subjects_views[$key]['username'] ; ?></a></li>
+                            <li><i class="icon-user"></i> <a href="#"><?php echo $type[$key].' : '.$name[$key]; ?></a></li>
                             <li><i class="icon-comment"></i> <a href="#"><?php echo $subjects_views[$key]['count_message']; ?> Commentaires</a></li>
                             <li><i class="icon-tags"></i> <a href="#">photoshop</a>, <a href="#">tutorials</a>, <a href="#">illustration</a>, <a href="#">events</a></li>
                         </ul>

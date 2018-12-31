@@ -50,6 +50,7 @@
                     <h1> <?php if (isset($section)) echo $section; ?></h1>
                 </div>
                 
+
                 <!-- Main Navigation
                 ================================================== -->
                 <div class="span7 navigation">
@@ -96,6 +97,38 @@
                     <li><a href="index.php?page=store">Cards Store</a></li>
 
                     <li><a href="index.php?page=dc">Déconnexion</a></li>
+
+<!--
+</form>
+    <form action="" method="GET">
+        <fieldset>
+        </fieldset>
+    </form>
+            </li>
+             <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="gallery-4col.htm">Mon Inventaire <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="gallery-3col.htm">Gallery 3 Column</a></li>
+                    <li><a href="gallery-4col.htm">Gallery 4 Column</a></li>
+                    <li><a href="gallery-6col.htm">Gallery 6 Column</a></li>
+                    <li><a href="gallery-4col-circle.htm">Gallery 4 Round</a></li>
+                    <li><a href="gallery-single.htm">Gallery Single</a></li>
+                </ul>
+             </li>
+
+            <li><a href="index.php?page=inventory">Mon inventaire</a></li>
+
+             <li><a href="index.php?page=forum">Forum</a></li>
+
+             <li><a href="index.php?page=store">Cards Store</a></li>
+
+             <li><a href="index.php?page=dc">Déconnexion</a></li>
+
+            </ul>
+           
+            </div>
+-->
+
 
                     </ul>
                 
@@ -158,8 +191,9 @@
             <!--Search-->
             <section>
                 <div class="input-append">
-                    <form action="#">
-                        <input id="appendedInputButton" size="16" type="text" placeholder="Chercher"><button class="btn" type="button"><i class="icon-search"></i></button>
+                    <form action="./index.php?page='store'&query='<?php $_GET['query'] ?>'" method="GET">
+                        <!-- <input type="text"  value="Search / Rechercher..." onfocus="if(this.value=='Search / Rechercher...')this.value=''" onblur="if(this.value=='')this.value='Search / Rechercher...'" autocomplete="off"/> -->
+                        <input name="query" id="appendedInputButton" size="16" type="text" placeholder="Chercher" onkeyup="myFunction()"><button class="btn" type="button"><i class="icon-search"></i></button>
                     </form>
                 </div>
             </section>
@@ -176,7 +210,7 @@
                     <h5><li><a href="index.php?page=inventory&action=create_deck"><i class="icon-plus-sign"></i>Créer un nouveau deck</a></li>
                     <li><a href="index.php?page=inventory&action=create_deck"><i class="icon-wrench"></i>Modifier paramètres du deck</a></li></h5>
             <?php   
-                }else if ($_GET['page'] == 'forum') { ?>
+                } else if ($_GET['page'] == 'forum') { ?>
                     <h5><li><a href="index.php?page=forum&choix_forum=creer_sujet"><i class="icon-plus-sign"></i>Créer un nouveau sujet</a></li> </h5>
             <?php
                 } ?>
