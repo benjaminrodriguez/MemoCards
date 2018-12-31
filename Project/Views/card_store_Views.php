@@ -36,107 +36,103 @@
 
 <body>
 	<div class="color-bar-1"></div>
-    <div class="color-bar-2 color-bg"></div>
-    
-    <div class="container main-container">
-    
-      <div class="row header"><!-- Begin Header -->
-      
-        <!-- Logo
-        ================================================== -->
-        <div class="span5 logo">
-            <a href="index.php"><img src="Public/img/memocards_black.png" alt="" /></a>
-            <br><br><br>
-            <h1> <?php if (isset($section)) echo $section; ?></h1>
-        </div>
+        <div class="color-bar-2 color-bg"></div>
         
-        <!-- Main Navigation
-        ================================================== -->
-        <div class="span7 navigation">
-            <div class="navbar hidden-phone">
+            <div class="container main-container">
+        
+            <div class="row header"><!-- Begin Header -->
             
-            <ul class="nav">
-
-           <li><a href="index.php">Accueil</a></li>
-
-            <!--<li class="dropdown active">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="index.php">Home <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="index.htm">Full Page</a></li>
-                    <li><a href="index-gallery.htm">Gallery Only</a></li>
-                    <li><a href="index-slider.htm">Slider Only</a></li>
-                </ul>
-            </li>-->
-
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="page-full-width.htm">Mon Profil<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="index.php?page=profile">Mes informations personnelles</a></li>
-                    <li><a href="index.php?page=profile">Mes hobbies</a></li>
-                    <li><a href="index.php?page=profile">Voir mes statistiques</a></li>
-                    <li><a href="index.php?page=profile">Déconnexion</a></li>
-                </ul>
-                
-        
-</form>
-            <!--</li>
-             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="gallery-4col.htm">Mon Inventaire <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="gallery-3col.htm">Gallery 3 Column</a></li>
-                    <li><a href="gallery-4col.htm">Gallery 4 Column</a></li>
-                    <li><a href="gallery-6col.htm">Gallery 6 Column</a></li>
-                    <li><a href="gallery-4col-circle.htm">Gallery 4 Round</a></li>
-                    <li><a href="gallery-single.htm">Gallery Single</a></li>
-                </ul>
-             </li>-->
-
-            <li><a href="index.php?page=inventory">Mon inventaire</a></li>
-
-             <li><a href="index.php?page=forum">Forum</a></li>
-
-             <li><a href="index.php?page=store">Cards Store</a></li>
-
-             <li><a href="index.php?page=dc">Déconnexion</a></li>
-
-            </ul>
-           
-            </div>
-
-            <!-- Mobile Nav
-            ================================================== -->
-            <form action="#" id="mobile-nav" class="visible-phone">
-                <div class="mobile-nav-select">
-                <select onchange="window.open(this.options[this.selectedIndex].value,'_top')">
-                    <option value="">Navigate...</option>
-                    <option value="index.htm">Home</option>
-                        <option value="index.htm">- Full Page</option>
-                        <option value="index-gallery.htm">- Gallery Only</option>
-                        <option value="index-slider.htm">- Slider Only</option>
-                    <option value="features.htm">Features</option>
-                    <option value="page-full-width.htm">Pages</option>
-                        <option value="page-full-width.htm">- Full Width</option>
-                        <option value="page-right-sidebar.htm">- Right Sidebar</option>
-                        <option value="page-left-sidebar.htm">- Left Sidebar</option>
-                        <option value="page-double-sidebar.htm">- Double Sidebar</option>
-                    <option value="gallery-4col.htm">Gallery</option>
-                        <option value="gallery-3col.htm">- 3 Column</option>
-                        <option value="gallery-4col.htm">- 4 Column</option>
-                        <option value="gallery-6col.htm">- 6 Column</option>
-                        <option value="gallery-4col-circle.htm">- Gallery 4 Col Round</option>
-                        <option value="gallery-single.htm">- Gallery Single</option>
-                    <option value="blog-style1.htm">Blog</option>
-                        <option value="blog-style1.htm">- Blog Style 1</option>
-                        <option value="blog-style2.htm">- Blog Style 2</option>
-                        <option value="blog-style3.htm">- Blog Style 3</option>
-                        <option value="blog-style4.htm">- Blog Style 4</option>
-                        <option value="blog-single.htm">- Blog Single</option>
-                    <option value="page-contact.htm">Contact</option>
-                </select>
+                <!-- Logo
+                ================================================== -->
+                <div class="span4 logo">
+                    <a href="index.php"><img src="Public/img/memocards_black.png" alt="" /></a>
+                    <br><br><br>
+                    <h1> <?php if (isset($section)) echo $section; ?></h1>
                 </div>
-                </form>
                 
-        </div>
+                <!-- Main Navigation
+                ================================================== -->
+                <div class="span7 navigation">
+                    <div class="navbar hidden-phone">
+                    
+                    <ul class="nav">
+
+                <li><a href="index.php">Accueil</a></li>
+
+                    <!--<li class="dropdown active">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="index.php">Home <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.htm">Full Page</a></li>
+                            <li><a href="index-gallery.htm">Gallery Only</a></li>
+                            <li><a href="index-slider.htm">Slider Only</a></li>
+                        </ul>
+                    </li>-->
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="page-full-width.htm">Mon Profil<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.php?page=profile">Mes informations personnelles</a></li>
+                            <li><a href="index.php?page=profile">Mes hobbies</a></li>
+                            <li><a href="index.php?page=profile">Voir mes statistiques</a></li>
+                            <li><a href="index.php?page=profile">Déconnexion</a></li>
+                        </ul>          
+                        
+                    </li>
+                    <!--<li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="gallery-4col.htm">Mon Inventaire <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="gallery-3col.htm">Gallery 3 Column</a></li>
+                            <li><a href="gallery-4col.htm">Gallery 4 Column</a></li>
+                            <li><a href="gallery-6col.htm">Gallery 6 Column</a></li>
+                            <li><a href="gallery-4col-circle.htm">Gallery 4 Round</a></li>
+                            <li><a href="gallery-single.htm">Gallery Single</a></li>
+                        </ul>
+                    </li>-->
+
+                    <li><a href="index.php?page=inventory">Mon inventaire</a></li>
+
+                    <li><a href="index.php?page=forum">Forum</a></li>
+
+                    <li><a href="index.php?page=store">Cards Store</a></li>
+
+                    <li><a href="index.php?page=dc">Déconnexion</a></li>
+
+                    </ul>
+                
+                    </div>
+                        <!-- Mobile Nav
+                        ================================================== -->
+                        <form action="#" id="mobile-nav" class="visible-phone">
+                            <div class="mobile-nav-select">
+                                <select onchange="window.open(this.options[this.selectedIndex].value,'_top')">
+                                    <option value="">Navigate...</option>
+                                    <option value="index.htm">Home</option>
+                                        <option value="index.htm">- Full Page</option>
+                                        <option value="index-gallery.htm">- Gallery Only</option>
+                                        <option value="index-slider.htm">- Slider Only</option>
+                                    <option value="features.htm">Features</option>
+                                    <option value="page-full-width.htm">Pages</option>
+                                        <option value="page-full-width.htm">- Full Width</option>
+                                        <option value="page-right-sidebar.htm">- Right Sidebar</option>
+                                        <option value="page-left-sidebar.htm">- Left Sidebar</option>
+                                        <option value="page-double-sidebar.htm">- Double Sidebar</option>
+                                    <option value="gallery-4col.htm">Gallery</option>
+                                        <option value="gallery-3col.htm">- 3 Column</option>
+                                        <option value="gallery-4col.htm">- 4 Column</option>
+                                        <option value="gallery-6col.htm">- 6 Column</option>
+                                        <option value="gallery-4col-circle.htm">- Gallery 4 Col Round</option>
+                                        <option value="gallery-single.htm">- Gallery Single</option>
+                                    <option value="blog-style1.htm">Blog</option>
+                                        <option value="blog-style1.htm">- Blog Style 1</option>
+                                        <option value="blog-style2.htm">- Blog Style 2</option>
+                                        <option value="blog-style3.htm">- Blog Style 3</option>
+                                        <option value="blog-style4.htm">- Blog Style 4</option>
+                                        <option value="blog-single.htm">- Blog Single</option>
+                                    <option value="page-contact.htm">Contact</option>
+                                </select>
+                            </div>
+                        </form>   
+                </div>
 
       </div><!-- End Header -->
      

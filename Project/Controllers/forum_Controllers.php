@@ -125,7 +125,7 @@
 
     if (isset($_POST['new_message']))
     {
-        $_POST['new_message'] = str_replace(' ','',$_POST['new_message']);
+        $_POST['new_message'] = trim($_POST['new_message']);
         if (!empty($_POST['new_message'])) 
         {
             write_topic_INSERT($_POST['new_message'], $_SESSION['id'], $_GET['subject_id']);
