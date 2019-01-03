@@ -51,7 +51,6 @@ CREATE TABLE IF NOT EXISTS `comments_deck` (
   `content` longtext NOT NULL,
   `autor_id` int(11) NOT NULL,
   `deck_id` int(11) NOT NULL,
-  `mark` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_comments_deck_deck1_idx` (`deck_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -71,6 +70,7 @@ CREATE TABLE IF NOT EXISTS `deck` (
   `status` varchar(10) NOT NULL,
   `picture` varchar(255) NOT NULL,
   `date_creation` date NOT NULL,
+  `mark` int(11) DEFAULT NULL,
   `categorie_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_deck_categorie1_idx` (`categorie_id`)
