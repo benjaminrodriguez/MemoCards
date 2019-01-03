@@ -179,7 +179,7 @@
                     <label for="voyages">Voyages</label><br>
                         
                 <input type="hidden" name="menu" value="hobbies">
-                <button type="submit"> Hobbies </button>
+                <button type="submit"> Mettre à jour mes hobbies </button>
 
             </form>
 <?php 

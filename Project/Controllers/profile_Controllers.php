@@ -185,13 +185,13 @@
     }
     //else $error = 'Un problème est survenu lors du changement de l\'avatar';
         
-
-    if (isset($_POST['hobbies'])) 
+    // CHANGEMENT HOBBIES
+    if (isset($_POST['hobbies']) && isset($hobby)) 
     {
-        inscription_insert_hobbies_one(htmlspecialchars($_POST['hobbies']));
-        inscription_insert_hobbies_two($_SESSION['id']);
+        inscription_select_hobbies_one(htmlspecialchars($_POST['hobbies']));
+        inscription_insert_hobbies_two($_SESSION['id'], $hobby);
         //require(dirname(__FILE__).'/../Public/js/create_account.js');
-        exit;
+        //exit;
     }
 
 

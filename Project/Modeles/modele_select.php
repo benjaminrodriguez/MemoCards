@@ -207,6 +207,23 @@
         return $message;
     }
 
+    // ----------------------------------------------------------------------------
+
+    function inscription_select_hobbies_one ($hobby)
+    {
+        $bdd = bdd();
+        // INSCRIPTION HOBBY
+        $inscription = $bdd->prepare(
+                                    'SELECT id
+                                    FROM hobbies
+                                    WHERE hobby = ?
+                                    LIMIT 1;
+                                    ');
+        $inscription->execute(array($hobby));
+        $hobby = $inscription->fetchAll();
+        return $hobby;
+    }
+
     //-------------------------------------------------------------------------------
 
     function messages_autor_SELECT($subject_num, $message_num)

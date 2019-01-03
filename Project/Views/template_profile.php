@@ -171,8 +171,9 @@
                 <li><a href="index.php?page=profile&menu=username"><i class="icon-plus-sign"></i>Modifier votre Pseudo</a></li>
                 <li><a href="index.php?page=profile&menu=password"><i class="icon-plus-sign"></i>Modifier votre mot de passe</a></li>
                 <li><a href="index.php?page=profile&menu=picture"><i class="icon-plus-sign"></i>Modifier votre photo de profil</a></li>
+                
+                <li><a href="index.php?page=profile&menu=hobbies"><i class="icon-plus-sign"></i>Modifier vos hobbies</a></li>
                 <!--
-                <li><a href="index.php?page=profile&menu=picture"><i class="icon-plus-sign"></i>Modifier vos hobbies</a></li>
                 <li><a href="index.php?page=profile&menu=username"><i class="icon-plus-sign"></i>Modifier vos informations personnels</a></li>
                 -->
                 <li><a href="index.php?page=profile&menu=unsub"><i class="icon-plus-sign"></i>Supprimer son compte</a></li>
