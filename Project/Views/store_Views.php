@@ -29,7 +29,14 @@
                             </span>
                         </span>
                         <a href="gallery-single.htm"><img src="<?php echo $value['picture'];?>" style="width:270px;height:220px;"alt="Gallery"></a>
-                        <span class="project-details"><a href="gallery-single.htm"><?php echo $value['name'];?></a><?php echo $value['mark'];?> <i class="icon-star"></i></span>
+                        <span class="project-details"><a href="gallery-single.htm"><?php echo $value['name'];?></a><?php 
+                        if ($value['grade'] !== NULL) {
+                            echo $value['grade'].'<i class="icon-star"></i></span>';
+                        }
+                        else {
+                            echo "Le deck n'a pas de note";
+                        }
+                        ?>
                     </li><li class="span3 gallery-item" data-id="id-2" data-type="<?php echo $value['catname'];?>">
 
                     <?php

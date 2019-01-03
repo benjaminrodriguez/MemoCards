@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `deck` (
   `status` varchar(10) NOT NULL,
   `picture` varchar(255) NOT NULL,
   `date_creation` date NOT NULL,
-  `mark` int(11) DEFAULT NULL,
+  `grade` int(11) DEFAULT NULL,
   `categorie_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_deck_categorie1_idx` (`categorie_id`)

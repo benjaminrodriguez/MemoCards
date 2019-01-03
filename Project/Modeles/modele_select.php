@@ -829,7 +829,7 @@ function storedeck_SELECT()
     {
        
         $bdd = bdd();
-        $query = "SELECT deck.name, deck.picture, categorie.name AS catname, comments_deck.mark FROM `deck` JOIN categorie ON categorie.id = deck.categorie_id AND deck.status LIKE 'public' JOIN comments_deck ON comments_deck.deck_id = deck.id;";
+        $query = "SELECT deck.name, deck.picture, categorie.name AS catname, deck.grade FROM `deck` JOIN categorie ON categorie.id = deck.categorie_id AND deck.status LIKE 'public';";
         
         $query_params = array();
         
