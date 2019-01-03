@@ -46,7 +46,7 @@ INSERT INTO `user` (`id`, `username`, `password`, `profile_picture`, `status`, `
 
 INSERT INTO `categorie` (`id`, `name`, `description`) VALUES
 (1, 'Sports', ''),
-(2, 'Culture générale', ''),
+(2, 'Culture', ''),
 (3, 'Langue', ''),
 (4, 'Histoire', ''),
 (5, 'Géographie', ''),

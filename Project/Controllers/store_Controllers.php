@@ -9,7 +9,8 @@ if (isset($GET['query']))
 }
 
 $arraydeckstore = storedeck_SELECT();
-var_dump($arraydeckstore);
+$arraycat = catdeck_SELECT();
+//var_dump($arraydeckstore);
 
 require(dirname(__FILE__).'/../Views/store_Views.php');
 include('./Views/template.php');

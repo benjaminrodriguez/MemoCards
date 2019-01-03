@@ -185,19 +185,24 @@
         </div>   
 
         <!-- Blog Sidebar
-        ================================================== --> 
-        <div class="span4 sidebar">
+            ================================================== --> 
+            <?php 
+            if ($_GET['page'] !== 'store') {
+                ?>
+                <div class="span4 sidebar">
 
-            <!--Search-->
-            <section>
-                <div class="input-append">
-                    <form action="#">
-                        <input id="appendedInputButton" size="16" type="text" placeholder="Chercher"><button class="btn" type="button"><i class="icon-search"></i></button>
-                    </form>
-                </div>
-            </section>
+                    <!--Search-->
+                    <section>
+                        <div class="input-append">
+                            <form action="#">
+                                <input id="appendedInputButton" size="16" type="text" placeholder="Chercher"><button class="btn" type="button"><i class="icon-search"></i></button>
+                            </form>
+                        </div>
+                    </section>
+                <?php
+            }
 
-        <?php
+        
             if(isset($_GET['page']) && ($_GET['page'] == 'inventory') || $_GET['page'] == 'forum') { ?>
 
                 <!--Categories-->
