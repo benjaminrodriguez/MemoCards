@@ -141,5 +141,24 @@
                                 LIMIT 1
                              ');
          $req->execute(array('<i> ( Message supprimé ) </i>', $id_message));
+
+     }
+
+     //-------------------------------------------------------------------------------- 
+
+
+     function deck_share_UPDATE($id)
+     {
+         $bdd = bdd();
+         $query = "UPDATE `deck` SET `status` = 'public' WHERE deck.id = :id;";
+ 
+         $query_params = array(
+             ':id' => $id);
+         try {
+             $stmt = $bdd->prepare($query);
+             $stmt->execute($query_params);
+         } catch(Exception $e) {
+             die('Erreur : ' . $e->getMessage());
+         }
      }
 ?>

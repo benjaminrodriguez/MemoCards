@@ -13,6 +13,12 @@
         exit();
     }
 
+    if (isset($_POST['deck_share'])) {
+        deck_share_UPDATE($_POST['deck_share']);
+        header('Location: index.php?page=inventory');
+        exit();
+    }
+
 
     if(isset($_POST['deck_delete']))
     {
