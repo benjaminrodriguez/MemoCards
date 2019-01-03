@@ -822,5 +822,28 @@
     $req = $req->fetchAll();
     return $req;
 }
+
+    //--------------------------------------------------------------------------------
+
+function storedeck_SELECT()
+    {
+       
+        $bdd = bdd();
+        $query = "SELECT deck.name, deck.picture, categorie.name AS catname, comments_deck.mark FROM `deck` JOIN categorie ON categorie.id = deck.categorie_id AND deck.status LIKE 'public' JOIN comments_deck ON comments_deck.deck_id = deck.id;";
+        
+        $query_params = array();
+        
+        try {
+            $stmt = $bdd->prepare($query);
+            $stmt->execute($query_params);
+        } catch(Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+        $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $qu;
+    }
+
+
+
 ?>
 

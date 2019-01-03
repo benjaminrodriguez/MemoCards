@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="Public/css/bootstrap-responsive.css">
 <link rel="stylesheet" href="Public/css/jquery.lightbox-0.5.css">
 <link rel="stylesheet" href="Public/css/custom-styles.css">
-
+<link rel="stylesheet" href="Public/css/flexslider.css">
 <link rel="stylesheet" href="Public/css/styles.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
 
@@ -34,6 +34,10 @@
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script src="Public/js/bootstrap.js"></script>
 <script src="Public/js/jquery.custom.js"></script>
+<script src="Public/js/flexslider.js"></script>
+<script src="Public/js/jquery.quicksand.js"></script>
+<script src="Public/js/jquery.prettyPhoto.js"></script>
+<script src="Public/js/jquery.easing.1.3.js"></script>
 
 
 </head>
@@ -218,28 +222,29 @@
                         <li><a href="#"><i class="icon-plus-sign"></i>News</a></li>-->
                     </ul>
         <?php
-            } ?>
-           
+            } 
+            
 
-
-            <h5 class="title-bg">FORUM : Les sujets les plus populaires</h5>
-            <ul class="popular-posts">
-                <li>
-                    <!--<a href="blog-single.htm"><img src="Public/img/gallery/gallery-img-2-thumb.jpg" alt="Popular Post"></a>-->
-                    <h6><a href="#"><b>Sujet : </b>Lorem ipsum dolor sit amet consectetur adipiscing elit</a></h6>
-                    <em>Posted on 09/01/15</em>
-                </li>
-                <li>
-                    <!--<a href="blog-single.htm"><img src="Public/img/gallery/gallery-img-2-thumb.jpg" alt="Popular Post"></a>-->
-                    <h6><a href="#"><b>Sujet : </b>Nulla iaculis mattis lorem, quis gravida nunc iaculis</a></h6>
-                    <em>Posted on 09/01/15</em>
-                <li>
-                    <!--<a href="blog-single.htm"><img src="Public/img/gallery/gallery-img-2-thumb.jpg" alt="Popular Post"></a>-->
-                    <h6><a href="#"><b>Sujet : </b>Vivamus tincidunt sem eu magna varius elementum maecenas felis</a></h6>
-                    <em>Posted on 09/01/15</em>
-                </li>
-            </ul>
-
+            if ($_GET['page'] !== 'store') {
+                ?>
+                <h5 class="title-bg">FORUM : Les sujets les plus populaires</h5>
+                <ul class="popular-posts">
+                    <li>
+                        <!--<a href="blog-single.htm"><img src="Public/img/gallery/gallery-img-2-thumb.jpg" alt="Popular Post"></a>-->
+                        <h6><a href="#"><b>Sujet : </b>Lorem ipsum dolor sit amet consectetur adipiscing elit</a></h6>
+                        <em>Posted on 09/01/15</em>
+                    </li>
+                    <li>
+                        <!--<a href="blog-single.htm"><img src="Public/img/gallery/gallery-img-2-thumb.jpg" alt="Popular Post"></a>-->
+                        <h6><a href="#"><b>Sujet : </b>Nulla iaculis mattis lorem, quis gravida nunc iaculis</a></h6>
+                        <em>Posted on 09/01/15</em>
+                    <li>
+                        <!--<a href="blog-single.htm"><img src="Public/img/gallery/gallery-img-2-thumb.jpg" alt="Popular Post"></a>-->
+                        <h6><a href="#"><b>Sujet : </b>Vivamus tincidunt sem eu magna varius elementum maecenas felis</a></h6>
+                        <em>Posted on 09/01/15</em>
+                    </li>
+                </ul>
+                
             <!--Tabbed Content
             <h5 class="title-bg">More Info</h5>
             <ul class="nav nav-tabs">
@@ -277,6 +282,8 @@
             <!--Video Widget-->
             <h5 class="title-bg">Une petite musique ?</h5>
             <iframe src="http://player.vimeo.com/video/24496773" width="370" height="208"></iframe>
+            <?php 
+        }?>
         </div>
 
     </div>
