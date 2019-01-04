@@ -223,29 +223,36 @@
                                     </div>
 
 
-                            <!-- ----------------------------------buton supprimer le deck ------------------------------------------>     
-                            <li><i class="icon-share"></i><a href="#myModal2<?php echo $key; ?>"  data-toggle="modal">Partager</a></li>
+                            <!-- ---------------------------------partager ------------------------------------------>    
+                            <?php 
+                            if($_SESSION['id'] == $datas[$key]['autor_id']) {
+                                ?>
+                                <li><i class="icon-share"></i><a href="#myModal2<?php echo $key; ?>"  data-toggle="modal">Partager</a></li>
 
-                                <!-- Modal -->
-                            <div class="modal hide fade" id="myModal2<?php echo $key; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                    <h5 id="myModalLabel">Message de confirmation</h5>
-                                </div>
-                        
-                                <div class="modal-body">
-                                    Êtes-vous sûr  de vouloir partager ce deck ?
-                                </div>
-
+                                    <!-- Modal -->
+                                <div class="modal hide fade" id="myModal2<?php echo $key; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        <h5 id="myModalLabel">Message de confirmation</h5>
+                                    </div>
                             
-                                <div class="modal-footer">
-                                    <button class="btn" data-dismiss="modal" aria-hidden="true">Non.</button>
-                                    
-                                    <button type="submit" name="deck_share" value="<?php echo $datas[$key]['deck_id']; ?>" class="btn btn-inverse">Oui, je confirme !</button>
-                                    <!--<a href="index.php?page=inventory&deck_delete=3" class="btn btn-inverse">Oui, je confirme !</a>-->
-                                </div> 
+                                    <div class="modal-body">
+                                        Êtes-vous sûr  de vouloir partager ce deck ?
+                                    </div>
+
                                 
-                            </div>
+                                    <div class="modal-footer">
+                                        <button class="btn" data-dismiss="modal" aria-hidden="true">Non.</button>
+                                        
+                                        <button type="submit" name="deck_share" value="<?php echo $datas[$key]['deck_id']; ?>" class="btn btn-inverse">Oui, je confirme !</button>
+                                        <!--<a href="index.php?page=inventory&deck_delete=3" class="btn btn-inverse">Oui, je confirme !</a>-->
+                                    </div> 
+                                    
+                                </div>
+
+                                <?php
+                            }
+                            ?>
 
                                     
                              

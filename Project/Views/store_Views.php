@@ -3,6 +3,14 @@
 <h1> LE CARDSTORE : </h1>
 <br><br><br><br>
 
+<?php
+if (isset($_GET['error'])) {
+    ?>
+    <div class="well" style='color: red;font-size: 17px'>Erreur tu possèdes déjà ce deck</div>
+    <?php
+}
+?>
+
 <div class="row">
 
         <!-- Gallery Items
@@ -42,6 +50,8 @@
                                     else {
                                         echo "Le deck n'a pas de note";
                                     }
+                                    
+                                    echo "<div style='text-align: right'><a href='index.php?page=store&newdeck=".$value['id']."'><img src='./Public/img/down.png' style='width:40px;height:40px'/></a></div>";
                                     ?>
                                     </span>
                             </li>

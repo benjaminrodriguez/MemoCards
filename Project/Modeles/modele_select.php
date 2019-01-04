@@ -880,6 +880,29 @@ function catdeck_SELECT()
     return $qu;
 }
 
+//--------------------------------------------------------------------------------
+
+function checkstoredeckhave_SELECT($a, $b)
+{
+   
+    $bdd = bdd();
+    $query = "SELECT * FROM passed WHERE passed.user_id = :id AND passed.deck_id = :deck;";
+    
+    $query_params = array(
+        ':id' => $a,
+        ':deck' => $b
+    );
+    
+    try {
+        $stmt = $bdd->prepare($query);
+        $stmt->execute($query_params);
+    } catch(Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+    $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $qu;
+}
+
 
 ?>
 

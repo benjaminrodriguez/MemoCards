@@ -112,5 +112,25 @@
         $req->execute(array(intval($verso_id)));
     }
 
-    
+    //--------------------------------------------------------------------------------
+  
+    function deckdownload_INSERT($a, $b)
+    {
+        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+        $bdd = bdd();
+        $query = "INSERT INTO `passed`(`id`, `user_id`, `deck_id`) VALUES (NULL, :id, :deck);";
+        
+        $query_params = array(
+            ':id' => $a,
+            ':deck' => $b
+            );
+        
+        try {
+            $stmt = $bdd->prepare($query);
+            $stmt->execute($query_params);
+        } catch(Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+        
+    }
 ?>
