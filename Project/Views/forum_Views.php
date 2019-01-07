@@ -33,7 +33,7 @@
     }
     
 
-    if (isset($print_message) && isset($key)) 
+    if (isset($print_message) && isset($key))  
     {
         if (isset($print_message[$key]) && isset($_GET['subject_id'])) 
         {
