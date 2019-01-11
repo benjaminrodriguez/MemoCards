@@ -65,9 +65,7 @@
         }
 
         // BDD : SUPPRIME LE DECK  DANS LA TABLE : deck
-        deck_final_DELETE($_POST['deck_delete']);
-
-
+       
         //echo $_POST['deck_delete'];
         //var_dump($all_id);
         header('Location: index.php?page=inventory');
