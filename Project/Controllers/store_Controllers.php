@@ -2,10 +2,22 @@
 
 
 // RECHERCHE CARDSTORE
-if (isset($_GET['query']))
+/*if (isset($_GET['query']))
 {
     require(dirname(__FILE__).'/../php/search_cardstore.php');
     getSearch($GET['query']);
+}*/
+
+if (isset($_POST['rechercher']))
+{
+    $_POST['rechercher'] = '%'.$_POST['rechercher'].'%';
+    $arraydeckstore = rechercher_SELECT($_POST['rechercher']);
+    
+
+    
+}
+else {
+    $arraydeckstore = storedeck_SELECT();
 }
 
 if (isset($_GET['newdeck'])) {
@@ -21,7 +33,7 @@ if (isset($_GET['newdeck'])) {
         exit();
     }
 }
-$arraydeckstore = storedeck_SELECT();
+
 $arraycat = catdeck_SELECT();
 //var_dump($arraydeckstore);
 

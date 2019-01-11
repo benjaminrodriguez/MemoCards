@@ -904,5 +904,19 @@ function checkstoredeckhave_SELECT($a, $b)
 }
 
 
+function rechercher_SELECT($name)
+{
+    $bdd = bdd();
+    $req = $bdd->prepare(' SELECT deck.id, deck.name, deck.picture, categorie.name AS catname, deck.grade
+                            FROM deck
+                            JOIN categorie ON categorie.id = deck.categorie_id
+                            WHERE deck.name LIKE ? AND deck.status LIKE "public"
+                            ;
+                        ');
+    $req->execute(array($name));
+    $donnees = $req->fetchAll();
+    return $donnees;
+}
+
 ?>
 

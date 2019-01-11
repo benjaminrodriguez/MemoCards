@@ -186,21 +186,19 @@
 
         <!-- Blog Sidebar
             ================================================== --> 
-            <?php 
-            if ($_GET['page'] !== 'store') {
-                ?>
+           
                 <div class="span4 sidebar">
 
                     <!--Search-->
                     <section>
                         <div class="input-append">
-                            <form action="#">
-                                <input id="appendedInputButton" size="16" type="text" placeholder="Chercher"><button class="btn" type="button"><i class="icon-search"></i></button>
+                            <form action="" method='POST'>
+                                <input id="appendedInputButton" name='rechercher' size="16" type="text" placeholder="Chercher"><button class="btn" type='submit'><i class="icon-search"></i></button>
                             </form>
                         </div>
                     </section>
                 <?php
-            }
+            
 
         
             if(isset($_GET['page']) && ($_GET['page'] == 'inventory') || $_GET['page'] == 'forum') { ?>
