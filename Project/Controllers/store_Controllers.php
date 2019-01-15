@@ -1,6 +1,7 @@
 <?php
 
     // Recupère tout les decks du card store
+    $arraycat = catdeck_SELECT();
     $store_decks = store_SELECT();
 
 // RECHERCHE CARDSTORE
@@ -36,12 +37,11 @@ if (isset($_GET['newdeck'])) {
     }
 }
 
-$arraycat = catdeck_SELECT();
-//var_dump($arraydeckstore);
+
 
 require(dirname(__FILE__).'/../Views/store_Views.php');
 include('./Views/template.php');
 
-var_dump($store_decks);
+var_dump($arraydeckstore);
 
 ?>

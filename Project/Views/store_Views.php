@@ -31,35 +31,46 @@ if (isset($_GET['error'])) {
                
 
                 <?php
+                    foreach ($arraydeckstore as $key => $value) {
+                        ?>
 
-                foreach ($store_decks as $key => $value) {
-                    ?>
+                        <li class="span3 gallery-item" data-id="<?php echo $value['id'];?>" data-type="<?php echo $value['catname'];?>">
+                            <span class="gallery-hover-4col hidden-phone hidden-tablet">
+                            <span class="gallery-icons">
+                                <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto" rel="prettyPhoto"></a>
+                                <a href="gallery-single.htm" class="item-details-link"></a>
+                            </span>
+                            </span>
+                            <a href="gallery-single.htm"><img src="<?php echo $value['picture'];?>" style="width:270px;height:220px;" alt="Gallery"></a>
+                            <span class="project-details"><a href="gallery-single.htm"><?php echo $value['name'];?></a>
+                            
+                        <?php        
+                            echo $store_decks[$key]['mark'].' / 5 <br>';
+                            $star = intval($store_decks[$key]['mark']);
+                            for ($i=0; $i < 5; $i++)
+                            {
+                                if($star <= $i)
+                                {
+                                    echo '  <a href="" class="icon-star-empty"> </a>';
+                                } 
+                                else 
+                                {
+                                    echo '<a href="" class="icon-star"> </a>';
+                                }
+                            }
 
-                            <li class="span3 gallery-item" data-id="<?php echo $store_decks[$key]['deck_id'];?>" data-type="<?php echo $store_decks[$key]['deck_name'];?>">
-                                <span class="gallery-hover-4col hidden-phone hidden-tablet">
-                                <span class="gallery-icons">
-                                    <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto" rel="prettyPhoto"></a>
-                                    <a href="gallery-single.htm" class="item-details-link"></a>
-                                </span>
-                                </span>
-                                <a href="gallery-single.htm"><img src="<?php echo $store_decks[$key]['deck_picture'];?>" style="width:270px;height:220px;" alt="Gallery"></a>
-                                <span class="project-details"><a href="gallery-single.htm"><?php echo $store_decks[$key]['deck_name'];?></a>
-                                <?php 
-                                    
-                                    
-
-                                    /*
-                                    if ($value['grade'] !== NULL) {
-                                        echo $value['grade'].'<i class="icon-star"></i></span>';
-                                    }
-                                    else {
-                                        echo "Le deck n'a pas de note";
-                                    }
-                                    */
-                                    echo "<div style='text-align: right'><a href='index.php?page=store&newdeck=".$store_decks[$key]['deck_id']."'><img src='./Public/img/down.png' style='width:40px;height:40px'/></a></div>";
-                                    
-                                    ?>
-                                    </span>
+                            /*
+                            if ($value['grade'] !== NULL) {
+                                echo $value['grade'].'<i class="icon-star"></i></span>';
+                            }
+                            else {
+                                echo "Le deck n'a pas de note";
+                            }
+                            */
+                            echo "<div style='text-align: right'><a href='index.php?page=store&newdeck=".$arraydeckstore[$key]['id']."'> Télécharger le deck <img src='./Public/img/down.png' style='width:40px;height:40px'/></a></div>";
+                            
+                            ?>
+                            </span>
                             </li>
 
                     <?php
