@@ -918,5 +918,22 @@ function rechercher_SELECT($name)
     return $donnees;
 }
 
+
+function store_SELECT()
+{
+    $bdd = bdd();
+    $req = $bdd->prepare(' SELECT  deck.id as deck_id, deck.name as deck_name, deck.description as deck_description, deck.autor_id as deck_autor, deck.picture as deck_picture,
+                                  deck.date_creation as deck_date, categorie.name as categorie, comments_deck.mark as mark
+                            FROM deck
+                            LEFT JOIN comments_deck ON deck.id = comments_deck.deck_id
+                            LEFT JOIN hashtag_has_deck ON deck.id = hashtag_has_deck.deck_id
+                            LEFT JOIN hashtag ON hashtag.id = hashtag_has_deck.hashtag_id
+                            LEFT JOIN categorie ON deck.categorie_id = categorie.id
+                            WHERE deck.status = "public" ;
+                        ');
+    $req->execute(array());
+    $decks = $req->fetchAll();
+    return $decks;
+}
 ?>
 

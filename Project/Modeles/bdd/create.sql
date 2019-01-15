@@ -3,11 +3,10 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 17 déc. 2018 à 12:38
+-- Généré le :  lun. 14 jan. 2019 à 12:14
 -- Version du serveur :  5.7.21
 -- Version de PHP :  7.2.4
 
-SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -37,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `name` varchar(255) NOT NULL,
   `description` mediumtext NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -51,9 +50,10 @@ CREATE TABLE IF NOT EXISTS `comments_deck` (
   `content` longtext NOT NULL,
   `autor_id` int(11) NOT NULL,
   `deck_id` int(11) NOT NULL,
+  `mark` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_comments_deck_deck1_idx` (`deck_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `deck` (
   `categorie_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_deck_categorie1_idx` (`categorie_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -149,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `message` (
   `subject_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_message_subject1_idx` (`subject_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -188,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `passed` (
   PRIMARY KEY (`id`),
   KEY `fk_passed_user1_idx` (`user_id`),
   KEY `fk_passed_deck1_idx` (`deck_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -203,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `recto` (
   `deck_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_recto_deck1_idx` (`deck_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -221,7 +221,7 @@ CREATE TABLE IF NOT EXISTS `subject` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_subject_user1_idx` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -239,7 +239,7 @@ CREATE TABLE IF NOT EXISTS `succes_rate` (
   `nb_succes` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_succes_rate_verso_idx` (`verso_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -260,7 +260,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -276,7 +276,7 @@ CREATE TABLE IF NOT EXISTS `verso` (
   `recto_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_verso_recto1_idx` (`recto_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
 
 --
 -- Contraintes pour les tables déchargées
@@ -350,7 +350,6 @@ ALTER TABLE `succes_rate`
 --
 ALTER TABLE `verso`
   ADD CONSTRAINT `fk_verso_recto1` FOREIGN KEY (`recto_id`) REFERENCES `recto` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

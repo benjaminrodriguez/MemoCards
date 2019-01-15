@@ -75,7 +75,19 @@
                             ');
         $req-> execute(array($name, $description, intval($autor_id), $picture, intval($categorie_id)));
     }
-      
+
+    //--------------------------------------------------------------------------------
+
+    function comments_INSERT($autor_id, $deck_id)
+    {
+        // INSERT LE NOUVEAU DECK CREE
+        $bdd = bdd();
+        $req = $bdd->prepare('  INSERT INTO comments_deck (content, autor_id, deck_id, mark)
+                                VALUES ("", ?, ?, 0);
+                            ');
+        $req-> execute(array($autor_id, $deck_id,));
+    }
+          
     //--------------------------------------------------------------------------------
 
     function new_question_INSERT($question_cards, $deck_id)
