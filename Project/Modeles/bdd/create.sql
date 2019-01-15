@@ -278,6 +278,24 @@ CREATE TABLE IF NOT EXISTS `verso` (
   KEY `fk_verso_recto1_idx` (`recto_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
 
+
+DROP TABLE IF EXISTS `memocards`.`notif` ;
+
+SHOW WARNINGS;
+CREATE TABLE IF NOT EXISTS `memocards`.`notif` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `date` DATE NOT NULL,
+  `nom` VARCHAR(500) NOT NULL,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_notif_user1_idx` (`user_id` ASC),
+  CONSTRAINT `fk_notif_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `memocards`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 --
 -- Contraintes pour les tables déchargées
 --

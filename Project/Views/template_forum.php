@@ -22,6 +22,12 @@
                             <a style='float: right' href='index.php?page=forum&action=supp&subject_id=<?php echo $subjects_views[$key]['id']; ?>'>
                             <img src="./Public/img/x-button.png" style="width:25px;height:25px"/></a>
                             <?php
+                        } 
+                        else {
+                            ?>
+                            <a style='float: right' href='index.php?page=forum&action=warn&subject_id=<?php echo $subjects_views[$key]['id']; ?>'>
+                            <img src="./Public/img/warning.png" style="width:25px;height:25px"/></a>
+                            <?php
                         }
                         ?>
                         </h3>

@@ -19,6 +19,15 @@
         }
     }
 
+    if (isset($_GET['action']) && $_GET['action'] == 'warn' && isset($_GET['subject_id']))
+    {
+        // ADD NOTIF
+        $warn = "Le sujet d'id ".$_GET['subject_id']." a été signalé.";
+        newnotif_INSERT($warn, $_SESSION['id']);
+        header('Location: index.php?page=forum');
+        exit();
+    }
+
     if (!isset($_GET['subject_id'])) 
     {
         // RECUPERE LES SUJETS DU FORUM
