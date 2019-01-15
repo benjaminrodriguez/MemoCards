@@ -357,7 +357,7 @@
     
      // ----------------------------------------------------------------------------
 
-     function subject_DELETE ($subject_id)
+     function subjectfefe_DELETE ($subject_id)
      {
          // DELETE CONTENU SUBJECT
          $bdd = bdd();
@@ -380,6 +380,40 @@
      }
      
      // ----------------------------------------------------------------------------
+
+     function subject_DELETE($id)
+     {
+        $bdd = bdd();
+
+        $query =
+        "DELETE FROM `message` WHERE `subject_id` = :id
+        ;";
+
+        $query_params = array(
+            ':id' => $id
+         );
+        try {
+            $stmt = $bdd->prepare($query);
+            $stmt->execute($query_params);
+        } catch(Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+
+        unset($query);
+
+        
+        $query =
+        "DELETE FROM `subject` WHERE `subject`.`id` = :id
+        ;";
+       
+        try {
+            $stmt = $bdd->prepare($query);
+            $stmt->execute($query_params);
+        } catch(Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+        
+     }
     
 ?>
 

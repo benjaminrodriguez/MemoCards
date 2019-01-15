@@ -7,6 +7,18 @@
         exit();
     }
 
+    if (isset($_GET['action']) && $_GET['action'] == 'supp' && isset($_GET['subject_id']))
+    {
+        // SUPPRESSION SUJET
+        if ($_SESSION['status'] !== 'admin')
+        {
+
+            subject_DELETE($_GET['subject_id']);
+            header('Location: index.php?page=forum');
+            exit();
+        }
+    }
+
     if (!isset($_GET['subject_id'])) 
     {
         // RECUPERE LES SUJETS DU FORUM
@@ -65,18 +77,7 @@
     }
 
     
-    else if (isset($_POST['choix_forum']) && $_POST['choix_forum'] == 'delete_topic')
-    {
-        // SUPPRESSION SUJET
-        if ($_SESSION['statut'] == 'admin')
-        {
-            require_once(dirname(__FILE__).'/php/delete_topic.php');
-        }
-        else 
-        {
-            echo 'vous n\'avez pas les droits';
-        }
-    }
+   
 
     if(isset($_POST['subject_id'])) $_SESSION['subject_id'] = intval($_POST['subject_id']);
 

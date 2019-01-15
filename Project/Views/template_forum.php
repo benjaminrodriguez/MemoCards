@@ -15,7 +15,16 @@
                         <button onclick="location.href='index.php?page=forum&subject_id=<?php echo $subjects_views[$key][0]; ?>'" class="btn btn-small btn-inverse">Voir plus</button>
                     </div>
                     <div class="span6">       
-                        <h3 class="title-bg"><a href="index.php?page=forum&subject_id=<?php echo $subjects_views[$key][0]; ?>"><?php echo $subjects_views[$key]['title']; ?> </a></h3>
+                        <h3 class="title-bg"><a href="index.php?page=forum&subject_id=<?php echo $subjects_views[$key][0]; ?>"><?php echo $subjects_views[$key]['title']; ?> </a>
+                        <?php 
+                        if ($_SESSION['status'] === "admin") {
+                            ?>
+                            <a style='float: right' href='index.php?page=forum&action=supp&subject_id=<?php echo $subjects_views[$key]['id']; ?>'>
+                            <img src="./Public/img/x-button.png" style="width:25px;height:25px"/></a>
+                            <?php
+                        }
+                        ?>
+                        </h3>
                         <p><?php echo $subjects_views[$key]['content'] ?></p>
                     </div>    
                 </div>
