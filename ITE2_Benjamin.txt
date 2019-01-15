@@ -1,0 +1,5 @@
+suppresion inventaire -> supprime aussi dans le cardstore
+recherche sur auteur 
+
+
+83.25%
