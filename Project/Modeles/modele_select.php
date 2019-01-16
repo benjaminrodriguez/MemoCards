@@ -846,7 +846,12 @@ function storedeck_SELECT()
     {
        
         $bdd = bdd();
-        $query = "SELECT deck.id, deck.name, deck.picture, categorie.name AS catname, deck.grade FROM `deck` JOIN categorie ON categorie.id = deck.categorie_id AND deck.status LIKE 'public';";
+        $query = "SELECT deck.id, deck.name, deck.picture, categorie.name AS catname, deck.grade , AVG(comments_deck.mark) as mark
+                    FROM `deck` 
+                    JOIN comments_deck on deck.id = comments_deck.deck_id
+                    JOIN categorie ON categorie.id = deck.categorie_id AND deck.status LIKE 'public'
+                    GROUP BY deck.id;
+                ";
         
         $query_params = array();
         
@@ -907,9 +912,10 @@ function checkstoredeckhave_SELECT($a, $b)
 function rechercher_SELECT($name)
 {
     $bdd = bdd();
-    $req = $bdd->prepare(' SELECT deck.id, deck.name, deck.picture, categorie.name AS catname, deck.grade
+    $req = $bdd->prepare(' SELECT deck.id, deck.name, deck.picture, categorie.name AS catname, deck.grade, comments_deck.mark as mark
                             FROM deck
                             JOIN categorie ON categorie.id = deck.categorie_id
+                            JOIN comments_deck ON deck.id = comments_deck.deck_id
                             WHERE deck.name LIKE ? AND deck.status LIKE "public"
                             ;
                         ');
@@ -929,7 +935,8 @@ function store_SELECT()
                             LEFT JOIN hashtag_has_deck ON deck.id = hashtag_has_deck.deck_id
                             LEFT JOIN hashtag ON hashtag.id = hashtag_has_deck.hashtag_id
                             LEFT JOIN categorie ON deck.categorie_id = categorie.id
-                            WHERE deck.status = "public" ;
+                            WHERE deck.status = "public" 
+                            GROUP BY deck.id ;
                         ');
     $req->execute(array());
     $decks = $req->fetchAll();
