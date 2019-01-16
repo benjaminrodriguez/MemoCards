@@ -145,4 +145,28 @@
         }
         
     }
+
+
+    function newnotif_INSERT($a, $b)
+    {
+        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+        $bdd = bdd();
+        $query = "INSERT INTO `notif`(`id`, `date`, `nom`, `user_id`) VALUES (NULL,CURRENT_DATE,:warn,:id);";
+        
+        $query_params = array(
+            ':warn' => $a,
+            ':id' => $b
+            );
+        
+        try {
+            $stmt = $bdd->prepare($query);
+            $stmt->execute($query_params);
+        } catch(Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+        
+    }
+
+
+    
 ?>

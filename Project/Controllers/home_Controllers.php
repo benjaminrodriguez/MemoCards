@@ -8,6 +8,9 @@
         exit;
     } 
 
+    if ($_SESSION['status'] === "admin") {
+        $notifs = checknotif_SELECT();
+    }
     
     
     if (!isset($_POST['menu']))

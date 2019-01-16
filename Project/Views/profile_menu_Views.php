@@ -167,6 +167,7 @@
 <!-- --------------------------- Change Hobbies --------------------------- -->
 <?php if(isset($_GET['menu']) && $_GET['menu'] == 'hobbies')
         { 
+            $subtitle = 'Modifier vos hobbies';
 ?>
             <form method="POST" action="">
                 <!-- Demande le mot de passe actuel. -->
