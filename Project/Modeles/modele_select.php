@@ -935,5 +935,22 @@ function store_SELECT()
     $decks = $req->fetchAll();
     return $decks;
 }
+
+function checknotif_SELECT()
+{
+   
+    $bdd = bdd();
+    $query = "SELECT * FROM `notif` JOIN user ON user_id = user.id;";
+    
+    
+    try {
+        $stmt = $bdd->prepare($query);
+        $stmt->execute(NULL);
+    } catch(Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+    $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $qu;
+}
 ?>
 

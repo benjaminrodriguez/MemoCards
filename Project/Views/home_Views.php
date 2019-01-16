@@ -189,8 +189,52 @@ $(document).ready(function () {
         </div>
         
       </div><!-- End Header -->
-     
-    <div class="row headline"><!-- Begin Headline -->
+    <?php
+    if ($_SESSION['status'] === "admin" ) {
+        //ar_dump($notifs);
+        echo '<div class="row headline" style="font-size: 18px">';
+        if (!isset($notifs['0'])) {
+            ?>
+                <div class="well">
+                    Pas de signalement en cours
+                
+                </div>
+            <?php
+        }
+        else {
+            ?>
+            <div class="well">
+                <h3>Bonjour administrateur,<br>
+                Voici les notifications :</h3>
+                <div class="well">
+                    <?php
+                        foreach ($notifs as $key => $value) {
+                            ?>
+                            <img src="./Public/img/warning.png" style="width:25px;height:25px"/> &nbsp <?php echo $value['nom'];?> &nbsp &nbsp
+                            <b>Le</b> : <?php echo $value['date'];?> &nbsp<b>Par</b> : <?php echo $value['username'];?>  
+                            <br><br>
+                            <?php
+                        }
+                    ?>
+                </div>
+            </div>
+            <?php
+        }
+        ?>
+        
+        </div>
+
+        <div class="row gallery-row">
+
+        <?php
+    }
+    else {
+        ?>
+        <div class="row headline">
+        <?php
+    }
+    ?>
+    <!-- Begin Headline -->
     <!-- HEURE DYNAMIQUE -->
 
   <!--
