@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 14 jan. 2019 à 12:14
+-- Généré le :  mer. 16 jan. 2019 à 13:40
 -- Version du serveur :  5.7.21
 -- Version de PHP :  7.2.4
 
@@ -50,10 +50,10 @@ CREATE TABLE IF NOT EXISTS `comments_deck` (
   `content` longtext NOT NULL,
   `autor_id` int(11) NOT NULL,
   `deck_id` int(11) NOT NULL,
-  `mark` int(11) NOT NULL,
+  `mark` float NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_comments_deck_deck1_idx` (`deck_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `deck` (
   `categorie_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_deck_categorie1_idx` (`categorie_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -188,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `passed` (
   PRIMARY KEY (`id`),
   KEY `fk_passed_user1_idx` (`user_id`),
   KEY `fk_passed_deck1_idx` (`deck_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -277,24 +277,6 @@ CREATE TABLE IF NOT EXISTS `verso` (
   PRIMARY KEY (`id`),
   KEY `fk_verso_recto1_idx` (`recto_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
-
-
-DROP TABLE IF EXISTS `memocards`.`notif` ;
-
-SHOW WARNINGS;
-CREATE TABLE IF NOT EXISTS `memocards`.`notif` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `date` DATE NOT NULL,
-  `nom` VARCHAR(500) NOT NULL,
-  `user_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_notif_user1_idx` (`user_id` ASC),
-  CONSTRAINT `fk_notif_user1`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `memocards`.`user` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
 --
 -- Contraintes pour les tables déchargées

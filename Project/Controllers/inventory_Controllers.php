@@ -121,7 +121,7 @@
                 $req = deck_id_SELECT($_POST['title']);
                 $deck_id = $req->fetch();
                 new_passed_INSERT($_SESSION['id'], $deck_id['id']);
-                comments_INSERT($deck_id['id'], $_SESSION['id']);
+                comments_INSERT($_SESSION['id'], $deck_id['id']);
             }
             else 
             {
