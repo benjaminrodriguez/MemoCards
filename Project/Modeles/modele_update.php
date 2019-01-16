@@ -161,4 +161,24 @@
              die('Erreur : ' . $e->getMessage());
          }
      }
+
+     function passed_UPDATE($id,$nb,$deck,$score)
+     {
+         $bdd = bdd();
+         $query = "UPDATE `passed` SET `date_passed`= CURRENT_DATE,`number_game`= :nb ,`score_user`= :score WHERE user_id = :id AND deck_id = :deck;";
+ 
+         $query_params = array(
+            ':id' => $id,
+            ':nb' => $nb,
+            ':deck' => $deck,
+            ':score' => $score
+        );
+
+         try {
+             $stmt = $bdd->prepare($query);
+             $stmt->execute($query_params);
+         } catch(Exception $e) {
+             die('Erreur : ' . $e->getMessage());
+         }
+     }
 ?>

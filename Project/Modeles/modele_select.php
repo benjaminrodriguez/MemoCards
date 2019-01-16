@@ -952,5 +952,27 @@ function checknotif_SELECT()
     $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $qu;
 }
+
+function passed_SELECT($id,$deck)
+{
+   
+    $bdd = bdd();
+    $query = "SELECT * FROM `passed` WHERE `user_id`= :id AND `deck_id` = :deck;";
+    
+    $query_params = array(
+        ':id' => $id,
+        ':deck' => $deck
+        );
+
+    try {
+        $stmt = $bdd->prepare($query);
+        $stmt->execute($query_params);
+    } catch(Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+    $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $qu;
+}
+
 ?>
 
