@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="Public/css/flexslider.css">
 <link rel="stylesheet" href="Public/css/styles.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-
+<link rel="stylesheet" href="Public/css/leaderboard.css">
 
 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -156,7 +156,7 @@
         </div>
 
         <div class="span2 logo">
-            <img src=<?php echo $_SESSION['profile_picture'];?> style="width:70px;height:70px;">
+            <img src=<?php echo $_SESSION['profile_picture'];?> style="width:70px">
             <div style="position:relative;left:140px;float:left"> 
                 <a href="index.php?page=profile"><b style="font-size:20px"><?php echo $_SESSION['username']; ?></b></a>
                 <br>
@@ -230,7 +230,40 @@
             
 
             if ($_GET['page'] !== 'store') {
+                $leader = leaderboard_SELECT();
                 ?>
+                <br><br>
+                <div class="wrapper">
+                <div class="wrapper__header">
+                    <div class="b_logo"><img src="http://www.myiconfinder.com/uploads/iconsets/256-256-5d41edabc60f4fd2cf3c9f5d35d84045-trophy.png" width="40" alt=""/></div>
+                    <div class="b_caption">
+                    <p>MemoCard <span>leaderboard</span></p>
+                    </div>
+                </div>
+                <div class="wrapper__content">
+                    <ul style="margin-left: 20px;margin-right: 20px;">
+
+                    <?php
+                        foreach ($leader as $key => $value) {
+                            ?>
+                                <li>
+                                    <div class="graphic"><img src="<?php echo $value['profile_picture']; ?>" alt=""/></div>
+                                    <div class="name"><span class="header"><?php echo $value['username']; ?></span>
+                                    <span class="stat"><?php echo $value['sumscore']; ?></span><span class="sub"> PT</span> <b style="vertical-align: middle;color: #979cb0"> &nbsp EN &nbsp </b>
+                                    <span class="stat2"><?php echo $value['sumgame']; ?></span><span class="sub2"> PARTIES</span></div>
+                                </li>
+                            <?php
+                        }
+                    ?>
+                        
+                   
+
+
+                    </ul>
+                </div>
+                </div>
+
+                
                 <h5 class="title-bg">FORUM : Les sujets les plus populaires</h5>
                 <ul class="popular-posts">
                     <li>

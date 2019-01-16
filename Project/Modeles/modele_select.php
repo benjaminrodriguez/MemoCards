@@ -981,5 +981,26 @@ function passed_SELECT($id,$deck)
     return $qu;
 }
 
+
+function leaderboard_SELECT()
+{
+   
+    $bdd = bdd();
+    $query = "SELECT passed.id, SUM(`score_user`) AS sumscore, SUM(`number_game`) AS sumgame, user.username, user.profile_picture
+    FROM `passed` 
+    JOIN user ON user.id = user_id 
+    GROUP BY user_id
+    LIMIT 3;";
+    
+
+    try {
+        $stmt = $bdd->prepare($query);
+        $stmt->execute(NULL);
+    } catch(Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+    $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $qu;
+}
 ?>
 

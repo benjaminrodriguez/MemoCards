@@ -177,7 +177,27 @@ else
         if (isset($_SESSION['listend']))
         {
         //var_dump($_SESSION['listend']);
-        require("./Views/affichage_resultquest.php");
+
+            $nbbonne = 0;
+            $nbq = 0;
+            
+            foreach ($_SESSION['listend']['0'] as $key => $value) {
+                if ($value === "T") {
+                    $nbbonne++;
+                }
+                $nbq++;
+            }
+
+            //var_dump($nbbonne);
+            //var_dump($nbq);
+    
+            $pt = ($nbbonne / $nbq);
+            //update
+            $passed = passed_SELECT($_SESSION['id'], $_SESSION['deck']);
+            $nb = intval($passed['0']['number_game'])+ 1;
+            $score = intval($passed['0']['score_user']) + $pt;
+            passed_UPDATE($_SESSION['id'],$nb,$_SESSION['deck'],$score);
+            require("./Views/affichage_resultquest.php");
         }
         unset($_SESSION['deck']);
         unset($_SESSION['listend']);
