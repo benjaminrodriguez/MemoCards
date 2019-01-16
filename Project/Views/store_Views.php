@@ -37,27 +37,32 @@ if (isset($_GET['error'])) {
                         <li class="span3 gallery-item" data-id="<?php echo $value['id'];?>" data-type="<?php echo $value['catname'];?>">
                             <span class="gallery-hover-4col hidden-phone hidden-tablet">
                             <span class="gallery-icons">
-                                <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto" rel="prettyPhoto"></a>
+                                <a href="Public/img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto" rel="prettyPhoto"></a>
                                 <a href="gallery-single.htm" class="item-details-link"></a>
                             </span>
                             </span>
                             <a href="gallery-single.htm"><img src="<?php echo $value['picture'];?>" style="width:270px;height:220px;" alt="Gallery"></a>
-                            <span class="project-details"><a href="gallery-single.htm"><?php echo $value['name'];?></a>
+                            <span class="project-details"><a href="gallery-single.htm"> Titre : <?php echo $value['name'];?></a>
                             
-                        <?php        
-                            echo $store_decks[$key]['mark'].' / 5 <br>';
+                        <?php   
+                        
+                            echo round($arraydeckstore[$key]['mark'], 1).' / 5 <br>';
                             $star = intval($store_decks[$key]['mark']);
-                            for ($i=0; $i < 5; $i++)
-                            {
-                                if($star <= $i)
+
+                                for ($i=0; $i < 5; $i++)
                                 {
-                                    echo '  <a href="" class="icon-star-empty"> </a>';
-                                } 
-                                else 
-                                {
-                                    echo '<a href="" class="icon-star"> </a>';
+                                    if($star <= $i)
+                                    {
+                                        //echo '<a href="#'.($i+1).'" class="icon-star-empty" style="float:left;"> </a>';
+                                        echo ' <i class="icon-star-empty"> </i>';
+                                    } 
+                                    else 
+                                    {
+                                        //echo '<a href="#'.($i+1).'" class="icon-star" style="float: left;"> </a>';
+                                        echo ' <i class="icon-star"> </i>';
+                                    }
                                 }
-                            }
+                           
 
                             /*
                             if ($value['grade'] !== NULL) {

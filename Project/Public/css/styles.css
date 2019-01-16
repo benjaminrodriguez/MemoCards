@@ -197,7 +197,8 @@
         margin: auto;
       }
 
-      .star {
+      .mark {
+       display:inline-block; 
        position: absolute;
        top: 100px;
       }
