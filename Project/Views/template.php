@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="Public/css/flexslider.css">
 <link rel="stylesheet" href="Public/css/styles.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-<link rel="stylesheet" href="Public/css/leaderboard.css">
+<link rel="stylesheet" href="Public/css/leaderboa.css">
 
 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -237,7 +237,7 @@
                 <div class="wrapper__header">
                     <div class="b_logo"><img src="http://www.myiconfinder.com/uploads/iconsets/256-256-5d41edabc60f4fd2cf3c9f5d35d84045-trophy.png" width="40" alt=""/></div>
                     <div class="b_caption">
-                    <p>MemoCard <span>leaderboard</span></p>
+                    <p>MemoCard <span><br>leaderboard</span></p>
                     </div>
                 </div>
                 <div class="wrapper__content">

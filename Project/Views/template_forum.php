@@ -25,7 +25,7 @@
                         } 
                         else {
                             ?>
-                            <a style='float: right' href='index.php?page=forum&action=warn&subject_id=<?php echo $subjects_views[$key]['id']; ?>'>
+                            <a style='float: right' title="Signaler" href='index.php?page=forum&action=warn&subject_id=<?php echo $subjects_views[$key]['id']; ?>'>
                             <img src="./Public/img/warning.png" style="width:25px;height:25px"/></a>
                             <?php
                         }
