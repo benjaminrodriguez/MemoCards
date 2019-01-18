@@ -116,8 +116,8 @@
                 <option value="la_reunion">La Réunion</option>
             </select><br>
 
-            <input type="date" name="date_de_naissance" id="date" class="champ" placeholder="Date de naissance" ><br><br>
-            <button class="btn btn-lg btn-block" name="SignIn" type="submit">S'inscire</button>
+            <input type="date" name="date_de_naissance" id="date" class="champ" placeholder="Date de naissance" required ><br><br>
+            <button class="btn btn-lg btn-block" name="SignIn" type="submit">S'inscrire</button>
 
                 </div>
               </div>
