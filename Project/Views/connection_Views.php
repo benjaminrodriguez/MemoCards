@@ -78,7 +78,7 @@
 
 
 /* url de votre image*/
-  var snowsrc="./Public/img/flo.png"
+  var snowsrc="./Public/img/crepe.png"
   var no = 80;
   var ns4up = (document.layers) ? 1 : 0;
   var ie4up = (document.all) ? 1 : 0;
