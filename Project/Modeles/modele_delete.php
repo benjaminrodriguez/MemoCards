@@ -412,8 +412,31 @@
         } catch(Exception $e) {
             die('Erreur : ' . $e->getMessage());
         }
+    }
+
+
+        function passeddeck_DELETE($id,$iddeck)
+     {
+        $bdd = bdd();
+
+        $query =
+        "DELETE FROM `passed` WHERE `user_id` = :id and `deck_id` = :idd 
+        ;";
+
+        $query_params = array(
+            ':id' => $id,
+            ':idd' => $iddeck
+         );
+        try {
+            $stmt = $bdd->prepare($query);
+            $stmt->execute($query_params);
+        } catch(Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+
         
-     }
+     
     
 ?>
 
