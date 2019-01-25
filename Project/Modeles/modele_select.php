@@ -1002,5 +1002,27 @@ function leaderboard_SELECT()
     $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $qu;
 }
+
+
+function deck_by_id_SELECT($id)
+{
+    $bdd = bdd();
+    $req = $bdd->prepare(' SELECT deck.id, deck.name, deck.picture, categorie.name AS categories, AVG(comments_deck.mark) as mark, deck.date_creation as date, deck.description,
+                            user.username as autor
+                            FROM deck
+                            JOIN categorie ON categorie.id = deck.categorie_id
+                            JOIN comments_deck ON deck.id = comments_deck.deck_id
+                            JOIN passed ON passed.deck_id = deck.id
+                            JOIN user ON user.id = passed.user_id
+                            WHERE deck.id LIKE ?
+                            ;
+                        ');
+    $req->execute(array($id));
+    $donnees = $req->fetchAll();
+    return $donnees;
+}
+
+
+
 ?>
 

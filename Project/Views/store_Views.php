@@ -36,13 +36,13 @@ if (isset($_GET['error'])) {
 
                         <li class="span3 gallery-item" data-id="<?php echo $value['id'];?>" data-type="<?php echo $value['catname'];?>">
                             <span class="gallery-hover-4col hidden-phone hidden-tablet">
-                            <span class="gallery-icons">
-                                <a href="Public/img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto" rel="prettyPhoto"></a>
-                                <a href="gallery-single.htm" class="item-details-link"></a>
+                                <span class="gallery-icons">
+                                    <!--<a href="Public/img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto" rel="prettyPhoto"></a> -->
+                                    <a href="index.php?page=application&id=<?php echo $value['id']; ?>" class="item-details-link"></a>
+                                </span>
                             </span>
-                            </span>
-                            <a href="gallery-single.htm"><img src="<?php echo $value['picture'];?>" style="width:270px;height:220px;" alt="Gallery"></a>
-                            <span class="project-details"><a href="gallery-single.htm"> Titre : <?php echo $value['name'];?></a>
+                            <a href="index.php?page=application&id=<?php echo $value['id']; ?>"> <img src="<?php echo $value['picture'];?>" style="width:270px;height:220px;" alt="Gallery"></a>
+                            <span class="project-details"><a href="index.php?page=application&id=<?php echo $value['id']; ?>"> Titre : <?php echo $value['name'];?></a>
                             
                         <?php   
                         

@@ -42,6 +42,6 @@ if (isset($_GET['newdeck'])) {
 require(dirname(__FILE__).'/../Views/store_Views.php');
 include('./Views/template.php');
 
-var_dump($arraydeckstore);
+
 
 ?>

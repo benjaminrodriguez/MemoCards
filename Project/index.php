@@ -66,6 +66,10 @@
         {
             //message();
         }
+        else if ($_GET['page'] == 'application')
+        {
+            require_once('Controllers/application_Controllers.php');
+        }
         else
         {
             header('Location: index.php?page=connection');
