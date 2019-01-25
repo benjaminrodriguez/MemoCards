@@ -22,8 +22,9 @@
 
     if(isset($_POST['deck_delete']))
     {
+        passeddeck_DELETE($_SESSION['id'],$_POST['deck_delete']);
         // BDD : SUPPRIME TOUT LES CARTES DANS LA TABLE : succes_rate
-        $all_id = deck_succes_rate_SELECT($_POST['deck_delete']);
+        /*$all_id = deck_succes_rate_SELECT($_POST['deck_delete']);
         foreach($all_id as $key => $value)
         {
             deck_succes_rate_DELETE($all_id[$key]['succes_rate_id']);
@@ -67,7 +68,7 @@
         // BDD : SUPPRIME LE DECK  DANS LA TABLE : deck
        
         //echo $_POST['deck_delete'];
-        //var_dump($all_id);
+        //var_dump($all_id);*/
         header('Location: index.php?page=inventory');
     }
 

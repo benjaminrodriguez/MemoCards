@@ -209,7 +209,8 @@
                                 
                                         <div class="modal-body">
                                             <p>Toute supprésion sera définitive. 
-                                                <br> Êtes-vous sûr  de vouloir supprimer ce deck ? </p>
+                                                <br> Êtes-vous sûr  de vouloir supprimer ce deck ?
+                                                <br> Si vous avez partager ce deck il restera disponible dans le CardStore </p>
                                         </div>
 
                                     

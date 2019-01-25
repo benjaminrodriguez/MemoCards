@@ -178,7 +178,7 @@
         <div class="span8 blog">
 
                 <?php if (isset($content)) {
-                    //var_dump($_SESSION);
+                    var_dump($_SESSION);
                     echo $content; 
                 } 
                 ?>
