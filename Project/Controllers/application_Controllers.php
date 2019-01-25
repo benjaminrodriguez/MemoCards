@@ -1,11 +1,10 @@
 <?php
 
-    $deck = deck_by_id_SELECT($_GET['id']);
+    if (isset($_GET['id']) ) $deck = deck_by_id_SELECT($_GET['id']);
 
 
     if (isset($_GET['newdeck'])) {
-
-        deckdownload_INSERT($_SESSION['id'], $_GET['newdeck']);
+        passed_INSERT($_SESSION['id'], $_GET['newdeck']);
         header('Location: index.php?page=inventory');
         exit();
     }

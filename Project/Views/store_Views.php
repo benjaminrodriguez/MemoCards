@@ -47,7 +47,7 @@ if (isset($_GET['error'])) {
                         <?php   
                         
                             echo round($arraydeckstore[$key]['mark'], 1).' / 5 <br>';
-                            $star = intval($store_decks[$key]['mark']);
+                            $star = intval($arraydeckstore[$key]['mark']);
 
                                 for ($i=0; $i < 5; $i++)
                                 {
