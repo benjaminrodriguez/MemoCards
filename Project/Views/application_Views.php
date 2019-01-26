@@ -12,8 +12,32 @@
                 <div class="span6">
                     <img src=" <?php echo $deck[0]['picture']; ?> " class="align-left thumbnail" alt="image">
                 </div>
+
                 <div class="span6">
                     <h2> <?php echo 'Titre : '.$deck[0]['name']; ?> </h2>
+
+
+                    <?php   
+                        
+                        echo round($deck[0]['avg_mark'], 1).' / 5 <br>';
+                        $star = intval($deck[0]['avg_mark']);
+
+                            for ($i=0; $i < 5; $i++)
+                            {
+                                if($star <= $i)
+                                {
+                                    //echo '<a href="#'.($i+1).'" class="icon-star-empty" style="float:left;"> </a>';
+                                    echo ' <i class="icon-star-empty"> </i>';
+                                } 
+                                else 
+                                {
+                                    //echo '<a href="#'.($i+1).'" class="icon-star" style="float: left;"> </a>';
+                                    echo ' <i class="icon-star"> </i>';
+                                }
+                            }
+                ?>
+
+
                     <p class="lead"> <?php echo $deck[0]['description']; ?> </p>
                     <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla iaculis mattis lorem, quis gravida nunc iaculis ac.
                      Proin tristique tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt sem eu magna varius elementum. 
@@ -30,7 +54,7 @@
 
                     
                     <div style='text-align: left'> 
-                        <a href='index.php?page=application&newdeck=<?php $_GET['id']; ?>'>  <img src='./Public/img/down.png' style='width:40px;height:40px'/> Télécharger le deck</a></div>
+                        <a href='index.php?page=application&newdeck=<?php echo $deck[0]['id']; ?>'>  <img src='./Public/img/down.png' style='width:40px;height:40px'/> Télécharger le deck</a></div>
                         <a href="index.php?page=store" class="pull-right" ><i class="icon-arrow-left"></i>Revenir en arrière</a>
                 </div>
             </div>
@@ -39,6 +63,151 @@
 
     </div><!-- End container row -->
     
+
+
+
+    <!-- Blog Content
+    ================================================== --> 
+    <div class="row"><!--Container row-->
+
+        <!-- Blog Full Post
+        ================================================== --> 
+        <div class="span10 blog">
+
+                <!-- Comment Form -->
+                <div class="comment-form-container">
+                        <h6>Laisser un commentaire</h6>
+                        <form action="#" id="comment-form" method="POST">
+                            <!--<div class="input-prepend">
+                                <span class="add-on"><i class="icon-user"></i></span>
+                                <input class="span4" id="prependedInput" size="16" type="text" placeholder="Name">
+                            </div>
+                            <div class="input-prepend">
+                                <span class="add-on"><i class="icon-envelope"></i></span>
+                                <input class="span4" id="prependedInput" size="16" type="text" placeholder="Email Address">
+                            </div>
+                            <div class="input-prepend">
+                                <span class="add-on"><i class="icon-globe"></i></span>
+                                <input class="span4" id="prependedInput" size="16" type="text" placeholder="Website URL">
+                            </div>-->
+                            <textarea name="my_comment" class="span6"></textarea>
+                            <div class="row">
+                                <div class="span2">
+                                    <input type="submit" class="btn btn-inverse" value="Poster mon avis">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+            <!-- Blog Post 1 
+            <article>
+                <h3 class="title-bg"><a href="#">A subject that is beautiful in itself</a></h3>
+                <div class="post-content">
+                    <a href="#"><img src="img/gallery/post-img-1.jpg" alt="Post Thumb"></a>
+
+                    <div class="post-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla iaculis mattis lorem, quis gravida nunc iaculis ac. Proin tristique tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt sem eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla faucibus ligula eget ante varius ac euismod odio placerat. Nam sit amet felis non lorem faucibus rhoncus vitae id dui. Vivamus tincidunt sem eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla faucibus ligula eget ante varius ac euismod odio placerat. Nam sit amet felis non lorem faucibus rhoncus vitae id dui.Nulla iaculis mattis lorem, quis gravida nunc iaculis ac. Proin tristique tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt sem eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla faucibus ligula eget ante varius ac euismod odio placerat. Nam sit amet felis non lorem faucibus rhoncus vitae id dui.</p>
+
+                        <p class="well"><a href="#" rel="tooltip" title="An important message">Proin tristique</a> tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt sem eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla faucibus ligula eget ante varius ac euismod odio placerat. Nam sit amet felis non lorem faucibus rhoncus vitae id dui.</p>
+
+                       <p> Nam sit amet felis non lorem faucibus rhoncus vitae id dui. Vivamus tincidunt sem eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla faucibus ligula eget ante varius ac euismod odio placerat. Nam sit amet felis non lorem faucibus rhoncus vitae id dui.</p>
+
+                       <blockquote>
+                            Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla faucibus ligula eget ante varius ac euismod odio placerat.
+                       </blockquote>
+
+                       <p>Nam sit amet felis non lorem faucibus rhoncus vitae id dui.Nulla iaculis mattis lorem, quis gravida nunc iaculis ac. Proin tristique tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt sem eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla faucibus ligula eget ante varius ac euismod odio placerat. Nam sit amet felis non lorem faucibus rhoncus vitae id dui.</p>
+                    </div>
+
+                    <div class="post-summary-footer">
+                        <ul class="post-data">
+                            <li><i class="icon-calendar"></i> 09/04/15</li>
+                            <li><i class="icon-user"></i> <a href="#">Admin</a></li>
+                            <li><i class="icon-comment"></i> <a href="#">5 Comments</a></li>
+                            <li><i class="icon-tags"></i> <a href="#">photoshop</a>, <a href="#">tutorials</a>, <a href="#">illustration</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </article> -->
+
+            <!-- About the Author 
+            <section class="post-content">
+                <div class="post-body about-author">
+                    <img src="img/author-avatar.jpg" alt="author">
+                    <h4>About Nathan Brown</h4>
+                    Proin tristique tellus in est vulputate luctus fermentum ipsum molestie. Vivamus tincidunt sem eu magna varius elementum. Maecenas felis tellus, fermentum vitae laoreet vitae, volutpat et urna. Nulla faucibus ligula eget ante varius ac euismod odio placerat. Nam sit amet felis non lorem faucibus rhoncus vitae id dui.
+                </div>
+            </section>-->
+
+        <!-- Post Comments
+        ================================================== --> 
+            <section class="comments">
+                <h4 class="title-bg"><a name="comments"></a>Avis des utilisateurs</h4>
+
+
+               <ul>
+
+               <?php foreach($comments as $key => $value)
+                    { ?>
+                        <li>
+                            <!--<img src="<?php //echo $comments[$key]['picture']; ?>" alt="Image" />-->
+                            <span class="comment-name"><?php echo $comments[$key]['name']; ?></span>
+                            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
+                            <span class="comment-date"> |  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                                
+                        
+                                <?php   
+                            
+                                    echo round($comments[$key]['mark'], 1).' / 5 ';
+                                    $star = intval($comments[$key]['mark']);
+
+                                    for ($i=0; $i < 5; $i++)
+                                    {
+                                        if($star <= $i)
+                                        {
+                                            //echo '<a href="#'.($i+1).'" class="icon-star-empty" style="float:left;"> </a>';
+                                            echo ' <i class="icon-star-empty"> </i>';
+                                        } 
+                                        else 
+                                        {
+                                            //echo '<a href="#'.($i+1).'" class="icon-star" style="float: left;"> </a>';
+                                            echo ' <i class="icon-star"> </i>';
+                                        }
+                                    }
+                                ?>
+                        
+                        
+                            </span>
+                            <div class="comment-content"> <?php echo $comments[$key]['comment']; ?></div>
+                        </li>
+                <?php
+                    } ?>
+                    
+                    
+               </ul>
+            
+                
+        </section><!-- Close comments section-->
+
+        </div><!--Close container row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div> <!-- End Container -->
 
     

@@ -916,10 +916,19 @@ function rechercher_SELECT($name)
                             FROM deck
                             JOIN categorie ON categorie.id = deck.categorie_id
                             JOIN comments_deck ON deck.id = comments_deck.deck_id
-                            WHERE deck.name LIKE ? AND deck.status LIKE "public"
+                            JOIN passed ON passed.deck_id = deck.id
+                            JOIN user ON user.id = passed.user_id
+                            WHERE deck.name LIKE ? OR (SELECT user.id
+                                                        FROM user
+                                                        WHERE user.username LIKE ?
+                                                        )
+                                LIKE deck.autor_id
+                            AND deck.status LIKE "public"
+                            GROUP BY deck.id
+                            ORDER BY deck.name, user.username
                             ;
                         ');
-    $req->execute(array($name));
+    $req->execute(array($name, $name));
     $donnees = $req->fetchAll();
     return $donnees;
 }
@@ -1007,7 +1016,7 @@ function leaderboard_SELECT()
 function deck_by_id_SELECT($id)
 {
     $bdd = bdd();
-    $req = $bdd->prepare(' SELECT deck.id, deck.name, deck.picture, categorie.name AS categories, AVG(comments_deck.mark) as mark, deck.date_creation as date, deck.description,
+    $req = $bdd->prepare(' SELECT deck.id, deck.name, deck.picture, categorie.name AS categories, AVG(comments_deck.mark) as avg_mark, deck.date_creation as date, deck.description,
                             user.username as autor
                             FROM deck
                             JOIN categorie ON categorie.id = deck.categorie_id
@@ -1022,7 +1031,20 @@ function deck_by_id_SELECT($id)
     return $donnees;
 }
 
-
+function comments_application_SELECT($id_deck)
+{
+    $bdd = bdd();
+    $req = $bdd->prepare(' SELECT comments_deck.content as comment, comments_deck.autor_id as autor, comments_deck.mark as mark, user.username as name, 
+                                user.profile_picture as picture, user.status as status
+                            FROM comments_deck
+                            JOIN user ON user.id LIKE comments_deck.autor_id
+                            WHERE comments_deck.deck_id LIKE ? AND comments_deck.content NOT LIKE ""
+                                ;
+                            ');
+        $req->execute(array($id_deck));
+        $donnees = $req->fetchAll();
+        return $donnees;
+}
 
 ?>
 

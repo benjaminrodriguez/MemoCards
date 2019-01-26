@@ -168,5 +168,15 @@
     }
 
 
+    function passed_INSERT($user, $deck)
+    {
+        $bdd = bdd();
+        $req = $bdd->prepare(
+            'INSERT INTO passed (date_passed, number_game, score_user, user_id, deck_id)
+             VALUES (NULL, 0, 0, ?, ?);
+            ');
+        $req->execute(array($user, $deck));
+    }
+
     
 ?>
