@@ -1031,7 +1031,20 @@ function deck_by_id_SELECT($id)
     return $donnees;
 }
 
-
+function comments_application_SELECT($id_deck)
+{
+    $bdd = bdd();
+    $req = $bdd->prepare(' SELECT comments_deck.content as comment, comments_deck.autor_id as autor, comments_deck.mark as mark, user.username as name, 
+                                user.profile_picture as picture, user.status as status
+                            FROM comments_deck
+                            JOIN user ON user.id LIKE comments_deck.autor_id
+                            WHERE comments_deck.deck_id LIKE ? AND comments_deck.content NOT LIKE ""
+                                ;
+                            ');
+        $req->execute(array($id_deck));
+        $donnees = $req->fetchAll();
+        return $donnees;
+}
 
 ?>
 
