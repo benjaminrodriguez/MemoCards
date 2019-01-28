@@ -31,6 +31,7 @@ USE `memocards`;
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `profile_picture`, `status`, `birth_date`, `sex`, `region`, `email`) VALUES
+(1, 'Membre', '$2y$10$kVNwPH4NHPRKE8/S8XU0j.Nylavuiv7u5h2atJRW8P7kCniH3t7a6', 'https://raw.githubusercontent.com/projetInformatiqueIntech/MemoCards/master/Project/Public/img/pp/blue.png', 'ancien', '2018-12-04', 'M', 'ile_de_france', 'samra13@gmail.com'),
 (2, 'sami', '$2y$10$kVNwPH4NHPRKE8/S8XU0j.Nylavuiv7u5h2atJRW8P7kCniH3t7a6', 'https://raw.githubusercontent.com/projetInformatiqueIntech/MemoCards/master/Project/Public/img/pp/blue.png', 'membre', '2018-12-04', 'M', 'ile_de_france', 'samikara13@gmail.com'),
 (3, 'ben', '$2y$10$imu56uGWqoo2I5sU/U68mOYJJ0Hf/Ck32/opERIihjCmItMxU37yW', 'https://raw.githubusercontent.com/projetInformatiqueIntech/MemoCards/master/Project/Public/img/pp/purple.png', 'membre', '2018-11-29', 'F', 'ile_de_france', 'benjamin-rodriguez@outlook.fr'),
 (4, 'yann', '$2y$10$4C9Z3pl4qkPgSTUHBxm7V.dVw6UQBRMYhEXgApoDtlOUzOprQrfDK', 'https://raw.githubusercontent.com/projetInformatiqueIntech/MemoCards/master/Project/Public/img/pp/pink.png', 'membre', '2018-11-26', 'M', 'pays_de_la_loire', 'yoyo@gmail.com'),
@@ -56,7 +57,7 @@ INSERT INTO `categorie` (`id`, `name`, `description`) VALUES
 (9, 'Cuisine', ''),
 (10, 'Automobiles', ''),
 (11, 'Passions', ''),
-(12, 'Losirs', ''),
+(12, 'Loisirs', ''),
 (13, 'Series', ''),
 (14, 'Films', ''),
 (15, 'TV', ''),
@@ -70,8 +71,8 @@ INSERT INTO `deck` (`id`, `name`, `description`, `autor_id`, `status`, `picture`
 (2, 'Code de la route !', 'Des petites cartes pour vous aider à passer le code de la route !', 2, 'privated', './Public/img/appareil_photo.jpg', '2018-12-03', 10),
 (3, 'Les verbes irréguliers en Anglais', 'Ce decks vous permet de réviser vos vers irréguliers en anglais !', 2, 'privated', 'http://1.bp.blogspot.com/-sKKeuKwdtbk/USrgyWXTuII/AAAAAAAABtg/qHU-X0S_ixk/s1600/title+example.gif', '2018-12-04', 3),
 (17, 'Php / MySql', 'Un petit deck fort sympatique pour vous aider à vous améliorer !', 2, 'privated', 'http://www.developpement-informatique.com/img/cours/Basededonn%C3%A9esMySQLetPHPavecunexemple.png', '2018-12-16', 8),
-(18, 'Culture Générale', 'Améliorer votre culture !', 2, 'privated', 'https://econcoursinfirmier.fr/wp-content/uploads/2017/06/culturegenerale-400x155.jpg', '2018-12-16', 2),
-(19, 'Culture sport', 'Améliorer votre culture sur le sport avec ce deck !', 2, 'privated', 'http://laligue03.org/wp-content/uploads/2015/05/sport.png', '2018-12-16', 1),
+(18, 'Culture Générale', 'Améliorer votre culture !', 2, 'public', 'https://econcoursinfirmier.fr/wp-content/uploads/2017/06/culturegenerale-400x155.jpg', '2018-12-16', 2),
+(19, 'Culture sport', 'Améliorer votre culture sur le sport avec ce deck !', 2, 'public', 'http://laligue03.org/wp-content/uploads/2015/05/sport.png', '2018-12-16', 1),
 (20, 'deck de ben', 'pp', 3, 'privated', './Public/img/appareil_photo.jpg', '2018-12-16', 5);
 
 
@@ -81,9 +82,9 @@ INSERT INTO `deck` (`id`, `name`, `description`, `autor_id`, `status`, `picture`
 --
 
 INSERT INTO `passed` (`id`, `date_passed`, `number_game`, `score_user`, `user_id`, `deck_id`) VALUES
-(24, NULL, NULL, NULL, 2, 18),
-(25, NULL, NULL, NULL, 2, 19),
-(26, NULL, NULL, NULL, 3, 20);
+(24, NULL, 7, 14, 2, 18),
+(25, NULL, 2, 6, 2, 19),
+(26, NULL, 8, 42, 3, 20);
 
 --
 -- Déchargement des données de la table `recto`

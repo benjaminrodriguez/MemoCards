@@ -35,7 +35,7 @@
     function unsub_subject_UPDATE($id)
     {
         $bdd = bdd();
-        $query = "UPDATE `subject` SET `user_id`=NULL WHERE user_id = :id";
+        $query = "UPDATE `subject` SET `user_id`=1 WHERE user_id = :id";
 
         $query_params = array(
             ':id' => $id);

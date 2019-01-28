@@ -27,14 +27,17 @@ foreach ($listiddeck as $key => $value) {
         }
         var_DELETE('recto','id',$value2['id']);
     }
-    var_DELETE('passed','deck_id',$value['id']);
     //delpasse
     var_DELETE('hashtag_has_deck','deck_id',$value['id']);
+    
+    var_DELETE('comments_deck','deck_id',$value['id']);
     //del#
     var_DELETE('deck','id',$value['id']);
     //eldeck
 }
 //delhobbies
+var_DELETE('notif','user_id',$id);
+var_DELETE('passed','user_id',$id);
 var_DELETE('hobbies_has_user','user_id',$id);
 
 unsub_subject_UPDATE($id);

@@ -137,14 +137,11 @@ else
         //CARD OFTEN WRONG
         if ($choice < 35)
         {
-        
-            //require("./modeles/quest1.php");
             $questions = quest1_SELECT($_SESSION['deck'], $liststr);
         }
         //RANDOM CARD
         else
         {
-            //require("./modeles/quest2.php");
             $questions = quest2_SELECT($_SESSION['deck'], $liststr);
         }
         //var_dump($questions);
@@ -156,8 +153,6 @@ else
         
         //ANSWERS OF THE CARD
         $ans = verso_recup_SELECT($IDDELAQUESTION);
-        //var_dump($ans);
-        //echo $IDDELAQUESTION;
 
         // QUESTION OF THE CARD
         $q = carte_quest_SELECT($IDDELAQUESTION);

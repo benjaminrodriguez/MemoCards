@@ -999,6 +999,7 @@ function leaderboard_SELECT()
     FROM `passed` 
     JOIN user ON user.id = user_id 
     GROUP BY user_id
+    ORDER BY sumscore DESC
     LIMIT 3;";
     
 

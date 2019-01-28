@@ -80,9 +80,9 @@
                         }
                     ?>
                     <!-- NEED CHECK SAMI DELETE SUBJECT ADMIN FORUM -->
-                    <?php if ($print_message[$key]['status'] == $_SESSION['status']) { ?>
-                                    ||&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <i class="icon-trash"></i><a href="#myModal<?php echo $key; ?>"  data-toggle="modal">Supprimer</a></span>
+                    <?php if (isset($key) && $print_message[$key]['status'] == $_SESSION['status']) { ?>
+                                    <!-- ||&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                                    <i class="icon-trash"></i><a href="#myModal<?php echo $key; ?>"  data-toggle="modal">Supprimer</a></span>-->
                                     <?php ?>
                                         <!-- Modal -->
                                         <div class="modal hide fade" id="myModal<?php echo $key; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
