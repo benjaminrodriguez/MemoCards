@@ -162,6 +162,21 @@
          }
      }
 
+     function deck_unshare_UPDATE($id)
+     {
+         $bdd = bdd();
+         $query = "UPDATE `deck` SET `status` = 'privated' WHERE deck.id = :id;";
+ 
+         $query_params = array(
+             ':id' => $id);
+         try {
+             $stmt = $bdd->prepare($query);
+             $stmt->execute($query_params);
+         } catch(Exception $e) {
+             die('Erreur : ' . $e->getMessage());
+         }
+     }
+
      function passed_UPDATE($id,$nb,$deck,$score)
      {
          $bdd = bdd();

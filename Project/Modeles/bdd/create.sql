@@ -282,6 +282,33 @@ CREATE TABLE IF NOT EXISTS `verso` (
 -- Contraintes pour les tables déchargées
 --
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `notif`
+--
+
+DROP TABLE IF EXISTS `notif`;
+CREATE TABLE IF NOT EXISTS `notif` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` date NOT NULL,
+  `nom` varchar(500) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_notif_user1_idx` (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `notif`
+--
+ALTER TABLE `notif`
+  ADD CONSTRAINT `fk_notif_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 --
 -- Contraintes pour la table `comments_deck`
 --

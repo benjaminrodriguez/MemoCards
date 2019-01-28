@@ -10,7 +10,7 @@
     if (isset($_GET['action']) && $_GET['action'] == 'supp' && isset($_GET['subject_id']))
     {
         // SUPPRESSION SUJET
-        if ($_SESSION['status'] !== 'admin')
+        if ($_SESSION['status'] === 'admin')
         {
 
             subject_DELETE($_GET['subject_id']);
@@ -22,7 +22,7 @@
     if (isset($_GET['action']) && $_GET['action'] == 'warn' && isset($_GET['subject_id']))
     {
         // ADD NOTIF
-        $warn = "Le sujet d'id ".$_GET['subject_id']." a été signalé.";
+        $warn = '<a href="index.php?page=forum&subject_id='.$_GET['subject_id'].'">Ce sujet a été signalé</a>';
         newnotif_INSERT($warn, $_SESSION['id']);
         header('Location: index.php?page=forum');
         exit();

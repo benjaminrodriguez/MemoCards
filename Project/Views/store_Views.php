@@ -72,7 +72,27 @@ if (isset($_GET['error'])) {
                                 echo "Le deck n'a pas de note";
                             }
                             */
-                            echo "<div style='text-align: right'><a href='index.php?page=store&newdeck=".$arraydeckstore[$key]['id']."'> Télécharger le deck <img src='./Public/img/down.png' style='width:40px;height:40px'/></a></div>";
+                            
+                            if ($_SESSION['status'] === "admin") {
+                                ?>
+                                <br><br>
+                                <a style='float: left' href='index.php?page=store&action=supp&deck_id=<?php echo $arraydeckstore[$key]['id']; ?>'>
+                                <img src="./Public/img/x-button.png" style="width:25px;height:25px"/>Supprimer</a>
+                                
+                                <?php
+                            } else {
+                                ?>
+                                <br><br>
+                                <a style='float: left' href='index.php?page=store&action=warn&deck_id=<?php echo $arraydeckstore[$key]['id']; ?>'>
+                                <img src="./Public/img/warning.png" style="width:25px;height:25px"/>Signaler</a>
+                                
+                                <?php
+                            }
+                            
+                            echo "<div style='text-align: right'>
+                            <a href='index.php?page=store&newdeck=".$arraydeckstore[$key]['id']."'> Télécharger le deck <img src='./Public/img/down.png' style='width:40px;height:40px'/></a>
+                            </div>";
+                            
                             
                             ?>
                             </span>
