@@ -111,7 +111,7 @@ INSERT INTO `recto` (`id`, `question_cards`, `deck_id`) VALUES
 (31, 'Qui est le judoka français le plus titré ?', 19),
 (32, 'Quel sport peut se jouer à 7, 13 ou 15 joueurs', 19),
 (33, 'Quel sport se joue avec un ballon ovale ?', 19),
-(34, '\"Quel sport a pratiqué Pete Sampras ?', 19),
+(34, 'Quel sport a pratiqué Pete Sampras ?', 19),
 (35, 'Dans quel sport peut on remporter le Bouclier de Brennus ?', 19),
 (36, 'Qui est Zlatan Ibrahimovic ?', 19),
 (37, 'Quelle est la périodicité des jeux Olympiques d’été ?', 19),
@@ -237,6 +237,9 @@ INSERT INTO `message` (`id`, `date`, `content_message`, `autor_id`, `subject_id`
 (10, '2018-12-15 14:45:04', '<i> ( Message supprimé ) </i>', 2, 15),
 (11, '2018-12-16 03:12:01', '<i> ( Message supprimé ) </i>', 2, 1);
 
+INSERT INTO `comments_deck` (`id`, `content`, `autor_id`, `deck_id`, `mark`) VALUES
+(8, '', 2, 19, 0),
+(9, '', 2, 18, 0);
 
 
 
