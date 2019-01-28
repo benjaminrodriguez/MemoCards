@@ -1046,6 +1046,27 @@ function comments_application_SELECT($id_deck)
         $donnees = $req->fetchAll();
         return $donnees;
 }
+function famoussubject_SELECT()
+{
+   
+    $bdd = bdd();
+    $query = "SELECT subject.id, subject.title, subject.date_posted, subject.content,subject.status,COUNT(message.id) as nbrep
+    FROM subject
+    JOIN message ON message.subject_id = subject.id
+    JOIN user ON user.id = subject.user_id
+    GROUP BY subject.id
+    ORDER BY nbrep DESC
+    LIMIT 3;";
+    
+    try {
+        $stmt = $bdd->prepare($query);
+        $stmt->execute(NULL);
+    } catch(Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+    $qu = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $qu;
+}
 
 ?>
 

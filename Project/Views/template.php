@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="Public/css/bootstrap.css">
 <link rel="stylesheet" href="Public/css/bootstrap-responsive.css">
 <link rel="stylesheet" href="Public/css/jquery.lightbox-0.5.css">
-<link rel="stylesheet" href="Public/css/custom-styless.css">
+<link rel="stylesheet" href="Public/css/custom-stylesss.css">
 <link rel="stylesheet" href="Public/css/flexslider.css">
 <link rel="stylesheet" href="Public/css/styles.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
@@ -266,20 +266,18 @@
                 
                 <h5 class="title-bg">FORUM : Les sujets les plus populaires</h5>
                 <ul class="popular-posts">
-                    <li>
-                        <!--<a href="blog-single.htm"><img src="Public/img/gallery/gallery-img-2-thumb.jpg" alt="Popular Post"></a>-->
-                        <h6><a href="#"><b>Sujet : </b>Lorem ipsum dolor sit amet consectetur adipiscing elit</a></h6>
-                        <em>Posted on 09/01/15</em>
-                    </li>
-                    <li>
-                        <!--<a href="blog-single.htm"><img src="Public/img/gallery/gallery-img-2-thumb.jpg" alt="Popular Post"></a>-->
-                        <h6><a href="#"><b>Sujet : </b>Nulla iaculis mattis lorem, quis gravida nunc iaculis</a></h6>
-                        <em>Posted on 09/01/15</em>
-                    <li>
-                        <!--<a href="blog-single.htm"><img src="Public/img/gallery/gallery-img-2-thumb.jpg" alt="Popular Post"></a>-->
-                        <h6><a href="#"><b>Sujet : </b>Vivamus tincidunt sem eu magna varius elementum maecenas felis</a></h6>
-                        <em>Posted on 09/01/15</em>
-                    </li>
+                <?php
+                    $famoussub = famoussubject_SELECT();
+
+                    foreach ($famoussub as $key => $value) {
+                        ?>
+                            <li>
+                                <h5><a href="index.php?page=forum&subject_id=<?php echo $value['id']; ?>"><b>Sujet : </b><?php echo $value['title']; ?></a></h5>
+                                <em>Posté le <?php echo $value['date_posted']; ?></em>
+                            </li>
+                        <?php
+                    }
+                ?>
                 </ul>
                 
             <!--Tabbed Content

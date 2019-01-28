@@ -544,7 +544,6 @@ ul.post-data li:last-child {padding-right: 0px;}
 	margin-bottom: 20px; 
 	clear: both;
 	display: block;
-	min-height: 70px;
 }
 .popular-posts li a, 
 .popular-posts li a:hover {color:#333333; text-decoration: none;}
