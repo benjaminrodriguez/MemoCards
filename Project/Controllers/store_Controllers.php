@@ -11,6 +11,23 @@
     getSearch($GET['query']);
 }*/
 
+if (isset($_GET['action']) && $_GET['action'] == 'warn' && isset($_GET['deck_id']))
+{
+    // ADD NOTIF
+    $warn = '<a href="index.php?page=application&id='.$_GET['deck_id'].'">Ce deck a été signalé</a>';
+    newnotif_INSERT($warn, $_SESSION['id']);
+    header('Location: index.php?page=store');
+    exit();
+}
+
+if (isset($_GET['action']) && $_GET['action'] == 'supp' && isset($_GET['deck_id']))
+{
+    deck_unshare_UPDATE($_GET['deck_id']);
+    header('Location: index.php?page=store');
+    exit();
+   
+}
+
 if (isset($_POST['rechercher']))
 {
     $_POST['rechercher'] = '%'.$_POST['rechercher'].'%';

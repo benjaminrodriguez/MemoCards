@@ -24,10 +24,9 @@
     }*/
     
 
-     if(isset($_POST['unsubconfirm'])){
-           
-            require_once('Controllers/php/unsub.php');
-        }
+    if(isset($_POST['unsubconfirm'])){
+        require_once('Controllers/php/unsub.php');
+    }
 
 
 

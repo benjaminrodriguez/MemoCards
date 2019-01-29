@@ -1,4 +1,20 @@
 <?php
+    if (isset($_GET['action']) && $_GET['action'] == 'warn' && isset($_GET['deck_id']))
+    {
+        // ADD NOTIF
+        $warn = '<a href="index.php?page=application&id='.$_GET['deck_id'].'">Ce deck a été signalé</a>';
+        newnotif_INSERT($warn, $_SESSION['id']);
+        header('Location: index.php?page=application&id='.$_GET['deck_id']);
+        exit();
+    }
+    
+    if (isset($_GET['action']) && $_GET['action'] == 'supp' && isset($_GET['deck_id']))
+    {
+        deck_unshare_UPDATE($_GET['deck_id']);
+        header('Location: index.php?page=store');
+        exit();
+       
+    }
 
     //new_mark_INSERT($_SESSION['id'], $_GET['id'], $_GET['mark']);
 

@@ -11,11 +11,11 @@
 <link rel="stylesheet" href="Public/css/bootstrap.css">
 <link rel="stylesheet" href="Public/css/bootstrap-responsive.css">
 <link rel="stylesheet" href="Public/css/jquery.lightbox-0.5.css">
-<link rel="stylesheet" href="Public/css/custom-styles.css">
+<link rel="stylesheet" href="Public/css/custom-stylesss.css">
 <link rel="stylesheet" href="Public/css/flexslider.css">
 <link rel="stylesheet" href="Public/css/styles.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-<link rel="stylesheet" href="Public/css/leaderboa.css">
+<link rel="stylesheet" href="Public/css/leaderbo.css">
 
 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -178,7 +178,7 @@
         <div class="span8 blog">
 
                 <?php if (isset($content)) {
-                    
+
                     echo $content; 
                 } 
                 ?>
@@ -237,7 +237,7 @@
                 <div class="wrapper__header">
                     <div class="b_logo"><img src="http://www.myiconfinder.com/uploads/iconsets/256-256-5d41edabc60f4fd2cf3c9f5d35d84045-trophy.png" width="40" alt=""/></div>
                     <div class="b_caption">
-                    <p>MemoCard <span><br>leaderboard</span></p>
+                    <p>MemoCards <span><br>leaderboard</span></p>
                     </div>
                 </div>
                 <div class="wrapper__content">
@@ -266,20 +266,18 @@
                 
                 <h5 class="title-bg">FORUM : Les sujets les plus populaires</h5>
                 <ul class="popular-posts">
-                    <li>
-                        <!--<a href="blog-single.htm"><img src="Public/img/gallery/gallery-img-2-thumb.jpg" alt="Popular Post"></a>-->
-                        <h6><a href="#"><b>Sujet : </b>Lorem ipsum dolor sit amet consectetur adipiscing elit</a></h6>
-                        <em>Posted on 09/01/15</em>
-                    </li>
-                    <li>
-                        <!--<a href="blog-single.htm"><img src="Public/img/gallery/gallery-img-2-thumb.jpg" alt="Popular Post"></a>-->
-                        <h6><a href="#"><b>Sujet : </b>Nulla iaculis mattis lorem, quis gravida nunc iaculis</a></h6>
-                        <em>Posted on 09/01/15</em>
-                    <li>
-                        <!--<a href="blog-single.htm"><img src="Public/img/gallery/gallery-img-2-thumb.jpg" alt="Popular Post"></a>-->
-                        <h6><a href="#"><b>Sujet : </b>Vivamus tincidunt sem eu magna varius elementum maecenas felis</a></h6>
-                        <em>Posted on 09/01/15</em>
-                    </li>
+                <?php
+                    $famoussub = famoussubject_SELECT();
+
+                    foreach ($famoussub as $key => $value) {
+                        ?>
+                            <li>
+                                <h5><a href="index.php?page=forum&subject_id=<?php echo $value['id']; ?>"><b>Sujet : </b><?php echo $value['title']; ?></a></h5>
+                                <em>Posté le <?php echo $value['date_posted']; ?></em>
+                            </li>
+                        <?php
+                    }
+                ?>
                 </ul>
                 
             <!--Tabbed Content

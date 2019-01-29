@@ -137,14 +137,11 @@ else
         //CARD OFTEN WRONG
         if ($choice < 35)
         {
-        
-            //require("./modeles/quest1.php");
             $questions = quest1_SELECT($_SESSION['deck'], $liststr);
         }
         //RANDOM CARD
         else
         {
-            //require("./modeles/quest2.php");
             $questions = quest2_SELECT($_SESSION['deck'], $liststr);
         }
         //var_dump($questions);
@@ -156,8 +153,6 @@ else
         
         //ANSWERS OF THE CARD
         $ans = verso_recup_SELECT($IDDELAQUESTION);
-        //var_dump($ans);
-        //echo $IDDELAQUESTION;
 
         // QUESTION OF THE CARD
         $q = carte_quest_SELECT($IDDELAQUESTION);
@@ -179,27 +174,29 @@ else
     {
         if (isset($_SESSION['listend']))
         {
-            $nbbonne = 0;
-            $nbq = 0;
-            
-            foreach ($_SESSION['listend']['0'] as $key => $value) {
-                if ($value === "T") {
-                    $nbbonne++;
+            if (isset($_SESSION['listend']['0'])) {
+                $nbbonne = 0;
+                $nbq = 0;
+                foreach ($_SESSION['listend']['0'] as $key => $value) {
+                    if ($value === "T") {
+                        $nbbonne++;
+                    }
+                    $nbq++;
                 }
-                $nbq++;
+    
+                //var_dump($nbbonne);
+                //var_dump($nbq);
+        
+                $pt = ($nbbonne / $nbq)*$nbbonne;
+                //update
+                $passed = passed_SELECT($_SESSION['id'], $_SESSION['deck']);
+                $nb = intval($passed['0']['number_game'])+ 1;
+                $score = intval($passed['0']['score_user']) + $pt;
+                passed_UPDATE($_SESSION['id'],$nb,$_SESSION['deck'],$score);
+                
             }
 
-            var_dump($nbbonne);
-            var_dump($nbq);
-    
-            $pt = ($nbbonne / $nbq);
-            //update
-            $passed = passed_SELECT($_SESSION['id'], $_SESSION['deck']);
-            $nb = intval($passed['0']['number_game'])+ 1;
-            $score = intval($passed['0']['score_user']) + $pt;
-            passed_UPDATE($_SESSION['id'],$nb,$_SESSION['deck'],$score);
-
-            var_dump($_SESSION['listend']);
+            //var_dump($_SESSION['listend']);
             require("./Views/affichage_resultquest.php");
         }
         unset($_SESSION['deck']);
