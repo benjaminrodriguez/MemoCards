@@ -1,0 +1,11 @@
+changement de pseudo pas 2 idnetique
+enlever hobbies page de profil
+ajouter la bonne reponse dans QCM lorsque l'on a faux
+reviens plus souvent dans entrainement lorsqu'on a faux
+ne pas pouvoir telecharger un deck que l'on a deja
+signalitique lorsque l'on a telecharger deja le deck
+backoffice
+signalé lorsque deja signale e
+supprimer les notifs qunad elles ont ete géré sur accueil
+
+Recette moyenne 97% 93% technique 100% presentation
