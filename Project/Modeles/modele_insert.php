@@ -178,5 +178,15 @@
         $req->execute(array($user, $deck));
     }
 
-    
+    function new_comment_INSERT($content, $autor_id, $deck_id, $mark)
+    {
+        $bdd = bdd();
+        $req = $bdd->prepare(
+            'INSERT INTO comments_deck (content, autor_id, deck_id, mark)
+             VALUES (?, ?, ?, ?);
+            ');
+        $req->execute(array($content, $autor_id, $deck_id, $mark));
+    }
+
+
 ?>

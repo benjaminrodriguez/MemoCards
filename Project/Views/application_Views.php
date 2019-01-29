@@ -76,8 +76,83 @@
 
                 <!-- Comment Form -->
                 <div class="comment-form-container">
-                        <h6>Laisser un commentaire</h6>
-                        <form action="#" id="comment-form" method="POST">
+                        <h6>Laisser une note  </h6>
+                        <style type="text/css">
+
+em {
+    display: block;
+    margin: .5em auto 2em;
+    color: #bbb;
+}
+
+p, p a {
+    color: #aaa;
+    text-decoration: none;
+}
+p a:hover,
+p a:focus {
+    text-decoration: underline;
+}
+p + p { color: #bbb; margin-top: 2em;}
+.detail {position: absolute; text-align: right; right: 5px; bottom: 5px; width: 50%;}
+ 
+a[href*="intent"] {
+    display:inline-block;
+    margin-top: 0.4em;
+    padding-left: 25px;
+    background: url(full-css-microsoft-logo/bird.png) 0 4px no-repeat;
+}
+/* 
+ * Rating styles
+ */
+.rating {
+    width: 226px;
+    position: relative;
+    top: -30px;
+    left: -400px;
+    margin: 0 auto 1em;
+    font-size: 25px;
+    overflow:hidden;
+}
+.rating a {
+    float:right;
+    color: #aaa;
+    text-decoration: none;
+    -webkit-transition: color .4s;
+    -moz-transition: color .4s;
+    -o-transition: color .4s;
+    transition: color .4s;
+}
+.rating a:hover,
+.rating a:hover ~ a,
+.rating a:focus,
+.rating a:focus ~ a     {
+    color: orange;
+    cursor: pointer;
+}
+.rating2 {
+    direction: rtl;
+}
+.rating2 a {
+    float:none
+}
+ 
+</style>
+
+
+<div class="rating rating2">
+       <a href="index.php?page=application&id=<?php echo $_GET['id']; ?>&mark=5" title="Mettre 5 étoiles">★</a><!--
+    --><a href="index.php?page=application&id=<?php echo $_GET['id']; ?>&mark=4" title="Mettre 4 étoiles">★</a><!--
+    --><a href="index.php?page=application&id=<?php echo $_GET['id']; ?>&mark=3" title="Mettre 3 étoiles">★</a><!--
+    --><a href="index.php?page=application&id=<?php echo $_GET['id']; ?>&mark=2" title="Mettre 2 étoiles">★</a><!--
+    --><a href="index.php?page=application&id=<?php echo $_GET['id']; ?>&mark=1" title="Mettre 1 étoile">★</a>
+</div>
+
+
+                        
+
+
+                        <form action="" id="comment-form" method="POST">
                             <!--<div class="input-prepend">
                                 <span class="add-on"><i class="icon-user"></i></span>
                                 <input class="span4" id="prependedInput" size="16" type="text" placeholder="Name">
@@ -90,14 +165,17 @@
                                 <span class="add-on"><i class="icon-globe"></i></span>
                                 <input class="span4" id="prependedInput" size="16" type="text" placeholder="Website URL">
                             </div>-->
+                            
                             <textarea name="my_comment" class="span6"></textarea>
                             <div class="row">
                                 <div class="span2">
-                                    <input type="submit" class="btn btn-inverse" value="Poster mon avis">
+                                    <input type="submit" class="btn btn-inverse" name ="new_comment" value="Poster mon avis">
                                 </div>
                             </div>
                         </form>
                     </div>
+
+
 
             <!-- Blog Post 1 
             <article>
@@ -143,7 +221,6 @@
         ================================================== --> 
             <section class="comments">
                 <h4 class="title-bg"><a name="comments"></a>Avis des utilisateurs</h4>
-
 
                <ul>
 
@@ -195,22 +272,10 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div> <!-- End Container -->
 
     
+
 
 
 <?php $content = ob_get_clean(); ?>

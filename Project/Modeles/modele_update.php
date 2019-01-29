@@ -181,4 +181,30 @@
              die('Erreur : ' . $e->getMessage());
          }
      }
+
+
+     function new_mark_UPDATE($note, $id_comment)
+     {
+         $bdd = bdd();
+         $req = $bdd->prepare(' UPDATE comments_deck
+                                SET mark = ?
+                                WHERE id = ? 
+                                LIMIT 1
+                             ');
+         $req->execute(array($note, $id_comment));
+
+     }
+
+     function new_comment_UPDATE($content, $id_comment)
+     {
+         $bdd = bdd();
+         $req = $bdd->prepare(' UPDATE comments_deck
+                                SET content = ?
+                                WHERE id = ? 
+                                LIMIT 1
+                             ');
+         $req->execute(array($content, $id_comment));
+
+     }
+
 ?>
