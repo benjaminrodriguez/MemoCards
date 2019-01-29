@@ -89,6 +89,7 @@
         // RECUPERE LA REPONSE SELECTIONNE
         $req =  answer_by_id_SELECT($_GET['answer']);
         $modify_answer = $req->fetch();
+        
 
         // MODIFIE LA QUESTION SI ELLE EST DIFFERENTE
         if($_POST['question'] !== $modify_question[0])   question_UPDATE($_POST['question'], $_GET['question']);
@@ -147,6 +148,10 @@
         
         new_answer_INSERT($_POST['answer'], $id_question['id'] );
 
+        new_answer_false_INSERT($_POST['answer2'], $id_question['id']);
+        new_answer_false_INSERT($_POST['answer3'], $id_question['id']);
+        new_answer_false_INSERT($_POST['answer4'], $id_question['id']);
+
         // AJOUTE LA CARTE DANS LA TABLE SUCCES_CARDS DANS BDD
         $req = verso_id_SELECT($_POST['answer']);
         $verso_id = $req->fetch();
@@ -178,6 +183,11 @@
             $req =  answer_by_id_SELECT($_GET['answer']);
             $modify_answer = $req->fetch();
 
+            $req =  answer_by_id2_SELECT($_GET['question']);
+            $modify_answer2 = $req->fetchAll();
+
+
+            var_dump($modify_answer2); 
             //var_dump($modify_question, $modify_answer);
         } 
 

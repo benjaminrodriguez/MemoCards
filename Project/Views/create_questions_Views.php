@@ -8,6 +8,13 @@
                 <input id="question" type="text" name="question" value="<?php if(isset($_GET['question'])) echo $modify_question[0] ; ?>" placeholder="Nouvelle question"  style="width:600px;" required> <br>
                 <input id="answer" type="text" name="answer" value="<?php if(isset($_GET['answer'])) echo $modify_answer[0] ; ?>" placeholder="Réponse de la question" style="width:600px;" required>
 
+                <br>----------------------------------------------------------------------------------------------------------------------------------<br>
+                Mode QCM : préparation optionnelle
+                <br>----------------------------------------------------------------------------------------------------------------------------------<br>
+                <input id="answer2" type="text" name="answer2" value="<?php if(isset($modify_answer2[1][0])) echo $modify_answer2[1][0] ; ?>" placeholder="Réponse fausse - QCM - [Facultatif]" style="width:600px;" >
+                <input id="answer3" type="text" name="answer3" value="<?php if(isset($modify_answer2[2][0])) echo $modify_answer2[2][0] ; ?>" placeholder="Réponse fausse - QCM - [Facultatif]" style="width:600px;" >
+                <input id="answer4" type="text" name="answer4" value="<?php if(isset($modify_answer2[3][0])) echo $modify_answer2[3][0] ; ?>" placeholder="Réponse fausse - QCM - [Facultatif]" style="width:600px;" >
+
                 <div class="row">
                     <div class="span6">
                         <?php if(isset($_GET['question']) && isset($_GET['answer'])) 

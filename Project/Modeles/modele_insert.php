@@ -112,6 +112,16 @@
         $req->execute(array($answer_cards, 'T', $recto_id));
     }
 
+    function new_answer_false_INSERT($answer_cards, $recto_id)
+    {
+        $bdd = bdd();
+        $req = $bdd->prepare(
+            'INSERT INTO verso (answer_cards, statut_cards, recto_id)
+             VALUES (?, ?, ?);
+            ');
+        $req->execute(array($answer_cards, 'F', $recto_id));
+    }
+
     //--------------------------------------------------------------------------------
 
     function succes_rate_INSERT($verso_id)

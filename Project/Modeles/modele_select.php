@@ -476,9 +476,22 @@
     {
         //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
         $bdd = bdd();
-        $req = $bdd->prepare('  SELECT verso.answer_cards
+        $req = $bdd->prepare('  SELECT verso.answer_cards, verso.id as id_verso
                                 FROM verso
                                 WHERE id = ?
+                            ');
+        $req->execute(array($id_card));
+        return $req;
+    }
+
+    function answer_by_id2_SELECT($id_card)
+    {
+        //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
+        $bdd = bdd();
+        $req = $bdd->prepare('  SELECT verso.answer_cards
+                                FROM verso
+                                JOIN recto ON verso.recto_id = recto.id
+                                WHERE recto.id = ?
                             ');
         $req->execute(array($id_card));
         return $req;
