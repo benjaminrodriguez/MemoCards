@@ -156,7 +156,7 @@
 
             <input type="hidden" name="menu" value="picture">
 
-            <button type="submit"> Confirmer </button>
+            <button type="submit" class="btn btn-inverse"> Confirmer </button>
 
         </form>
 <?php 

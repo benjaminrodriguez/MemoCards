@@ -379,6 +379,7 @@ window.onload = heure;
     	<!-- Blog Preview
         ================================================== -->
     	<div class="span6">
+        <?php /*
 
             <h5 class="title-bg">From the Blog 
                 <small>All the latest news</small>
@@ -437,7 +438,7 @@ window.onload = heure;
                 </div>
                 
             </div>
-            </div> 	
+            </div> 	 */ ?>
         </div>
         
         <!-- Client Area

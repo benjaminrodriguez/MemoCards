@@ -62,6 +62,7 @@ else
 
         
         //GET THE INFO ABOUT THE CARD
+        var_dump($_SESSION['iddelaquestiondavant']);
         $getquest = carte_recup_SELECT($_SESSION['iddelaquestiondavant']);
         $played_card = $getquest[0]['played_cards'];
         $level_card = $getquest[0]['level_cards'];
