@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 16 jan. 2019 à 13:40
+-- Généré le :  mer. 30 jan. 2019 à 09:09
 -- Version du serveur :  5.7.21
 -- Version de PHP :  7.2.4
 
@@ -50,10 +50,10 @@ CREATE TABLE IF NOT EXISTS `comments_deck` (
   `content` longtext NOT NULL,
   `autor_id` int(11) NOT NULL,
   `deck_id` int(11) NOT NULL,
-  `mark` float NOT NULL,
+  `mark` float DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_comments_deck_deck1_idx` (`deck_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `deck` (
   `categorie_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_deck_categorie1_idx` (`categorie_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -188,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `passed` (
   PRIMARY KEY (`id`),
   KEY `fk_passed_user1_idx` (`user_id`),
   KEY `fk_passed_deck1_idx` (`deck_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -203,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `recto` (
   `deck_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_recto_deck1_idx` (`deck_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -239,7 +239,7 @@ CREATE TABLE IF NOT EXISTS `succes_rate` (
   `nb_succes` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_succes_rate_verso_idx` (`verso_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -260,7 +260,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -276,38 +276,11 @@ CREATE TABLE IF NOT EXISTS `verso` (
   `recto_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_verso_recto1_idx` (`recto_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8;
 
 --
 -- Contraintes pour les tables déchargées
 --
-
--- --------------------------------------------------------
-
---
--- Structure de la table `notif`
---
-
-DROP TABLE IF EXISTS `notif`;
-CREATE TABLE IF NOT EXISTS `notif` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `date` date NOT NULL,
-  `nom` varchar(500) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_notif_user1_idx` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-
-
---
--- Contraintes pour les tables déchargées
---
-
---
--- Contraintes pour la table `notif`
---
-ALTER TABLE `notif`
-  ADD CONSTRAINT `fk_notif_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `comments_deck`

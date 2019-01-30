@@ -345,14 +345,14 @@
                    
                 </div>
                 <div class="span3 footer-col">
-                    <h5>Latest Posts</h5>
+                    <!--<h5>Latest Posts</h5>
                      <ul class="post-list">
                         <li><a href="#">Lorem ipsum dolor sit amet</a></li>
                         <li><a href="#">Consectetur adipiscing elit est lacus gravida</a></li>
                         <li><a href="#">Lectus sed orci molestie molestie etiam</a></li>
                         <li><a href="#">Mattis consectetur adipiscing elit est lacus</a></li>
                         <li><a href="#">Cras rutrum, massa non blandit convallis est</a></li>
-                    </ul>
+                    </ul>-->
                 </div>
                 <div class="span3 footer-col">
                    

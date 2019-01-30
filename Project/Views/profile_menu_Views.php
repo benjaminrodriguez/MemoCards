@@ -156,7 +156,7 @@
 
             <input type="hidden" name="menu" value="picture">
 
-            <button type="submit"> Confirmer </button>
+            <button type="submit" class="btn btn-inverse"> Confirmer </button>
 
         </form>
 <?php 
@@ -171,7 +171,7 @@
 ?>
             <form method="POST" action="">
                 <!-- Demande le mot de passe actuel. -->
-                Hobbies<br>
+                <br>
                     <input type="checkbox" name="hobbies" value="sport">
                     <label for="sport">Sport</label>
                     <input type="checkbox" name="hobbies" value="musique" selected>
