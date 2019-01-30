@@ -24,6 +24,7 @@ if (isset($_SESSION['listend'][0])) {
         }
         echo "<br><br>";
     }
+    echo "<div class='well' style='font-size:18px'><b>Grace à ta partie tu as gagné <font size='+1' color='green'>$pt points</font></b></div>";
 } 
 else 
 {

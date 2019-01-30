@@ -155,7 +155,7 @@ INSERT INTO `verso` (`id`, `answer_cards`, `statut_cards`, `recto_id`) VALUES
 (19, 'armistice ', 'T', 21),
 (20, 'Royaume-Uni', 'T', 22),
 (21, 'Edouard Philippe', 'T', 23),
-(22, 'Califorine', 'T', 24),
+(22, 'Californie', 'T', 24),
 (23, 'Emile Zola', 'T', 25),
 (24, 'cheval', 'T', 26),
 (25, 'Aramis', 'T', 27),

@@ -54,12 +54,14 @@ else
     {
         $repuser =str_replace(' ','',htmlspecialchars($_POST['repuser']));
         $repuser = strtolower($repuser);
+        
 
         $repbdd = game2_rep_SELECT($_SESSION['iddelaquestiondavant']);
         //var_dump($repbdd);
         $repbdd = str_replace(' ','',htmlspecialchars($repbdd[0]["answer_cards"]));
         $repbdd = strtolower($repbdd);
-
+        //var_dump($repbdd);
+        //var_dump($repuser);
         if ($repuser === $repbdd) {
             $_POST['answer'] = 'T';
         }
