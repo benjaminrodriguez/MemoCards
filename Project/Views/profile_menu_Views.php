@@ -171,7 +171,7 @@
 ?>
             <form method="POST" action="">
                 <!-- Demande le mot de passe actuel. -->
-                Hobbies<br>
+                <br>
                     <input type="checkbox" name="hobbies" value="sport">
                     <label for="sport">Sport</label>
                     <input type="checkbox" name="hobbies" value="musique" selected>

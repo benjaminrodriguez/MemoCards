@@ -1,5 +1,4 @@
 changement de pseudo pas 2 idnetique
-enlever hobbies page de profil
 ajouter la bonne reponse dans QCM lorsque l'on a faux
 reviens plus souvent dans entrainement lorsqu'on a faux
 ne pas pouvoir telecharger un deck que l'on a deja
