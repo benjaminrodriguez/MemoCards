@@ -12,7 +12,8 @@
 <link rel="stylesheet" href="Public/css/bootstrap-responsive.css">
 <link rel="stylesheet" href="Public/css/prettyPhoto.css" />
 <link rel="stylesheet" href="Public/css/flexslider.css" />
-<link rel="stylesheet" href="Public/css/custom-styles.css">
+<link rel="stylesheet" href="Public/css/custom-styless.css">
+<link rel="stylesheet" href="Public/css/styles.css">
 
 <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>

@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="Public/css/bootstrap.css">
 <link rel="stylesheet" href="Public/css/bootstrap-responsive.css">
 <link rel="stylesheet" href="Public/css/jquery.lightbox-0.5.css">
-<link rel="stylesheet" href="Public/css/custom-stylesss.css">
+<link rel="stylesheet" href="Public/css/custom-styless.css">
 <link rel="stylesheet" href="Public/css/flexslider.css">
 <link rel="stylesheet" href="Public/css/styles.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
