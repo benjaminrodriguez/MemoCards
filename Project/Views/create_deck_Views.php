@@ -17,7 +17,7 @@
     <label for="categorie"><h5>Choisir la catégorie du deck </h5></label>
     <select id="categorie" name="categorie" required> 
         
-        <?php   var_dump($categories); 
+        <?php    
                 foreach ($categories as $key => $value) 
                 {
                     echo '<option value="'.$categories[$key]['id'].'">'.$categories[$key]['name'].'</option>';
@@ -32,7 +32,7 @@
 
     <p>Dans le but de mieux référencer les decks de nos utilisateurs, l'application MémoCards se base sur un système de mot clés. <br>
     Merci de bien vouloir entrer plusieurs mots-clés précédés d'un hashtag concernant votre deck comme l'exemple ci-dessus :</p>
-    <textarea form="id_form" id="hashtag"name="hashtags" rows="6" cols="30" placeholder="#Cuisine 
+    <textarea form="id_form" id="hashtag" name="hashtags" rows="6" cols="30" placeholder="#Cuisine 
 #Chocolat 
 #Recette 
 #Régime " title="Insérer la description de votre deck" required></textarea>

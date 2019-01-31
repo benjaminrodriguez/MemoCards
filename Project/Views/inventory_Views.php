@@ -3,6 +3,19 @@
    
     <!-- Affiche les 3 derniers decks utilisés -->
         <p><h1> <i>Vos decks :</i>  </h1></p>
+            <!-- Pagination -->
+            <div class="pagination">
+                <ul>
+                <li class="active"><a href="#">Prev</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">Next</a></li>
+                </ul>
+            </div>
+
+
         <form method="POST" action="">
     <?php foreach($datas as $key => $value)
             //for($key=0; $key<8; $key++)
@@ -259,7 +272,7 @@
                              
 
 
-                                <li><i class="icon-tags"></i> #hashtags, #hashtags</li>
+                                <li><i class="icon-tags"></i> <?php echo $datas[$key]['hashtag']; ?>  </li>
                             </ul>
                         </div>
                     </article>
@@ -268,17 +281,7 @@
                
         
 
-    <!-- Pagination -->
-    <div class="pagination">
-        <ul>
-        <li class="active"><a href="#">Prev</a></li>
-        <li class="active"><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">Next</a></li>
-        </ul>
-    </div>
+
     </form> 
 <?php $content = ob_get_clean(); ?>
 

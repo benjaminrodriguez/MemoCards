@@ -87,7 +87,17 @@
                             ');
         $req-> execute(array($autor_id, $deck_id,));
     }
-          
+        
+    
+    function hobbies_INSERT($hobbies, $deck_id)
+    {
+        // INSERT LE NOUVEAU DECK CREE
+        $bdd = bdd();
+        $req = $bdd->prepare('  INSERT INTO hashtag (name, deck_id)
+                                VALUES (?, ?);
+                            ');
+        $req-> execute(array($hobbies, $deck_id,));
+    }
     //--------------------------------------------------------------------------------
 
     function new_question_INSERT($question_cards, $deck_id)

@@ -340,10 +340,11 @@
     {
         //SELECTIONNE TOUS LES DECKS DE L'UTILISATEUR
         $bdd = bdd();
-        $req = $bdd->prepare('  SELECT *
+        $req = $bdd->prepare('  SELECT deck.*, passed.*, user.*, hashtag.name as hashtag
                                 FROM deck
                                 LEFT JOIN passed ON deck.id = passed.deck_id
                                 LEFT JOIN user ON passed.user_id = user.id
+                                JOIN hashtag ON deck.id = hashtag.deck_id
                                 WHERE user.id = ?
                             ');
         $req->execute(array($user_id));
@@ -925,23 +926,22 @@ function checkstoredeckhave_SELECT($a, $b)
 function rechercher_SELECT($name)
 {
     $bdd = bdd();
-    $req = $bdd->prepare(' SELECT deck.id, deck.name, deck.picture, categorie.name AS catname, deck.grade, comments_deck.mark as mark
+    $req = $bdd->prepare(' SELECT deck.id, deck.name, deck.picture, categorie.name AS catname, deck.grade, comments_deck.mark as mark, hashtag.name as hashtags
                             FROM deck
                             JOIN categorie ON categorie.id = deck.categorie_id
                             JOIN comments_deck ON deck.id = comments_deck.deck_id
                             JOIN passed ON passed.deck_id = deck.id
                             JOIN user ON user.id = passed.user_id
-                            WHERE deck.name LIKE ? OR (SELECT user.id
-                                                        FROM user
-                                                        WHERE user.username LIKE ?
-                                                        )
-                                LIKE deck.autor_id
+                            JOIN hashtag ON hashtag.deck_id = deck.id
+                            WHERE deck.name LIKE ? 
+                                OR (SELECT user.id FROM user WHERE user.username LIKE ?) LIKE deck.autor_id
+                                OR hashtag.name LIKE ?
                             AND deck.status LIKE "public"
                             GROUP BY deck.id
                             ORDER BY deck.name, user.username
                             ;
                         ');
-    $req->execute(array($name, $name));
+    $req->execute(array($name, $name, $name));
     $donnees = $req->fetchAll();
     return $donnees;
 }
@@ -1031,12 +1031,13 @@ function deck_by_id_SELECT($id)
 {
     $bdd = bdd();
     $req = $bdd->prepare(' SELECT deck.id, deck.name, deck.picture, categorie.name AS categories, AVG(comments_deck.mark) as avg_mark, deck.date_creation as date, deck.description,
-                            user.username as autor
+                            user.username as autor, hashtag.name as hashtags
                             FROM deck
                             JOIN categorie ON categorie.id = deck.categorie_id
                             JOIN comments_deck ON deck.id = comments_deck.deck_id
                             JOIN passed ON passed.deck_id = deck.id
                             JOIN user ON user.id = passed.user_id
+                            JOIN hashtag ON deck.id = hashtag.deck_id
                             WHERE deck.id LIKE ?
                             ;
                         ');

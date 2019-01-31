@@ -124,6 +124,7 @@
                 $deck_id = $req->fetch();
                 new_passed_INSERT($_SESSION['id'], $deck_id['id']);
                 comments_INSERT($_SESSION['id'], $deck_id['id']);
+                hobbies_INSERT($_POST['hashtags'], $deck_id['id']);
             }
             else 
             {
@@ -187,7 +188,7 @@
             $modify_answer2 = $req->fetchAll();
 
 
-            var_dump($modify_answer2); 
+
             //var_dump($modify_question, $modify_answer);
         } 
 

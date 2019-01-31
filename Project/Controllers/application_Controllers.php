@@ -73,6 +73,6 @@
     require_once("./Views/application_Views.php");
     require_once('./Views/template_application_Views.php');
 
-    var_dump($comments);
+    
 
 ?>

@@ -46,7 +46,11 @@
 
                     <ul class="project-info">
                         <li><h4>Date de création:</h4> <?php echo $deck[0]['date']; ?> </li>
-                        <li><h4>Catégories</h4> <?php echo $deck[0]['categories']; ?> </li>
+
+                        <li><h4>Catégories &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+                            #Hashtags</h4> 
+                        <?php echo $deck[0]['categories'].'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp '.$deck[0]['hashtags']; ?> </li>
+                        
                         <li><h4>Auteur:</h4>  <?php echo $deck[0]['autor']; ?> </li>
                         <!--<li><h6>Art Director:</h6> Jane Doe</li>
                         <li><h6>Designer:</h6> Jimmy Doe</li>-->
