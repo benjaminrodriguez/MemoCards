@@ -172,15 +172,84 @@
             <form method="POST" action="">
                 <!-- Demande le mot de passe actuel. -->
                 <br>
-                    <input type="checkbox" name="hobbies" value="sport">
-                    <label for="sport">Sport</label>
-                    <input type="checkbox" name="hobbies" value="musique" selected>
-                    <label for="musique">Musique</label>
-                    <input type="checkbox" name="hobbies" value="voyages">
-                    <label for="voyages">Voyages</label><br>
+                <div class="row">
+                    <div class="span2">
+
+                        <input id="tv" type="checkbox" name="hobbies" value="sport">
+                        <label for="tv">TV</label><br>
+
+                        <input id="musiques" type="checkbox" name="hobbies" value="musique" >
+                        <label for="musiques">Musique</label><br>
                         
+                        <input id="voyages" type="checkbox" name="hobbies" value="voyages">
+                        <label for="voyages">Voyages</label><br>
+                    </div>
+
+                    <div class="span2">
+
+                        <input id="automobile" type="checkbox" name="hobbies" value="sport">
+                        <label for="automibile">Automobile</label><br>
+
+                        <input id="cuisine" type="checkbox" name="hobbies" value="musique" >
+                        <label for="cuisine">Cuisine</label><br>
+                        
+                        <input id="culture" type="checkbox" name="hobbies" value="voyages">
+                        <label for="culture">Culture</label><br>
+                    </div>
+
+
+                    <div class="span2">
+
+                        <input id="films" type="checkbox" name="hobbies" value="sport">
+                        <label for="films">Films</label><br>
+
+                        <input id="geographie" type="checkbox" name="hobbies" value="musique" >
+                        <label for="geographie">Géographie</label><br>
+                        
+                        <input id="histoire" type="checkbox" name="hobbies" value="voyages">
+                        <label for="histoire">Histoire</label><br><br><br>
+                    </div>    
+                
+                    <div class="span2">
+
+                        <input id="informatiques" type="checkbox" name="hobbies" value="sport" checked>
+                        <label for="informatiques">Informatiques</label><br>
+
+                        <input id="langues" type="checkbox" name="hobbies" value="musique" checked>
+                        <label for="langues">Langues</label><br>
+                        
+                        <input id="loisirs" type="checkbox" name="hobbies" value="voyages">
+                        <label for="loisirs">Loisirs</label><br>
+                    </div>     
+                    
+                    <div class="span2">
+
+                        <input id="maths" type="checkbox" name="hobbies" value="sport">
+                        <label for="maths">Maths</label><br>
+
+                        <input id="passions" type="checkbox" name="hobbies" value="musique" >
+                        <label for="passions">Passions</label><br>
+                        
+                        <input id="philosophie" type="checkbox" name="hobbies" value="voyages">
+                        <label for="philosophie">Philosophie</label><br>
+                    </div>  
+                    
+                    <div class="span2">
+
+                        <input id="proverbes" type="checkbox" name="hobbies" value="sport">
+                        <label for="proverbes">Proverbes</label><br>
+
+                        <input id="series" type="checkbox" name="hobbies" value="musique" >
+                        <label for="series">Séries</label><br>
+                        
+                        <input id="sports" type="checkbox" name="hobbies" value="voyages" checked>
+                        <label for="sports">Sports</label><br>
+                    </div>                     
+
+                </div>       
                 <input type="hidden" name="menu" value="hobbies">
                 <button type="submit"> Mettre à jour mes hobbies </button>
+
 
             </form>
 <?php 
