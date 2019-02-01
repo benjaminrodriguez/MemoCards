@@ -1,30 +1,32 @@
 <?php
 ob_start();
 if (isset($_SESSION['listend'][0])) {
+    echo "<div class='well' style='font-size:18px'><b>Grace à ta partie tu as gagné <font size='+1' color='green'>$pt points</font></b></div>";
     foreach ($_SESSION['listend'][0] as $key => $value)
     {
-        echo "<p style='font-size:20px'><b>Question n° ". (intval($key)+1)."</b></p><br><br>";
-        echo "<div class='well' style='font-size:15px'><b>Carte : " . htmlspecialchars($_SESSION['listend'][1][$key])."</b><br><br>";
+        echo "<p style='font-size:20px'><b>Question n° ". (intval($key)+1)."</b></p>";
+        echo "<div class='well' style='font-size:15px'> <!--<b>Carte : " . htmlspecialchars($_SESSION['listend'][1][$key])."</b> <br><br>-->";
         $q = carte_quest_SELECT(htmlspecialchars($_SESSION['listend'][1][$key]));
+        $r = carte_quest_answer_SELECT($_SESSION['listend'][1][$key]);
         ?>
         <div class="well" style="font-size:18px">
-        <?php echo $q[0]['q']; ?>
+        <?php echo '<b>Question :</b> '.$q[0]['q'];   ?>
         </div>
         <br><?php
         if ($value === "T")
         {
-            echo"<font size='+1' color='green'>Bonne réponse !</font></div>";
+            echo'<font size="+1" color="green">Bonne réponse !   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Réponse : '.$r['a'].' </font></div>';
         
         }
         else
         {
 
-            echo "<font size='+1' color='red'>Mauvaise réponse !</font></div>";
+            echo '<font size="+1" color="red">Mauvaise réponse !   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Réponse : '.$r['a'].' </font></div>';
             
         }
         echo "<br><br>";
     }
-    echo "<div class='well' style='font-size:18px'><b>Grace à ta partie tu as gagné <font size='+1' color='green'>$pt points</font></b></div>";
+    
 } 
 else 
 {

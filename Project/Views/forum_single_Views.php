@@ -23,7 +23,7 @@
                             <li><i class="icon-calendar"></i>  <?php echo $info_subject[0]['date_posted']; ?> </li>
                             <li><i class="icon-user"></i> <a href="#"><?php echo $info_subject['username']; ?></a></li>
                             <li><i class="icon-comment"></i> <a href="#"> <?php echo $count_message['count_message']; ?> réponses </a></li>
-                            <li><i class="icon-tags"></i> <a href="#">photoshop</a>, <a href="#">tutorials</a>, <a href="#">illustration</a></li>
+                            <li><i class="icon-tags"></i> <a href="#">forum</a>, <a href="#">tutoriels</a>, <a href="#">illustration </a></li>
                         </ul>
                     </div>
                 </div>

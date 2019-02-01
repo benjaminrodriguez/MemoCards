@@ -157,6 +157,7 @@ else
 
         // QUESTION OF THE CARD
         $q = carte_quest_SELECT($IDDELAQUESTION);
+        
 
         //require(dirname(__FILE__).'./Views/affichage_quest.php');
         
