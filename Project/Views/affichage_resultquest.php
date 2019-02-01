@@ -1,7 +1,7 @@
 <?php
 ob_start();
 if (isset($_SESSION['listend'][0])) {
-    echo "<div class='well' style='font-size:18px'><b>Grace à ta partie tu as gagné <font size='+1' color='green'>$pt points</font></b></div>";
+    echo '<div class="well" style="font-size:18px"><b>Grace à ta partie tu as gagné <font size="+1" color="green"> '.round($pt, 2).' points</font></b></div>';
     foreach ($_SESSION['listend'][0] as $key => $value)
     {
         echo "<p style='font-size:20px'><b>Question n° ". (intval($key)+1)."</b></p>";

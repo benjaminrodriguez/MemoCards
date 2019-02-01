@@ -183,6 +183,7 @@
 
             $req =  answer_by_id_SELECT($_GET['answer']);
             $modify_answer = $req->fetch();
+            
 
             $req =  answer_by_id2_SELECT($_GET['question']);
             $modify_answer2 = $req->fetchAll();
