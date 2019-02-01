@@ -150,6 +150,18 @@
         return $qu;
     }
 
+    function carte_quest_answer_SELECT($id)
+    {
+        $bdd = bdd();
+        $req = $bdd->prepare('SELECT verso.answer_cards as a
+                                FROM verso
+                                WHERE verso.recto_id = ? AND verso.statut_cards = "T"
+                            ');
+        $req->execute(array($id));
+        $resultat = $req->fetch();
+        return $resultat;
+    }
+
     // ----------------------------------------------------------------------------
 
     function recup_name_SELECT($id, $id2)

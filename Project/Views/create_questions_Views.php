@@ -37,11 +37,20 @@
           
 
         <?php 
+        $compteur = 0;
         if (isset($questions_deck)) {
             
             foreach ($questions_deck as $key => $value)
-            { ?>
-
+            { 
+                
+                if($key != 0) {  $compteur += 4;   }
+                
+                
+                
+                
+                
+                ?>
+                  
 
                 <div class="span2">
                     <div class="post-summary-footer">
@@ -58,7 +67,7 @@
 
             <?php      
             echo '<h5>#'.($key+1).' : </h5> <b>Question : </b>'.$questions_deck[$key]['question_cards'];     
-            echo '<br><b>Réponse :</b> '.$answers_deck[$key]['answer_cards']; ?>
+            echo '<br><b>Réponse :</b> '.$answers_deck[$compteur]['answer_cards'];  ?>
             </div> <br><br>
             <?php 
             } 
@@ -68,7 +77,7 @@
         var_dump($questions_deck);
 
         echo 'réponses:';
-        var_dump($answers_deck);*/ ?>
+        var_dump($answers_deck);*/ var_dump($answers_deck);?>
 
 <?php $content = ob_get_clean(); ?>
 

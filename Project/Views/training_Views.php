@@ -28,7 +28,7 @@
 <?php if(intval($_GET['card']) < count($training)) 
     { ?>
         <div class="suivant">
-            <a href="index.php?page=inventory&training=18&card=<?php echo (intval($_GET['card'])+1); ?>" class="btn btn-lg btn-block">Suivant</a>
+            <a href="index.php?page=inventory&training=<?php echo $_GET['training']; ?>&card=<?php echo (intval($_GET['card'])+1); ?>" class="btn btn-lg btn-block">Suivant</a>
         </div>
     <?php
     } ?>
@@ -37,7 +37,7 @@
     <?php if(intval($_GET['card']) > 1) 
     { ?>
         <div class="precedent">
-            <a href="index.php?page=inventory&training=18&card=<?php echo (intval($_GET['card'])-1); ?>" class="btn btn-lg btn-block">Précédent</a>
+            <a href="index.php?page=inventory&training=<?php echo $_GET['training']; ?>&card=<?php echo (intval($_GET['card'])-1); ?>" class="btn btn-lg btn-block">Précédent</a>
         </div>
     <?php
     } ?>
